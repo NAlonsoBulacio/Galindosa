@@ -1,6 +1,6 @@
 import React from "react";
 import Amenities from "../Amenities/Amenities";
-import {  build, bar, jacuzzi, garden, cowork} from "../../assets/index";
+import { build, bar, jacuzzi, garden, cowork } from "../../assets/index";
 const AmenitiesContainer = () => {
   const amenities = [
     {
@@ -36,12 +36,28 @@ const AmenitiesContainer = () => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center items-center gap-y-20 gap-x-8 py-20 px-12">
-      {amenities?.map((amenitie) => (
-        <div className="w-1/4 h-[400px]">
-          <Amenities img={amenitie.img} title={amenitie.title} description={amenitie.description}/>
-        </div>
-      ))}
+    <div id="amenities" className="flex flex-wrap justify-center items-center py-20 px-12 gap-y-10">
+      <div className="w-full flex flex-wrap justify-center items-center gap-y-2">
+        <p className="w-full text-center font-plus-600 text-2xl"
+        style={{color: "#f5c90f"}}
+        >
+          Amenidades
+        </p>
+        <h1 className="text-5xl text-center font-plus-600 text-gray-800">
+          Resultados demostrados al cabo de{" "}
+        </h1>
+      </div>
+      <div className="w-full flex flex-wrap justify-center items-center gap-y-20 gap-x-8 ">
+        {amenities?.map((amenitie) => (
+          <div className="w-1/4 h-[400px]">
+            <Amenities
+              img={amenitie.img}
+              title={amenitie.title}
+              description={amenitie.description}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

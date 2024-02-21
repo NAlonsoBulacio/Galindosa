@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
+import './Header.css';
 const Header = () => {
   return (
     <div className="flex justify-between items-center fixed top-0 right-0 w-screen h-20 bg-gray-200 shadow-lg px-36 py-2 z-40">
@@ -9,19 +10,19 @@ const Header = () => {
       <div className="w-2/3">
         <ul className="flex justify-center items-center space-x-12 font-plus-400 text-gray-600">
           <li>
-            <a href="#description">Descripcion</a>
+            <a className="underline-on-hover" href="#description">Descripcion</a>
           </li>
           <li>
-            <a href="#amenities">Amenidades</a>
+            <a className="underline-on-hover" href="#amenities">Amenidades</a>
           </li>
           <li>
-            <a href="#photos">Fotos</a>
+            <a className="underline-on-hover" href="#description">Fotos</a>
           </li>
           <li>
-            <a href="#testimonials">Testimonios</a>
+            <a className="underline-on-hover" href="#reviews">Reviews</a>
           </li>
           <li>
-            <a href="#q&a">Q&A</a>
+            <a className="underline-on-hover" href="#q&a">Q&A</a>
           </li>
         </ul>
       </div>

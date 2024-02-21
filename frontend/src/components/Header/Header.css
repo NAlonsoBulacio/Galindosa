@@ -1,0 +1,20 @@
+.underline-on-hover {
+    position: relative;
+  }
+  
+  .underline-on-hover::after {
+    content: "";
+    position: absolute;
+    right: 0; /* Ajustamos la posición desde la derecha */
+    bottom: -2px; /* Ajusta la posición del subrayado según tus necesidades */
+    width: 0;
+    height: 2px; /* Grosor del subrayado */
+    background-color: #f5c90f; /* Color del subrayado */
+    transition: width 0.3s ease; /* Duración y curva de la animación */
+  }
+  
+  .underline-on-hover:hover::after {
+    width: 100%; /* Ancho completo al hacer hover */
+    right: auto; /* Restablecemos la posición para que el subrayado empiece desde la derecha */
+    left: 0; /* Ajustamos la posición desde la izquierda */
+  }

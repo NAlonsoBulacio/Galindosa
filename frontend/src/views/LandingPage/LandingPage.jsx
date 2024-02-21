@@ -7,6 +7,7 @@ import DescriptionAndPhotos from '../../components/DescriptionAndPhotos/Descript
 import QuestionsAnswers from '../../components/QuestionsAnswers/QuestionsAnswers';
 import Flyer from '../../components/Flyer/Flyer';
 import Reviews from '../../components/Reviews/Reviews';
+import "./LandingPage.css";
 const LandingPage = () => {
   return (
     <div className='bg-gray-100'>

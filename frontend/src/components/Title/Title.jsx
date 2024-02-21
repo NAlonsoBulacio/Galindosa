@@ -20,7 +20,7 @@ const Title = () => {
           } hidden lg:block text-3xl lg:text-6xl font-plus-600 text-gray-700 text-center`}
           style={{ lineHeight: "1.3" }}
         >
-          Nuevo video de x minutos <span className="" style={{color: "#f5c90f"}}>revela</span> cual <br/>es el sistema probado para tu construccion
+          Nuevo video <span className="" style={{color: "#f5c90f"}}>revela</span> cual es el sistema <span className="" style={{color: "#f5c90f"}}>Optimo</span> probado para tu construccion
         </h1>
         <h1
           className={`${
@@ -30,8 +30,7 @@ const Title = () => {
           } lg:hidden text-3xl lg:text-6xl font-plus-600 text-gray-700`}
           style={{ lineHeight: "1.3" }}
         >
-          Nuevo video de x minutos revela cual es el sistema probado de x pasos
-          para escalar una marca ecommerce a 7 cifras
+          Nuevo video revela cual es el sistema probado para escalar una marca ecommerce a 7 cifras
         </h1>
       </div>
     </div>

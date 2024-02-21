@@ -9,10 +9,12 @@ const QuestionsAnswers = () => {
   };
 
   return (
-    <div className="w-full flex justify-center items-center my-6">
-      <div className="w-full md:w-[950px] flex flex-wrap justify-start items-center text-xl md:text-4xl space-y-4 px-2">
+    <div id="q&a" className="w-full flex justify-center items-center py-10">
+      <div className="w-full md:w-[950px] flex flex-wrap justify-start items-center text-xl md:text-2xl space-y-2 px-2">
         <div className="w-full text-left">
-          <h1 className="text-4xl md:text-6xl font-plus-600 text-yellow-700">
+          <h1 className="text-4xl md:text-4xl font-plus-600"
+          style={{color: "#f5c90f"}}
+          >
             FAQ's
           </h1>
         </div>
@@ -23,7 +25,7 @@ const QuestionsAnswers = () => {
               answer !== "answer1" ? handleAnswer("answer1") : handleAnswer("");
             }}
           >
-            <span className="flex-grow text-left">
+            <span className="flex-grow text-left font-plus-500">
               ¿Como utilizo los productos?
             </span>
             <IoIosArrowDown
@@ -40,7 +42,7 @@ const QuestionsAnswers = () => {
             answer === "answer1" ? "show" : ""
           }`}
         >
-          <span className="flex-grow text-left">
+          <span className="flex-grow text-left font-plus-300 text-gray-700">
           Tras limpiar la piel, aplica 4 gotas del serum antiarrugas. Posteriormente, aplica la crema antiedad reparadora.
           </span>
         </div>
@@ -56,7 +58,7 @@ const QuestionsAnswers = () => {
               answer !== "answer2" ? handleAnswer("answer2") : handleAnswer("");
             }}
           >
-            <span className="flex-grow text-left">
+            <span className="flex-grow text-left font-plus-500">
               ¿Esta rutina de pieles es buena para cualquier tipo?
             </span>
             <IoIosArrowDown
@@ -69,7 +71,7 @@ const QuestionsAnswers = () => {
           </button>
         </div>
         <div
-          className={`w-full answer text-xl md:text-2xl ${
+          className={`w-full answer text-xl md:text-2xl font-plus-300 ${
             answer === "answer2" ? "show" : ""
           }`}
         >
@@ -87,7 +89,7 @@ const QuestionsAnswers = () => {
               answer !== "answer3" ? handleAnswer("answer3") : handleAnswer("");
             }}
           >
-            <span className="flex-grow text-left">
+            <span className="flex-grow text-left font-plus-500">
               ¿Cuando se comienzan a notar los resultados?
             </span>
             <IoIosArrowDown
@@ -100,7 +102,7 @@ const QuestionsAnswers = () => {
           </button>
         </div>
         <div
-          className={`w-full answer text-xl md:text-2xl ${
+          className={`w-full answer text-xl md:text-2xl font-plus-300 text-gray-700 ${
             answer === "answer3" ? "show" : ""
           }`}
         >
@@ -113,7 +115,7 @@ const QuestionsAnswers = () => {
         </div>
         <div className="w-full">
           <button
-            className="w-full flex justify-between items-center font-inter-600 space-x-2 text-left"
+            className="w-full flex justify-between items-center font-inter-600 space-x-2 text-left font-plus-500"
             onClick={() => {
               answer !== "answer4" ? handleAnswer("answer4") : handleAnswer("");
             }}
@@ -129,7 +131,7 @@ const QuestionsAnswers = () => {
           </button>
         </div>
         <div
-          className={`w-full answer text-xl md:text-2xl ${
+          className={`w-full answer text-xl md:text-2xl font-plus-300 text-gray-700 ${
             answer === "answer4" ? "show" : ""
           }`}
         >

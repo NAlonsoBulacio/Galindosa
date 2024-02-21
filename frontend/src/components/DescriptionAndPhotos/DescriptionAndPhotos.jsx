@@ -2,7 +2,7 @@ import React from "react";
 import ProjectGallery from "../ProjectGallery/ProjectGallery";
 const DescriptionAndPhotos = () => {
   return (
-    <div className="flex flex-wrap px-14 py-20">
+    <div id="description" className="flex flex-wrap px-14 py-20">
       <div className="w-1/2">
         <ProjectGallery />
       </div>
@@ -19,7 +19,7 @@ const DescriptionAndPhotos = () => {
           </div>
           <div className="w-full flex gap-x-2">
             <h1>⭐⭐⭐⭐⭐</h1>
-            <a className="underline hover:text-yellow-500" href="">Reviews</a>
+            <a className="underline hover:text-yellow-500" href="#reviews">Reviews</a>
           </div>
           <div className="w-full">
             <h1 className="text-gray-700 font-plus-400 text-lg">
