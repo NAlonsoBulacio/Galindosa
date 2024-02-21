@@ -1,5 +1,7 @@
 import build from "./build.webp";
-import slide1 from "./slide1.jpg";
-import slide2 from "./slide2.jpg";
+import bar from "./bar.webp";
+import jacuzzi from "./jacuzzi.webp";
+import garden from "./garden.jpg";
+import cowork from "./cowork.jpg";
 
-export { build, slide1, slide2 };
+export { build, bar, jacuzzi, garden, cowork };

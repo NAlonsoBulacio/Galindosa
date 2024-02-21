@@ -10,17 +10,17 @@ const Title = () => {
     threshold: 0.5,
   });
   return (
-    <div className="flex justify-center items-center pt-28">
-      <div ref={ref1} className={`px-4 lg:px-28`}>
+    <div className="flex justify-center items-center pt-32 pb-16">
+      <div ref={ref1} className={`px-4 lg:px-32`}>
         <h1
           className={`${
             inView1
               ? "opacity-100 transition-opacity duration-[1s]"
               : "opacity-0"
-          } hidden lg:flex text-3xl lg:text-6xl font-plus-600 text-gray-600 text-center`}
+          } hidden lg:block text-3xl lg:text-6xl font-plus-600 text-gray-700 text-center`}
           style={{ lineHeight: "1.3" }}
         >
-          Nuevo video de x minutos revela cual es el sistema probado de x pasos
+          Nuevo video de x minutos <span className="" style={{color: "#f5c90f"}}>revela</span> cual <br/>es el sistema probado para tu construccion
         </h1>
         <h1
           className={`${

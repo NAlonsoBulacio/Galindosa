@@ -1,6 +1,6 @@
 import React from "react";
 import Amenities from "../Amenities/Amenities";
-import { build, slide1, slide2 } from "../../assets/index";
+import {  build, bar, jacuzzi, garden, cowork} from "../../assets/index";
 const AmenitiesContainer = () => {
   const amenities = [
     {
@@ -10,23 +10,35 @@ const AmenitiesContainer = () => {
       img: build,
     },
     {
-      title: "Piscina",
+      title: "Bar",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      img: build,
+      img: bar,
     },
     {
-      title: "Piscina",
+      title: "Cowork",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      img: build,
+      img: cowork,
+    },
+    {
+      title: "Jardin",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      img: garden,
+    },
+    {
+      title: "Jacuzzi",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      img: jacuzzi,
     },
   ];
 
   return (
-    <div className="flex gap-x-8 py-20 px-12">
+    <div className="flex flex-wrap justify-center items-center gap-y-20 gap-x-8 py-20 px-12">
       {amenities?.map((amenitie) => (
-        <div className="w-1/3 h-[230px]">
+        <div className="w-1/4 h-[400px]">
           <Amenities img={amenitie.img} title={amenitie.title} description={amenitie.description}/>
         </div>
       ))}
