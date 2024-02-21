@@ -1,0 +1,11 @@
+.youtube-div{
+    width: 640px;
+    height: 360px;
+}
+
+@media screen and (max-width: 600px) {
+    .youtube-div{
+        width: 100%;
+        height: 360px;
+    }
+  }

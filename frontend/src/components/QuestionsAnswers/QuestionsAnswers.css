@@ -1,0 +1,17 @@
+.answer {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+  }
+  
+  .answer.show {
+    opacity: 1;
+    max-height: 100px; 
+  }
+
+  @media screen and (max-width: 600px) {
+    .answer.show {
+      max-height: 200px; 
+    }
+  }
