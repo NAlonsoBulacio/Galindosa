@@ -21,7 +21,7 @@ const LandingPage = () => {
       <DescriptionAndPhotos />
       <AmenitiesContainer />
       <Flyer />
-      {/* <Reviews /> */}
+      <Reviews />
       <QuestionsAnswers />
       <WhatsappButton />
       <Footer />

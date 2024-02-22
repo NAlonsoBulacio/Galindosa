@@ -1,18 +1,18 @@
 import React from "react";
-import background from "../../assets/pattern.png";
-import "./Flyer.css"
+import logoG from "../../assets/logo-g.png";
+import "./Flyer.css";
 const Flyer = () => {
   return (
-    <div className="w-full py-32 flex flex-wrap justify-center items-center space-y-16 flyer-background">
-      <div>
-        <h1 className="text-gray-800 font-plus-500 text-6xl">
-          Construimos con Innovación
-        </h1>
+    <div className="w-full py-10 md:py-20 lg:py-32 flex flex-wrap justify-center items-center flyer-background ">
+      <div className="w-1/3 flex justify-center items-center px-8 md:px-0">
+        <img src={logoG} alt="logo" />
       </div>
-      <div className="w-full flex justify-center items-center">
-        <button className="w-auto text-2xl font-plus-500 text-gray-800 border-[3px] border-gray-800 rounded-lg p-2 hover:bg-gray-800 hover:text-white transition duration-400">
-          Agendar Demo
-        </button>
+      <div className="w-2/3 flex justify-center items-center">
+        <h1 className="text-gray-900 font-plus-600 text-2xl md:text-3xl lg:text-5xl xl:text-6xl"
+                  style={{ lineHeight: "1.3" }}
+        >
+        40 años de trayectoria definen nuestra identidad.
+        </h1>
       </div>
     </div>
   );

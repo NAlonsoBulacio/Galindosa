@@ -1,5 +1,5 @@
 .flyer-background {
-    background-image: radial-gradient(circle, #f5c90f, #d6af0e, #b7970d, #997e0c, #7d670a);
+    background-image: linear-gradient(to right top, #4e470c, #5b540d, #68620e, #76700f, #837f0f);
 }
 
 
