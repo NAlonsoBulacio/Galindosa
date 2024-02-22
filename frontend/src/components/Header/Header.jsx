@@ -14,13 +14,13 @@ const Header = () => {
         className="z-40 fixed top-0 right-0 w-screen bg-gray-700 mx-auto flex items-center px-10 py-2 pt-2 justify-between lg:hidden"
         style={{ maxWidth: "1150px", height: "110px" }}
       >
-        <div className="flex items-center">
+        <div className="w-1/2 flex items-center">
           <a href="/">
             <img className="w-[140px]" src={logo} alt="Logo" />
           </a>
         </div>
-        <button className="hamburguer" onClick={handleMenuToggle}>
-          <IoMenu className="text-yellow-400 w-full h-16 " width={64} />
+        <button className="w-1/2 flex justify-center items-center pl-20" onClick={handleMenuToggle}>
+          <IoMenu className="text-yellow-400 w-16 h-16 " width={64} />
         </button>
       </div>
       <div className="hidden lg:flex justify-between items-center fixed top-0 right-0 w-screen h-20 bg-gray-700 shadow-lg lg:px-20 xl:px-36 py-2 z-40">
