@@ -18,3 +18,15 @@
     right: auto; /* Restablecemos la posición para que el subrayado empiece desde la derecha */
     left: 0; /* Ajustamos la posición desde la izquierda */
   }
+
+  .button-calendly {
+    color: #e2bc11;
+    border: 3px solid #e2bc11;
+    background-color: transparent;
+    transition: background-color 0.4s, color 0.4s;
+  }
+  
+  .button-calendly:hover {
+    background-color: #f5c90f;
+    color: #ffffff;
+  }

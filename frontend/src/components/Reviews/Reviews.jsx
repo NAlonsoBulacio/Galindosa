@@ -44,15 +44,16 @@ const Reviews = () => {
   };
 
   return (
-    <div id="reviews" className="flex flex-wrap justify-center items-center py-12">
+    <div
+      id="reviews"
+      className="flex flex-wrap justify-center items-center py-12"
+    >
       <div className="w-full flex flex-wrap justify-center items-center gap-y-2">
-        <p className="w-full text-center text-yellow-600 font-plus-500 text-2xl"
-        
-        >
-        Personas reales, resultados reales
+        <p className="w-full text-center text-yellow-600 font-plus-500 text-2xl">
+          Personas reales, resultados reales
         </p>
-        <h1 className="text-5xl text-center font-plus-600 text-gray-800">
-        Lo que opinan nuestros clientes.
+        <h1 className="text-5xl text-center font-plus-600 text-gray-200">
+          Lo que opinan nuestros clientes.
         </h1>
       </div>
 
@@ -60,20 +61,18 @@ const Reviews = () => {
         <div className="w-2/5 flex flex-wrap items-start justify-end gap-y-8 pr-8">
           <div
             className={`${
-              review === "1"
-                ? "bg-yellow-200 border-yellow-500"
-                : "bg-white"
-            } w-full border-2 shadow-lg flex justify-between rounded-lg items-start px-10 py-4 h-[100px] cursor-pointer`}
+              review === "1" ? "bg-yellow-200 border-yellow-500" : "bg-white"
+            } w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[100px] cursor-pointer`}
             onClick={() => selectReview("1")}
           >
             <div className="h-full flex justify-center items-center">
               <img src={man} width={60} height={60} alt="man-client" />
             </div>
-            <div className="flex flex-wrap justify-center items-start h-full">
-              <h1 className="w-full text-center text-2xl font-plus-500 text-gray-800">
+            <div className="flex flex-wrap justify-center items-start h-full lg:px-2 xl:px-0">
+              <h1 className="w-full text-center lg:text-xl xl:text-2xl font-plus-500 text-gray-800">
                 Rodrigo Perez
               </h1>
-              <p className="w-full text-center text-lg font-plus-300 text-gray-700">
+              <p className="w-full text-center lg:text-md xl:text-lg font-plus-300 text-gray-700">
                 Cliente de Galindo S.A
               </p>
             </div>
@@ -83,20 +82,18 @@ const Reviews = () => {
           </div>
           <div
             className={`${
-              review === "2"
-                ? "bg-yellow-200 border-2 border-yellow-500"
-                : "bg-white"
-            } w-full border-2shadow-lg flex justify-between rounded-lg items-start px-10 py-4 h-[100px] cursor-pointer`}
+              review === "2" ? "bg-yellow-200 border-yellow-500" : "bg-white"
+            } w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[100px] cursor-pointer`}
             onClick={() => selectReview("2")}
           >
             <div className="h-full flex justify-center items-center">
               <img src={woman} width={60} height={60} alt="man-client" />
             </div>
-            <div className="flex flex-wrap justify-center items-start h-full">
-              <h1 className="w-full text-center text-2xl font-plus-500 text-gray-800">
-                Mara Dominguez
+            <div className="flex flex-wrap justify-center items-start h-full lg:px-2 xl:px-0">
+              <h1 className="w-full text-center lg:text-xl xl:text-2xl font-plus-500 text-gray-800">
+                Mara Perez
               </h1>
-              <p className="w-full text-center text-lg font-plus-300 text-gray-700">
+              <p className="w-full text-center lg:text-md xl:text-lg font-plus-300 text-gray-700">
                 Cliente de Galindo S.A
               </p>
             </div>
@@ -106,20 +103,18 @@ const Reviews = () => {
           </div>
           <div
             className={`${
-              review === "3"
-                ? "bg-yellow-200 border-2 border-yellow-500"
-                : "bg-white"
-            } w-full border-2 shadow-lg flex justify-between rounded-lg items-start px-10 py-4 h-[100px] cursor-pointer`}
+              review === "3" ? "bg-yellow-200 border-yellow-500" : "bg-white"
+            } w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[100px] cursor-pointer`}
             onClick={() => selectReview("3")}
           >
             <div className="h-full flex justify-center items-center">
               <img src={man} width={60} height={60} alt="man-client" />
             </div>
-            <div className="flex flex-wrap justify-center items-start h-full">
-              <h1 className="w-full text-center text-2xl font-plus-500 text-gray-800">
-                Marco Robles
+            <div className="flex flex-wrap justify-center items-start h-full lg:px-2 xl:px-0">
+              <h1 className="w-full text-center lg:text-xl xl:text-2xl font-plus-500 text-gray-800">
+                Rodrigo Dominguez
               </h1>
-              <p className="w-full text-center text-lg font-plus-300 text-gray-700">
+              <p className="w-full text-center lg:text-md xl:text-lg font-plus-300 text-gray-700">
                 Cliente de Galindo S.A
               </p>
             </div>
@@ -134,19 +129,26 @@ const Reviews = () => {
             <h1>⭐⭐⭐⭐⭐</h1>
           </div>
           <div className="w-full">
-            <h1 className="text-gray-800 font-plus-600 text-3xl">
+            <h1 className="text-gray-200 font-plus-600 text-3xl">
               {revieSelected.title}
             </h1>
           </div>
-          <div className="w-full">
+          <div className="w-full text-gray-400">
             <p>{revieSelected.date}</p>
           </div>
           <div className="w-full ">
-            <p className="text-gray-700 font-plus-400 text-lg">
+            <p className="text-gray-300 font-plus-500 text-lg">
               {revieSelected.description}
             </p>
           </div>
         </div>
+      </div>
+      <div className="w-full flex justify-center items-center">
+        <a className="flex justify-center items-center" href="#calendly">
+          <button className="text-3xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
+            Agenda una Visita
+          </button>
+        </a>
       </div>
     </div>
   );
