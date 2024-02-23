@@ -10,6 +10,7 @@ import Reviews from "../../components/Reviews/Reviews";
 import Calendly from "../../components/Calendly/Calendly";
 import Footer from "../../components/Footer/Footer";
 import WhatsappButton from "../../components/Whatsapp/WhatsappButton";
+import Slider from "../../components/Slider/Slider";
 import "./LandingPage.css";
 const LandingPage = () => {
   return (
@@ -21,6 +22,7 @@ const LandingPage = () => {
       <DescriptionAndPhotos />
       <AmenitiesContainer />
       <Flyer />
+      {/* <Slider /> */}
       <Reviews />
       <QuestionsAnswers />
       <WhatsappButton />

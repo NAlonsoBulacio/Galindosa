@@ -5,15 +5,15 @@ import { IoIosArrowDropright } from "react-icons/io";
 import { IoIosArrowDropleft } from "react-icons/io";
 const Reviews = () => {
   const [review, setReview] = useState("1");
-  const [revieSelected, setReviewSelected] = useState(    {
+  const [revieSelected, setReviewSelected] = useState({
     id: "1",
     title:
       "Espectacular! Incomparable con cremas de 600€. Efectividad en 3-4 días.",
     date: "20/01/2022",
     description:
       "El cóctel de serum más crema es espectacular!!!! Incomparable con cremas de 600€, muchísimo mejor y efectivad en 3-4 días.",
-      name:"Raul Rodriguez",
-  },);
+    name: "Raul Rodriguez",
+  });
 
   const reviews = [
     {
@@ -23,7 +23,7 @@ const Reviews = () => {
       date: "20/01/2022",
       description:
         "El cóctel de serum más crema es espectacular!!!! Incomparable con cremas de 600€, muchísimo mejor y efectivad en 3-4 días.",
-        name:"Raul Rodriguez",
+      name: "Raul Rodriguez",
     },
     {
       id: "2",
@@ -31,7 +31,7 @@ const Reviews = () => {
       date: "20/09/2012",
       description:
         "El cóctel de serum más crema es espectacular!!!! Incomparable con cremas de 600€, muchísimo mejor y efectivad en 3-4 días.",
-        name:"Raul Mendez",
+      name: "Raul Mendez",
     },
     {
       id: "3",
@@ -39,7 +39,7 @@ const Reviews = () => {
       date: "20/03/1900",
       description:
         "El cóctel de serum más crema es espectacular!!!! Incomparable con cremas de 600€, muchísimo mejor y efectivad en 3-4 días.",
-        name:"Raul Paz",
+      name: "Raul Paz",
     },
   ];
 
@@ -55,7 +55,7 @@ const Reviews = () => {
     setReview(nextReviewId);
     selectReview(nextReviewId);
   };
-  
+
   const changePrevReview = () => {
     const currentIndex = reviews.findIndex((item) => item.id === review);
     const prevIndex = (currentIndex - 1 + reviews.length) % reviews.length;
@@ -69,8 +69,9 @@ const Reviews = () => {
       className="flex flex-wrap justify-center items-center py-12"
     >
       <div className="w-full flex flex-wrap justify-center items-center gap-y-2">
-        <p className="w-full text-center  font-plus-500 text-2xl"
-                  style={{ color: "#f5c90f" }}
+        <p
+          className="w-full text-center  font-plus-500 text-2xl"
+          style={{ color: "#f5c90f" }}
         >
           Personas reales, resultados reales
         </p>
@@ -165,7 +166,10 @@ const Reviews = () => {
               </p>
             </div>
             <div className="w-[20%] flex h-full justify-center items-center">
-              <button className="flex justify-center items-center" onClick={() => changeNextReview()}>
+              <button
+                className="flex justify-center items-center"
+                onClick={() => changeNextReview()}
+              >
                 <IoIosArrowDropright className="text-3xl cursor-pointer hover:text-gray-800 " />
               </button>
             </div>

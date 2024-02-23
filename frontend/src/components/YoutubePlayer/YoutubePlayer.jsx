@@ -24,7 +24,7 @@ const YoutubePlayer = ({}) => {
   };
   const videoId = "9YD7O4M75II";
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center px-4">
       <div className="youtube-div relative">
         <YouTube videoId={videoId} opts={opts} />
       </div>
