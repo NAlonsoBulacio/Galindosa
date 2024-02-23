@@ -58,7 +58,7 @@ const Header = () => {
         </div>
         <div className="flex justify-center items-center">
           <a className="flex justify-center items-center" href="#calendly">
-            <button className="lg:text-lg xl:text-xl font-plus-500 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
+            <button className="lg:text-lg xl:text-xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
               Agenda una Visita
             </button>
           </a>

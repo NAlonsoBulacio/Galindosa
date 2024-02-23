@@ -69,7 +69,9 @@ const Reviews = () => {
       className="flex flex-wrap justify-center items-center py-12"
     >
       <div className="w-full flex flex-wrap justify-center items-center gap-y-2">
-        <p className="w-full text-center text-yellow-600 font-plus-500 text-2xl">
+        <p className="w-full text-center  font-plus-500 text-2xl"
+                  style={{ color: "#f5c90f" }}
+        >
           Personas reales, resultados reales
         </p>
         <h1 className="text-5xl text-center font-plus-600 text-gray-200">

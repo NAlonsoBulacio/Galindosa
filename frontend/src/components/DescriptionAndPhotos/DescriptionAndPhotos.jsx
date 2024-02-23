@@ -3,7 +3,7 @@ import ProjectGallery from "../ProjectGallery/ProjectGallery";
 const DescriptionAndPhotos = () => {
   return (
     <div id="description" className="flex flex-wrap px-4 lg:px-14 py-20 gap-y-6 lg:gap-y-0">
-      <div className="hidden lg:flex w-full lg:w-1/2 flex-wrap justify-start items-start">
+      <div className="flex w-full lg:w-1/2 flex-wrap justify-start items-start">
         <ProjectGallery />
       </div>
       <div className="w-full lg:w-1/2 flex flex-wrap justify-start items-start h-full px-4 lg:px-10">
@@ -37,17 +37,14 @@ const DescriptionAndPhotos = () => {
               m². Superficie construida de 170 m².
             </li>
             </ul>
-          <div className="w-full flex justify-start items-center">
+          <div className="w-full flex justify-center lg:justify-start items-center mt-4">
             <a className="flex justify-start items-center" href="#calendly">
-              <button className="text-xl font-plus-500 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
+              <button className="text-xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
                 Agenda una Visita
               </button>
             </a>
           </div>
         </div>
-      </div>
-      <div className="lg:hidden w-full lg:w-1/2 flex flex-wrap justify-start items-start">
-        <ProjectGallery />
       </div>
     </div>
   );

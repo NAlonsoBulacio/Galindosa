@@ -20,9 +20,9 @@
   }
 
   .button-calendly {
-    color: #e2bc11;
+    color: #484848;
     border: 3px solid #e2bc11;
-    background-color: transparent;
+    background-color: #f5c90f;
     transition: background-color 0.4s, color 0.4s;
   }
   
