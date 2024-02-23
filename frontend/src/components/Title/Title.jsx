@@ -10,10 +10,10 @@ const Title = () => {
     threshold: 0.5,
   });
   return (
-    <div className="flex justify-center items-center pt-32 pb-10 lg:pb-16">
+    <div className="flex flex-wrap justify-center items-center pt-32 pb-10 lg:pb-10 gap-y-6">
       <div
         ref={ref1}
-        className={`flex justify-center items-center px-4 lg:px-32`}
+        className={`w-full flex justify-center items-center px-4 lg:px-32 `}
       >
         <h1
           className={`${
@@ -44,6 +44,9 @@ const Title = () => {
           </span>{" "}
           &nbsp;en <br/>el country Yerba buena Jockey club (Viejo Golf)
         </h1>
+      </div>
+      <div className="w-full px-4">
+        <h1 className="text-center text-xl text-gray-300 font-plus-300">Te invito a ver este video de x minutos donde te mostraremos la propiedad ⬇️</h1>
       </div>
     </div>
   );

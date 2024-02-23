@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import man from "../../assets/man.svg";
 import woman from "../../assets/woman.svg";
 import { IoIosArrowDropright } from "react-icons/io";
+import { IoIosArrowDropleft } from "react-icons/io";
 const Reviews = () => {
   const [review, setReview] = useState("1");
-  const [revieSelected, setReviewSelected] = useState({
+  const [revieSelected, setReviewSelected] = useState(    {
     id: "1",
     title:
       "Espectacular! Incomparable con cremas de 600€. Efectividad en 3-4 días.",
     date: "20/01/2022",
     description:
       "El cóctel de serum más crema es espectacular!!!! Incomparable con cremas de 600€, muchísimo mejor y efectivad en 3-4 días.",
-  });
+      name:"Raul Rodriguez",
+  },);
 
   const reviews = [
     {
@@ -147,7 +149,7 @@ const Reviews = () => {
             bg-yellow-100 border-yellow-500  w-full lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[150px] cursor-pointer`}
           >
             <div className="w-[20%] flex h-full justify-center items-center">
-              <IoIosArrowDropright
+              <IoIosArrowDropleft
                 className="text-3xl cursor-pointer hover:text-gray-800 "
                 onClick={() => changePrevReview()}
               />

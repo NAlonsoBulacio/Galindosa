@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div>
       <div
-        className="z-40 fixed top-0 right-0 w-screen bg-gray-700 mx-auto flex items-center px-10 py-2 pt-2 justify-between lg:hidden"
+        className="z-40 fixed top-0 right-0 w-screen bg-gray-600 mx-auto flex items-center px-10 py-2 pt-2 justify-between lg:hidden"
         style={{ maxWidth: "1150px", height: "110px" }}
       >
         <div className="w-1/2 flex items-center">
@@ -23,7 +23,7 @@ const Header = () => {
           <IoMenu className="text-yellow-400 w-16 h-16 " width={64} />
         </button>
       </div>
-      <div className="hidden lg:flex justify-between items-center fixed top-0 right-0 w-screen h-20 bg-gray-700 shadow-lg lg:px-20 xl:px-36 py-2 z-40">
+      <div className="hidden lg:flex justify-between items-center fixed top-0 right-0 w-screen h-20 bg-gray-600 shadow-lg lg:px-20 xl:px-36 py-2 z-40">
         <div className="flex justify-center items-center h-full">
           <img className="h-full" src={logo} alt="logo-galindosa" />
         </div>
