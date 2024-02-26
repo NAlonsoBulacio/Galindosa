@@ -68,14 +68,14 @@ const Reviews = () => {
       id="reviews"
       className="flex flex-wrap justify-center items-center py-12"
     >
-      <div className="w-full flex flex-wrap justify-center items-center gap-y-2">
+      <div className="w-full flex flex-wrap justify-center items-center gap-y-2 px-4 lg:px-0">
         <p
-          className="w-full text-center  font-plus-500 text-2xl"
+          className="w-full text-center  font-plus-500 text-xl lg:text-2xl"
           style={{ color: "#f5c90f" }}
         >
           Personas reales, resultados reales
         </p>
-        <h1 className="text-5xl text-center font-plus-600 text-gray-200">
+        <h1 className="text-2xl lg:text-5xl text-center font-plus-600 text-gray-200">
           Lo que opinan nuestros clientes.
         </h1>
       </div>
@@ -134,7 +134,7 @@ const Reviews = () => {
               <img src={man} width={60} height={60} alt="man-client" />
             </div>
             <div className="flex flex-wrap justify-center items-start h-full lg:px-2 xl:px-0">
-              <h1 className="w-full text-center lg:text-xl xl:text-2xl font-plus-500 text-gray-800">
+              <h1 className="w-full text-center lg:text-lg xl:text-2xl font-plus-500 text-gray-800">
                 Rodrigo Paz
               </h1>
               <p className="hidden lg:block w-full text-center lg:text-md xl:text-lg font-plus-300 text-gray-700">

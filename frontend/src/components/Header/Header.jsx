@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div>
       <div
-        className="z-40 fixed top-0 right-0 w-screen bg-gray-200 mx-auto flex items-center px-10 py-2 pt-2 justify-between lg:hidden"
+        className="z-40 top-0 right-0 w-screen bg-gray-200 mx-auto flex items-center px-10 py-2 pt-2 justify-between lg:hidden"
         style={{ maxWidth: "1150px", height: "110px" }}
       >
         <div className="w-1/2 flex items-center">
