@@ -123,7 +123,7 @@ export const Slider = () => {
   // };
 
   return (
-    <div className="w-full h-auto flex flex-wrap justify-center items-center px-4">
+    <div className="w-full h-auto flex flex-wrap justify-center items-center px-4 py-10">
       <div className="w-full flex flex-wrap justify-center items-center gap-y-2 px-0 lg:px-32">
         <p
           className="w-full text-center font-plus-600 text-xl lg:text-2xl"
@@ -175,7 +175,7 @@ export const Slider = () => {
               ref={listRef}
               className={`w-${containerWidth}vw h-full flex items-center slider-ul overflow-x-hidden`}
               style={{ overflowX: "scroll", WebkitOverflowScrolling: "touch" }}
-              onTouchEnd={handleTouchEnd}
+              // onTouchEnd={handleTouchEnd}
             >
               {slides.map((item, index) => {
                 return (

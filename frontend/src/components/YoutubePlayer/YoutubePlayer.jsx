@@ -5,13 +5,16 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./YoutubePlayer.css";
 const YoutubePlayer = ({}) => {
-
   const [showForm, setShowform] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const actualizarEstadoPadre = (estado) => {
+  const handleShowForm = (estado) => {
     setShowform(estado);
-    setShowVideo(true);
-    toast.success("¡Mensaje enviado exitosamente!");
+  };
+  const actualizarEstadoPadre = (estado) => {
+    if (estado === true) {
+      setShowVideo(true);
+      toast.success("¡Mensaje enviado exitosamente!");
+    }
   };
   const handleClick = (click) => {
     setShowform(click);
@@ -36,14 +39,19 @@ const YoutubePlayer = ({}) => {
           ></div>
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <Registro
-                actualizarEstado={actualizarEstadoPadre}
-              />
+              <Registro actualizarEstado={actualizarEstadoPadre} handleShowForm={handleShowForm}/>
             </div>
           </div>
         </>
       )}
-      { showVideo === false ? (<div className="absolute youtube-div z-30 bg-transparent cursor-pointer" onClick={() => setShowform(true)}></div>) : ""}
+      {showVideo === false ? (
+        <div
+          className="absolute youtube-div z-30 bg-transparent cursor-pointer"
+          onClick={() => setShowform(true)}
+        ></div>
+      ) : (
+        ""
+      )}
       <ToastContainer />
     </div>
   );

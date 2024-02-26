@@ -1,10 +1,12 @@
 import React from "react";
 import "./MenuPhone.css";
 import { AiOutlineClose } from "react-icons/ai";
+import logo from "../../assets/logo-g.png";
 const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
   return (
-    <div className="menu-phone fixed top-0 right-0 w-full flex justify-start pt-32 items-start font-poppins-400 bg-gray-200">
+    <div className="menu-phone fixed top-0 right-0 w-full flex justify-start pt-10 items-start font-poppins-400 bg-gray-200">
       <div className="menu-container w-full flex flex-wrap justify-start items-center px-6 text-gray-700">
+        <img className="w-12 h-12" src={logo} alt="" />
         <a className="w-full" href="/" onClick={handleMenuToggle}>
           Inicio
         </a>
@@ -20,7 +22,7 @@ const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
         <button className="w-full" onClick={handleMenuToggle}>
           <AiOutlineClose
             className=""
-            style={{ height: "30px", width: "30px" }}
+            style={{ height: "41px", width: "41px" }}
           />
         </button>
       </div>

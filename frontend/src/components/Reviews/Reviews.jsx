@@ -75,7 +75,7 @@ const Reviews = () => {
         >
           Personas reales, resultados reales
         </p>
-        <h1 className="text-2xl lg:text-5xl text-center font-plus-600 text-gray-200">
+        <h1 className="text-3xl lg:text-5xl text-center font-plus-600 text-gray-200">
           Lo que opinan nuestros clientes.
         </h1>
       </div>
@@ -149,7 +149,7 @@ const Reviews = () => {
         <div className="w-full flex flex-wrap lg:hidden justify-center items-center px-8 py-4 h-[150px]">
           <div
             className={`
-            bg-yellow-100 border-yellow-500  w-full lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[150px] cursor-pointer`}
+            bg-yellow-50 border-yellow-500  w-full lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[130px] cursor-pointer`}
           >
             <div className="w-[20%] flex h-full justify-center items-center">
               <IoIosArrowDropleft
@@ -158,10 +158,10 @@ const Reviews = () => {
               />
             </div>
             <div className="flex flex-wrap justify-center items-start h-full py-4 lg:py-0 lg:px-2 xl:px-0">
-              <h1 className="w-full text-center text-4xl font-plus-500 text-gray-800">
+              <h1 className="w-full text-center text-3xl lg:text-4xl font-plus-500 text-gray-800">
                 {revieSelected.name}
               </h1>
-              <p className=" w-full text-center text-xl font-plus-400 text-gray-700">
+              <p className=" w-full text-center text-xl font-plus-400 text-gray-700 px-4">
                 Cliente de Galindo S.A
               </p>
             </div>

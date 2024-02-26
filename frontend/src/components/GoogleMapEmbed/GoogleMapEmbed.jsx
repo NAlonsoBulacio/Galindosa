@@ -9,7 +9,7 @@ const GoogleMapEmbed = ({ lat, lng }) => {
   return (
     <div className="w-full flex flex-wrap justify-center items-center py-10 pt-16 gap-y-6">
       <div className="w-full flex flex-wrap justify-center items-center ">
-        <h1 className="text-5xl text-center font-plus-600 text-gray-200">
+        <h1 className="text-4xl lg:text-5xl text-center font-plus-600 text-gray-200">
           Ubicación Privilegiada
         </h1>
       </div>

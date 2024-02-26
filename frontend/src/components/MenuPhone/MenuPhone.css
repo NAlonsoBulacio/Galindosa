@@ -1,6 +1,6 @@
 .menu-phone {
     transition: height 0.3s;
-    height: 100vh;
+    height: 50vh;
     z-index: 3;
   }
 

@@ -6,13 +6,13 @@ import phone from "../../assets/phone.svg";
 import "./Registro.css";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
-const Registro = ({ actualizarEstado }) => {
+const Registro = ({ actualizarEstado, handleShowForm }) => {
   const [registro, setRegistro] = useState({
     name: "",
     email: "",
     phone: "",
   });
-  
+
   const serviceId = "service_tf4fz5e";
   const templateId = "template_e39xq6o";
   const apiKey = "Ukt44gaahould7x-y";
@@ -55,11 +55,11 @@ const Registro = ({ actualizarEstado }) => {
   };
 
   const handleClick = (click) => {
-    actualizarEstado(click);
+    handleShowForm(click);
   };
 
   const handleSubmit = (e) => {
-    setFormSubmitted(true)
+    setFormSubmitted(true);
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       emailjs.send(serviceId, templateId, registro, apiKey).then(
@@ -75,7 +75,8 @@ const Registro = ({ actualizarEstado }) => {
         email: "",
         phone: "",
       });
-      actualizarEstado(false);
+      actualizarEstado(true);
+      handleShowForm(false);
     }
   };
 

@@ -11,7 +11,7 @@ const QuestionsAnswers = () => {
   return (
     <div
       id="q&a"
-      className="w-full flex flex-wrap justify-center items-center pb-10 px-4 lg:px-0"
+      className="w-full flex flex-wrap justify-center items-center pt-10 pb-10 px-4 lg:px-0"
     >
       <div className="w-full md:w-[950px] flex flex-wrap justify-start items-center text-xl md:text-2xl space-y-2 px-2">
         <div className="w-full text-left">
