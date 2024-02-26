@@ -54,25 +54,24 @@ const Calendly = () => {
           ref={ref2}
           className={`${
             inView2
-              ? "h-auto opacity-100 transition-opacity duration-1000"
+              ? "h-[775px] lg:h-[658px] opacity-100 transition-opacity duration-1000"
               : "opacity-0"
           } w-full`}
-           // Establece una altura mínima para el contenedor
+          // Establece una altura mínima para el contenedor
         >
-          <InlineWidget
-            className="h-full"
-            url="https://calendly.com/nicoalonso99-na/30min"
-            pageSettings={{
-              backgroundColor: 'ffffff',
-              hideEventTypeDetails: false,
-              hideLandingPageDetails: true,
-              primaryColor: '00a2ff',
-              textColor: '4d5055'
-            }}
-            styles={{
-              height: '658px'
-            }}
-          />
+            <InlineWidget
+              url="https://calendly.com/nicoalonso99-na/30min"
+              pageSettings={{
+                backgroundColor: "ffffff",
+                hideEventTypeDetails: false,
+                hideLandingPageDetails: true,
+                primaryColor: "00a2ff",
+                textColor: "4d5055",
+              }}
+              styles={{
+                height: "100%",
+              }}
+            />
         </div>
       </div>
     </div>
