@@ -8,7 +8,7 @@ const Slide = ({ title }) => {
           <img className="w-full h-full object-cover" src={bar} alt="" />
         </div>
       </div>
-      <div className="w-full flex justify-center items-start px-16">
+      <div className="w-full flex justify-center items-start px-12 lg:px-16">
         <h1 className="h-[80px] text-center text-gray-200 font-plus-400 text-lg lg:text-xl">
           {title}
         </h1>
