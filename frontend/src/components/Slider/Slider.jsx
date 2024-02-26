@@ -8,6 +8,7 @@ export const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentIndexes, setCurrentIndexes] = useState([0, 1]);
   const [marker, setMarker] = useState(0);
+  const [buttonClick, setButtonClick] = useState(false);
   const data = [build, bar, jacuzzi, garden, cowork];
   const slides = [
     { title: "Revestimientos de porcelanato" },
@@ -34,7 +35,7 @@ export const Slider = () => {
 
     if (window.innerWidth <= 768) {
       const imgNode = listNode.querySelectorAll("li ")[currentIndex];
-      if (imgNode) {
+      if (imgNode && buttonClick) {
         imgNode.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
@@ -43,27 +44,30 @@ export const Slider = () => {
     } else {
       const listNode = listRef.current;
       const imgNode = listNode.querySelectorAll("li")[marker];
-      if (imgNode) {
+      if (imgNode && buttonClick) {
         imgNode.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
         });
       }
     }
-  }, [currentIndex, currentIndexes]);
+  }, [currentIndex, currentIndexes,]);
 
   const previous = () => {
+    setButtonClick(true);
     const condition = currentIndex > 0;
     const nextIndex = condition ? currentIndex - 1 : slides.length - 1;
     setCurrentIndex(nextIndex);
   };
 
   const next = () => {
+    setButtonClick(true);
     const condition = currentIndex < slides.length - 1;
     const nextIndex = condition ? currentIndex + 1 : 0;
     setCurrentIndex(nextIndex);
   };
   const previousArray = () => {
+    setButtonClick(true);
     const [firstIndex, secondIndex] = currentIndexes;
     const newFirstIndex = firstIndex === 0 ? numSlides - 2 : firstIndex - 1;
     const newSecondIndex = firstIndex === 0 ? numSlides - 1 : secondIndex - 1;
@@ -77,6 +81,7 @@ export const Slider = () => {
   };
 
   const nextArray = () => {
+    setButtonClick(true);
     const [firstIndex, secondIndex] = currentIndexes;
     const newFirstIndex = secondIndex === numSlides - 1 ? 0 : firstIndex + 1;
     const newSecondIndex = secondIndex === numSlides - 1 ? 1 : secondIndex + 1;

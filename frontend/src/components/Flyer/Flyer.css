@@ -1,8 +1,6 @@
 .bg-flyer {
     background-color: #f6f6f6;
     opacity: 1;
-    background-image:  radial-gradient(#ffff00 2px, transparent 2px), radial-gradient(#ffff00 2px, #f6f6f6 2px);
-    background-size: 80px 80px;
-    background-position: 0 0,40px 40px;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #f6f6f6 16px ), repeating-linear-gradient( #ffffe955, #ffffe9 );
 }
 /* f5c90f 151515  */
