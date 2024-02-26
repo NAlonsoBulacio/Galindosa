@@ -55,6 +55,7 @@ export const Slider = () => {
     }
   }, [currentIndex, currentIndexes]);
 
+
   const previous = () => {
     setButtonClick(true);
     const condition = currentIndex > 0;
@@ -98,8 +99,27 @@ export const Slider = () => {
     }
   };
 
-  // const goToSlide = (slideIndex) => {
-  //   setCurrentIndex(slideIndex);
+
+  // const handleTouchEnd = () => {
+  //   const listNode = listRef.current;
+  //   const viewportWidth = listNode.clientWidth;
+  //   let closestIndex = 0;
+  //   let closestDistance = Infinity;
+
+  //   listNode.childNodes.forEach((li, index) => {
+  //     const distance = Math.abs(li.offsetLeft - listNode.scrollLeft);
+  //     if (distance < closestDistance) {
+  //       closestIndex = index;
+  //       closestDistance = distance;
+  //     }
+  //   });
+
+  //   const newScrollLeft = closestIndex * (viewportWidth / numSlides);
+  //   listNode.scrollTo({
+  //     left: newScrollLeft,
+  //     behavior: "smooth"
+  //   });
+  //   setCurrentIndex(closestIndex);
   // };
 
   return (
@@ -155,6 +175,7 @@ export const Slider = () => {
               ref={listRef}
               className={`w-${containerWidth}vw h-full flex items-center slider-ul overflow-x-hidden`}
               style={{ overflowX: "scroll", WebkitOverflowScrolling: "touch" }}
+              onTouchEnd={handleTouchEnd}
             >
               {slides.map((item, index) => {
                 return (
