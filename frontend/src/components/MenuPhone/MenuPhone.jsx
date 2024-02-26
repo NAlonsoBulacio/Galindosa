@@ -3,8 +3,8 @@ import "./MenuPhone.css";
 import { AiOutlineClose } from "react-icons/ai";
 const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
   return (
-    <div className="menu-phone fixed top-0 right-0 w-full flex justify-start pt-32 items-start font-poppins-400">
-      <div className="menu-container w-full flex flex-wrap justify-start items-center px-6">
+    <div className="menu-phone fixed top-0 right-0 w-full flex justify-start pt-32 items-start font-poppins-400 bg-gray-200">
+      <div className="menu-container w-full flex flex-wrap justify-start items-center px-6 text-gray-700">
         <a className="w-full" href="/e-commerce" onClick={handleMenuToggle}>
           Inicio
         </a>

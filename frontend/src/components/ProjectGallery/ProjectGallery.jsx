@@ -26,7 +26,7 @@ const ProjectGallery = () => {
 
   const handleFullScreen = () => {
     const gallery = document.querySelector('.image-gallery-fullscreen-button');
-    gallery.click(); // Simula hacer clic en el botón de pantalla completa
+    gallery.click(); 
   };
 
   return (
