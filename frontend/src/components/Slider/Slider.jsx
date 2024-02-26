@@ -40,7 +40,7 @@ export const Slider = () => {
           behavior: "smooth",
           block: "nearest",
           inline: "nearest",
-          duration: 500, // Tiempo de duración en milisegundos
+          duration: 500, 
         });
       }
     } else {
@@ -154,6 +154,7 @@ export const Slider = () => {
             <ul
               ref={listRef}
               className={`w-${containerWidth}vw h-full flex items-center slider-ul overflow-x-hidden`}
+              style={{ overflowX: "scroll", WebkitOverflowScrolling: "touch" }}
             >
               {slides.map((item, index) => {
                 return (
