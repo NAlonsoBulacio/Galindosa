@@ -118,7 +118,7 @@ export const Slider = () => {
           detalle.
         </h1>
       </div>
-      <div className="w-full lg:w-[1000px] h-[440px] m-auto bg-gray-800 rounded-lg my-14">
+      <div className="w-full lg:w-[1000px] h-[460px] lg:h-[440px] m-auto bg-gray-800 rounded-lg my-14">
         <div className="relative h-full">
           <div className="flex lg:hidden leftArrow" onClick={() => previous()}>
             &#10092;
@@ -149,7 +149,7 @@ export const Slider = () => {
                     className="w-full min-w-full lg:min-w-[50%] lg:w-1/2 float-left"
                     key={index}
                   >
-                    <div className="w-full lg:w-[500px] h-[400px] slider-li flex justify-center items-center">
+                    <div className="w-full lg:w-[500px] h-[360px] lg:h-[400px] slider-li flex justify-center items-center">
                       <Slide title={item.title} />
                     </div>
                   </li>
