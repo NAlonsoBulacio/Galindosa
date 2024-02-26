@@ -51,13 +51,14 @@ export const Slider = () => {
         });
       }
     }
-  }, [currentIndex, currentIndexes,]);
+  }, [currentIndex, currentIndexes]);
 
   const previous = () => {
     setButtonClick(true);
     const condition = currentIndex > 0;
     const nextIndex = condition ? currentIndex - 1 : slides.length - 1;
     setCurrentIndex(nextIndex);
+    console.log("PREV");
   };
 
   const next = () => {
@@ -65,6 +66,7 @@ export const Slider = () => {
     const condition = currentIndex < slides.length - 1;
     const nextIndex = condition ? currentIndex + 1 : 0;
     setCurrentIndex(nextIndex);
+    console.log("NEXT");
   };
   const previousArray = () => {
     setButtonClick(true);
@@ -120,10 +122,18 @@ export const Slider = () => {
       </div>
       <div className="w-full lg:w-[1000px] h-[460px] lg:h-[440px] m-auto bg-gray-800 rounded-lg my-14">
         <div className="relative h-full">
-          <div className="flex lg:hidden leftArrow" onClick={() => previous()}>
+          <div
+            className="flex lg:hidden leftArrow"
+            onTouchStart={() => previous()}
+            onTouchEnd={() => setButtonClick(false)}
+          >
             &#10092;
           </div>
-          <div className="flex lg:hidden rightArrow" onClick={() => next()}>
+          <div
+            className="flex lg:hidden rightArrow"
+            onTouchStart={() => next()}
+            onTouchEnd={() => setButtonClick(false)}
+          >
             &#10093;
           </div>
           <div
