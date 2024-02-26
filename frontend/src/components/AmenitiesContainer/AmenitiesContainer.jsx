@@ -1,7 +1,6 @@
 import React from "react";
 import Amenities from "../Amenities/Amenities";
 import { build, bar, jacuzzi, garden, cowork } from "../../assets/index";
-import GoogleMapEmbed from "../GoogleMapEmbed/GoogleMapEmbed";
 import "../../components/Header/Header.css"
 const AmenitiesContainer = () => {
   const amenities = [
@@ -74,9 +73,9 @@ const AmenitiesContainer = () => {
             </button>
           </a>
       </div>
-      <div className="w-full flex justify-center items-center">
+      {/* <div className="w-full flex justify-center items-center">
         <GoogleMapEmbed />
-      </div>
+      </div> */}
     </div>
   );
 };

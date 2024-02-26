@@ -11,7 +11,7 @@ const Flyer = () => {
       </div>
       <div className="w-[65%] flex justify-center items-center">
         <h1
-          className="text-gray-900 font-plus-600 text-xl md:text-3xl lg:text-5xl xl:text-6xl"
+          className="text-gray-900 font-lato-700 text-2xl md:text-4xl lg:text-6xl "
           style={{ lineHeight: "1.3" }}
         >
           40 años de trayectoria definen nuestra identidad.

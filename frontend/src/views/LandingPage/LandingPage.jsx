@@ -14,15 +14,15 @@ import Slider from "../../components/Slider/Slider";
 import "./LandingPage.css";
 const LandingPage = () => {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-black">
       <Header />
       <Title />
       <YoutubePlayer />
       <Calendly />
       <DescriptionAndPhotos />
       <AmenitiesContainer />
+      <Slider />
       <Flyer />
-      {/* <Slider /> */}
       <Reviews />
       <QuestionsAnswers />
       <WhatsappButton />

@@ -65,16 +65,20 @@ div.active {
   border-radius: 50%;
 }
 
-.ul-slider {
-  list-style: none;
-  white-space: nowrap;
+.slider-frame {
+	margin: auto 0;
+	overflow: hidden;
 }
 
-.li-slider {
-  display: inline;
+.slider-ul {
+	display: flex;
+  /* overflow: hidden; */
+	padding: 0;
+	animation: slide 20s infinite alternate ease-in-out;
 }
 
-.img-slider {
-  margin-top: -16px;
+.slider-li {
+	width: 100%;
+	list-style: none;
 }
 

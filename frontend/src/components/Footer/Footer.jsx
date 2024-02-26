@@ -8,7 +8,7 @@ import logo from '../../assets/logo.png'
 const Footer = () => {
   return (
     <div
-      className="w-full flex flex-wrap justify-center items-center py-6 bg-gray-600"
+      className="w-full flex flex-wrap justify-center items-center py-6 bg-gray-200"
     >
       <div className="w-full flex flex-wrap justify-center items-start px-10 sm:px-10 md:px-20 lg:px-28 py-10 space-x-0 lg:space-x-14 space-y-8 lg:space-y-0">
         <div className="w-full lg:w-[40%] flex flex-wrap justify-start items-center space-y-6">
