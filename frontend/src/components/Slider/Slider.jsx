@@ -39,6 +39,8 @@ export const Slider = () => {
         imgNode.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
+          inline: "nearest",
+          duration: 500, // Tiempo de duración en milisegundos
         });
       }
     } else {
