@@ -23,7 +23,7 @@ const Calendly = () => {
   return (
     <div
       id="calendly"
-      className="w-full flex flex-wrap justify-center py-20 px-4"
+      className="w-full flex flex-wrap justify-center py-10 lg:py-20 px-4"
     >
       <div className="w-full flex justify-center items-center">
         <h1

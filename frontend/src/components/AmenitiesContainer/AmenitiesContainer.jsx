@@ -39,7 +39,7 @@ const AmenitiesContainer = () => {
   return (
     <div
       id="amenities"
-      className="flex flex-wrap justify-center items-center py-20 px-4 lg:px-12 gap-y-10"
+      className="flex flex-wrap justify-center items-center py-12 lg:py-20 px-4 lg:px-12 gap-y-10"
     >
       <div className="w-full flex flex-wrap justify-center items-center gap-y-2">
         <p
@@ -57,7 +57,7 @@ const AmenitiesContainer = () => {
       </div>
       <div className="w-full flex flex-wrap justify-center items-center gap-y-20 gap-x-8 ">
         {amenities?.map((amenitie) => (
-          <div className="w-full lg:w-1/4 h-[400px]">
+          <div className="w-full lg:w-1/4 h-[370px] lg:h-[400px]">
             <Amenities
               img={amenitie.img}
               title={amenitie.title}

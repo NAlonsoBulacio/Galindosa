@@ -3,7 +3,7 @@ import React from "react";
 const Amenities = ({ img, description, title }) => {
   return (
     <div className="flex flex-wrap justify-start items-start overflow-hidden rounded-lg shadow-xl bg-white border-2 hover:border-yellow-500  hover:bg-yellow-100 gap-y-4 px-4 py-4 ransition duration-400">
-      <div className="w-full overflow-hidden rounded-lg h-[230px] shadow-lg ">
+      <div className="w-full overflow-hidden rounded-lg h-[200px] lg:h-[230px] shadow-lg ">
         <img className="object-cover w-full " src={img} alt="img-amenitie" />
       </div>
       <div className="w-full h-[170px] flex flex-wrap items-start">

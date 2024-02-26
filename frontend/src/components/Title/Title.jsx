@@ -10,7 +10,7 @@ const Title = () => {
     threshold: 0.5,
   });
   return (
-    <div className="flex flex-wrap justify-center items-center pt-32 pb-10 lg:pb-10 gap-y-6">
+    <div className="flex flex-wrap justify-center items-center pt-4 lg:pt-32 pb-6 lg:pb-10 gap-y-4">
       <div
         ref={ref1}
         className={`w-full flex justify-center items-center px-4 lg:px-32 `}
