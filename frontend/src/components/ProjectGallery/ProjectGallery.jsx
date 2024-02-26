@@ -24,12 +24,18 @@ const ProjectGallery = () => {
     },
   ];
 
+  const handleFullScreen = () => {
+    const gallery = document.querySelector('.image-gallery-fullscreen-button');
+    gallery.click(); // Simula hacer clic en el botón de pantalla completa
+  };
+
   return (
     <div className="w-full">
       <div
         onMouseOver={() => setShowNav(true)}
         onMouseLeave={() => setShowNav(false)}
-        className="hidden lg:block w-full rounded-lg overflow-hidden"
+        className="hidden lg:block w-full rounded-lg overflow-hidden cursor-pointer"
+        onClick={handleFullScreen}
       >
         <ImageGallery
           items={images}
@@ -41,7 +47,8 @@ const ProjectGallery = () => {
       <div
         onMouseOver={() => setShowNav(true)}
         onMouseLeave={() => setShowNav(false)}
-        className="lg:hidden w-full rounded-lg overflow-hidden"
+        className="lg:hidden w-full rounded-lg overflow-hidden cursor-pointer"
+        onClick={handleFullScreen}
       >
         <ImageGallery
           items={images}
