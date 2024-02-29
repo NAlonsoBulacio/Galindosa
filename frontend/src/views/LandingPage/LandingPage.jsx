@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "../../components/Header/Header";
 import Title from "../../components/Title/Title";
 import YoutubePlayer from "../../components/YoutubePlayer/YoutubePlayer";
@@ -12,22 +13,47 @@ import Footer from "../../components/Footer/Footer";
 import WhatsappButton from "../../components/Whatsapp/WhatsappButton";
 import Slider from "../../components/Slider/Slider";
 import "./LandingPage.css";
-const LandingPage = () => {
+const LandingPage = ({ match }) => {
+  const [propertyData, setPropertyData] = useState(null);
+  const propertyId = match.params.id;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://strapi-production-e563.up.railway.app/api/pages/${propertyId}`
+        );
+        setPropertyData(response.data);
+      } catch (error) {
+        console.error("Error fetching property data: ", error);
+      }
+    };
+
+    fetchData();
+  }, [propertyId]);
+
+  const cleanInfo = propertyData && propertyData.data && propertyData.data.attributes;
+
+  const title = cleanInfo && 
+                   cleanInfo.title_rich[0] && 
+                   cleanInfo.title_rich[0].children[0] && 
+                   cleanInfo.title_rich[0].children[0].text;
+
   return (
-    <div className="bg-black">
-      <Header />
-      <Title />
-      <YoutubePlayer />
-      <Calendly />
-      <DescriptionAndPhotos />
-      <AmenitiesContainer />
-      <Slider />
-      <Flyer />
-      <Reviews />
-      <QuestionsAnswers />
-      <WhatsappButton />
-      <Footer />
-    </div>
+        <div className="bg-black">
+          <Header />
+          <Title title={title ? title : ''} />
+          <YoutubePlayer/>
+          <Calendly />
+          <DescriptionAndPhotos />
+          <AmenitiesContainer />
+          <Slider />
+          <Flyer />
+          <Reviews />
+          <QuestionsAnswers />
+          <WhatsappButton />
+          <Footer />
+        </div>
   );
 };
 

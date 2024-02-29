@@ -4,7 +4,7 @@ import Registro from "../Registro/Registro";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./YoutubePlayer.css";
-const YoutubePlayer = ({}) => {
+const YoutubePlayer = ({youtube_id}) => {
   const [showForm, setShowform] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const handleShowForm = (estado) => {

@@ -54,10 +54,9 @@ const Calendly = () => {
           ref={ref2}
           className={`${
             inView2
-              ? "h-[775px] lg:h-[658px] opacity-100 transition-opacity duration-1000"
+              ? " opacity-100 transition-opacity duration-1000"
               : "opacity-0"
-          } w-full`}
-          // Establece una altura mínima para el contenedor
+          } h-[775px] lg:h-[658px] w-full`}
         >
             <InlineWidget
               url="https://calendly.com/nicoalonso99-na/30min"

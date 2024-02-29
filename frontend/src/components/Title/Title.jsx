@@ -1,6 +1,9 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-const Title = () => {
+const Title = ({title}) => {
+
+console.log(title);
+
   const [ref1, inView1] = useInView({
     triggerOnce: true,
     threshold: 0.5,
@@ -22,13 +25,9 @@ const Title = () => {
               : "opacity-0"
           } hidden lg:block text-3xl lg:text-5xl xl:text-6xl font-plus-600 text-gray-200 text-center`}
           style={{ lineHeight: "1.3" }}
+          dangerouslySetInnerHTML={{ __html: title }}
         >
-          Casa a&nbsp;
-          <span className="" style={{ color: "#f5c90f" }}>
-            ESTRENAR
-          </span>{" "}
-          &nbsp;en el country
-          <br /> Yerba buena Jockey club (Viejo Golf)
+
         </h1>
         <h1
           className={`${
@@ -41,7 +40,7 @@ const Title = () => {
           Casa a&nbsp;
           <span className="" style={{ color: "#f5c90f" }}>
             ESTRENAR
-          </span>{" "}
+          </span>
           &nbsp;en <br/>el country Yerba buena Jockey club (Viejo Golf)
         </h1>
       </div>
