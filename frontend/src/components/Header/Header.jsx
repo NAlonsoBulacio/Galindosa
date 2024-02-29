@@ -65,7 +65,7 @@ const Header = () => {
         </div>
       </div>
       <div>
-        {menuOpen ? <MenuPhone handleMenuToggle={handleMenuToggle} /> : ""}
+        {menuOpen ? <MenuPhone handleMenuToggle={handleMenuToggle} menuOpen={menuOpen}/> : ""}
       </div>
     </div>
   );

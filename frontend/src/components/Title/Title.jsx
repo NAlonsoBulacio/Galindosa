@@ -2,7 +2,6 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 const Title = ({title}) => {
 
-console.log(title);
 
   const [ref1, inView1] = useInView({
     triggerOnce: true,

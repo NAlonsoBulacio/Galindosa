@@ -35,7 +35,7 @@ const ProjectGallery = () => {
         onMouseOver={() => setShowNav(true)}
         onMouseLeave={() => setShowNav(false)}
         className="hidden lg:block w-full rounded-lg overflow-hidden cursor-pointer"
-        onClick={handleFullScreen}
+        // onClick={handleFullScreen}
       >
         <ImageGallery
           items={images}

@@ -21,7 +21,7 @@ const LandingPage = ({ match }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://strapi-production-e563.up.railway.app/api/pages/${propertyId}`
+          `https://galindo-strapi-app-90d40ac72895.herokuapp.com/api/properties/1?populate=*`
         );
         setPropertyData(response.data);
       } catch (error) {
@@ -32,28 +32,30 @@ const LandingPage = ({ match }) => {
     fetchData();
   }, [propertyId]);
 
-  const cleanInfo = propertyData && propertyData.data && propertyData.data.attributes;
+  const cleanInfo =
+    propertyData && propertyData.data && propertyData.data.attributes;
 
-  const title = cleanInfo && 
-                   cleanInfo.title_rich[0] && 
-                   cleanInfo.title_rich[0].children[0] && 
-                   cleanInfo.title_rich[0].children[0].text;
+  const title =
+    cleanInfo &&
+    cleanInfo.title[0] &&
+    cleanInfo.title[0].children[0] &&
+    cleanInfo.title[0].children[0].text;
 
   return (
-        <div className="bg-black">
-          <Header />
-          <Title title={title ? title : ''} />
-          <YoutubePlayer/>
-          <Calendly />
-          <DescriptionAndPhotos />
-          <AmenitiesContainer />
-          <Slider />
-          <Flyer />
-          <Reviews />
-          <QuestionsAnswers />
-          <WhatsappButton />
-          <Footer />
-        </div>
+    <div className="bg-black">
+      <Header />
+      <Title title={title ? title : ""} />
+      <YoutubePlayer />
+      <Calendly />
+      <DescriptionAndPhotos />
+      <AmenitiesContainer />
+      <Slider />
+      <Flyer />
+      <Reviews />
+      <QuestionsAnswers />
+      <WhatsappButton />
+      <Footer />
+    </div>
   );
 };
 

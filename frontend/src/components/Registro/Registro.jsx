@@ -100,7 +100,6 @@ const Registro = ({ actualizarEstado, handleShowForm }) => {
       variants={cardVariants}
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.8 }}
     >
       <div className="max-w-[700px] p-4 bg-white rounded-lg shadow-lg overflow-auto max-h-[700px] relative">
         <button
