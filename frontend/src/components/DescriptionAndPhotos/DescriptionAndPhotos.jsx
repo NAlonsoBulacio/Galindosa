@@ -61,7 +61,7 @@ const DescriptionAndPhotos = ({ images, descripciones }) => {
       {descripciones ? (
         <div
           id="description"
-          className="flex flex-wrap px-4 lg:px-14 py-20 gap-y-6 lg:gap-y-0"
+          className="flex flex-wrap px-4 lg:px-14 py-8 gap-y-6 lg:gap-y-0"
         >
           <div className="hidden lg:flex w-full lg:w-1/2 flex-wrap justify-start items-start">
             <ProjectGallery urls={images ? images : ""} />
