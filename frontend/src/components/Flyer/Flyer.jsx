@@ -5,8 +5,8 @@ const Flyer = () => {
   return (
     <div className="w-full md:px-0 py-10 md:py-20 lg:py-32 flex flex-wrap justify-center items-center space-x-4 px-4 bg-flyer">
       <div className="w-1/4 md:w-1/4 flex justify-center items-center">
-        <div className="w-[80px] h-[80px] lg:w-[125px] lg:h-[125px] flex justify-center items-center rounded-full bg-gray-800 pr-2">
-          <img className="w-[55px] lg:w-[90px]" src={logoG} alt="logo" />
+        <div className="w-[80px] h-[80px] lg:w-[125px] lg:h-[125px] flex justify-center items-center rounded-full bg-transparent pr-2">
+          <img className="w-[55px] lg:w-[200px]" src={logoG} alt="logo" />
         </div>
       </div>
       <div className="w-[65%] flex justify-center items-center">

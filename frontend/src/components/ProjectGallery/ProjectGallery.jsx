@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-const ProjectGallery = () => {
+const ProjectGallery = ({urls}) => {
+
   const [showNav, setShowNav] = useState(false);
   const images = [
     {
@@ -37,12 +38,14 @@ const ProjectGallery = () => {
         className="hidden lg:block w-full rounded-lg overflow-hidden cursor-pointer"
         // onClick={handleFullScreen}
       >
+        { urls ? 
         <ImageGallery
-          items={images}
+          items={urls}
           showThumbnails={true}
           showPlayButton={false}
           showNav={showNav}
         />
+ : ""}
       </div>
       <div
         onMouseOver={() => setShowNav(true)}

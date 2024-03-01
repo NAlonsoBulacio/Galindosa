@@ -1,9 +1,9 @@
 import React from "react";
 import "./GoogleMapEmbed.css";
-const GoogleMapEmbed = ({ lat, lng }) => {
+const GoogleMapEmbed = ({ latitud, longitud }) => {
   const apiKey = "AIzaSyBu-e2OBM1eyAudbRyVSa8spxztumlhlkc";
-  const latitude = -26.826087806533767;
-  const longitude = -65.29900985633185;
+  const latitude = parseFloat(latitud);
+  const longitude =  parseFloat(longitud);
   const embedUrl = `https://www.google.com/maps/embed/v1/place?q=${latitude},${longitude}&key=${apiKey}`;
 
   return (

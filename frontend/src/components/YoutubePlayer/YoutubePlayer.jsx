@@ -4,7 +4,7 @@ import Registro from "../Registro/Registro";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./YoutubePlayer.css";
-const YoutubePlayer = ({youtube_id}) => {
+const YoutubePlayer = ({youtube_url}) => {
   const [showForm, setShowform] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const handleShowForm = (estado) => {
@@ -25,7 +25,7 @@ const YoutubePlayer = ({youtube_id}) => {
     width: "100%",
     playerVars: {},
   };
-  const videoId = "9YD7O4M75II";
+  const videoId = youtube_url;
   return (
     <div className="w-full flex justify-center px-4">
       <div className="youtube-div relative">

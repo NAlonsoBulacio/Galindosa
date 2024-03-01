@@ -21,7 +21,7 @@ const LandingPage = ({ match }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://galindo-strapi-app-90d40ac72895.herokuapp.com/api/properties/1?populate=*`
+          `https://galindo-strapi-app-90d40ac72895.herokuapp.com/api/propiedades/${propertyId}?populate=*`
         );
         setPropertyData(response.data);
       } catch (error) {
@@ -37,22 +37,78 @@ const LandingPage = ({ match }) => {
 
   const title =
     cleanInfo &&
-    cleanInfo.title[0] &&
-    cleanInfo.title[0].children[0] &&
-    cleanInfo.title[0].children[0].text;
+    cleanInfo.titulo[0] &&
+    cleanInfo.titulo[0].children[0] &&
+    cleanInfo.titulo[0].children[0].text;
+
+  const youtube_url = cleanInfo && cleanInfo.youtube_url;
+  const latitud = cleanInfo && cleanInfo.latitud;
+  const longitud = cleanInfo && cleanInfo.longitud;
+  const titulo_detalles = cleanInfo && cleanInfo.titulo_detalles;
+  const titulo_amenidades = cleanInfo && cleanInfo.titulo_amenidades;
+  const subtitulo_amenidades = cleanInfo && cleanInfo.subtitulo_amenidades;
+
+  const prueba_descripciones = cleanInfo && cleanInfo.descripciones;
+
+  const textosDeDescripciones = [];
+
+  prueba_descripciones?.map((desc) => {
+    textosDeDescripciones.push(desc.children[0]);
+  });
+
+  const questions_answers = cleanInfo && cleanInfo.preguntas_respuestas;
+
+  const textosDeQA = [];
+
+  questions_answers?.map((qa) => {
+    textosDeQA.push(qa.children[0]);
+  });
+
+  console.log(textosDeQA);
+
+  const propertiesImgs =
+    cleanInfo && cleanInfo.fotos_propiedad && cleanInfo.fotos_propiedad.data;
+  const urls = propertiesImgs?.map((prop) => prop.attributes.url);
+  const images = urls?.map((url) => ({
+    original: url,
+    thumbnail: url,
+  }));
+
+  const amenities =
+    cleanInfo && cleanInfo.amenidades && cleanInfo.amenidades.data;
+
+  const allDetails = cleanInfo && cleanInfo.detalles && cleanInfo.detalles.data;
+
+  const details = allDetails?.map((det) => ({
+    title: det.attributes.caption,
+    img: det.attributes.url,
+  }));
 
   return (
     <div className="bg-black">
       <Header />
       <Title title={title ? title : ""} />
-      <YoutubePlayer />
+      <YoutubePlayer youtube_url={youtube_url ? youtube_url : ""} />
       <Calendly />
-      <DescriptionAndPhotos />
-      <AmenitiesContainer />
-      <Slider />
+      <DescriptionAndPhotos
+        descripciones={textosDeDescripciones ? textosDeDescripciones : ""}
+        descripcion={titulo_detalles ? titulo_detalles : ""}
+        images={images ? images : ""}
+      />
+      <AmenitiesContainer
+      subtitulo_amenidades={subtitulo_amenidades ? subtitulo_amenidades : ""}
+        amenities={amenities ? amenities : ""}
+        titulo_amenidades={titulo_amenidades ? titulo_amenidades : ""}
+      />
+      <Slider
+        details={details ? details : ""}
+        titulo_detalles={titulo_detalles ? titulo_detalles : ""}
+        latitud={latitud ? latitud : ""}
+        longitud={longitud ? longitud : ""}
+      />
       <Flyer />
       <Reviews />
-      <QuestionsAnswers />
+      <QuestionsAnswers textosDeQA={textosDeQA ? textosDeQA : ""} />
       <WhatsappButton />
       <Footer />
     </div>

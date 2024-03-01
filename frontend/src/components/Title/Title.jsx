@@ -7,10 +7,10 @@ const Title = ({title}) => {
     triggerOnce: true,
     threshold: 0.5,
   });
-  const [ref2, inView2] = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
+  // const [ref2, inView2] = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0.5,
+  // });
   return (
     <div className="flex flex-wrap justify-center items-center pt-4 lg:pt-32 pb-6 lg:pb-10 gap-y-4">
       <div
