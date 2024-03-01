@@ -79,8 +79,7 @@ const Reviews = () => {
           Lo que opinan nuestros clientes.
         </h1>
       </div>
-
-      <div className="flex flex-wrap justify-center items-start px-4 lg:px-32 my-10 lg:my-20 h-auto lg:h-[400px] gap-y-10">
+      <div className="flex flex-wrap justify-center items-start lg:px-32 my-10 lg:my-20 h-auto lg:h-[400px] gap-y-10">
         <div className="hidden lg:flex flex-wrap w-full lg:w-2/5  items-start justify-end gap-y-8 pr-8">
           <div
             className={`${
