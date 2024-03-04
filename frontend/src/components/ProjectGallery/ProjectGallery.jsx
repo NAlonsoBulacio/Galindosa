@@ -30,6 +30,7 @@ const ProjectGallery = ({urls}) => {
     gallery.click(); 
   };
 
+
   return (
     <div className="w-full">
       <div

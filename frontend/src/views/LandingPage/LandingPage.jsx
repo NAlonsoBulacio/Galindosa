@@ -21,6 +21,7 @@ const LandingPage = ({ match }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
+          // `http://localhost:1337/api/propiedades/${propertyId}?populate=*`
           `https://galindo-strapi-app-90d40ac72895.herokuapp.com/api/propiedades/${propertyId}?populate=*`
         );
         setPropertyData(response.data);
@@ -64,7 +65,6 @@ const LandingPage = ({ match }) => {
     textosDeQA.push(qa.children[0]);
   });
 
-  console.log(textosDeQA);
 
   const propertiesImgs =
     cleanInfo && cleanInfo.fotos_propiedad && cleanInfo.fotos_propiedad.data;
