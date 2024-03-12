@@ -18,8 +18,8 @@ const Amenities = ({ amenitie, handleFullScreen }) => {
             />
           </div>
           <div className="w-full h-[85px] flex flex-wrap items-start">
-            <div>
-              <h1 className="w-full text-left text-lg font-plus-600 text-gray-700">
+            <div className="w-full flex justify-center">
+              <h1 className="w-full text-left text-2xl lg:text-xl font-plus-600 text-gray-700">
                 {amenitie.text}
               </h1>
             </div>
