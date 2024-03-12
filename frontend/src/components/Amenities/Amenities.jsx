@@ -5,10 +5,10 @@ const Amenities = ({ amenitie, handleFullScreen }) => {
     handleFullScreen(urls, full);
   };
   return (
-    <div className="flex flex-wrap justify-start items-start overflow-hidden rounded-lg shadow-xl bg-gray-100 border-2 hover:border-yellow-500  hover:bg-yellow-100 gap-y-4 px-4 py-4 ransition duration-400">
+    <div className="flex flex-wrap justify-start items-start overflow-hidden rounded-lg shadow-xl bg-gray-100 border-2 hover:border-yellow-500  hover:bg-yellow-100 gap-y-4 p-3 ransition duration-400">
       {amenitie ? (
         <>
-          <div className="w-full overflow-hidden rounded-lg h-[230px] lg:h-[230px] shadow-lg cursor-pointer"
+          <div className="w-full overflow-hidden rounded-lg h-[215px] lg:h-[215px] shadow-lg cursor-pointer"
             onClick={() => handleClick(amenitie.urls, true)}
           >
             <img

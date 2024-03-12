@@ -42,6 +42,10 @@ const LandingPage = ({ match }) => {
     cleanInfo.titulo[0].children[0] &&
     cleanInfo.titulo[0].children[0].text;
 
+  const subtitle =
+    cleanInfo &&
+    cleanInfo.subtitulo
+
   const youtube_url = cleanInfo && cleanInfo.youtube_url;
   const latitud = cleanInfo && cleanInfo.latitud;
   const longitud = cleanInfo && cleanInfo.longitud;
@@ -50,17 +54,19 @@ const LandingPage = ({ match }) => {
   const subtitulo_amenidades = cleanInfo && cleanInfo.subtitulo_amenidades;
 
   const prueba_descripciones = cleanInfo && cleanInfo.descripciones;
-
   const textosDeDescripciones = [];
-
   prueba_descripciones?.map((desc) => {
     textosDeDescripciones.push(desc.children[0]);
   });
 
+  const items = cleanInfo && cleanInfo.descripciones_items;
+  const textosDeItemsDescripciones = [];
+  items?.map((desc) => {
+    textosDeItemsDescripciones.push(desc.children[0]);
+  });
+
   const questions_answers = cleanInfo && cleanInfo.preguntas_respuestas;
-
   const textosDeQA = [];
-
   questions_answers?.map((qa) => {
     textosDeQA.push(qa.children[0]);
   });
@@ -87,11 +93,15 @@ const LandingPage = ({ match }) => {
   return (
     <div className="bg-black">
       <Header />
-      <Title title={title ? title : ""} />
+      <Title 
+      title={title ? title : ""} 
+      subtitle={subtitle ? subtitle : ""} 
+      />
       <YoutubePlayer youtube_url={youtube_url ? youtube_url : ""} />
       <Calendly />
       <DescriptionAndPhotos
         descripciones={textosDeDescripciones ? textosDeDescripciones : ""}
+        descripcionesItems={textosDeItemsDescripciones ? textosDeItemsDescripciones : ""}
         descripcion={titulo_detalles ? titulo_detalles : ""}
         images={images ? images : ""}
       />
@@ -108,7 +118,9 @@ const LandingPage = ({ match }) => {
       />
       <Flyer />
       <Reviews />
-      <QuestionsAnswers textosDeQA={textosDeQA ? textosDeQA : ""} />
+      <QuestionsAnswers 
+      textosDeQA={textosDeQA ? textosDeQA : ""} 
+      />
       <WhatsappButton />
       <Footer />
     </div>

@@ -79,10 +79,10 @@ const AmenitiesContainer = ({
       ) : (
         ""
       )}
-      <div className="w-full flex justify-center items-center pt-10">
+      <div className="w-full flex justify-center items-center pt-8 lg:pt-0">
         <a className="flex justify-center items-center" href="#calendly">
-          <button className="text-3xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
-            Agenda una Visita
+          <button className="text-2xl lg:text-3xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
+            Agendá una Visita
           </button>
         </a>
       </div>
