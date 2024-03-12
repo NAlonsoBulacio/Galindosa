@@ -59,7 +59,7 @@ const DescriptionAndPhotos = ({ images, descripciones, descripcionesItems }) => 
                 </h1>
               </div>
               <div className="flex lg:hidden w-full flex-wrap justify-start items-start">
-                <ProjectGallery />
+                <ProjectGallery urls={images ? images : ""} />
               </div>
               <div className="w-full flex gap-x-2">
                 <h1>⭐⭐⭐⭐⭐</h1>

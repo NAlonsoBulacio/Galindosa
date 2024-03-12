@@ -53,7 +53,7 @@ const ProjectGallery = ({urls}) => {
         onMouseLeave={() => setShowNav(false)}
         className="lg:hidden w-full rounded-lg overflow-hidden cursor-pointer"
         // onClick={handleFullScreen}
-      >{urls ? 
+      >{ urls ? 
         <ImageGallery
           items={urls}
           showThumbnails={false}

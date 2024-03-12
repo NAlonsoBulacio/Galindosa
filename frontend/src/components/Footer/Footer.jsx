@@ -37,13 +37,13 @@ const Footer = () => {
               <AiTwotonePhone className="w-8"
               style={{marginTop: "0.3rem"}}
               />
-              <h1>+3814455678</h1>
+              <h1>+54 9 3812 07-1244</h1>
             </a>
             <a href="/" target="_blank" className="w-full flex justify-start items-start">
               <IoMailOutline className="w-8"
               style={{marginTop: "0.3rem"}}
               />
-              <h1>info@fzobras.com</h1>
+              <h1>Info@galindosa.com.ar</h1>
             </a>
             <a href="/" target="_blank" className="w-full flex justify-start items-start">
               <BsPinMapFill className="w-8"
@@ -51,11 +51,11 @@ const Footer = () => {
               />
               <h1>Ituzaingó 1409, Piso 6, Oficina 602, Montevideo, Uruguay</h1>
             </a>
-            <a href="/" target="_blank" className="w-full flex justify-start items-start">
+            <a href="https://wa.me/+5493812071244" target="_blank" className="w-full flex justify-start items-start">
               <FaWhatsapp className="w-8"
               style={{marginTop: "0.3rem"}}
               />
-              <h1>+3814455678</h1>
+              <h1>+54 9 3812 07-1244</h1>
             </a>
           </div>
         </div>
