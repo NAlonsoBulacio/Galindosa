@@ -87,7 +87,7 @@ export const Slider = ({ details, longitud, latitud, titulo_detalles }) => {
           </div>
           <div className="w-full lg:w-[1000px] h-[460px] lg:h-[440px] m-auto bg-gray-800 rounded-lg my-14">
             <div className="relative h-full">
-              <div
+              {/* <div
                 className="hidden lg:flex leftArrow"
                 onClick={() => previousArray()}
               >
@@ -98,7 +98,7 @@ export const Slider = ({ details, longitud, latitud, titulo_detalles }) => {
                 onClick={() => nextArray()}
               >
                 &#10093;
-              </div>
+              </div> */}
 
               <div className="w-full h-full flex items-center justify-center border-2 border-gray-700 rounded-xl overflow-hidden slider-frame">
                 <ul

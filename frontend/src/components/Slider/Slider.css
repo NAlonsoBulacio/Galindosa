@@ -71,8 +71,6 @@ div.active {
 }
 
 .slider-ul {
-	display: flex;
-  /* overflow: hidden; */
 	padding: 0;
 	animation: slide 20s infinite alternate ease-in-out;
 }
