@@ -52,14 +52,14 @@ const ProjectGallery = ({urls}) => {
         onMouseOver={() => setShowNav(true)}
         onMouseLeave={() => setShowNav(false)}
         className="lg:hidden w-full rounded-lg overflow-hidden cursor-pointer"
-        onClick={handleFullScreen}
-      >
+        // onClick={handleFullScreen}
+      >{urls ? 
         <ImageGallery
-          items={images}
+          items={urls}
           showThumbnails={false}
           showPlayButton={false}
           showNav={showNav}
-        />
+        /> : ""}
       </div>
     </div>
   );
