@@ -84,49 +84,49 @@ const Reviews = () => {
           <div
             className={`${
               review === "1" ? "bg-yellow-200 border-yellow-500" : "bg-white"
-            } w-1/3 lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[200px] lg:h-[100px] cursor-pointer`}
+            } w-1/3 lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-4 xl:px-10 lg:py-2 xl:py-4 h-[200px] lg:h-[100px] cursor-pointer`}
             onClick={() => selectReview("1")}
           >
             <div className="h-full flex justify-center items-center">
               <img src={man} width={60} height={60} alt="man-client" />
             </div>
-            <div className="flex flex-wrap justify-center items-start h-full py-4 lg:py-0 lg:px-2 xl:px-0">
-              <h1 className="w-full text-center lg:text-xl xl:text-2xl font-plus-500 text-gray-800">
+            <div className="flex flex-wrap justify-center items-start h-full py-4 lg:py-0  xl:px-0">
+              <h1 className="w-full text-center lg:text-lg xl:text-2xl font-plus-500 text-gray-800">
                 Rodrigo Perez
               </h1>
               <p className="hidden lg:block w-full text-center lg:text-md xl:text-lg font-plus-300 text-gray-700">
                 Cliente de Galindo S.A
               </p>
             </div>
-            <div className="hidden lg:flex items-start justify-center">
+            <div className="hidden lg:flex lg:text-sm items-start justify-center">
               <h1>⭐⭐⭐⭐⭐</h1>
             </div>
           </div>
           <div
             className={`${
               review === "2" ? "bg-yellow-200 border-yellow-500" : "bg-white"
-            } w-1/3 lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-auto lg:h-[100px] cursor-pointer`}
+            } w-1/3 lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-4 xl:px-10 lg:py-2 xl:py-4 h-auto lg:h-[100px] cursor-pointer`}
             onClick={() => selectReview("2")}
           >
             <div className="h-full flex justify-center items-center">
               <img src={woman} width={60} height={60} alt="man-client" />
             </div>
             <div className="flex flex-wrap justify-center items-start h-full lg:px-2 xl:px-0">
-              <h1 className="w-full text-center lg:text-xl xl:text-2xl font-plus-500 text-gray-800">
+              <h1 className="w-full text-center lg:text-lg xl:text-2xl font-plus-500 text-gray-800">
                 Mara Perez
               </h1>
               <p className="hidden lg:block w-full text-center lg:text-md xl:text-lg font-plus-300 text-gray-700">
                 Cliente de Galindo S.A
               </p>
             </div>
-            <div className="hidden lg:flex items-start justify-center">
+            <div className="hidden lg:flex lg:text-sm items-start justify-center">
               <h1>⭐⭐⭐⭐⭐</h1>
             </div>
           </div>
           <div
             className={`${
               review === "3" ? "bg-yellow-200 border-yellow-500" : "bg-white"
-            } w-1/3 lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-6 xl:px-10 lg:py-2 xl:py-4 h-[200px]   lg:h-[100px] cursor-pointer`}
+            } w-1/3 lg:w-full border-2 shadow-lg flex justify-between rounded-lg items-start lg:px-4 xl:px-10 lg:py-2 xl:py-4 h-[200px]   lg:h-[100px] cursor-pointer`}
             onClick={() => selectReview("3")}
           >
             <div className="h-full flex justify-center items-center">
@@ -140,7 +140,7 @@ const Reviews = () => {
                 Cliente de Galindo S.A
               </p>
             </div>
-            <div className="hidden lg:flex items-start justify-center">
+            <div className="hidden lg:flex lg:text-sm items-start justify-center">
               <h1>⭐⭐⭐⭐⭐</h1>
             </div>
           </div>
