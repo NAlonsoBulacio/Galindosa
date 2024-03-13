@@ -45,10 +45,10 @@ const AmenitiesContainer = ({
     console.log(amenidadesMapeadas);
   }
   return (
-    <div className="flex flex-wrap justify-center items-center py-12 lg:py-16 gap-y-10">
+    <div className="flex flex-wrap justify-center items-center px-4 lg:px-12 lg:py-16 gap-y-10">
       <div
         id="amenities"
-        className="flex flex-wrap justify-center items-center px-4 lg:px-12"
+        className="flex flex-wrap justify-center items-center "
       >
         <div className="w-full flex flex-wrap justify-center items-center gap-y-2">
           <p

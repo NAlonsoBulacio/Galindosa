@@ -41,13 +41,13 @@ const DescriptionAndPhotos = ({ images, descripciones, descripcionesItems }) => 
       {descripciones ? (
         <div
           id="description"
-          className="flex flex-wrap px-4 lg:px-14 py-8 gap-y-6 lg:gap-y-0"
+          className="flex flex-wrap px-4 lg:px-14 pt-4 pb-8 lg:py-8 gap-y-6 lg:gap-y-0"
         >
           <div className="hidden lg:flex w-full lg:w-1/2 flex-wrap justify-start items-start">
             <ProjectGallery urls={images ? images : ""} />
           </div>
           <div className="w-full lg:w-1/2 flex flex-wrap justify-start items-start h-full px-4 lg:px-10">
-            <div className="flex flex-wrap items-start h-auto justify-start gap-y-2">
+            <div className="flex flex-wrap items-start h-auto justify-start gap-y-4">
               <div className="w-full">
                 <h1 className="text-gray-300 font-plus-300 text-xl">
                   Galindo S.A
@@ -73,7 +73,7 @@ const DescriptionAndPhotos = ({ images, descripciones, descripcionesItems }) => 
               <ul className=" w-full space-y-2 list-disc pl-4 ">
                 {renderItemList}
               </ul>
-              <ul className=" w-full space-y-2 pl-4 ">
+              <ul className=" w-full space-y-2 ">
                 {renderList}
               </ul>
               <div className="w-full flex justify-center lg:justify-start items-center mt-4">
