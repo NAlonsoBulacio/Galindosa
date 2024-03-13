@@ -54,7 +54,7 @@ const Footer = () => {
               className="w-full flex justify-start items-start"
             >
               <BsPinMapFill className="w-8" style={{ marginTop: "0.3rem" }} />
-              <h1>Ituzaingó 1409, Piso 6, Oficina 602, Montevideo, Uruguay</h1>
+              <h1>Virgen de la Merced 639, San Miguel de Tucumán, Tucumán, Argentina</h1>
             </a>
             <a
               href="https://wa.me/+5493812071244"
