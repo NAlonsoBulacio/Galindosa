@@ -12,6 +12,7 @@ import Calendly from "../../components/Calendly/Calendly";
 import Footer from "../../components/Footer/Footer";
 import WhatsappButton from "../../components/Whatsapp/WhatsappButton";
 import Slider from "../../components/Slider/Slider";
+import ChatImages from "../../components/ChatImages/ChatImages";
 import "./LandingPage.css";
 const LandingPage = ({ match }) => {
   const [propertyData, setPropertyData] = useState(null);
@@ -116,7 +117,8 @@ const LandingPage = ({ match }) => {
         longitud={longitud ? longitud : ""}
       />
       <Flyer />
-      <Reviews />
+      {/* <Reviews /> */}
+      <ChatImages />
       <QuestionsAnswers 
       textosDeQA={textosDeQA ? textosDeQA : ""} 
       />
