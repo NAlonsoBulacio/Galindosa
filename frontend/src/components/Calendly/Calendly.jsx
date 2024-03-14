@@ -59,7 +59,7 @@ const Calendly = () => {
           } h-[775px] lg:h-[688px] w-full`}
         >
             <InlineWidget
-              url="https://calendly.com/nicoalonso99-na/30min"
+              url="https://calendly.com/galindosa/visita-o-consulta"
               pageSettings={{
                 backgroundColor: "ffffff",
                 hideEventTypeDetails: false,
