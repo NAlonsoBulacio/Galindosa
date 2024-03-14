@@ -82,7 +82,6 @@ const LandingPage = ({ match }) => {
 
   const amenities =
     cleanInfo && cleanInfo.amenidades && cleanInfo.amenidades.data;
-
   const allDetails = cleanInfo && cleanInfo.detalles && cleanInfo.detalles.data;
 
   const details = allDetails?.map((det) => ({

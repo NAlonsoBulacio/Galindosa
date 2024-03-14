@@ -4,26 +4,26 @@ import "./QuestionsAnswers.css";
 const QuestionsAnswers = ({ textosDeQA }) => {
   const [answer, setAnswer] = useState("");
 
-  const question_answer = [
-    {
-      text: "¿Como utilizo los productos?",
-    },
-    {
-      text: "¿Como utilizo los productos?",
-    },
-    {
-      text: "¿Como utilizo los productos?",
-    },
-    {
-      text: "Debe colocarlo en su rostro",
-    },
-    {
-      text: "Tras limpiar la piel, aplica 4 gotas del serum antiarrugas.Posteriormente, aplica la crema antiedad reparadora.",
-    },
-    {
-      text: "Tras limpiar la piel, aplica 4 gotas del serum antiarrugas.Posteriormente, aplica la crema antiedad reparadora.",
-    },
-  ];
+  // const question_answer = [
+  //   {
+  //     text: "¿Como utilizo los productos?",
+  //   },
+  //   {
+  //     text: "¿Como utilizo los productos?",
+  //   },
+  //   {
+  //     text: "¿Como utilizo los productos?",
+  //   },
+  //   {
+  //     text: "Debe colocarlo en su rostro",
+  //   },
+  //   {
+  //     text: "Tras limpiar la piel, aplica 4 gotas del serum antiarrugas.Posteriormente, aplica la crema antiedad reparadora.",
+  //   },
+  //   {
+  //     text: "Tras limpiar la piel, aplica 4 gotas del serum antiarrugas.Posteriormente, aplica la crema antiedad reparadora.",
+  //   },
+  // ];
   const midpoint = Math.ceil(textosDeQA.length / 2);
   const secondHalf = textosDeQA.slice(midpoint);
   const firstHalf = textosDeQA.slice(0, midpoint);
@@ -43,7 +43,6 @@ const QuestionsAnswers = ({ textosDeQA }) => {
     clearQA.push(qaObject);
   }
 
-  console.log(clearQA);
 
   const handleAnswer = (answerId) => {
     setAnswer((prevAnswer) => (prevAnswer === answerId ? "" : answerId));

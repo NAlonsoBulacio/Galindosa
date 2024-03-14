@@ -10,7 +10,6 @@ const AmenitiesContainer = ({
 }) => {
   const [fullScreen, setFullScreen] = useState(false);
   const [fullScreenImgs, setFullScreenImgs] = useState(false);
-
   const handleFullScreen = (images, full) => {
     setFullScreenImgs(images);
     setFullScreen(full);

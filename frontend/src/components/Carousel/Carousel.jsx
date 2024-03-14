@@ -47,14 +47,14 @@ const MyCarousel = ({ images }) => {
           className="carousel-properties image-opacity"
         />
         <button
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 flex justify-center items-center text-gray-700 text-xl bg-gray-100 bg-opacity-75 hover:bg-opacity-95 rounded-full h-10 w-10"
+          className={`${images.length === 1 ? "hidden" : ""} absolute left-4 top-1/2 transform -translate-y-1/2 flex justify-center items-center text-gray-700 text-xl bg-gray-100 bg-opacity-75 hover:bg-opacity-95 rounded-full h-10 w-10`}
           style={{ zIndex: "4" }}
           onClick={previous}
         >
           <GrPrevious />
         </button>
         <button
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 flex justify-center items-center text-gray-700 text-xl bg-gray-100 bg-opacity-75 hover:bg-opacity-95 transition-duration duration-200 rounded-full h-10 w-10"
+          className={`${images.length === 1 ? "hidden" : ""} absolute right-4 top-1/2 transform -translate-y-1/2 flex justify-center items-center text-gray-700 text-xl bg-gray-100 bg-opacity-75 hover:bg-opacity-95 transition-duration duration-200 rounded-full h-10 w-10`}
           style={{ zIndex: "4" }}
           onClick={next}
         >
