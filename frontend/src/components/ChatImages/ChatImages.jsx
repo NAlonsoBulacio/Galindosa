@@ -24,7 +24,7 @@ const ChatImages = () => {
             Scroll para ver sus opiniones
           </h1>
         </div>
-        <div className="lg:hidden px-[10px] lg:px-0 h-auto overflow-y-auto lg:h-auto w-full grid grid-cols-1 gap-4 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 [&>img:not(:first-child)]:mt-5 lg:[&>img:not(:first-child)]:mt-6">
+        <div className="lg:hidden px-[3px] lg:px-0 h-auto overflow-y-auto lg:h-auto w-full grid grid-cols-1 gap-4 lg:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 [&>img:not(:first-child)]:mt-5 lg:[&>img:not(:first-child)]:mt-6">
           {chatImages.map((image, index) => (
               <img
                 key={index}
