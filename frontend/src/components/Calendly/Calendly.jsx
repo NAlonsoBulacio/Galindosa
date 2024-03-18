@@ -56,7 +56,7 @@ const Calendly = () => {
             inView2
               ? " opacity-100 transition-opacity duration-1000"
               : "opacity-0"
-          } h-[846px] lg:h-[688px] w-full`}
+          } h-[866px] lg:h-[688px] w-full`}
         >
             <InlineWidget
               url="https://calendly.com/galindosa/visita-o-consulta"
