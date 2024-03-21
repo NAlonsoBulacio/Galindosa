@@ -36,6 +36,11 @@ const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
       },
     },
   };
+
+  const handleClick = () => {
+    window.fbq("trackCustom", "ScheduleMeeting");
+  };
+  
   return (
     <motion.div
       className="lg:hidden menu-phone fixed top-0 right-0 w-full flex justify-start pt-8 items-start font-poppins-400 bg-gray-200"

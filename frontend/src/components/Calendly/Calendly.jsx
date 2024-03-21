@@ -3,10 +3,15 @@ import { useCalendlyEventListener, InlineWidget } from "react-calendly";
 import { useInView } from "react-intersection-observer";
 const Calendly = () => {
   useCalendlyEventListener({
-    onProfilePageViewed: () => console.log("onProfilePageViewed"),
-    onDateAndTimeSelected: () => console.log("onDateAndTimeSelected"),
-    onEventTypeViewed: () => console.log("onEventTypeViewed"),
-    onEventScheduled: (e) => {},
+    // onProfilePageViewed: () => console.log("onProfilePageViewed"),
+    onDateAndTimeSelected: () => {
+      window.fbq("trackCustom", "CalendlyFilled"); 
+    },
+    // onEventTypeViewed: () => console.log("onEventTypeViewed"),
+    onEventScheduled: () => {
+      console.log("onEventScheduled");
+      window.fbq("trackCustom", "CalendlyFilled"); 
+    },
   });
   const [ref1, inView1] = useInView({
     triggerOnce: true,

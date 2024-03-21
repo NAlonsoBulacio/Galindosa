@@ -41,8 +41,13 @@ const AmenitiesContainer = ({
         });
       }
     });
-    console.log(amenidadesMapeadas);
   }
+
+  
+  const handleClick = () => {
+    window.fbq("trackCustom", "ScheduleMeeting");
+  };
+
   return (
     <div className="flex flex-wrap justify-center items-center px-4 lg:px-12 lg:py-16 gap-y-10">
       <div
@@ -81,7 +86,9 @@ const AmenitiesContainer = ({
           ""
         )}
         <div className="w-full flex justify-center items-center">
-          <a className="flex justify-center items-center" href="#calendly">
+          <a className="flex justify-center items-center" href="#calendly"
+          onClick={() => handleClick()}
+          >
             <button className="text-2xl lg:text-3xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
               Agendá una Visita
             </button>

@@ -117,7 +117,6 @@ const LandingPage = ({ match }) => {
         longitud={longitud ? longitud : ""}
       />
       <Flyer />
-      {/* <Reviews /> */}
       <ChatImages />
       <QuestionsAnswers 
       textosDeQA={textosDeQA ? textosDeQA : ""} 
