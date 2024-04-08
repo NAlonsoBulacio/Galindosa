@@ -121,7 +121,7 @@ const LandingPage = ({ match }) => {
       <QuestionsAnswers 
       textosDeQA={textosDeQA ? textosDeQA : ""} 
       />
-      <WhatsappButton />
+
       <Footer />
     </div>
   );
