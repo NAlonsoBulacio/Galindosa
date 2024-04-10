@@ -64,6 +64,7 @@ const Registro = ({ actualizarEstado, handleShowForm }) => {
     if (Object.keys(errors).length === 0) {
       emailjs.send(serviceId, templateId, registro, apiKey).then(
         (response) => {
+          window.fbq("trackCustom", "FormSubmited");
           console.log("Correo electrónico enviado con éxito", response);
         },
         (error) => {

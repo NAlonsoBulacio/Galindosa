@@ -17,6 +17,7 @@ const YoutubePlayer = ({ youtube_url }) => {
     }
   };
   const handleClick = (click) => {
+    window.fbq("trackCustom", "VideoClicked");
     setShowform(click);
   };
 
