@@ -98,7 +98,7 @@ const LandingPage = ({ match }) => {
       subtitle={subtitle ? subtitle : ""} 
       />
       <YoutubePlayer youtube_url={youtube_url ? youtube_url : ""} />
-      <Calendly />
+      {/* <Calendly /> */}
       <DescriptionAndPhotos
         descripciones={textosDeDescripciones ? textosDeDescripciones : ""}
         descripcionesItems={textosDeItemsDescripciones ? textosDeItemsDescripciones : ""}

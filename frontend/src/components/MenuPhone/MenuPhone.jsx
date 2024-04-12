@@ -60,7 +60,7 @@ const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
         <a className="w-full" href="#about" onClick={handleMenuToggle}>
           Sobre Nosotros
         </a>
-        <a className="w-full" href="#calendly" onClick={handleMenuToggle}>
+        <a className="w-full" href="https://wa.me/+5493812071244" target="_blank" rel="noreferrer" onClick={handleMenuToggle}>
           Agendar Demo
         </a>
         <button className="w-full pt-2" onClick={handleMenuToggle}>

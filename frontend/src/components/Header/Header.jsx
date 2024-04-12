@@ -62,7 +62,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="flex justify-center items-center">
-          <a className="flex justify-center items-center" href="#calendly"
+          <a className="flex justify-center items-center" href="https://wa.me/+5493812071244" target="_blank" rel="noreferrer"
           onClick={() => handleClick()}
           >
             <button className="lg:text-md xl:text-xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
