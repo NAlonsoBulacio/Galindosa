@@ -90,6 +90,10 @@ const LandingPage = ({ match }) => {
     img: det.attributes.url,
   }));
 
+  const handleClick = () => {
+    window.fbq("trackCustom", "ScheduleMeeting");
+  };
+
   return (
     <div className="bg-black">
       <Header />
@@ -98,6 +102,15 @@ const LandingPage = ({ match }) => {
       subtitle={subtitle ? subtitle : ""} 
       />
       <YoutubePlayer youtube_url={youtube_url ? youtube_url : ""} />
+      <div className="w-full flex justify-center items-center my-4">
+          <a className="flex justify-center items-center" href="https://wa.me/+5493812071244" target="_blank" rel="noreferrer"
+          onClick={() => handleClick()}
+          >
+            <button className="text-2xl lg:text-3xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
+            Contactar Asesor
+            </button>
+          </a>
+        </div>
       {/* <Calendly /> */}
       <DescriptionAndPhotos
         descripciones={textosDeDescripciones ? textosDeDescripciones : ""}

@@ -204,7 +204,7 @@ const Reviews = () => {
         onClick={() => handleClick()}
         >
           <button className="text-2xl lg:text-3xl font-plus-600 border-2 rounded-3xl py-2 px-4 transition duration-400 button-calendly">
-            Agendá una Visita
+          Contactar Asesor
           </button>
         </a>
       </div>
