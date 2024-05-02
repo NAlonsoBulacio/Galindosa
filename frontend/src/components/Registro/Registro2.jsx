@@ -6,13 +6,14 @@ import phone from "../../assets/phone.svg";
 import "./Registro.css";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
-const Registro = ({ actualizarEstado, handleShowForm }) => {
+const Registro2 = ({ actualizarEstado, handleShowForm }) => {
   const [registro, setRegistro] = useState({
     name: "",
     email: "",
     phone: "",
   });
-const apiSheets = "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiyploq6WpscYSd1yo2Ykm295L2TYGv_lBEajzgH_tVXRaTADnh-A/exec"
+  const apiSheets =
+    "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiyploq6WpscYSd1yo2Ykm295L2TYGv_lBEajzgH_tVXRaTADnh-A/exec";
 
   const serviceId = "service_tf4fz5e";
   const templateId = "template_e39xq6o";
@@ -96,6 +97,30 @@ const apiSheets = "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiypl
       },
     },
   };
+
+  function Submit(e) {
+    e.preventDefault();
+    const formEle = document.querySelector("form");
+    const formDatab = new FormData(formEle);
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiyploq6WpscYSd1yo2Ykm295L2TYGv_lBEajzgH_tVXRaTADnh-A/exec",
+      {
+        method: "POST",
+        body: formDatab,
+        mode: "no-cors",
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      actualizarEstado(true);
+      handleShowForm(false);
+  }
+  
   return (
     <motion.div
       className="max-w-[1100px] flex items-center justify-center"
@@ -117,14 +142,17 @@ const apiSheets = "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiypl
           INGRESA TUS DATOS PARA RECIBIR ACCESO
         </h1>
 
-        <form className="max-w-[400px] sm:max-w-[700px] mx-auto">
+        <form
+          className="max-w-[400px] sm:max-w-[700px] mx-auto"
+          onSubmit={(e) => Submit(e)}
+        >
           <div className="mb-4">
             <input
               type="text"
-              id="name"
-              name="name"
-              value={registro.name}
-              onChange={handleChange}
+              id="Name"
+              name="Name"
+              // value={registro.name}
+              // onChange={handleChange}
               placeholder="Ingresa tu Nombre y Apellido"
               className="input-f h-[40px] w-full px-4 pl-10 mt-2 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
               required
@@ -143,10 +171,10 @@ const apiSheets = "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiypl
             <div className="flex max-h-[54px] ">
               <input
                 type="text"
-                id="phone"
-                name="phone"
-                value={registro.phone}
-                onChange={handleChange}
+                id="Phone"
+                name="Phone"
+                // value={registro.phone}
+                // onChange={handleChange}
                 className="input-f h-[40px] w-full px-4 pl-10 mt-2 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
                 placeholder="Tu número de teléfono..."
                 required
@@ -165,10 +193,10 @@ const apiSheets = "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiypl
           <div className="mb-4">
             <input
               type="email"
-              id="email"
-              name="email"
-              value={registro.email}
-              onChange={handleChange}
+              id="Email"
+              name="Email"
+              // value={registro.email}
+              // onChange={handleChange}
               placeholder="Ingresá tu Correo electrónico"
               className="input-f h-[40px] w-full px-4 pl-10 mt-2 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
               required
@@ -184,13 +212,18 @@ const apiSheets = "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiypl
             )}
           </div>
           <div className="flex items-center justify-center mt-12">
-            <button
+            <input
+              name="Name"
+              type="submit"
+              className="w-[100%] bg-gray-700 text-white p-2 cursor-pointer"
+            />
+            {/* <button
               type="submit"
               onClick={handleSubmit}
               className="button h-[54px] font-plus-400 w-2/3 sm:w-48 bg-gradient-to-r from-yellow-600 to-yellow-700 text-white py-2 rounded-xl mx-auto block text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mb-2 hover:opacity-80"
             >
               Ingresar mis datos
-            </button>
+            </button> */}
           </div>
         </form>
         <div className="text-center"></div>
@@ -202,4 +235,4 @@ const apiSheets = "https://script.google.com/macros/s/AKfycbxceowJ7hRY3LEOUGiypl
   );
 };
 
-export default Registro;
+export default Registro2;

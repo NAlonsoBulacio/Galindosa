@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import YouTube from "react-youtube";
-import Registro from "../Registro/Registro";
+import Registro2 from "../Registro/Registro2";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./YoutubePlayer.css";
@@ -24,7 +24,6 @@ const YoutubePlayer = ({ youtube_url }) => {
   const handleVideoStart = () => {
     window.fbq("trackCustom", "VideoViewed");
   };
-
   const opts = {
     height: "360",
     width: "100%",
@@ -52,7 +51,7 @@ const YoutubePlayer = ({ youtube_url }) => {
           ></div>
           <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-white p-4 rounded-lg shadow-lg">
-              <Registro
+              <Registro2
                 actualizarEstado={actualizarEstadoPadre}
                 handleShowForm={handleShowForm}
               />
