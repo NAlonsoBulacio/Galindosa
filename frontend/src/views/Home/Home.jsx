@@ -24,7 +24,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center pt-20">
           <h1 className="text-white text-4xl md:text-6xl poppins-semibold text-center">
-            La desarrolladora N°1 de Tucumán
+            La constructora N°1 de Tucumán
           </h1>
           <div>
             <a
