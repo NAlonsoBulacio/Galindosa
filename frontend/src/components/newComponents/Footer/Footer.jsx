@@ -47,22 +47,17 @@ const Footer = () => {
         <div>
           <h3 className="text-lg poppins-regular mb-4">Contacto</h3>
           <p className="text-sm mb-2 flex items-start justify-start gap-x-2">
-            <BsPinMapFill className="text-xl" /> Sagrada Familia esq. Octavio
-            Pinto
+            <BsPinMapFill className="text-xl" /> Virgen de la Merced 639
             <br />
-            Bº Bajo Palermo
+            San Miguel de Tucumán,
             <br />
-            Córdoba - Argentina - CP5009
+            Tucumán, Argentina
           </p>
           <p className="text-sm mb-2 flex items-start justify-start gap-x-2">
-            <IoMailOutline className="text-xl" /> info@grupoproaco.com
+            <IoMailOutline className="text-xl" /> Info@galindosa.com.ar
           </p>
           <p className="text-sm mb-2 flex items-start justify-start gap-x-2">
-            <AiTwotonePhone className="text-xl" /> 0800 888 3344
-            <br />
-            Tel: +54 351 4811000
-            <br />
-            Contacto Comercial: +54 351 156666677
+            <AiTwotonePhone className="text-xl" /> +54 9 3812 07-1244
           </p>
         </div>
         <div>
