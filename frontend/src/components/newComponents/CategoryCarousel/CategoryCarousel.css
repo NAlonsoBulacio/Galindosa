@@ -1,0 +1,51 @@
+.category-carousel-container {
+  padding: 50px 0;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.carousel-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.carousel-title .bold {
+  font-weight: bold;
+}
+
+.category-slide {
+  padding: 20px;
+  outline: none;
+}
+
+.category-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.category-label {
+  font-size: 1.2em;
+}
+
+.custom-arrow {
+  background: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.prev-arrow {
+  left: -50px;
+}
+
+.next-arrow {
+  right: -50px;
+}

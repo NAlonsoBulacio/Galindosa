@@ -1,0 +1,79 @@
+.card-container {
+  perspective: 1000px;
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card-container:hover .card {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  background-color: #fff;
+}
+
+.card-back {
+  background-color: #000;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 20px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card-image-dark {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: brightness(0.5); /* Ajusta el brillo para crear la superposición negra */
+}
+
+.card-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+}
+
+.card-description {
+  text-align: center;
+  padding: 20px;
+  z-index: 1; /* Asegura que el texto esté sobre la imagen oscurecida */
+}

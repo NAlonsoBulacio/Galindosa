@@ -1,6 +1,6 @@
 import React from "react";
 import "./GoogleMapEmbed.css";
-const GoogleMapEmbed = ({ latitud, longitud }) => {
+const GoogleMapEmbed = ({ latitud, longitud, address }) => {
   const apiKey = "AIzaSyBu-e2OBM1eyAudbRyVSa8spxztumlhlkc";
   const latitude = parseFloat(latitud);
   const longitude =  parseFloat(longitud);
@@ -9,9 +9,10 @@ const GoogleMapEmbed = ({ latitud, longitud }) => {
   return (
     <div className="w-full flex flex-wrap justify-center items-center py-10 pt-16 gap-y-6">
       <div className="w-full flex flex-wrap justify-center items-center ">
-        <h1 className="text-4xl lg:text-5xl text-center font-plus-600 text-gray-200">
-          Ubicación Privilegiada
+        <h1 className="text-4xl text-center poppins-regular text-gray-700">
+          Ubicación del Proyecto
         </h1>
+        <p className="w-full text-center">{address}</p>
       </div>
       <iframe
         className="mapa"

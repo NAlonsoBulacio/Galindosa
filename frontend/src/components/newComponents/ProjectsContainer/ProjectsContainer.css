@@ -1,0 +1,8 @@
+.project-item {
+    opacity: 0;
+  }
+  
+  .transitioning {
+    opacity: 1;
+    transition: opacity 700ms ease-in-out;
+  }

@@ -1,0 +1,55 @@
+.header {
+  position: fixed;
+  height: 90px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  transition: all 0.5s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.319); /* Fondo oscuro semi-transparente */
+}
+
+.header-hidden {
+  transform: translateY(-100%);
+}
+
+.header-visible {
+  transform: translateY(0);
+}
+
+.header-bg {
+  background-color: rgb(255, 255, 255); /* Fondo oscuro semi-transparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+  -webkit-backdrop-filter: blur(5px); /* Soporte para Safari */
+}
+
+.logo {
+  transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
+}
+
+.active {
+  border-bottom: 2px solid #dbb9a0;
+}
+
+.a-h {
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.5s ease-in-out;
+}
+
+.a-h:hover {
+  border-bottom: 2px solid #dbb9a0;
+}
+
+.header a {
+  color: white; /* Color de texto blanco para enlaces */
+  text-decoration: none;
+  transition: color 0.5s ease-in-out;
+}
+
+.header a:hover {
+  color: #f5a623; /* Color de hover para enlaces */
+}
+
+.btn-propiedades {
+  transition: color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}

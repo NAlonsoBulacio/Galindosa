@@ -1,0 +1,23 @@
+/* Project.css */
+.project-slider .slick-slide img {
+  width: 100%;
+  height: auto;
+}
+
+.project-slider .slick-slide img.object-cover {
+  object-fit: cover;
+}
+
+.project-slider .slick-dots {
+  top: 280px; /* Adjust this value to move dots up or down */
+}
+
+.project-slider .slick-dots li button:before {
+  font-size: 12px;
+  color: #fff; 
+}
+
+.project-slider .slick-dots li.slick-active button:before {
+  color: #fbcc00; 
+}
+ 
