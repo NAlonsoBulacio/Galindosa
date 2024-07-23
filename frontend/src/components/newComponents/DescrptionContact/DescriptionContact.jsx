@@ -34,7 +34,7 @@ const DescriptionContact = () => {
           <div className="w-full flex justify-start">
             <a className="w-auto flex justify-start items-start">
               <AiTwotonePhone className="w-8" style={{ marginTop: "0.3rem" }} />
-              <h1>+381 4291652</h1>
+              <h1>+54 9 3812 07-1244</h1>
             </a>
           </div>
           <div className="w-full flex justify-start">
@@ -44,27 +44,26 @@ const DescriptionContact = () => {
               className="w-auto flex justify-start items-start hover:underline"
             >
               <IoMailOutline className="w-8" style={{ marginTop: "0.3rem" }} />
-              <h1>saksaarq@gmail.com</h1>
+              <h1>Info@galindosa.com.ar</h1>
             </a>
           </div>
           <div className="w-full flex justify-start">
             <a className="w-auto flex justify-start items-start">
               <BsPinMapFill className="w-8" style={{ marginTop: "0.3rem" }} />
               <h1>
-                Av. Solano Vera 306 - Altos. CP 4107 - Yerba Buena. Tucumán,
-                Argentina.
+              Virgen de la Merced 639, San Miguel de Tucumán, Tucumán, Argentina
               </h1>
             </a>
           </div>
 
           <div className="w-full flex justify-start">
             <a
-              href="https://wa.me/+5493814097860"
+              href="https://wa.me/+5493812071244"
               target="_blank"
               className="w-auto flex justify-start items-start hover:underline"
             >
               <FaWhatsapp className="w-8" style={{ marginTop: "0.3rem" }} />
-              <h1>+54 9 381 4097860</h1>
+              <h1>+54 9 3812 07-1244</h1>
             </a>
           </div>
         </div>
