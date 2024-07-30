@@ -7,8 +7,9 @@ import FlyerProjects from "../../components/newComponents/Flyers/FlyerProjects";
 import { IoIosSearch } from "react-icons/io";
 import { getProjects } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import projects from "../../utils/projects"
 import loading from "../../assets/ripples.svg"; // Asegúrate de que la ruta sea correcta
-import {projects} from "../../utils/projects"
+// import {projects} from "../../utils/projects"
 const Projects = () => {
   // const projects = useSelector((state) => state.projects);
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const Projects = () => {
     setLoading(true);
     dispatch(getProjects()).finally(() => setLoading(false));
   }, [dispatch]);
+
 
   useEffect(() => {
     const { estado, zona, ambientes } = location.state || {};
@@ -84,7 +86,7 @@ const Projects = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="border-b border-gray-400 focus:border-[#fbcc00] focus:outline-none appearance-none w-full pb-2"
+                className="select-custom text-xl border-b-2 border-gray-300 focus:outline-none focus:border-[#fbcc00] appearance-none w-full pb-2"
               >
                 <option value="">Todos los Estados</option>
                 <option value="Terminado">Terminado</option>

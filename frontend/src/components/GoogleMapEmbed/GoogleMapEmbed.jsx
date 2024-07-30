@@ -1,10 +1,11 @@
 import React from "react";
 import "./GoogleMapEmbed.css";
-const GoogleMapEmbed = ({ latitud, longitud, address }) => {
+const GoogleMapEmbed = ({ longitude, latitude, address }) => {
+
   const apiKey = "AIzaSyBu-e2OBM1eyAudbRyVSa8spxztumlhlkc";
-  const latitude = parseFloat(latitud);
-  const longitude =  parseFloat(longitud);
-  const embedUrl = `https://www.google.com/maps/embed/v1/place?q=${latitude},${longitude}&key=${apiKey}`;
+  const latitud = parseFloat(latitude);
+  const longitud =  parseFloat(longitude);
+  const embedUrl = `https://www.google.com/maps/embed/v1/place?q=${latitud},${longitud}&key=${apiKey}`;
 
   return (
     <div className="w-full flex flex-wrap justify-center items-center py-10 pt-16 gap-y-6">

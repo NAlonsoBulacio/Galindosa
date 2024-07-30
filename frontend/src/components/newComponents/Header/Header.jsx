@@ -116,6 +116,15 @@ const Header = () => {
               >
                 Proyectos
               </a>
+              <a
+                href="/novedades"
+                onClick={() => handleNavClick("/novedades")}
+                className={`${currentPage === "/novedades" ? "active" : "a-h"} ${
+                  navbar ? "text-gray-700" : ""
+                }`}
+              >
+                News
+              </a>
             </div>
           </nav>
           <div

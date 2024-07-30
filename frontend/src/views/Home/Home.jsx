@@ -40,11 +40,14 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="px-2">
       <Counter />
       <FeaturedProperties />
       <CategoryCarousel />
       <AboutHome />
       <NewsCards />
+      </div>
+
       <Footer />
     </div>
   );

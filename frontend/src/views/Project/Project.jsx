@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "../../components/newComponents/Footer/Footer";
 import Header from "../../components/newComponents/Header/Header";
-import { useDispatch } from "react-redux";
-import { emptyDetail } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyDetail, getProjects } from "../../redux/actions";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import SampleNextArrow from "../../utils/SampleNextArrow";
 import SamplePrevArrow from "../../utils/SamplePrevArrow";
@@ -10,19 +10,24 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Project.css";
-import { projects } from "../../utils/projects";
 import CircularProgress from "../../components/newComponents/CircularProgress/CircularProgress";
 import GoogleMapEmbed from "../../components/GoogleMapEmbed/GoogleMapEmbed";
 import Amenities from "../../components/newComponents/Amenities/Amenities";
+import BlueprintsCarousel from "../../components/newComponents/Blueprints/Blueprints";
+import SectionCard from "../../components/SectionCard/SectionCard";
 import { IoIosContacts } from "react-icons/io";
-import FlyerProject from "../../components/newComponents/Flyers/FlyerProject";
+import ReactPlayer from "react-player";
+import Banner from "../../components/newComponents/Flyers/Banner/ProjectBanner";
+
 const Project = ({ match }) => {
+  const projectsR = useSelector((state) => state.projects);
   const projectSlug = match.params.slug;
   const sliderRef = useRef(null);
   const dispatch = useDispatch();
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [detail, setDetail] = useState(null);
 
+  console.log(detail ? detail.blueprints : "");
   const toggleFullScreen = () => {
     if (!isFullscreen) {
       if (sliderRef.current.requestFullscreen) {
@@ -62,16 +67,29 @@ const Project = ({ match }) => {
 
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener("mozfullscreenchange", handleFullscreenChange);
-      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
-      document.removeEventListener("msfullscreenchange", handleFullscreenChange);
+      document.removeEventListener(
+        "mozfullscreenchange",
+        handleFullscreenChange
+      );
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        handleFullscreenChange
+      );
+      document.removeEventListener(
+        "msfullscreenchange",
+        handleFullscreenChange
+      );
     };
   }, []);
 
   useEffect(() => {
-    const filteredProject = projects.find((p) => p.slug === projectSlug);
+    dispatch(getProjects());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const filteredProject = projectsR.find((p) => p.slug === projectSlug);
     setDetail(filteredProject);
-  }, [projectSlug]);
+  }, [projectSlug, projectsR]);
 
   useEffect(() => {
     return () => {
@@ -90,19 +108,24 @@ const Project = ({ match }) => {
     nextArrow: isFullscreen ? <SampleNextArrow /> : null,
     prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
   };
-
   return (
     <>
       {detail ? (
         <div>
-          <FlyerProject banner={detail.img} />
+          <Banner banners={detail.presentImages} />
           <Header />
+          <div>
+            <Amenities amenities={detail ? detail.amenities : ""} />
+          </div>
+
           <div className="flex flex-wrap justify-between items-start py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0">
             <div className="w-full lg:w-[43%] flex flex-col justify-between items-start px-2 gap-y-4">
               <h1 className="text-left text-3xl lg:text-4xl l poppins-regular text-gray-800 font-bold">
-                {detail.name}
+                {detail.introDescription}
               </h1>
-              <p className="text-sm lg:text-md poppins-light"> {detail.description}</p>
+              <p className="text-sm lg:text-md poppins-light">
+                {detail.description}
+              </p>
               <a
                 href="/"
                 className="bg-[#ccad24] hover:bg-[#a18c2d] text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-lg gap-x-2 "
@@ -110,12 +133,20 @@ const Project = ({ match }) => {
                 Consultá <IoIosContacts className="text-2xl" />
               </a>
             </div>
+
             <div
               className={`${
                 isFullscreen ? "w-screen" : "w-full lg:w-2/4"
               } project-slider z-20 flex flex-wrap lg:flex-nowrap justify-between items-start gap-3`}
             >
-              {images ? (
+              {detail.video ? (
+                <div className="w-full lg:w-[80%] h-auto flex justify-center items-center">
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${detail.video}`}
+                    className="w-full"
+                  />
+                </div>
+              ) : (
                 <div
                   ref={sliderRef}
                   className={`w-full lg:w-[80%] h-auto flex justify-center items-center ${
@@ -137,9 +168,7 @@ const Project = ({ match }) => {
                         <div
                           key={index}
                           className={`h-full relative ${
-                            isFullscreen
-                              ? "flex justify-center items-center"
-                              : ""
+                            isFullscreen ? "flex justify-center items-center" : ""
                           } group`}
                         >
                           <img
@@ -176,29 +205,12 @@ const Project = ({ match }) => {
                     </Slider>
                   </div>
                 </div>
-              ) : (
-                ""
               )}
-
-              <div className="w-full lg:w-[20%] px-2 lg:px-0 text-xl lg:text-2xl">
-                {detail.year ? (
-                  <p>
-                    <span className="text-bold">Año:</span> {detail?.year}
-                  </p>
-                ) : (
-                  ""
-                )}
-                {detail.surface ? (
-                  <p>
-                    <span className="text-bold">Superficie:</span>{" "}
-                    {detail?.surface}
-                  </p>
-                ) : (
-                  ""
-                )}
-              </div>
             </div>
           </div>
+          
+         
+
           <div className="w-full flex justify-center items-start bg-black text-white py-12">
             <div className="container flex justify-center items-start gap-x-12">
               <div>
@@ -230,15 +242,22 @@ const Project = ({ match }) => {
               </div>
             </div>
           </div>
-          <div>
-            <Amenities amenities={detail ? detail.amenities : ""} />
-          </div>
+
+          {detail.sections &&
+            detail.sections.map((section, index) => (
+              <SectionCard key={index} section={section} index={index} />
+            ))}
+
+
           <div>
             <GoogleMapEmbed
               address={detail.address}
-              latitud={detail?.latitude}
-              longitud={detail?.lingitude}
+              latitude={detail.latitude ? detail.latitude : ""}
+              longitude={detail.longitude ? detail.longitude : ""}
             />
+          </div>
+          <div className="pb-10">
+            <BlueprintsCarousel blueprints={detail ? detail.blueprints : ""} />
           </div>
           <Footer />
         </div>

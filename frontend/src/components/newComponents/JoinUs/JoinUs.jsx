@@ -8,8 +8,8 @@ const JoinUs = () => {
         Si querés formar parte de <span className="poppins-extrabold">nuestro staff</span> envianos tu Curriculum.
       </h2>
       <div className="flex justify-center">
-        <a href="mailto:seleccion@grupoproaco.com" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center gap-2">
-          <HiOutlineMail className="text-2xl" /> seleccion@grupoproaco.com
+        <a href="mailto:.com" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full flex items-center gap-2">
+          <HiOutlineMail className="text-2xl" /> seleccion@galindosa.com
         </a>
       </div>
     </div>

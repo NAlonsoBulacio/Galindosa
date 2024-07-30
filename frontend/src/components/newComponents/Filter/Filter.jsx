@@ -37,7 +37,7 @@ const Filter = () => {
           <select
             value={estado}
             onChange={handleEstadoChange}
-            className="select-custom w-full text-xl  border-b-2 border-gray-300 focus:outline-none focus:border-yellow-600"
+            className="select-custom w-full text-xl  border-b-2 border-gray-300 focus:outline-none focus:border-[#fbcc00]"
           >
           <option value="">Todos los Estados</option>
                 <option value="Terminado">Terminado</option>
@@ -49,7 +49,7 @@ const Filter = () => {
           <select
             value={zona}
             onChange={handleZonaChange}
-            className="select-custom w-full text-xl border-b-2 border-gray-300 focus:outline-none focus:border-yellow-600"
+            className="select-custom w-full text-xl border-b-2 border-gray-300 focus:outline-none focus:border-[#fbcc00]"
           >
             <option value="">Todas las Zonas</option>
                 <option value="Barrio Sur">Barrio Sur</option>
@@ -62,7 +62,7 @@ const Filter = () => {
           <select
             value={ambientes}
             onChange={handleAmbientesChange}
-            className="select-custom w-full text-xl border-b-2 border-gray-300 focus:outline-none focus:border-yellow-600"
+            className="select-custom w-full text-xl border-b-2 border-gray-300 focus:outline-none focus:border-[#fbcc00]"
           >
                           <option value="">Todos los Ambientes</option>
                 <option value="1 ambiente">1 ambiente</option>
