@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "../../components/newComponents/Footer/Footer";
 import Header from "../../components/newComponents/Header/Header";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { emptyDetail, getProjects } from "../../redux/actions";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import SampleNextArrow from "../../utils/SampleNextArrow";
@@ -21,6 +21,7 @@ import Banner from "../../components/newComponents/Flyers/Banner/ProjectBanner";
 import projects from "../../utils/projects";
 
 const Project = ({ match }) => {
+  // const projectsRG = useSelector((state) => state.projects);
   const projectsR = projects;
   const projectSlug = match.params.slug;
   const sliderRef = useRef(null);

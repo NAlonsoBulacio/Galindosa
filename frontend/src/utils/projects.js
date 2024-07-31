@@ -17,10 +17,10 @@ const projects = [
     latitude: "-26.8228",
     longitude: "-65.2051",
     amenities: [
-      { id: 400, label: "Cocheras" },
-      { id: 401, label: "Jardines" },
-      { id: 402, label: "Terraza" },
-      { id: 403, label: "Gimnasio" }
+      {id: 400, icon: '/static/media/garaje.95588b40227bc9a99dc7.png', label: 'Cocheras'},
+      {id: 401, icon: '/static/media/garden.1cc77c772c8f18785d83.png', label: 'Jardines'},
+      {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
+      {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
     ],
     address: "Avenida Siempre Viva 456, Barrio Norte",
     init_date: "1 de enero",
@@ -52,10 +52,9 @@ const projects = [
           "https://res.cloudinary.com/dqriuc2m1/image/upload/v1722195231/sldlr98klobedsyisnab.png"
         ],
         amenities: [
-          "Cocheras",
-          "Terraza",
-          "Sala de Reuniones",
-          "Ascensor"
+          {id: 401, icon: '/static/media/garden.1cc77c772c8f18785d83.png', label: 'Jardines'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
         ]
       },
       {
@@ -67,12 +66,9 @@ const projects = [
           "https://res.cloudinary.com/dqriuc2m1/image/upload/v1722195231/sldlr98klobedsyisnab.png"
         ],
         amenities: [
-          "Sala de Reuniones",
-          "Ascensor",
-          "Observatorio",
-          "Secadora de Ropa",
-          "Piscina"
-        ]
+          {id: 401, icon: '/static/media/garden.1cc77c772c8f18785d83.png', label: 'Jardines'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},        ]
       }
     ]
   },
@@ -93,10 +89,10 @@ const projects = [
     latitude: "-26.8175",
     longitude: "-65.2231",
     amenities: [
-      { id: 400, label: "Cocheras" },
-      { id: 401, label: "Jardines" },
-      { id: 402, label: "Terraza" },
-      { id: 403, label: "Gimnasio" }
+      {id: 400, icon: '/static/media/garaje.95588b40227bc9a99dc7.png', label: 'Cocheras'},
+      {id: 401, icon: '/static/media/garden.1cc77c772c8f18785d83.png', label: 'Jardines'},
+      {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
+      {id: 403, icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAA…AAAAAAAAAAAAAAAAii/8H9c8186dC9CoAAAAASUVORK5CYII=', label: 'Gimnasio'}
     ],
     address: "Calle Real 789, Yerba Buena",
     init_date: "1 de enero",
@@ -115,13 +111,9 @@ const projects = [
           "https://res.cloudinary.com/dqriuc2m1/image/upload/v1722195231/sldlr98klobedsyisnab.png"
         ],
         amenities: [
-          "Cocheras",
-          "Terraza",
-          "Sala de Reuniones",
-          "Ascensor",
-          "Observatorio",
-          "Secadora de Ropa",
-          "Piscina"
+          {id: 401, icon: '/static/media/garden.1cc77c772c8f18785d83.png', label: 'Jardines'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
         ]
       },
       {
@@ -131,13 +123,9 @@ const projects = [
           "https://res.cloudinary.com/dqriuc2m1/image/upload/v1722195231/sldlr98klobedsyisnab.png"
         ],
         amenities: [
-          "Cocheras",
-          "Terraza",
-          "Sala de Reuniones",
-          "Ascensor",
-          "Observatorio",
-          "Secadora de Ropa",
-          "Piscina"
+          {id: 401, icon: '/static/media/garden.1cc77c772c8f18785d83.png', label: 'Jardines'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
+          {id: 402, icon: '/static/media/terraza.78b92322fee2a470f722.png', label: 'Terraza'},
         ]
       }
     ]
