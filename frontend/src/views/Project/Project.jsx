@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "../../components/newComponents/Footer/Footer";
 import Header from "../../components/newComponents/Header/Header";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { emptyDetail, getProjects } from "../../redux/actions";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import SampleNextArrow from "../../utils/SampleNextArrow";
@@ -21,7 +21,6 @@ import Banner from "../../components/newComponents/Flyers/Banner/ProjectBanner";
 import projects from "../../utils/projects";
 
 const Project = ({ match }) => {
-  // const projectsR = useSelector((state) => state.projects);
   const projectsR = projects;
   const projectSlug = match.params.slug;
   const sliderRef = useRef(null);
@@ -29,7 +28,6 @@ const Project = ({ match }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [detail, setDetail] = useState(null);
 
-  console.log(detail ? detail.blueprints : "");
   const toggleFullScreen = () => {
     if (!isFullscreen) {
       if (sliderRef.current.requestFullscreen) {
@@ -69,18 +67,9 @@ const Project = ({ match }) => {
 
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener(
-        "mozfullscreenchange",
-        handleFullscreenChange
-      );
-      document.removeEventListener(
-        "webkitfullscreenchange",
-        handleFullscreenChange
-      );
-      document.removeEventListener(
-        "msfullscreenchange",
-        handleFullscreenChange
-      );
+      document.removeEventListener("mozfullscreenchange", handleFullscreenChange);
+      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
+      document.removeEventListener("msfullscreenchange", handleFullscreenChange);
     };
   }, []);
 
@@ -99,7 +88,7 @@ const Project = ({ match }) => {
     };
   }, [dispatch]);
 
-  const images = detail ? detail.presentImages : "";
+  const images = detail ? detail.present_images : "";
 
   const settings = {
     infinite: true,
@@ -110,20 +99,23 @@ const Project = ({ match }) => {
     nextArrow: isFullscreen ? <SampleNextArrow /> : null,
     prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
   };
+
   return (
     <>
       {detail ? (
         <div>
-          <Banner banners={detail.presentImages} />
+          {detail.present_images && detail.present_images.length > 0 && (
+            <Banner banners={detail.present_images} />
+          )}
           <Header />
           <div>
-            <Amenities amenities={detail ? detail.amenities : ""} />
+            <Amenities amenities={detail.amenities} />
           </div>
 
           <div className="flex flex-wrap justify-between items-start py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0">
             <div className="w-full lg:w-[43%] flex flex-col justify-between items-start px-2 gap-y-4">
               <h1 className="text-left text-3xl lg:text-4xl l poppins-regular text-gray-800 font-bold">
-                {detail.introDescription}
+                {detail.intro_description}
               </h1>
               <p className="text-sm lg:text-md poppins-light">
                 {detail.description}
@@ -210,8 +202,6 @@ const Project = ({ match }) => {
               )}
             </div>
           </div>
-          
-         
 
           <div className="w-full flex justify-center items-start bg-black text-white py-12">
             <div className="container flex justify-center items-start gap-x-12">
@@ -249,7 +239,6 @@ const Project = ({ match }) => {
             detail.sections.map((section, index) => (
               <SectionCard key={index} section={section} index={index} />
             ))}
-
 
           <div>
             <GoogleMapEmbed
