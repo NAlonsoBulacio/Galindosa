@@ -18,9 +18,11 @@ import SectionCard from "../../components/SectionCard/SectionCard";
 import { IoIosContacts } from "react-icons/io";
 import ReactPlayer from "react-player";
 import Banner from "../../components/newComponents/Flyers/Banner/ProjectBanner";
+import {projects} from "../../utils/projects";
 
 const Project = ({ match }) => {
-  const projectsR = useSelector((state) => state.projects);
+  // const projectsR = useSelector((state) => state.projects);
+  const projectsR = projects;
   const projectSlug = match.params.slug;
   const sliderRef = useRef(null);
   const dispatch = useDispatch();
