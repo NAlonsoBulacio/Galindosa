@@ -3,6 +3,8 @@ import { logo, logo_b } from "../../../assets";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useLocation } from "react-router-dom";
 import { FaRegBuilding } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import { IoIosContacts } from "react-icons/io";
 import "./Header.css";
 
 const Header = () => {
@@ -14,6 +16,7 @@ const Header = () => {
 
   const handleNavClick = (page) => {
     setCurrentPage(page);
+    setMenuOpen(false); // Close menu on nav click
   };
 
   const handleScroll = () => {
@@ -37,32 +40,30 @@ const Header = () => {
     <div>
       <header
         className={`${
-          navbar ? "header-bg shadow-2xl" : "header"
-        } text-gray-300 p-4 z-40 font-lato-300 fixed w-full top-0 transition-all duration-500`}
-        style={{ height: navbar ? "80px" : "95px" }}
+          navbar
+            ? "header-bg lg:shadow-2xl h-[80px] lg:h-[80px]"
+            : "header h-[80px] lg:h-[95px]"
+        } text-gray-300 p-4 z-40 font-lato-300 fixed w-full top-0 transition-all duration-500  ${
+          menuOpen ? "" : "border-b-[1px] border-gray-900"
+        }`}
       >
-        {!menuOpen ? (
-          <div
-            className="mx-auto flex items-center justify-between lg:hidden py-10"
-            style={{ maxWidth: "1150px", height: "70px" }}
-          >
-            <div className="logo flex items-center space-x-4">
-              <a href="/">
-                <img
-                  src={navbar ? logo_b : logo}
-                  alt="Logo"
-                  style={{ height: "87px", width: "87px" }}
-                />
-              </a>
-            </div>
-            <HiMenuAlt2
-              onClick={handleMenuToggle}
-              className="text-4xl inline-block md:hidden cursor-pointer w-10 h-10 absolute top-8 right-10"
-            />
+        <div className="mx-auto flex items-center justify-between lg:hidden z-30 ">
+          <div className="logo flex items-center space-x-4">
+            <a href="/">
+              <img
+                src={navbar ? logo_b : logo_b}
+                alt="Logo"
+                style={{ width: "106px" }}
+              />
+            </a>
           </div>
-        ) : (
-          ""
-        )}
+          <HiMenuAlt2
+            onClick={handleMenuToggle}
+            className={` ${
+              menuOpen ? "rotate-180" : ""
+            } duration-700 text-gray-50 text-4xl inline-block md:hidden cursor-pointer `}
+          />
+        </div>
         <div
           className="mx-auto flex items-center justify-between hidden lg:flex poppins-light"
           style={{ maxWidth: "1150px", height: navbar ? "50px" : "70px" }}
@@ -92,9 +93,9 @@ const Header = () => {
               <a
                 href="/sobre-nosotros"
                 onClick={() => handleNavClick("/sobre-nosotros")}
-                className={`${currentPage === "/sobre-nosotros" ? "active" : "a-h"} ${
-                  navbar ? "text-gray-700" : ""
-                }`}
+                className={`${
+                  currentPage === "/sobre-nosotros" ? "active" : "a-h"
+                } ${navbar ? "text-gray-700" : ""}`}
               >
                 Nuestra Empresa
               </a>
@@ -110,18 +111,18 @@ const Header = () => {
               <a
                 href="/proyectos"
                 onClick={() => handleNavClick("/proyectos")}
-                className={`${currentPage === "/proyectos" ? "active" : "a-h"} ${
-                  navbar ? "text-gray-700" : ""
-                }`}
+                className={`${
+                  currentPage === "/proyectos" ? "active" : "a-h"
+                } ${navbar ? "text-gray-700" : ""}`}
               >
                 Proyectos
               </a>
               <a
                 href="/novedades"
                 onClick={() => handleNavClick("/novedades")}
-                className={`${currentPage === "/novedades" ? "active" : "a-h"} ${
-                  navbar ? "text-gray-700" : ""
-                }`}
+                className={`${
+                  currentPage === "/novedades" ? "active" : "a-h"
+                } ${navbar ? "text-gray-700" : ""}`}
               >
                 News
               </a>
@@ -132,12 +133,66 @@ const Header = () => {
               navbar ? "text-gray-700 border-gray-700" : ""
             } flex items-center border-[1px] hover:border-[#f5a623] hover:text-[#f5a623] duration-300 px-3 py-1 rounded-full`}
           >
-            <a href="/propiedades" className=" flex items-center gap-x-2 poppins-regular">
+            <a
+              href="/propiedades"
+              className=" flex items-center gap-x-2 poppins-regular"
+            >
               Ver todas las propiedades <FaRegBuilding />
             </a>
           </div>
         </div>
       </header>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ y: -340 }}
+            animate={{ y: 0 }}
+            exit={{ y: -340 }}
+            transition={{ duration: 0.7 }}
+            className="fixed top-0 left-0 text-left w-full h-96 px-4 mt-10 bg-[#a58700] text-white poppins-semibold z-20 flex flex-col items-start justify-center space-y-4"
+          >
+            <a href="/" onClick={() => handleNavClick("/")} className="text-lg">
+              Inicio
+            </a>
+            <a
+              href="/sobre-nosotros"
+              onClick={() => handleNavClick("/sobre-nosotros")}
+              className="text-lg"
+            >
+              Nuestra Empresa
+            </a>
+            <a
+              href="/contacto"
+              onClick={() => handleNavClick("/contacto")}
+              className="text-lg"
+            >
+              Contacto
+            </a>
+            <a
+              href="/proyectos"
+              onClick={() => handleNavClick("/proyectos")}
+              className="text-lg"
+            >
+              Proyectos
+            </a>
+            <a
+              href="/novedades"
+              onClick={() => handleNavClick("/novedades")}
+              className="text-lg"
+            >
+              News
+            </a>
+            <div>
+              <a
+                href="/"
+                className="tracking-widest poppins-regular bg-[#fbcc00] hover:bg-[#a18c2d] duration-300 text-white px-3 py-2 rounded-3xl flex items-center justify-center gap-x-2 "
+              >
+                SOLICITAR ASESOR <IoIosContacts className="text-3xl" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

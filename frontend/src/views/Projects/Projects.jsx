@@ -7,11 +7,11 @@ import FlyerProjects from "../../components/newComponents/Flyers/FlyerProjects";
 import { IoIosSearch } from "react-icons/io";
 import { getProjects } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import projects from "../../utils/projects"
-import loading from "../../assets/ripples.svg"; // Asegúrate de que la ruta sea correcta
-// import {projects} from "../../utils/projects"
+import projects from "../../utils/projects";
+import loadingImg from "../../assets/ripples.svg"; 
+import { MdCleaningServices } from "react-icons/md";
+
 const Projects = () => {
-  // const projects = useSelector((state) => state.projects);
   const dispatch = useDispatch();
   const location = useLocation();
   const [zoneFilter, setZoneFilter] = useState("");
@@ -24,7 +24,6 @@ const Projects = () => {
     setLoading(true);
     dispatch(getProjects()).finally(() => setLoading(false));
   }, [dispatch]);
-
 
   useEffect(() => {
     const { estado, zona, ambientes } = location.state || {};
@@ -68,6 +67,16 @@ const Projects = () => {
     setProjectsInView(filteredProjects);
   };
 
+  const handleCleanFilters = () => {
+    
+    setRoomsFilter("");
+    setStatusFilter("");
+    setZoneFilter("");
+  
+    
+    setProjectsInView(projects);
+  };
+
   return (
     <div>
       <Header />
@@ -79,10 +88,10 @@ const Projects = () => {
           </h1>
         </div>
 
-        <div className="w-full flex justify-center items-baseline space-x-4 mb-8">
-          <div className="flex flex-col items-start">
+        <div className="w-full flex flex-wrap justify-center items-baseline lg:space-x-4 mb-8 space-y-4 lg:space-y-0">
+          <div className="flex flex-col items-start w-full lg:w-auto">
             <label className="text-gray-700 font-bold mb-1">Estado</label>
-            <div className="relative w-40 lg:w-56">
+            <div className="relative w-full lg:w-56">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -104,13 +113,13 @@ const Projects = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start w-full lg:w-auto">
             <label className="text-gray-700 font-bold mb-1">Zona</label>
-            <div className="relative w-40 lg:w-56">
+            <div className="relative w-full lg:w-56">
               <select
                 value={zoneFilter}
                 onChange={(e) => setZoneFilter(e.target.value)}
-                className="border-b border-gray-400 focus:border-[#fbcc00] focus:outline-none appearance-none w-full pb-2"
+                className="border-b border-gray-400 text-xl focus:border-[#fbcc00] focus:outline-none appearance-none w-full pb-2"
               >
                 <option value="">Todas las Zonas</option>
                 <option value="Barrio Sur">Barrio Sur</option>
@@ -129,13 +138,13 @@ const Projects = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start w-full lg:w-auto">
             <label className="text-gray-700 font-bold mb-1">Ambientes</label>
-            <div className="relative w-40 lg:w-56">
+            <div className="relative w-full lg:w-56">
               <select
                 value={roomsFilter}
                 onChange={(e) => setRoomsFilter(e.target.value)}
-                className="border-b border-gray-400 focus:border-[#fbcc00] focus:outline-none appearance-none w-full pb-2"
+                className="border-b border-gray-400 text-xl focus:border-[#fbcc00] focus:outline-none appearance-none w-full pb-2"
               >
                 <option value="">Todos los Ambientes</option>
                 <option value="1 ambiente">1 ambiente</option>
@@ -157,13 +166,20 @@ const Projects = () => {
             </div>
           </div>
 
-          <div className="flex flex-col justify-end ">
+          <div className="flex flex-col justify-end w-full lg:w-auto gap-y-2">
             <button
               onClick={handleFilterChange}
-              className="bg-[#fbcc00] hover:bg-[#9d882a] duration-300 text-white px-6 py-2 rounded-lg flex items-center gap-2"
+              className="bg-[#fbcc00] hover:bg-[#9d882a] duration-300 text-white px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
             >
               <IoIosSearch className="text-2xl" />
               BUSCAR AHORA
+            </button>
+            <button
+              onClick={handleCleanFilters}
+              className="bg-[#fbf9f2] hover:bg-[#fbcc00] duration-300 text-gray-700 hover:text-white border-[1px] border-[#fbcc00] px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
+            >
+              <MdCleaningServices className="text-2xl" />
+              LIMPIAR FILTROS
             </button>
           </div>
         </div>
@@ -171,7 +187,7 @@ const Projects = () => {
         <div className="w-full">
           {loading ? (
             <div className="flex items-center justify-center h-64">
-              <img src={loading} alt="Loading..." className="w-16 h-16" />
+              <img src={loadingImg} alt="Loading..." className="w-16 h-16" />
             </div>
           ) : projectsInView.length > 0 ? (
             <ProjectsContainer projects={projectsInView} />
