@@ -18,11 +18,9 @@ import SectionCard from "../../components/SectionCard/SectionCard";
 import { IoIosContacts } from "react-icons/io";
 import ReactPlayer from "react-player";
 import Banner from "../../components/newComponents/Flyers/Banner/ProjectBanner";
-import projects from "../../utils/projects";
 
 const Project = ({ match }) => {
-  // const projectsRG = useSelector((state) => state.projects);
-  const projectsR = projects;
+  const projectsR = useSelector((state) => state.projects);
   const projectSlug = match.params.slug;
   const sliderRef = useRef(null);
   const dispatch = useDispatch();
@@ -89,24 +87,28 @@ const Project = ({ match }) => {
     };
   }, [dispatch]);
 
-  const images = detail ? detail.present_images : "";
+  const images = detail ? detail.present_images : [];
 
   const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    dots: !isFullscreen ? true : false,
+    dots: !isFullscreen,
     nextArrow: isFullscreen ? <SampleNextArrow /> : null,
     prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
   };
+
+  const unitsSoldPercentage = detail
+  ? ((parseInt(detail.unitsVailable) / parseInt(detail.totalUnits)) * 100)
+  : 0;
 
   return (
     <>
       {detail ? (
         <div>
-          {detail.present_images && detail.present_images.length > 0 && (
-            <Banner banners={detail.present_images} />
+          {detail.presentImages && detail.presentImages.length > 0 && (
+            <Banner banners={detail.presentImages} />
           )}
           <Header />
           <div>
@@ -116,7 +118,7 @@ const Project = ({ match }) => {
           <div className="flex flex-wrap justify-between items-start py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0">
             <div className="w-full lg:w-[43%] flex flex-col justify-between items-start px-2 gap-y-4">
               <h1 className="text-left text-3xl lg:text-4xl l poppins-regular text-gray-800 font-bold">
-                {detail.intro_description}
+                {detail.introDescription}
               </h1>
               <p className="text-sm lg:text-md poppins-light">
                 {detail.description}
@@ -159,7 +161,7 @@ const Project = ({ match }) => {
                       {...settings}
                       className={`${isFullscreen ? "h-full" : ""}`}
                     >
-                      {images?.map((image, index) => (
+                      {images.map((image, index) => (
                         <div
                           key={index}
                           className={`h-full relative ${
@@ -218,19 +220,19 @@ const Project = ({ match }) => {
               <div>
                 <div className="flex space-x-6 items-center">
                   <div className="flex flex-col items-center  ">
-                    <p className="text-2xl poppins-light">2008</p>
+                    <p className="text-2xl poppins-light">{detail.initDate}</p>
                     <p className="text-sm text-[#fbcc00] poppins-semibold">
                       Inicio
                     </p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <p className="text-2xl poppins-light">2010</p>
+                    <p className="text-2xl poppins-light">{detail.finishedDate}</p>
                     <p className="text-sm text-[#fbcc00] poppins-semibold">
                       Posesión
                     </p>
                   </div>
                   <CircularProgress percentage={100} label="Obra" />
-                  <CircularProgress percentage={100} label="Venta" />
+                  <CircularProgress percentage={unitsSoldPercentage} label="Venta" />
                 </div>
               </div>
             </div>

@@ -12,6 +12,7 @@ import loadingImg from "../../assets/ripples.svg";
 import { MdCleaningServices } from "react-icons/md";
 
 const Projects = () => {
+  const projects = useSelector((state) => state.projects);
   const dispatch = useDispatch();
   const location = useLocation();
   const [zoneFilter, setZoneFilter] = useState("");

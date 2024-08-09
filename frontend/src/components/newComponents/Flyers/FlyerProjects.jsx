@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../../assets/logo.png";
 import { IoIosContacts } from "react-icons/io";
-// import { banner, banner2 } from "../../../assets";
+import { banner3 } from "../../../assets";
 const FlyerProjects = ({ banner }) => {
   return (
     <div className="w-full flex flex-wrap justify-start items-center relative h-[45vh] lg:h-[63vh]">
@@ -19,7 +19,7 @@ const FlyerProjects = ({ banner }) => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url("https://grupoproaco.com/images/headers/company.jpg")`,
+          backgroundImage: `url(${banner3})`,
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
         }}
@@ -27,7 +27,7 @@ const FlyerProjects = ({ banner }) => {
       <div
         className="absolute block lg:hidden inset-0 z-0"
         style={{
-          backgroundImage: `url("https://grupoproaco.com/images/headers/company.jpg")`,
+          backgroundImage: `url(${banner3})`,
           backgroundSize: "100% 100%",
           backgroundSize: "cover",
         }}

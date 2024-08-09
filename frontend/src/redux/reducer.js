@@ -13,11 +13,12 @@ const reducer = (state = initialState, action) => {
         const cleanAmenities = [];
 
         project.amenities.forEach((id) => {
-          const amenity = amenities.find((amenity) => amenity.id === id.id);
-          if (amenity) {
+          const amenity = amenities.find((amenity) => amenity.id.toString() === id.toString());
+          if (amenity && !cleanAmenities.some((a) => a.id === amenity.id)) {
             cleanAmenities.push(amenity);
           }
         });
+
 
         const cleanSections = project.sections.map((section) => {
           const sectionAmenities = section.amenities.map((amenityName) => {
@@ -35,13 +36,14 @@ const reducer = (state = initialState, action) => {
           name: project.name,
           slug: project.slug,
           status: project.status,
+          categories: project.categories,
           img: project.img,
           description: project.description,
           zone: project.zone,
           surface: project.surface,
           rooms: project.rooms,
           presentImages: project.present_images,
-          carouselImages: project.carousel_images,
+          carouselImages: project.present_images,
           latitude: project.latitude,
           longitude: project.longitude,
           amenities: cleanAmenities,

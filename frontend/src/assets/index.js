@@ -1,8 +1,7 @@
 import logo_g from "./logo-g.png";
 import logo from "./logo.png";
 import logo_b from "./logo_b.png";
-import banner from "./banners/image14.png";
-import banner2 from "./banners/image15.png";
+
 import bg_yellow from "./bg/bg-01-dark-yellow.png";
 import elevador from "./amenidades/ascensor.png";
 import bar from "./amenidades/bar.svg";
@@ -29,6 +28,11 @@ import telescopio from "./amenidades/telescopio.png";
 import terraza from "./amenidades/terraza.png";
 import yoga from "./amenidades/yoga.png";
 
+import banner from "./banners/banner.webp";
+import banner2 from "./banners/banner2.webp";
+import banner3 from "./banners/V4.jpg";
+import banner4 from "./banners/V6.jpg";
+
 export {
   logo,
   logo_g,
@@ -36,6 +40,8 @@ export {
   bg_yellow,
   banner,
   banner2,
+  banner3,
+  banner4,
   elevador,
   bar,
   bell,

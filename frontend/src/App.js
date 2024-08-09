@@ -18,10 +18,9 @@ function App() {
       <Route exact path="/sobre-nosotros" component={AboutUs} />
       <Route exact path="/proyectos" component={Projects} />
       <Route exact path="/proyecto/:slug" component={Project} />
-      <Route exact path="/proyecto/:slug" component={Project} />
       <Route exact path="/proyectos-bdd" component={PropertiesBdd} />
       <Route exact path="/cargar-proyecto" component={ProductForm} />
-      <Route exact path="/property-detail/:slug" component={PropertyDetail} />
+      <Route exact path="/proyecto-detalle/:slug" component={PropertyDetail} />
       <Route exact path="/novedades" component={News} />
       <Route exact path="/novedades/:slug" component={NewsDetail} />
       <WhatsAppButton />

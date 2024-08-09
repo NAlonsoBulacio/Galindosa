@@ -14,7 +14,7 @@ const ProductForm = () => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(null);
   const [form, setForm] = useState({
     name: "",
-    carousel_images: [],
+    present_images: [],
     blueprints: [],
     categories: [],
     img: "",
@@ -34,6 +34,7 @@ const ProductForm = () => {
     sections: [],
     zone: "",
     video: "",
+    work_percentage: "",
   });
 
   const handleChange = (e) => {
@@ -70,7 +71,7 @@ const ProductForm = () => {
     if (id === 1) {
       setForm((prevForm) => ({
         ...prevForm,
-        carousel_images: [...prevForm.carousel_images, image],
+        present_images: [...prevForm.present_images, image],
       }));
       setImages((prevImages) => [...prevImages, image]);
     } else if (id === 3) {
@@ -79,7 +80,7 @@ const ProductForm = () => {
         blueprints: [...prevForm.blueprints, image],
       }));
       setBlueprintsImages((prevImages) => [...prevImages, image]);
-    }else if (id === 2) {
+    } else if (id === 2) {
       console.log(image);
       setForm((prevForm) => ({
         ...prevForm,
@@ -89,18 +90,20 @@ const ProductForm = () => {
   };
 
   const handleDeleteImage = (index, id) => {
-    if (id === 1 ) {
+    if (id === 1) {
       setForm((prevForm) => ({
         ...prevForm,
-        carousel_images: prevForm.carousel_images.filter((_, i) => i !== index),
+        present_images: prevForm.present_images.filter((_, i) => i !== index),
       }));
       setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-    } else if ( id === 3) {
+    } else if (id === 3) {
       setForm((prevForm) => ({
         ...prevForm,
         blueprints: prevForm.blueprints.filter((_, i) => i !== index),
       }));
-      setBlueprintsImages((prevImages) => prevImages.filter((_, i) => i !== index));
+      setBlueprintsImages((prevImages) =>
+        prevImages.filter((_, i) => i !== index)
+      );
     }
   };
 
@@ -165,7 +168,7 @@ const ProductForm = () => {
         alert("Producto Agregado Exitosamente");
         setForm({
           name: "",
-          carousel_images: [],
+          present_images: [],
           surface: "",
           description: "",
           intro_description: "",
@@ -325,20 +328,20 @@ const ProductForm = () => {
             </div>
 
             {/* img Inout */}
-            <ImgInput 
-            img={form.img}
-            handleDeleteImage={handleDeleteImage}
-            handleChangeVariantImg={handleChangeVariantImg}
-            title={"Imagen de Presentación"}
-            id={2}
+            <ImgInput
+              img={form.img}
+              handleDeleteImage={handleDeleteImage}
+              handleChangeVariantImg={handleChangeVariantImg}
+              title={"Imagen de Presentación"}
+              id={2}
             />
             {/* Blueprints Input */}
-            <BlueprintsInput 
-            img={form.blueprints}
-            handleDeleteImage={handleDeleteImage}
-            handleChangeVariantImg={handleChangeVariantImg}
-            title={"Planos"}
-            id={3}
+            <BlueprintsInput
+              img={form.blueprints}
+              handleDeleteImage={handleDeleteImage}
+              handleChangeVariantImg={handleChangeVariantImg}
+              title={"Planos"}
+              id={3}
             />
 
             <div class="sm:col-span-3">
@@ -480,6 +483,28 @@ const ProductForm = () => {
                     value={form.total_units}
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                   />
+                </div>
+              </div>
+            </div>
+
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="work_percentage"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Progreso de Obra (porcentaje)
+              </label>
+              <div className="mt-2">
+                <div className="flex items-center rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                  <input
+                    type="number"
+                    name="work_percentage"
+                    id="work_percentage"
+                    onChange={handleChange}
+                    value={form.work_percentage}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                  />
+                  <span className="text-gray-700 ml-2">%</span>
                 </div>
               </div>
             </div>

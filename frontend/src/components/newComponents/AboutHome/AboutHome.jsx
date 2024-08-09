@@ -1,6 +1,5 @@
 import React from "react";
 import videoSource from "../../../assets/video.mp4";
-
 const AboutHome = () => {
   return (
     <div className="relative flex flex-col md:flex-row items-start justify-center bg-white py-10 md:p-16 lg:px-32">
@@ -35,7 +34,7 @@ const AboutHome = () => {
       <div
         className="hidden lg:block absolute inset-0 bg-no-repeat bg-right"
         style={{
-          backgroundImage: `url('https://grupoproaco.com/images/bg-02.png?10109105914205d55b8882e7adfc31cf')`,
+          backgroundImage: `url(${videoSource})`,
         }}
       ></div>
     </div>

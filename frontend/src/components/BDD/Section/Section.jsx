@@ -12,9 +12,9 @@ const Section = ({
   handleSectionImageChange,
   setCurrentSectionIndex,
   currentSectionIndex,
-
   handleCloseUpload,
-  removeSection
+  removeSection,
+  detail
 }) => {
 
  const [images, setImages] = useState([]);
@@ -22,6 +22,7 @@ const Section = ({
  useEffect(() => {
   section && section.images && setImages(section.images)
   }, [section.images]);
+
 
   return (
     <div className="border rounded-lg p-4 mb-4">
@@ -71,7 +72,7 @@ const Section = ({
                 type="checkbox"
                 name={`sectionAmenities-${index}`}
                 value={amenity.label}
-                checked={section.amenities.includes(amenity.label)}
+                checked={detail ? section.amenities.includes(amenity) : section.amenities.includes(amenity.label)}
                 onChange={(e) => handleSectionCheckboxChange(index, e)}
                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />

@@ -53,7 +53,7 @@ const Header = () => {
               <img
                 src={navbar ? logo_b : logo_b}
                 alt="Logo"
-                style={{ width: "106px" }}
+                style={{ width: "136px" }}
               />
             </a>
           </div>
