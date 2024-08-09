@@ -160,7 +160,7 @@ const ProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/properties", [
+      const response = await axios.post("https://galindobackend-production.up.railway.app//properties", [
         form,
       ]);
 
@@ -186,7 +186,7 @@ const ProductForm = () => {
           zone: "",
           video: "",
         });
-        window.location.href = "http://localhost:3000/";
+        window.location.href = "https://galindosa.vercel.app/";
       } else {
         console.error("Error al agregar el producto.");
       }
