@@ -160,7 +160,7 @@ const ProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://galindobackend-production.up.railway.app//properties", [
+      const response = await axios.post("https://galindobackend-production.up.railway.app/properties", [
         form,
       ]);
 

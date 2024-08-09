@@ -34,7 +34,7 @@ const PropertyDetail = () => {
 
   const handleSaveChanges = () => {
     axios
-      .put(`https://galindobackend-production.up.railway.app//properties/${property.id}`, property)
+      .put(`https://galindobackend-production.up.railway.app/properties/${property.id}`, property)
       .then((response) => {
         alert("Cambios guardados con éxito");
         setIsChanging(false);
