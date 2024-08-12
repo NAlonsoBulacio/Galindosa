@@ -131,7 +131,7 @@ const Header = () => {
           <div
             className={`${
               navbar ? "text-gray-700 border-gray-700" : ""
-            } flex items-center border-[1px] hover:border-[#f5a623] hover:text-[#f5a623] duration-300 px-3 py-1 rounded-full`}
+            } flex items-center border-[1px] hover:border-[#ffc702] hover:text-[#ffc702] duration-300 px-3 py-1 rounded-full`}
           >
             <a
               href="/propiedades"
@@ -155,6 +155,13 @@ const Header = () => {
               Inicio
             </a>
             <a
+              href="/proyectos"
+              onClick={() => handleNavClick("/proyectos")}
+              className="text-lg"
+            >
+              Edificios
+            </a>
+            <a
               href="/sobre-nosotros"
               onClick={() => handleNavClick("/sobre-nosotros")}
               className="text-lg"
@@ -168,13 +175,7 @@ const Header = () => {
             >
               Contacto
             </a>
-            <a
-              href="/proyectos"
-              onClick={() => handleNavClick("/proyectos")}
-              className="text-lg"
-            >
-              Proyectos
-            </a>
+           
             <a
               href="/novedades"
               onClick={() => handleNavClick("/novedades")}
@@ -185,7 +186,7 @@ const Header = () => {
             <div>
               <a
                 href="/"
-                className="tracking-widest poppins-regular bg-[#fbcc00] hover:bg-[#a18c2d] duration-300 text-white px-3 py-2 rounded-3xl flex items-center justify-center gap-x-2 "
+                className="tracking-widest poppins-regular bg-[#ffc702] hover:bg-[#a18c2d] duration-300 text-white px-3 py-2 rounded-3xl flex items-center justify-center gap-x-2 "
               >
                 SOLICITAR ASESOR <IoIosContacts className="text-3xl" />
               </a>

@@ -4,7 +4,7 @@ import { IoIosContacts } from "react-icons/io";
 import { banner3 } from "../../../assets";
 const FlyerProjects = ({ banner }) => {
   return (
-    <div className="w-full flex flex-wrap justify-start items-center relative h-[45vh] lg:h-[63vh]">
+    <div className="w-full flex flex-wrap justify-start items-center relative h-[38vh] lg:h-[63vh]">
       <div className="z-10 absolute top-[50%] bottom-[50%] w-full flex flex-col justify-center items-center gap-y-4  ">
         <h1 className="poppins-semibold text-gray-50 text-2xl lg:text-4xl text-center w-full ">
           Nuestros Emprendimientos

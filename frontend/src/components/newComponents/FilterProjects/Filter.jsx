@@ -21,7 +21,7 @@ const FilterProjects = () => {
   };
 
   return (
-    <div className="filter-container p-6 rounded-3xl shadow-lg mx-auto mt-8 max-w-4xl relative">
+    <div className="filter-container p-6 rounded-3xl mx-auto mt-8 max-w-4xl relative">
       <div className="flex items-center justify-start bg-white w-48 rounded-t-3xl gap-x-2 px-3 py-2">
         <TbHomeSearch className="text-2xl font-semibold " />
         <h2 className="text-2xl poppins-regular">Buscador</h2>

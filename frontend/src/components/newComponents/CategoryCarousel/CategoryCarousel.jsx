@@ -51,14 +51,14 @@ const CategoryCarousel = () => {
   };
 
   return (
-    <div className="relative bg-cover bg-center text-white py-10 lg:px-32" style={{ backgroundImage: `url(${bg_yellow})` }}>
-      <h2 className="text-4xl font-semibold text-center mb-8">
+    <div className="relative bg-cover bg-center text-white py-8 lg:py-10 lg:px-32" style={{ backgroundImage: `url(${bg_yellow})` }}>
+      <h2 className="text-3xl lg:text-4xl font-semibold text-center mb-8 text-balance">
         Explore propiedades <span className="font-bold">por categoría</span>
       </h2>
       <Slider {...settings}>
         {categories.map((category, index) => (
           <div key={index} className="p-4">
-            <div className=" p-6 rounded-lg shadow-lg text-center">
+            <div className="p-4 lg:p-6 rounded-lg shadow-lg text-center">
               <img src={category.icon} alt={category.label} className="mx-auto mb-4 w-16 h-16" />
               <div className="text-xl font-medium">{category.label}</div>
             </div>

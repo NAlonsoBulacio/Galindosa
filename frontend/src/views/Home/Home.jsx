@@ -29,9 +29,8 @@ const Home = () => {
           <div>
             <a
               href="/"
-              className="tracking-widest poppins-regular bg-[#fbcc00] hover:bg-[#a18c2d] duration-300 text-white px-3 py-2 rounded-3xl flex items-center justify-center gap-x-2 mt-8"
+              className="tracking-widest poppins-regular bg-[#ffc702] hover:bg-[#a18c2d] duration-300 text-white px-3 py-2 rounded-3xl flex items-center justify-center gap-x-2 mt-8"
             >
-       
               SOLICITAR ASESOR <IoIosContacts className="text-3xl" />
             </a>
           </div>
@@ -41,11 +40,13 @@ const Home = () => {
         </div>
       </div>
       <div className="px-2">
-      <Counter />
-      <FeaturedProperties />
+        <Counter />
+        <FeaturedProperties />
+      </div>
       <CategoryCarousel />
-      <AboutHome />
-      <NewsCards />
+      <div className="px-2">
+        <AboutHome />
+        <NewsCards />
       </div>
 
       <Footer />

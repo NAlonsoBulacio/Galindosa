@@ -28,9 +28,9 @@ const FeaturedProperties = () => {
       <div className="w-full flex flex-col items-center">
         <h1 className="poppins-regular text-4xl text-gray-700 text-center lg:text-left">
           Proyectos{" "}
-          <span className="poppins-bold text-[#d3b42b]">Destacados</span>
+          <span className="poppins-bold text-[#ffc702]">Destacados</span>
         </h1>
-        <hr className="w-32 border-t-[3px] border-[#d3b42b] mt-2" />
+        <hr className="w-32 border-t-[3px] border-[#ffc702] mt-2" />
       </div>
       <div className="flex flex-wrap lg:flex-nowrap justify-center mt-8">
         {properties.map((property, index) => (

@@ -83,20 +83,20 @@ const Projects = () => {
       <Header />
       <FlyerProjects />
       <div className="flex flex-wrap justify-center items-center px-4 lg:px-10 xl:px-20 py-2 lg:py-8 space-y-4">
-        <div className="w-full flex flex-wrap justify-center items-center space-y-2 lg:space-y-4 py-6">
-          <h1 className="w-full text-center poppins-regular text-xl lg:text-4xl text-[#fbcc00] tracking-[0.2rem]">
+        {/* <div className="w-full flex flex-wrap justify-center items-center space-y-2 lg:space-y-4 py-6">
+          <h1 className="w-full text-center poppins-regular text-xl lg:text-4xl text-[#ffc702] tracking-[0.2rem]">
             Tu nuevo hogar te está esperando, buscalo acá...
           </h1>
-        </div>
+        </div> */}
 
-        <div className="w-full flex flex-wrap justify-center items-baseline lg:space-x-4 mb-8 space-y-4 lg:space-y-0">
+        <div className="w-full flex flex-wrap justify-center items-baseline lg:space-x-4 my-4 mb-8 space-y-4 lg:space-y-0">
           <div className="flex flex-col items-start w-full lg:w-auto">
             <label className="text-gray-700 font-bold mb-1">Estado</label>
             <div className="relative w-full lg:w-56">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="select-custom text-xl border-b-2 border-gray-300 focus:outline-none focus:border-[#fbcc00] appearance-none w-full pb-2"
+                className="select-custom text-xl border-b-2 border-gray-300 focus:outline-none focus:border-[#ffc702] appearance-none w-full pb-2"
               >
                 <option value="">Todos los Estados</option>
                 <option value="Terminado">Terminado</option>
@@ -104,7 +104,7 @@ const Projects = () => {
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg
-                  className="fill-current h-4 w-4 text-[#fbcc00]"
+                  className="fill-current h-8 w-8 text-[#ffc702]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -120,7 +120,7 @@ const Projects = () => {
               <select
                 value={zoneFilter}
                 onChange={(e) => setZoneFilter(e.target.value)}
-                className="border-b border-gray-400 text-xl focus:border-[#fbcc00] focus:outline-none appearance-none w-full pb-2"
+                className="border-b border-gray-400 text-xl focus:border-[#ffc702] focus:outline-none appearance-none w-full pb-2"
               >
                 <option value="">Todas las Zonas</option>
                 <option value="Barrio Sur">Barrio Sur</option>
@@ -129,7 +129,7 @@ const Projects = () => {
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg
-                  className="fill-current h-4 w-4 text-[#fbcc00]"
+                  className="fill-current h-8 w-8 text-[#ffc702]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -145,7 +145,7 @@ const Projects = () => {
               <select
                 value={roomsFilter}
                 onChange={(e) => setRoomsFilter(e.target.value)}
-                className="border-b border-gray-400 text-xl focus:border-[#fbcc00] focus:outline-none appearance-none w-full pb-2"
+                className="border-b border-gray-400 text-xl focus:border-[#ffc702] focus:outline-none appearance-none w-full pb-2"
               >
                 <option value="">Todos los Ambientes</option>
                 <option value="1 ambiente">1 ambiente</option>
@@ -157,7 +157,7 @@ const Projects = () => {
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg
-                  className="fill-current h-4 w-4 text-[#fbcc00]"
+                  className="fill-current h-8 w-8 text-[#ffc702]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -170,14 +170,14 @@ const Projects = () => {
           <div className="flex flex-col justify-end w-full lg:w-auto gap-y-2">
             <button
               onClick={handleFilterChange}
-              className="bg-[#fbcc00] hover:bg-[#9d882a] duration-300 text-white px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
+              className="bg-[#ffc702] hover:bg-[#9d882a] duration-300 text-white px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
             >
               <IoIosSearch className="text-2xl" />
               BUSCAR AHORA
             </button>
             <button
               onClick={handleCleanFilters}
-              className="bg-[#fbf9f2] hover:bg-[#fbcc00] duration-300 text-gray-700 hover:text-white border-[1px] border-[#fbcc00] px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
+              className="bg-[#fbf9f2] hover:bg-[#ffc702] duration-300 text-gray-700 hover:text-white border-[1px] border-[#ffc702] px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
             >
               <MdCleaningServices className="text-2xl" />
               LIMPIAR FILTROS

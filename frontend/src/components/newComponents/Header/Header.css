@@ -42,7 +42,7 @@
 }
 
 .active {
-  border-bottom: 2px solid #dbb9a0;
+  border-bottom: 2px solid #ffc702;
 }
 
 .a-h {
@@ -51,7 +51,7 @@
 }
 
 .a-h:hover {
-  border-bottom: 2px solid #dbb9a0;
+  border-bottom: 2px solid #ffc702;
 }
 
 .header a {
