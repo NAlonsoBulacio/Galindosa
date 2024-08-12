@@ -49,7 +49,7 @@ const Counter = () => {
 
   return (
     <div className="w-full flex flex-col justify-center items-center py-12 bg-gray-100">
-      <h2 className="text-2xl lg:text-4xl font-bold text-gray-800 mb-4">
+      <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
         Galindo SA en números
       </h2>
       <p className="text-gray-600 text-center mb-8">
@@ -58,10 +58,10 @@ const Counter = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center notranslate">
         {items.map((item, index) => (
           <div key={index} ref={item.ref} className=" p-6 rounded-lg ">
-            <p className="text-5xl lg:text-8xl font-bold text-gray-800">
+            <p className="text-5xl lg:text-6xl font-bold text-gray-800">
               {item.count.toLocaleString()}
             </p>
-            <p className="mt-2 text-2xl text-gray-600">{item.label}</p>
+            <p className="mt-2 text-xl lg:text-2xl text-gray-600">{item.label}</p>
           </div>
         ))}
       </div>

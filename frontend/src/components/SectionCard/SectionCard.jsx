@@ -102,7 +102,7 @@ const SectionCard = ({ section, index }) => {
               {sectionProps.amenities?.map((amenity, index) => (
                 <div key={index} className="flex flex-col items-center w-[15%]">
                   <img src={amenity.icon} alt={amenity.label} className=""/>
-                  <p className="text-md text-gray-600 text-center">{amenity.label}</p>
+                  <p className="text-lg text-black text-center">{amenity.label}</p>
                 </div>
               ))}
             </div>

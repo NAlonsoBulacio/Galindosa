@@ -9,16 +9,13 @@ const FlyerAboutUs = () => {
         <h1 className="poppins-bold text-white text-2xl lg:text-5xl text-center w-full">
           Nuestra empresa
         </h1>
-        <p className="poppins-regular text-gray-50 text-lg lg:text-xl text-center px-2 lg:px-40">
+        <p className="poppins-regular text-gray-50 text-lg lg:text-xl text-center px-2 lg:px-40 text-balance">
           Somos visionarios y disfrutamos marcando nuevos horizontes, porque
-          sabemos que el futuro se construye en el presente. Desarrollamos
-          tendencias porque vemos más allá, ofreciendo hoy, a cada uno de
-          nuestros públicos, una propuesta de valor que se anticipa a las
-          necesidades del mañana.
+          sabemos que el futuro se construye en el presente.
         </p>
         <a
           href="/"
-          className="bg-[#ccad24] hover:bg-[#a18c2d] duration-300 text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-sm lg:text-lg gap-x-2"
+          className="bg-[#ffc702] hover:bg-[#a18c2d] duration-300 text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-sm lg:text-lg gap-x-2"
         >
           Consultá con un asesor <IoIosContacts className="text-2xl" />
         </a>

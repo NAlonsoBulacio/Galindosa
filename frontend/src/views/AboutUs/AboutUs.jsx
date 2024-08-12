@@ -11,9 +11,14 @@ const AboutUs = () => {
     <div>
       <Header />
       <FlyerAboutUs />
+      <div className="px-2">
       <AboutHome />
+      </div>
+
       <CEOMessage />
+      <div className="px-2 bg-gray-100">
       <AboutUsCounter />
+      </div>
       <JoinUs />
       <Footer />
     </div>

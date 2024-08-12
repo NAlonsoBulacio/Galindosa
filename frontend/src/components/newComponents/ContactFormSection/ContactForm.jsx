@@ -43,7 +43,7 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit} className="justify-center items-center">
         <div >
           <h1
-            className="poppins-semibold text-[#ccad24] text-left text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+            className="poppins-semibold text-[#ffc702] text-left text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
             CONTÁCTANOS
           </h1>
@@ -53,7 +53,7 @@ const ContactForm = () => {
             <div className="w-full mb-4">
               <label
                 htmlFor="name"
-                className="block mb-2 text-left poppins-semibold text-[#ccad24]"
+                className="block mb-2 text-left poppins-semibold text-[#ffc702]"
               >
                 ¿Cuál es tu nombre y apellido?
               </label>
@@ -71,7 +71,7 @@ const ContactForm = () => {
             <div className="w-full mb-4">
               <label
                 htmlFor="email"
-                className="block mb-2 text-left poppins-semibold text-[#ccad24]"
+                className="block mb-2 text-left poppins-semibold text-[#ffc702]"
               >
                 Correo Electrónico:
               </label>
@@ -90,7 +90,7 @@ const ContactForm = () => {
           <div className="mb-4">
             <label
               htmlFor="subject"
-              className="block mb-2 text-left poppins-semibold text-[#ccad24]"
+              className="block mb-2 text-left poppins-semibold text-[#ffc702]"
             >
               Asunto
             </label>
@@ -108,7 +108,7 @@ const ContactForm = () => {
           <div className="mb-2">
             <label
               htmlFor="message"
-              className="block mb-2 text-left poppins-semibold text-[#ccad24]"
+              className="block mb-2 text-left poppins-semibold text-[#ffc702]"
             >
               Mensaje
             </label>
@@ -124,7 +124,7 @@ const ContactForm = () => {
           </div>
           <div className="flex justify-end relative">
             <button
-              className="text-white py-2 px-4 bg-[#ccad24] poppins-regular text-lg w-full md:w-1/5 rounded-sm transform transition-transform hover:scale-110"
+              className="text-white py-2 px-4 bg-[#ffc702] poppins-regular text-lg w-full md:w-1/5 rounded-sm transform transition-transform hover:scale-110"
               type="submit"
               style={{padding: "12px" }}
             >

@@ -13,7 +13,7 @@ const DescriptionContact = () => {
           SOLICITANOS INFORMACIÓN
         </p>
         <div className="w-full">
-          <p className="text-left text-3xl lg:text-5xl poppins-bold text-[#ccad24]">
+          <p className="text-left text-3xl lg:text-5xl poppins-bold text-[#ffc702]">
             ¿Tienes alguna pregunta?
           </p>
         </div>
@@ -27,7 +27,7 @@ const DescriptionContact = () => {
         </div>
         <div className="w-full flex justify-start ">
           <div className="w-1/5">
-            <hr className="my-2 border-[1.5px] border-[#ccad24]" />
+            <hr className="my-2 border-[1.5px] border-[#ffc702]" />
           </div>
         </div>
         <div className="w-full flex flex-wrap justify-start items-center text-left text-lg text-gray-600 space-y-4">

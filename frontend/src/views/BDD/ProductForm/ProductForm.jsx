@@ -261,6 +261,28 @@ const ProductForm = () => {
               </div>
             </div>
 
+              {/* Campo de descripción introductoria */}
+              <div className="sm:col-span-4">
+              <label
+                htmlFor="intro_description"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+               Titulo Introductorio
+              </label>
+              <div className="mt-2">
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                  <textarea
+                    name="intro_description"
+                    id="intro_description"
+                    onChange={handleChange}
+                    value={form.intro_description}
+                    rows="3"
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Campo de descripción */}
             <div className="sm:col-span-4">
               <label
@@ -283,27 +305,7 @@ const ProductForm = () => {
               </div>
             </div>
 
-            {/* Campo de descripción introductoria */}
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="intro_description"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Descripción Introductoria
-              </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <textarea
-                    name="intro_description"
-                    id="intro_description"
-                    onChange={handleChange}
-                    value={form.intro_description}
-                    rows="3"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
+          
 
             {/* Campo de video */}
             <div className="sm:col-span-4">
@@ -345,7 +347,7 @@ const ProductForm = () => {
             />
 
             <div class="sm:col-span-3">
-              <p>Imagenes</p>
+              <p>Imagenes del Carrusel - Dimensiones 19 : 9</p>
               <div className="flex">
                 {images
                   ? images?.map((img, index) => (

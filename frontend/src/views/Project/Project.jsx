@@ -115,7 +115,7 @@ const Project = ({ match }) => {
             <Amenities amenities={detail.amenities} />
           </div>
 
-          <div className="flex flex-wrap justify-between items-start py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0">
+          {/* <div className="flex flex-wrap justify-between items-start py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0">
             <div className="w-full lg:w-[43%] flex flex-col justify-between items-start px-2 gap-y-4">
               <h1 className="text-left text-3xl lg:text-4xl l poppins-regular text-gray-800 font-bold">
                 {detail.introDescription}
@@ -204,12 +204,12 @@ const Project = ({ match }) => {
                 </div>
               )}
             </div>
-          </div>
+          </div> */}
 
-          <div className="w-full flex justify-center items-start bg-black text-white py-12">
-            <div className="container flex justify-center items-start gap-x-12">
-              <div>
-                <h2 className="text-2xl lg:text-4xl poppins-light">
+          <div className="w-full flex  justify-center items-start bg-black text-white py-12">
+            <div className="container flex flex-wrap lg:flex-nowrap justify-center items-start gap-x-12">
+              <div className="flex justify-center flex-wrap lg:block w-full lg:w-auto">
+                <h2 className="text-2xl lg:text-4xl poppins-light ">
                   Sobre <span className="poppins-semibold">{detail.name}</span>
                 </h2>
                 <hr className="border-[#fbcc00] border-[1px] my-6 w-1/4" />
@@ -218,7 +218,7 @@ const Project = ({ match }) => {
                 </p>
               </div>
               <div>
-                <div className="flex space-x-6 items-center">
+                <div className="flex flex-wrap justify-center lg:justify-normal space-x-6 items-center">
                   <div className="flex flex-col items-center  ">
                     <p className="text-2xl poppins-light">{detail.initDate}</p>
                     <p className="text-sm text-[#fbcc00] poppins-semibold">
