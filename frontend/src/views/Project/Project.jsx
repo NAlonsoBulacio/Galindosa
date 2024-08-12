@@ -15,8 +15,7 @@ import GoogleMapEmbed from "../../components/GoogleMapEmbed/GoogleMapEmbed";
 import Amenities from "../../components/newComponents/Amenities/Amenities";
 import BlueprintsCarousel from "../../components/newComponents/Blueprints/Blueprints";
 import SectionCard from "../../components/SectionCard/SectionCard";
-import { IoIosContacts } from "react-icons/io";
-import ReactPlayer from "react-player";
+import ContactForm from "../../components/newComponents/ContactForm/ContactForm";
 import Banner from "../../components/newComponents/Flyers/Banner/ProjectBanner";
 
 const Project = ({ match }) => {
@@ -103,113 +102,43 @@ const Project = ({ match }) => {
   ? ((parseInt(detail.unitsVailable) / parseInt(detail.totalUnits)) * 100)
   : 0;
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const toggleForm = () => {
+    setIsFormOpen(!isFormOpen);
+  };
+
   return (
     <>
       {detail ? (
-        <div>
+        <div className="mt-[80px] lg:mt-0">
           {detail.presentImages && detail.presentImages.length > 0 && (
             <Banner banners={detail.presentImages} />
           )}
           <Header />
-          <div>
+          <div className="bg-[#a58700] py-4 border-b-[1px] border-b-[#ffc702]">
+      <p
+        onClick={toggleForm}
+        className="text-gray-100 text-center text-lg poppins-regular cursor-pointer"
+      >
+        Solicitar Info
+      </p>
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+          isFormOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ContactForm />
+      </div>
+    </div>
+          <div className="">
             <Amenities amenities={detail.amenities} />
           </div>
-
-          {/* <div className="flex flex-wrap justify-between items-start py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0">
-            <div className="w-full lg:w-[43%] flex flex-col justify-between items-start px-2 gap-y-4">
-              <h1 className="text-left text-3xl lg:text-4xl l poppins-regular text-gray-800 font-bold">
-                {detail.introDescription}
-              </h1>
-              <p className="text-sm lg:text-md poppins-light">
-                {detail.description}
-              </p>
-              <a
-                href="/"
-                className="bg-[#ccad24] hover:bg-[#a18c2d] text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-lg gap-x-2 "
-              >
-                Consultá <IoIosContacts className="text-2xl" />
-              </a>
-            </div>
-
-            <div
-              className={`${
-                isFullscreen ? "w-screen" : "w-full lg:w-2/4"
-              } project-slider z-20 flex flex-wrap lg:flex-nowrap justify-between items-start gap-3`}
-            >
-              {detail.video ? (
-                <div className="w-full lg:w-[80%] h-auto flex justify-center items-center">
-                  <ReactPlayer
-                    url={`https://www.youtube.com/watch?v=${detail.video}`}
-                    className="w-full"
-                  />
-                </div>
-              ) : (
-                <div
-                  ref={sliderRef}
-                  className={`w-full lg:w-[80%] h-auto flex justify-center items-center ${
-                    isFullscreen
-                      ? "fixed lg:w-full inset-0 z-50 bg-gray-900 bg-opacity-75"
-                      : ""
-                  }`}
-                >
-                  <div
-                    className={`w-full h-[320px] rounded-xl overflow-hidden ${
-                      isFullscreen ? "w-[80%] h-full" : ""
-                    }`}
-                  >
-                    <Slider
-                      {...settings}
-                      className={`${isFullscreen ? "h-full" : ""}`}
-                    >
-                      {images.map((image, index) => (
-                        <div
-                          key={index}
-                          className={`h-full relative ${
-                            isFullscreen ? "flex justify-center items-center" : ""
-                          } group`}
-                        >
-                          <img
-                            src={image}
-                            alt={`Slide ${index}`}
-                            className={`w-full ${
-                              isFullscreen
-                                ? "max-h-full"
-                                : "object-cover h-[320px]"
-                            }`}
-                          />
-                          {isFullscreen && (
-                            <div className="absolute top-8 right-8 hidden lg:block group-hover:block">
-                              <button
-                                onClick={toggleFullScreen}
-                                className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 opacity-0 group-hover:opacity-100 duration-150 rounded-lg"
-                              >
-                                <MdFullscreenExit className="text-white w-full text-[60px]" />
-                              </button>
-                            </div>
-                          )}
-                          {!isFullscreen && (
-                            <div className="absolute top-8 right-8 hidden lg:block group-hover:block">
-                              <button
-                                onClick={toggleFullScreen}
-                                className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-0 group-hover:opacity-100 duration-150"
-                              >
-                                <MdFullscreen className="text-white w-full text-4xl" />
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </Slider>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div> */}
 
           <div className="w-full flex  justify-center items-start bg-black text-white py-12">
             <div className="container flex flex-wrap lg:flex-nowrap justify-center items-start gap-x-12">
               <div className="flex justify-center flex-wrap lg:block w-full lg:w-auto">
-                <h2 className="text-2xl lg:text-4xl poppins-light ">
+                <h2 className="text-2xl lg:text-4xl poppins-light w-full lg:w-auto">
                   Sobre <span className="poppins-semibold">{detail.name}</span>
                 </h2>
                 <hr className="border-[#fbcc00] border-[1px] my-6 w-1/4" />
@@ -234,7 +163,7 @@ const Project = ({ match }) => {
                   <CircularProgress percentage={100} label="Obra" />
                   <CircularProgress percentage={unitsSoldPercentage} label="Venta" />
                 </div>
-              </div>
+              </div> 
             </div>
           </div>
 

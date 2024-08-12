@@ -29,7 +29,7 @@ const ProductForm = () => {
     longitude: "",
     address: "",
     status: "",
-    rooms: "",
+    rooms: [],
     amenities: [],
     sections: [],
     zone: "",
@@ -54,6 +54,7 @@ const ProductForm = () => {
         : prevForm[name].filter((item) => item !== value),
     }));
   };
+
 
   const handleSectionCheckboxChange = (index, e) => {
     const { value, checked } = e.target;
@@ -347,7 +348,7 @@ const ProductForm = () => {
             />
 
             <div class="sm:col-span-3">
-              <p>Imagenes del Carrusel - Dimensiones 19 : 9</p>
+              <p>Imagenes del Carrusel - Dimensiones 16 : 9</p>
               <div className="flex">
                 {images
                   ? images?.map((img, index) => (
@@ -598,31 +599,35 @@ const ProductForm = () => {
               </div>
             </div>
 
-            <div className="sm:col-span-4">
+ {/* Campo de Ambientes */}
+ <div className="sm:col-span-4">
               <label
                 htmlFor="rooms"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Ambientes
               </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <select
-                    name="rooms"
-                    id="rooms"
-                    onChange={handleChange}
-                    value={form.rooms}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
-                  >
-                    <option value="">Seleccione un ambiente</option>
-                    <option value="Monoambiente">Monoambiente</option>
-                    <option value="2 ambientes">2 ambientes</option>
-                    <option value="3 ambientes">3 ambientes</option>
-                    <option value="4 ambientes">4 ambientes</option>
-                    <option value="5 ambientes">5 ambientes</option>
-                    <option value="Casa">Casa</option>
-                  </select>
-                </div>
+              <div className="mt-2 grid grid-cols-2 gap-4">
+                {["Monoambiente", "2 ambientes", "3 ambientes", "4 ambientes", "5 ambientes", "Casa"].map(
+                  (room, index) => (
+                    <div key={index} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="rooms"
+                        value={room}
+                        onChange={handleCheckboxChange}
+                        checked={form.rooms.includes(room)}
+                        className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                      />
+                      <label
+                        htmlFor="rooms"
+                        className="ml-2 block text-sm text-gray-900"
+                      >
+                        {room}
+                      </label>
+                    </div>
+                  )
+                )}
               </div>
             </div>
 

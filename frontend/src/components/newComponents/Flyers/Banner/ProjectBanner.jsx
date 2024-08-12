@@ -43,7 +43,6 @@ const Banner = ({banners}) => {
       buttonText: "Comprar Ahora",
     },
   ];
-  console.log(banners[0]);
 
   // Filtrar slides según el tamaño de la pantalla
   const filteredSlides =
@@ -53,7 +52,7 @@ const Banner = ({banners}) => {
 
   return (
     <div className="w-full  bg-white overflow-hidden relative">
-       <div className="absolute top-16 right-4 z-30 mx-8 flex justify-center items-center">
+       <div className="absolute top-16 right-4 z-30 mx-8 hidden lg:flex justify-center items-center">
         <ContactForm />
       </div>
       <Slider {...settings}>

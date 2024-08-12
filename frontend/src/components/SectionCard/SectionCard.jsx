@@ -14,7 +14,7 @@ const SectionCard = ({ section, index }) => {
   const sliderRef = useRef(null);
 
   useEffect(() => {
-    setSectionProps(section);
+    setSectionProps(section); 
   }, [section]);
 
   const toggleFullScreen = () => {
