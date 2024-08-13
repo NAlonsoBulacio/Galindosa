@@ -8,12 +8,7 @@ const CustomSlide = ({ Subtext, imgSrc, text, buttonLink, buttonText }) => {
         src={imgSrc}
         alt="slide image"
       />
-      {/* <a
-        href={buttonLink}
-        className="cursor-pointer rounded-sm absolute bottom-8 lg:bottom-20 left-10 lg:left-24 uppercase text-xs lg:text-xl p-3 lg:p-4 bg-gray-900 hover:bg-[#fc148c] duration-300 text-gray-50"
-      >
-        {buttonText}
-      </a> */}
+     <h1 className="absolute top-[50%] left-8 mx-6 lg:mx-0 text-2xl lg:text-5xl poppins-bold text-white text-balance">{text}</h1>
     </div>
   );
 };

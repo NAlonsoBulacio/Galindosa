@@ -108,7 +108,7 @@ const Project = ({ match }) => {
       {detail ? (
         <div className="mt-[80px] lg:mt-0">
           {detail.presentImages && detail.presentImages.length > 0 && (
-            <Banner banners={detail.presentImages} />
+            <Banner banners={detail.presentImages} name={detail.name}/>
           )}
           <Header />
           <div className="block lg:hidden bg-[#a58700] py-4 border-b-[1px] border-b-[#ffc702]">

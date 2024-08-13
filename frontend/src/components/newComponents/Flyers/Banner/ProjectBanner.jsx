@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import CustomSlide from "./CustomSlide";
 import ContactForm from "../../ContactForm/ContactForm";
-const Banner = ({banners}) => {
-  const [dotActive, setDotActive] = useState(0);
+const Banner = ({banners, name}) => {
 
   const settings = {
     dots: true,
@@ -20,15 +19,15 @@ const Banner = ({banners}) => {
     {
       imgSrc:
       banners[0],
-      text: "Quality Printing Solutions",
+      text: name,
       Subtext:
         "Discover our wide range of printers and consumables designed for professional printing needs.",
       buttonLink: "/catalogo",
       buttonText: "Comprar Ahora",
     },
     {
-      imgSrc: banners[0],
-      text: "Enhance Your Printing Experience",
+      imgSrc: banners[1],
+      text: name,
       Subtext:
         "Explore our premium printers and consumables for exceptional results",
       buttonLink: "/catalogo",
@@ -36,7 +35,7 @@ const Banner = ({banners}) => {
     },
     {
       imgSrc: banners[0],
-      text: "Efficiency Redefined",
+      text: name,
       Subtext:
         "Maximize productivity with our advanced printers and high-quality consumables. ",
       buttonLink: "/shop",
