@@ -39,9 +39,9 @@ const NewsCards = () => {
       <div className="w-full flex flex-col items-center mb-10">
         <h1 className="poppins-regular text-4xl text-gray-700 text-center lg:text-left">
           Nuestras{" "}
-          <span className="poppins-bold text-[#d3b42b]">Novedades</span>
+          <span className="poppins-bold text-[#ffc702]">Novedades</span>
         </h1>
-        <hr className="w-32 border-t-[3px] border-[#d3b42b] mt-2" />
+        <hr className="w-32 border-t-[3px] border-[#ffc702] mt-2" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {newsData.map((news, index) => (

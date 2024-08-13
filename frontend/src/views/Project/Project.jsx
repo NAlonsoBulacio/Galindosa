@@ -3,12 +3,8 @@ import Footer from "../../components/newComponents/Footer/Footer";
 import Header from "../../components/newComponents/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { emptyDetail, getProjects } from "../../redux/actions";
-import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import SampleNextArrow from "../../utils/SampleNextArrow";
 import SamplePrevArrow from "../../utils/SamplePrevArrow";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./Project.css";
 import CircularProgress from "../../components/newComponents/CircularProgress/CircularProgress";
 import GoogleMapEmbed from "../../components/GoogleMapEmbed/GoogleMapEmbed";
@@ -65,9 +61,18 @@ const Project = ({ match }) => {
 
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener("mozfullscreenchange", handleFullscreenChange);
-      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
-      document.removeEventListener("msfullscreenchange", handleFullscreenChange);
+      document.removeEventListener(
+        "mozfullscreenchange",
+        handleFullscreenChange
+      );
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        handleFullscreenChange
+      );
+      document.removeEventListener(
+        "msfullscreenchange",
+        handleFullscreenChange
+      );
     };
   }, []);
 
@@ -86,27 +91,17 @@ const Project = ({ match }) => {
     };
   }, [dispatch]);
 
-  const images = detail ? detail.present_images : [];
-
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dots: !isFullscreen,
-    nextArrow: isFullscreen ? <SampleNextArrow /> : null,
-    prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
-  };
-
   const unitsSoldPercentage = detail
-  ? ((parseInt(detail.unitsVailable) / parseInt(detail.totalUnits)) * 100)
-  : 0;
+    ? (parseInt(detail.unitsVailable) / parseInt(detail.totalUnits)) * 100
+    : 0;
 
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
+
+  console.log(detail);
 
   return (
     <>
@@ -116,33 +111,36 @@ const Project = ({ match }) => {
             <Banner banners={detail.presentImages} />
           )}
           <Header />
-          <div className="bg-[#a58700] py-4 border-b-[1px] border-b-[#ffc702]">
-      <p
-        onClick={toggleForm}
-        className="text-gray-100 text-center text-lg poppins-regular cursor-pointer"
-      >
-        Solicitar Info
-      </p>
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-          isFormOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <ContactForm />
-      </div>
-    </div>
+          <div className="block lg:hidden bg-[#a58700] py-4 border-b-[1px] border-b-[#ffc702]">
+            <p
+              onClick={toggleForm}
+              className="text-gray-100 text-center text-lg poppins-regular cursor-pointer"
+            >
+              Solicitar Info
+            </p>
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                isFormOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              <ContactForm />
+            </div>
+          </div>
           <div className="">
             <Amenities amenities={detail.amenities} />
           </div>
 
-          <div className="w-full flex  justify-center items-start bg-black text-white py-12">
+          <div className="w-full flex  justify-center items-start bg-black text-white py-12 px-2 lg:px-0">
             <div className="container flex flex-wrap lg:flex-nowrap justify-center items-start gap-x-12">
-              <div className="flex justify-center flex-wrap lg:block w-full lg:w-auto">
-                <h2 className="text-2xl lg:text-4xl poppins-light w-full lg:w-auto">
+              <div className="flex justify-center lg:justify-center flex-wrap lg:block w-full lg:w-auto">
+                <h2 className="text-3xl lg:text-4xl poppins-light w-full lg:w-auto text-center text-balance">
                   Sobre <span className="poppins-semibold">{detail.name}</span>
                 </h2>
+                <p className="block lg:hidden text-lg poppins-light w-full lg:w-auto text-center text-balance">
+                  Edificio de Departamentos
+                </p>
                 <hr className="border-[#fbcc00] border-[1px] my-6 w-1/4" />
-                <p className="text-lg poppins-light">
+                <p className="hidden lg:block text-lg poppins-light w-full lg:w-auto text-center text-balance">
                   Edificio de Departamentos
                 </p>
               </div>
@@ -155,15 +153,22 @@ const Project = ({ match }) => {
                     </p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <p className="text-2xl poppins-light">{detail.finishedDate}</p>
+                    <p className="text-2xl poppins-light">
+                      {detail.finishedDate}
+                    </p>
                     <p className="text-sm text-[#fbcc00] poppins-semibold">
                       Posesión
                     </p>
                   </div>
-                  <CircularProgress percentage={100} label="Obra" />
-                  <CircularProgress percentage={unitsSoldPercentage} label="Venta" />
+                  <div className="w-full flex justify-center gap-x-14">
+                    <CircularProgress percentage={100} label="Obra" />
+                    <CircularProgress
+                      percentage={unitsSoldPercentage}
+                      label="Venta"
+                    />
+                  </div>
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
 

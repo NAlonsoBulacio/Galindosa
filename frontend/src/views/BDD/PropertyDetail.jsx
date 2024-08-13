@@ -27,17 +27,21 @@ const PropertyDetail = () => {
   useEffect(() => {
     const filteredProject = projectsR.find((p) => p.slug === slug);
     setProperty(filteredProject);
-    if (property !== null) {
-      setPresentImages(property.presentImages ? property.presentImages : "");
-    }
   }, [slug, projectsR]);
 
+  useEffect(() => {
+    if (property && Array.isArray(property.presentImages)) {
+      setPresentImages(property.presentImages);
+    } else {
+      setPresentImages([]);
+    }
+  }, [property]);
+
   const handleSaveChanges = () => {
+    if (!property) return;
+    
     axios
-      .put(
-        `https://galindobackend-production.up.railway.app/properties/${property.id}`,
-        property
-      )
+      .put(`https://galindobackend-production.up.railway.app/properties/${property.id}`, property)
       .then((response) => {
         alert("Cambios guardados con éxito");
         setIsChanging(false);
@@ -63,6 +67,7 @@ const PropertyDetail = () => {
   const handleCheckboxChange = (e) => {
     const { name, value, checked } = e.target;
 
+    // Buscar el amenity correspondiente al id
     if (name === "amenities") {
       const selectedAmenity = amenities.find(
         (amenity) => amenity.id.toString() === value
@@ -74,8 +79,7 @@ const PropertyDetail = () => {
           ? [...prevProperty[name], selectedAmenity]
           : prevProperty[name].filter((item) => item.id !== selectedAmenity.id),
       }));
-    } else if (name === "rooms" || name === "categories") {
-      // Manejar rooms y categories como arrays de checkboxes
+    } else {
       setProperty((prevProperty) => ({
         ...prevProperty,
         [name]: checked
@@ -191,6 +195,11 @@ const PropertyDetail = () => {
     setCurrentSectionIndex(null);
   };
 
+  if (!property) {
+    return <div>Cargando...</div>;
+  }
+console.log(property);
+
   return (
     <>
       <div className="px-32 py-10">
@@ -262,11 +271,11 @@ const PropertyDetail = () => {
                 id={2}
               />
 
-              <div className="sm:col-span-3">
+              <div class="sm:col-span-3">
                 <p>Imagenes</p>
                 <div className="flex">
-                  {presentImages
-                    ? presentImages?.map((img, index) => (
+                  {presentImages !== "" ?
+                     presentImages?.map((img, index) => (
                         <div key={index} className="w-24 relative">
                           <img className="" src={img} />
                           <div
@@ -322,6 +331,22 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.surface} m²</p>
                 )}
               </div>
+              {/* work_percentage */}
+              <div className="flex justify-start items-center gap-2">
+                <h1 className="w-auto font-semibold">Progreso de Obra: </h1>
+                {isChanging ? (
+                  <input
+                    type="text"
+                    name="workPercentage"
+                    id="workPercentage"
+                    value={property.workPercentage}
+                    onChange={handleChange}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
+                  />
+                ) : (
+                  <p className="text-sm">{property.workPercentage} %</p>
+                )}
+              </div>
 
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">Descripción: </h1>
@@ -338,7 +363,6 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.description}</p>
                 )}
               </div>
-
               {/* Intro Description */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">
@@ -346,18 +370,17 @@ const PropertyDetail = () => {
                 </h1>
                 {isChanging ? (
                   <textarea
-                    name="intro_description"
-                    id="intro_description"
+                    name="introDescription"
+                    id="introDescription"
                     onChange={handleChange}
-                    value={property.intro_description}
+                    value={property.introDescription}
                     rows="3"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                   />
                 ) : (
-                  <p className="text-sm">{property.intro_description}</p>
+                  <p className="text-sm">{property.introDescription}</p>
                 )}
               </div>
-
               {/* Video ID */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">
@@ -376,7 +399,6 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.video}</p>
                 )}
               </div>
-
               {/* Zone */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">Zona: </h1>
@@ -396,89 +418,39 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.zone}</p>
                 )}
               </div>
-
-              {/* Rooms */}
-              <div className="sm:col-span-4">
-                <label
-                  htmlFor="rooms"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Ambientes
-                </label>
-                <div className="mt-2 grid grid-cols-2 gap-4">
-                  {["Monoambiente", "2 ambientes", "3 ambientes", "4 ambientes", "5 ambientes", "Casa"].map(
-                    (room, index) => (
-                      <div key={index} className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="rooms"
-                          value={room}
-                          onChange={handleCheckboxChange}
-                          checked={property.rooms.includes(room)}
-                          className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                        />
-                        <label
-                          htmlFor="rooms"
-                          className="ml-2 block text-sm text-gray-900"
-                        >
-                          {room}
-                        </label>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-
               {/* Units Available */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">Unidades disponibles: </h1>
                 {isChanging ? (
                   <input
                     type="number"
-                    name="units_available"
-                    id="units_available"
-                    value={property.units_available}
+                    name="unitsVailable"
+                    id="unitsVailable"
+                    value={property.unitsVailable}
                     onChange={handleChange}
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
                   />
                 ) : (
-                  <p className="text-sm">{property.units_available}</p>
+                  <p className="text-sm">{property.unitsVailable}</p>
                 )}
               </div>
-
               {/* Total Units */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">Total de unidades: </h1>
                 {isChanging ? (
                   <input
                     type="number"
-                    name="total_units"
-                    id="total_units"
-                    value={property.total_units}
+                    name="totalUnits"
+                    id="totalUnits"
+                    value={property.totalUnits}
                     onChange={handleChange}
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
                   />
                 ) : (
-                  <p className="text-sm">{property.total_units}</p>
+                  <p className="text-sm">{property.totalUnits}</p>
                 )}
               </div>
 
-              {/* work_percentage */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Progreso de Obra: </h1>
-                {isChanging ? (
-                  <input
-                    type="number"
-                    name="work_percentage"
-                    id="work_percentage"
-                    value={property.work_percentage}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.work_percentage}%</p>
-                )}
-              </div>
 
               {/* Latitude */}
               <div className="flex justify-start items-center gap-2">
@@ -496,7 +468,6 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.latitude}</p>
                 )}
               </div>
-
               {/* Longitude */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">Longitud: </h1>
@@ -513,7 +484,6 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.longitude}</p>
                 )}
               </div>
-
               {/* Address */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">Dirección: </h1>
@@ -530,7 +500,6 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.address}</p>
                 )}
               </div>
-
               {/* Categories */}
               <div className="sm:col-span-4">
                 <label
@@ -566,7 +535,6 @@ const PropertyDetail = () => {
                   )}
                 </div>
               </div>
-
               {/* Amenities */}
               <div className="sm:col-span-4">
                 <label
@@ -585,9 +553,7 @@ const PropertyDetail = () => {
                         onChange={handleCheckboxChange}
                         checked={
                           property.amenities
-                            ? property.amenities.some(
-                                (item) => item.id === amenity.id
-                              )
+                            ? property.amenities.includes(amenity)
                             : false
                         }
                         className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
@@ -602,7 +568,6 @@ const PropertyDetail = () => {
                   ))}
                 </div>
               </div>
-
               {/* Sections */}
               <div className="col-span-full">
                 <h3 className="text-lg font-medium leading-6 text-gray-900">

@@ -57,6 +57,7 @@ const reducer = (state = initialState, action) => {
           video: project.video,
           sections: cleanSections,
           blueprints: project.blueprints,
+          workPercentage: project.work_percentage
         };
       });
 

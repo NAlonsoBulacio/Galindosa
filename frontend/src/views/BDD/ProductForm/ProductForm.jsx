@@ -200,6 +200,8 @@ const ProductForm = () => {
     setUploadImg(false);
     setCurrentSectionIndex(null);
   };
+  console.log(form);
+  
   return (
     <form
       className="px-4 md:px-8 max-w-3xl mx-auto py-12"

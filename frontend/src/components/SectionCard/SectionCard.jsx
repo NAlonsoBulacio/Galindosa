@@ -98,7 +98,7 @@ const SectionCard = ({ section, index }) => {
             <p className="text-sm lg:text-md poppins-light">
               {sectionProps.text}
             </p>
-            <div className="flex flex-wrap gap-6 mt-4">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-6 mt-4">
               {sectionProps.amenities?.map((amenity, index) => (
                 <div key={index} className="flex flex-col items-center w-[15%]">
                   <img src={amenity.icon} alt={amenity.label} className=""/>
@@ -122,14 +122,14 @@ const SectionCard = ({ section, index }) => {
             {images ? (
               <div
                 ref={sliderRef}
-                className={`w-full lg:w-[80%] h-auto flex justify-center items-center ${
+                className={`w-full lg:w-[80%] h-auto flex justify-center items-center px-2 ${
                   isFullscreen
                     ? "fixed lg:w-full inset-0 z-50 bg-gray-900 bg-opacity-75"
                     : ""
                 }`}
               >
                 <div
-                  className={`w-full h-[320px] rounded-xl overflow-hidden ${
+                  className={`w-full h-[320px] rounded-xl overflow-hidden  ${
                     isFullscreen ? "w-[80%] h-full" : ""
                   }`}
                 >

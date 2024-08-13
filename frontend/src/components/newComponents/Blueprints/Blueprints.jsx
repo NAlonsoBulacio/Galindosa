@@ -99,7 +99,7 @@ const BlueprintsCarousel = ({ blueprints }) => {
   }, []);
 
   return (
-    <div className="w-full pb-6 lg:pb-4 mb-8 space-y-10 py-8 lg:px-32">
+    <div className="w-full pb-6 lg:pb-4 mb-8 space-y-10 py-8 px-2 lg:px-32">
       <h1 className="text-left text-2xl lg:text-3xl poppins-regular text-gray-700">
         Planos del proyecto
       </h1>
@@ -115,16 +115,7 @@ const BlueprintsCarousel = ({ blueprints }) => {
           </div>
         ))}
       </Slider>
-      <button
-        onClick={toggleFullScreen}
-        className="bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg p-2 mt-4"
-      >
-        {isFullscreen ? (
-          <MdFullscreenExit className="text-white text-2xl" />
-        ) : (
-          <MdFullscreen className="text-white text-2xl" />
-        )}
-      </button>
+
 
       <Modal
         isOpen={isModalOpen}

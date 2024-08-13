@@ -4,7 +4,7 @@ const AboutHome = () => {
   return (
     <div className="relative flex flex-col md:flex-row items-start justify-center bg-white py-10 md:p-16 lg:px-32">
       <div className="md:w-1/2 pr-0 md:pr-8">
-        <h3 className="text-[#ccad24] poppins-semibold text-xl mb-4 tracking-widest">
+        <h3 className="text-[#ffc702] poppins-semibold text-xl mb-4 tracking-widest">
           DESARROLLAMOS TENDENCIA
         </h3>
         <h2 className="text-3xl text-gray-700 poppins-bold mb-4">
@@ -21,7 +21,7 @@ const AboutHome = () => {
           gestionamos la construcción, la comercialización y la financiación de
           todos nuestros productos.
         </p>
-        <p className="text-[#ccad24] text-lg poppins-regular">
+        <p className="text-[#ffc702] text-lg poppins-regular">
           #DesarrollamosTendencia
         </p>
       </div>
