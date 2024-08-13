@@ -140,7 +140,7 @@ const Project = ({ match }) => {
                   Edificio de Departamentos
                 </p>
                 <hr className="border-[#fbcc00] border-[1px] my-6 w-1/4" />
-                <p className="hidden lg:block text-lg poppins-light w-full lg:w-auto text-center text-balance">
+                <p className="hidden lg:block text-lg poppins-light w-full lg:w-auto text-left text-balance">
                   Edificio de Departamentos
                 </p>
               </div>
