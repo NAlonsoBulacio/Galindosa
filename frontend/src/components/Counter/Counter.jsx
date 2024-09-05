@@ -4,15 +4,16 @@ import "./Counter.css";
 const Counter = () => {
   const [count1, setCount1] = useState(10);
   const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(10000);
 
   const [ref1, inView1] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.3,
   });
 
   const [ref2, inView2] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.3,
   });
   const [ref3, inView3] = useInView({
     triggerOnce: true,
@@ -28,11 +29,14 @@ const Counter = () => {
   };
 
   if (inView1) {
-    incrementCount(count1, setCount1, 57, 1);
+    incrementCount(count1, setCount1, 50, 1);
   }
 
   if (inView2) {
-    incrementCount(count2, setCount2, 1.9, 0.1);
+    incrementCount(count2, setCount2, 49, 1);
+  }
+  if (inView3) {
+    incrementCount(count3, setCount3, 300000, 10000);
   }
 
   return (
@@ -45,7 +49,7 @@ const Counter = () => {
             className="w-full flex justify-center md:justify-center items-center"
           >
             <p className="text-gray-600 poppins-bold text-center w-32 md:w-40 text-4xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
-              +{count1}K
+              +{count1}
             </p>
           </div>
           <div className="w-full flex justify-center md:justify-center px-6">
@@ -55,7 +59,7 @@ const Counter = () => {
                 inView3 ? "animatable-type" : "initial-type"
               } text-center poppins-regular text-gray-900 text-xs lg:text-xl`}
             >
-              Proyectos Realizados
+              Edificios Construidos
             </h1>
           </div>
         </div>
@@ -65,7 +69,7 @@ const Counter = () => {
             className="w-full flex justify-center md:justify-center items-center"
           >
             <p className="text-gray-600 poppins-bold text-center w-32 md:w-40 text-4xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
-              +{count2.toLocaleString(undefined, { minimumFractionDigits: 1 })}K
+              +{count2}
             </p>
           </div>
           <div className="w-full flex justify-center md:justify-center px-6">
@@ -79,13 +83,13 @@ const Counter = () => {
             </h1>
           </div>
         </div>
-        <div className="h-full w-1/3 flex flex-wrap justify-center items-center">
+        <div className="h-full w-1/3 flex flex-wrap justify-center items-center text-center">
           <div
             ref={ref1}
             className="w-full h-2/3 flex justify-center md:justify-center items-center"
           >
             <p className="text-gray-600 poppins-bold text-center  w-32 md:w-40 text-4xl md:text-5xl lg:text-5xl ">
-              +0,00
+            +{count3.toLocaleString()}
             </p>
           </div>
           <div className="justify-center md:justify-center">
@@ -93,9 +97,9 @@ const Counter = () => {
               ref={ref3}
               className={`${
                 inView3 ? "animatable-type" : "initial-type"
-              } text-center poppins-regular text-gray-900 text-xs lg:text-xl`}
+              } text-center poppins-regular text-gray-900 text-xs lg:text-xl justify-center`}
             >
-              De Adquisición Geofísica
+              M² Construidos 
             </h1>
           </div>
         </div>

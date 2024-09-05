@@ -43,7 +43,7 @@ const Home = () => {
         <Counter />
         <FeaturedProperties />
       </div>
-      <CategoryCarousel />
+      {/* <CategoryCarousel /> */}
       <div className="px-2">
         <AboutHome />
         <NewsCards />

@@ -5,21 +5,18 @@ const AboutHome = () => {
     <div className="relative flex flex-col md:flex-row items-start justify-center bg-white py-10 md:p-16 lg:px-32">
       <div className="md:w-1/2 pr-0 md:pr-8">
         <h3 className="text-[#ffc702] poppins-semibold text-xl mb-4 tracking-widest">
-          DESARROLLAMOS TENDENCIA
+          SOBRE NOSOTROS
         </h3>
         <h2 className="text-3xl text-gray-700 poppins-bold mb-4">
-          Somos un grupo desarrollista líder en Argentina
+          Somos la constructora N°1 de Tucumán
         </h2>
         <p className="text-lg mb-4 poppins-light">
           <strong className="poppins-semibold">
-            Somos un grupo desarrollista líder en Argentina que avanza
-            construyendo productos de excelente calidad con los más altos
-            estándares de cumplimiento del mercado.
+          Es una empresa familiar que, desde el año 2000, ha continuado y extendido la visión de G.B.G CONSTRUCCIONES S.R.L, fundada en 1975 por el Ing. Miguel E. Galindo.
           </strong>{" "}
-          Elegimos cuidadosamente la tierra, nos aliamos con los mejores
-          profesionales para diseñar proyectos que se vuelven tendencias y
-          gestionamos la construcción, la comercialización y la financiación de
-          todos nuestros productos.
+          Con más de cuatro décadas en el mercado inmobiliario, GALINDO S.A. Se destaca por su compromiso con la calidad y la innovación, desarrollando proyectos ambiciosos que marcan la diferencia en el sector. Nuestra capacidad en recursos humanos y financieros, sumada a diseños vanguardistas y tecnología avanzada, nos posiciona como líderes en la construcción de productos que ofrecen un valor agregado único a nuestros clientes.
+
+
         </p>
         <p className="text-[#ffc702] text-lg poppins-regular">
           #DesarrollamosTendencia

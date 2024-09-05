@@ -2,19 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Counter = () => {
-  const [counts, setCounts] = useState([10000, 1000, 100, 100, 1000, 100]);
+  const [counts, setCounts] = useState([0, 0, 0, 0, 0]);
 
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [ref4, inView4] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [ref5, inView5] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [ref6, inView6] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   useEffect(() => {
-    const inViews = [inView1, inView2, inView3, inView4, inView5, inView6];
-    const maxCounts = [10320, 2339, 114, 169, 3602, 318];
-    const incrementCounts = [5, 10, 1, 1, 10, 1];
+    const inViews = [inView1, inView2, inView3, inView4, inView5];
+    const maxCounts = [50, 2500, 30, 1250, 30];
+    const incrementCounts = [1, 10, 1, 5, 1];
     const intervals = [];
 
     inViews.forEach((inView, index) => {
@@ -36,15 +35,14 @@ const Counter = () => {
     return () => {
       intervals.forEach(clearInterval);
     };
-  }, [inView1, inView2, inView3, inView4, inView5, inView6]);
+  }, [inView1, inView2, inView3, inView4, inView5]);
 
   const items = [
-    { label: "Lotes", count: counts[0], ref: ref1 },
-    { label: "Cocheras", count: counts[1], ref: ref2 },
-    { label: "Casas", count: counts[2], ref: ref3 },
-    { label: "Oficinas", count: counts[3], ref: ref4 },
-    { label: "Departamentos", count: counts[4], ref: ref5 },
-    { label: "Locales comerciales", count: counts[5], ref: ref6 },
+    { label: "Edificios", count: counts[0], ref: ref1 },
+    { label: "Departamentos", count: counts[1], ref: ref2 },
+    { label: "Locales comerciales", count: counts[2], ref: ref3 },
+    { label: "Cocheras", count: counts[3], ref: ref4 },
+    { label: "Casas", count: counts[4], ref: ref5 },
   ];
 
   return (
@@ -55,18 +53,22 @@ const Counter = () => {
       <p className="text-gray-600 text-center mb-8">
         Con el compromiso de siempre entregamos:
       </p>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center notranslate">
+      <div className="flex flex-wrap justify-center gap-8 text-center">
         {items.map((item, index) => (
-          <div key={index} ref={item.ref} className=" p-6 rounded-lg ">
+          <div key={index} ref={item.ref} className="p-2 lg:p-6 rounded-lg flex-1 min-w-[150px] lg:min-w-[200px] max-w-[300px]">
             <p className="text-5xl lg:text-6xl font-bold text-gray-800">
               {item.count.toLocaleString()}
             </p>
-            <p className="mt-2 text-xl lg:text-2xl text-gray-600">{item.label}</p>
+            <p className="mt-2 text-xl lg:text-2xl text-gray-600">
+              {item.label}
+            </p>
           </div>
         ))}
       </div>
       <hr className="w-3/5 border-[1px] border-yellow-500 my-3" />
-      <p className="poppins-regular text-gray-800 text-balance w-full text-center">Desde hace más de 40 años buscamos desafíos que nos permitan aprender y ser mejores. Hoy seguimos trabajando con la misma pasión con la que nuestro fundador decidió hacer sus sueños realidad.</p>
+      <p className="poppins-regular text-gray-800 text-balance w-full text-center">
+        Desde hace más de 40 años buscamos desafíos que nos permitan aprender y ser mejores. Hoy seguimos trabajando con la misma pasión con la que nuestro fundador decidió hacer sus sueños realidad.
+      </p>
     </div>
   );
 };
