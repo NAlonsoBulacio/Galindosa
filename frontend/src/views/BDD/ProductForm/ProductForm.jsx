@@ -55,15 +55,14 @@ const ProductForm = () => {
     }));
   };
 
-
-  const handleSectionCheckboxChange = (index, e) => {
-    const { value, checked } = e.target;
+  const handleSectionCheckboxChange = (index, e, value) => {
+    const { checked } = e.target;
     setForm((prevForm) => {
       const sections = [...prevForm.sections];
       const section = sections[index];
       section.amenities = checked
         ? [...new Set([...section.amenities, value])]
-        : section.amenities.filter((amenity) => amenity !== value);
+        : section.amenities.filter((amenity) => amenity.id !== value.id);
       return { ...prevForm, sections };
     });
   };
@@ -161,9 +160,10 @@ const ProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://galindobackend-production.up.railway.app/properties", [
-        form,
-      ]);
+      const response = await axios.post(
+        "https://galindobackend-production.up.railway.app/properties",
+        [form]
+      );
 
       if (response.status === 200 || response.status === 201) {
         alert("Producto Agregado Exitosamente");
@@ -201,7 +201,7 @@ const ProductForm = () => {
     setCurrentSectionIndex(null);
   };
   console.log(form);
-  
+
   return (
     <form
       className="px-4 md:px-8 max-w-3xl mx-auto py-12"
@@ -264,13 +264,13 @@ const ProductForm = () => {
               </div>
             </div>
 
-              {/* Campo de descripción introductoria */}
-              <div className="sm:col-span-4">
+            {/* Campo de descripción introductoria */}
+            <div className="sm:col-span-4">
               <label
                 htmlFor="intro_description"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-               Titulo Introductorio
+                Titulo Introductorio
               </label>
               <div className="mt-2">
                 <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
@@ -307,8 +307,6 @@ const ProductForm = () => {
                 </div>
               </div>
             </div>
-
-          
 
             {/* Campo de video */}
             <div className="sm:col-span-4">
@@ -601,8 +599,8 @@ const ProductForm = () => {
               </div>
             </div>
 
- {/* Campo de Ambientes */}
- <div className="sm:col-span-4">
+            {/* Campo de Ambientes */}
+            <div className="sm:col-span-4">
               <label
                 htmlFor="rooms"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -610,26 +608,31 @@ const ProductForm = () => {
                 Ambientes
               </label>
               <div className="mt-2 grid grid-cols-2 gap-4">
-                {["Monoambiente", "2 ambientes", "3 ambientes", "4 ambientes", "5 ambientes", "Casa"].map(
-                  (room, index) => (
-                    <div key={index} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        name="rooms"
-                        value={room}
-                        onChange={handleCheckboxChange}
-                        checked={form.rooms.includes(room)}
-                        className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                      />
-                      <label
-                        htmlFor="rooms"
-                        className="ml-2 block text-sm text-gray-900"
-                      >
-                        {room}
-                      </label>
-                    </div>
-                  )
-                )}
+                {[
+                  "Monoambiente",
+                  "2 ambientes",
+                  "3 ambientes",
+                  "4 ambientes",
+                  "5 ambientes",
+                  "Casa",
+                ].map((room, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="rooms"
+                      value={room}
+                      onChange={handleCheckboxChange}
+                      checked={form.rooms.includes(room)}
+                      className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                    />
+                    <label
+                      htmlFor="rooms"
+                      className="ml-2 block text-sm text-gray-900"
+                    >
+                      {room}
+                    </label>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -698,7 +701,7 @@ const ProductForm = () => {
               </h3>
               {form.sections.map((section, index) => (
                 <Section
-                  key={index}
+                  key={index} 
                   index={index}
                   section={section}
                   handleSectionChange={handleSectionChange}

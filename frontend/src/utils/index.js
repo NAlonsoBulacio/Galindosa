@@ -21,6 +21,7 @@ import { elevador,
     spa,
     telescopio,
     terraza,
+    planta_baja,
     yoga } from "../assets";
 
 export const amenities = [
@@ -28,7 +29,7 @@ export const amenities = [
     { id: 401, icon: garden, label: 'Jardines' },
     { id: 402, icon: terraza, label: 'Terraza' },
     { id: 403, icon: gym, label: 'Gimnasio' },
-    { id: 404, icon: salon, label: 'Sala de Reuniones' },
+    { id: 404, icon: salon, label: 'SUM' },
     { id: 405, icon: bar, label: 'Bar' },
     { id: 406, icon: bell, label: 'Conserje' },
     { id: 407, icon: child, label: 'Área de Juegos para Niños' },
@@ -47,5 +48,6 @@ export const amenities = [
     { id: 420, icon: spa, label: 'Spa' },
     { id: 421, icon: telescopio, label: 'Observatorio' },
     { id: 422, icon: yoga, label: 'Sala de Yoga' },
-    { id: 423, icon: elevador, label: 'Ascensor' }
+    { id: 423, icon: elevador, label: 'Ascensor' },
+    { id: 424, icon: planta_baja, label: 'Planta Baja' }
 ];

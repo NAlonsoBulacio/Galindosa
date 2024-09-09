@@ -105,14 +105,18 @@ const PropertyDetail = () => {
     });
   };
 
-  const handleSectionCheckboxChange = (index, e) => {
-    const { value, checked } = e.target;
+  const handleSectionCheckboxChange = (index, e, value) => {
+    const { checked } = e.target;
+  
     setProperty((prevProperty) => {
       const sections = [...prevProperty.sections];
       const section = sections[index];
+  
+      // Si está checkeado, lo agregamos, si no, lo eliminamos basándonos en el amenity.id
       section.amenities = checked
         ? [...new Set([...section.amenities, value])]
-        : section.amenities.filter((amenity) => amenity !== value);
+        : section.amenities.filter((amenity) => amenity.id !== value.id);
+  
       return { ...prevProperty, sections };
     });
   };
@@ -262,6 +266,43 @@ console.log(property);
                   <p className="text-sm">{property.status}</p>
                 )}
               </div>
+
+                {/* Campo de Ambientes */}
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="rooms"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Ambientes
+              </label>
+              <div className="mt-2 grid grid-cols-2 gap-4">
+                {[
+                  "Monoambiente",
+                  "2 ambientes",
+                  "3 ambientes",
+                  "4 ambientes",
+                  "5 ambientes",
+                  "Casa",
+                ].map((room, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="rooms"
+                      value={room}
+                      onChange={handleCheckboxChange}
+                      checked={property.rooms.includes(room)}
+                      className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                    />
+                    <label
+                      htmlFor="rooms"
+                      className="ml-2 block text-sm text-gray-900"
+                    >
+                      {room}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
 
               <ImgInput
                 img={property.img}
@@ -576,15 +617,15 @@ console.log(property);
                 {property.sections.map((section, index) => (
                   <Section
                     key={index}
-                    index={index}
+                    index={index} 
                     section={section}
                     handleSectionChange={handleSectionChange}
                     handleSectionCheckboxChange={handleSectionCheckboxChange}
                     handleDeleteSectionImage={handleDeleteSectionImage}
                     handleSectionImageChange={handleSectionImageChange}
-                    setCurrentSectionIndex={() => {}} // Implement this if necessary
-                    currentSectionIndex={null} // Implement this if necessary
-                    handleCloseUpload={() => {}} // Implement this if necessary
+                    setCurrentSectionIndex={() => {}} 
+                    currentSectionIndex={null} 
+                    handleCloseUpload={() => {}} 
                     removeSection={removeSection}
                   />
                 ))}

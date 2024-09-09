@@ -71,9 +71,9 @@ const Section = ({
               <input
                 type="checkbox"
                 name={`sectionAmenities-${index}`}
-                value={amenity.label}
-                checked={detail ? section.amenities.includes(amenity) : section.amenities.includes(amenity.label)}
-                onChange={(e) => handleSectionCheckboxChange(index, e)}
+                value={amenity}
+                checked={section?.amenities?.some(a => a.id === amenity.id)}
+                onChange={(e) => handleSectionCheckboxChange(index, e, amenity)}
                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />
               <label
@@ -117,15 +117,13 @@ const Section = ({
             className={`${uploadImg ? "rotate-180" : ""} duration-300`}
           />
         </div>
-        {uploadImg && currentSectionIndex === index ? (
-          <UploadImage
+        {uploadImg && (
+          <UploadImage 
             handleUploadImageVariant={handleSectionImageChange}
             sectionIndex={index}
             handleCloseUpload={handleCloseUpload}
           />
-        ) : (
-          ""
-        )}
+        ) }
       </div>
       <div className="mt-4 flex justify-end">
         <button

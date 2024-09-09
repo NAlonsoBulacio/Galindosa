@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
           carouselImages: project.present_images,
           latitude: project.latitude,
           longitude: project.longitude,
-          amenities: cleanAmenities,
+          amenities: project.amenities,
           address: project.address,
           introDescription: project.intro_description,
           initDate: project.init_date,
@@ -55,7 +55,7 @@ const reducer = (state = initialState, action) => {
           totalUnits: project.total_units,
           characteristics: project.characteristics,
           video: project.video,
-          sections: cleanSections,
+          sections: project.sections,
           blueprints: project.blueprints,
           workPercentage: project.work_percentage
         };

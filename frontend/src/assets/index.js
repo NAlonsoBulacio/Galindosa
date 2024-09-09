@@ -27,6 +27,7 @@ import spa from "./amenidades/spa.png";
 import telescopio from "./amenidades/telescopio.png";
 import terraza from "./amenidades/terraza.png";
 import yoga from "./amenidades/yoga.png";
+import planta_baja from "./amenidades/planta-baja.svg"
 
 import banner from "./banners/banner.webp";
 import banner2 from "./banners/banner2.webp";
@@ -65,5 +66,6 @@ export {
   spa,
   telescopio,
   terraza,
-  yoga
+  yoga,
+  planta_baja
 };

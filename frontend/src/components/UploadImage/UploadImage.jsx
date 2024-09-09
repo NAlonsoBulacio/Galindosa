@@ -51,17 +51,7 @@ const UploadImage = ({ handleUploadImage, id, sectionIndex, handleUploadImageVar
 
   return (
     <div className="col-span-full">
-      {/* <div>
-        {url && (
-          <div>
-            Accede a tu archivo en
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              {url}
-            </a>
-          </div>
-        )}
-      </div> */}
-
+     
       {loading ? (
         "loading"
       ) : (
