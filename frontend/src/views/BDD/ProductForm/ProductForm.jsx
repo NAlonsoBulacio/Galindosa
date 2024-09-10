@@ -45,8 +45,17 @@ const ProductForm = () => {
     }));
   };
 
+  const handleCheckboxAmenitiesChange = (e, value) => {
+    const { name, checked } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: checked
+        ? [...prevForm[name], value]
+        : prevForm[name].filter((item) => item !== value),
+    }));
+  };
   const handleCheckboxChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name,value, checked } = e.target;
     setForm((prevForm) => ({
       ...prevForm,
       [name]: checked
@@ -680,8 +689,8 @@ const ProductForm = () => {
                     <input
                       type="checkbox"
                       name="amenities"
-                      value={amenity.id}
-                      onChange={handleCheckboxChange}
+                      value={amenity}
+                      onChange={(e) => handleCheckboxAmenitiesChange(e, amenity)}
                       className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                     />
                     <label

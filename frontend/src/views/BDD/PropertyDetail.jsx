@@ -202,7 +202,7 @@ const PropertyDetail = () => {
   if (!property) {
     return <div>Cargando...</div>;
   }
-console.log(property);
+
 
   return (
     <>
@@ -593,10 +593,8 @@ console.log(property);
                         value={amenity.id}
                         onChange={handleCheckboxChange}
                         checked={
-                          property.amenities
-                            ? property.amenities.includes(amenity)
-                            : false
-                        }
+                          property?.amenities?.some(a => a.id === amenity.id)}
+                        
                         className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                       />
                       <label
@@ -617,7 +615,7 @@ console.log(property);
                 {property.sections.map((section, index) => (
                   <Section
                     key={index}
-                    index={index} 
+                    index={index}  
                     section={section}
                     handleSectionChange={handleSectionChange}
                     handleSectionCheckboxChange={handleSectionCheckboxChange}
