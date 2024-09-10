@@ -48,11 +48,11 @@ const Projects = () => {
     const filteredProjects = projects.filter((project) => {
       return (
         (zona === "" || project.zone === zona) &&
-        (ambientes === "" || project.rooms === ambientes) &&
+        (ambientes === "" || project.rooms.includes(ambientes)) &&
         (estado === "" || project.status === estado)
       );
     });
-
+  
     setProjectsInView(filteredProjects);
   };
 
@@ -60,11 +60,11 @@ const Projects = () => {
     const filteredProjects = projects.filter((project) => {
       return (
         (zoneFilter === "" || project.zone === zoneFilter) &&
-        (roomsFilter === "" || project.rooms === roomsFilter) &&
+        (roomsFilter === "" || project.rooms.includes(roomsFilter)) &&
         (statusFilter === "" || project.status === statusFilter)
       );
     });
-
+  
     setProjectsInView(filteredProjects);
   };
 
