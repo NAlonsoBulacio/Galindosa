@@ -9,6 +9,7 @@ import ImgInput from "../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../components/BDD/BlueprintsInput/BlueprintsInput";
 import UploadImage from "../../components/UploadImage/UploadImage";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 const PropertyDetail = () => {
   const dispatch = useDispatch();
@@ -39,9 +40,12 @@ const PropertyDetail = () => {
 
   const handleSaveChanges = () => {
     if (!property) return;
-    
+
     axios
-      .put(`https://galindobackend-production.up.railway.app/properties/${property.id}`, property)
+      .put(
+        `https://galindobackend-production.up.railway.app/properties/${property.id}`,
+        property
+      )
       .then((response) => {
         alert("Cambios guardados con éxito");
         setIsChanging(false);
@@ -107,7 +111,9 @@ const PropertyDetail = () => {
     setProperty((prevProperty) => ({
       ...prevProperty,
       rooms: prevProperty.rooms.map((ambient) =>
-        ambient.id === ambientId ? { ...ambient, available: value === "disponible" } : ambient
+        ambient.id === ambientId
+          ? { ...ambient, available: value === "disponible" }
+          : ambient
       ),
     }));
   };
@@ -130,15 +136,15 @@ const PropertyDetail = () => {
 
   const handleSectionCheckboxChange = (index, e, value) => {
     const { checked } = e.target;
-  
+
     setProperty((prevProperty) => {
       const sections = [...prevProperty.sections];
       const section = sections[index];
-  
+
       section.amenities = checked
         ? [...new Set([...section.amenities, value])]
         : section.amenities.filter((amenity) => amenity.id !== value.id);
-  
+
       return { ...prevProperty, sections };
     });
   };
@@ -187,7 +193,9 @@ const PropertyDetail = () => {
         ...prevForm,
         presentImages: prevForm.presentImages.filter((_, i) => i !== index),
       }));
-      setPresentImages((prevImages) => prevImages.filter((_, i) => i !== index));
+      setPresentImages((prevImages) =>
+        prevImages.filter((_, i) => i !== index)
+      );
     } else if (id === 3) {
       setProperty((prevForm) => ({
         ...prevForm,
@@ -215,6 +223,36 @@ const PropertyDetail = () => {
       }));
     }
   };
+
+  const handleMoveImageUp = (index) => {
+    if (index === 0) return; // No puede mover la primera imagen hacia arriba
+    const newImages = [...presentImages];
+    [newImages[index - 1], newImages[index]] = [newImages[index], newImages[index - 1]];
+    
+    // Actualizar tanto el estado de las imágenes como el objeto property
+    setPresentImages(newImages);
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      presentImages: newImages, // Actualiza el array de imágenes en property
+    }));
+  };
+  
+  const handleMoveImageDown = (index) => {
+    if (index === presentImages.length - 1) return; // No puede mover la última imagen hacia abajo
+    const newImages = [...presentImages];
+    [newImages[index + 1], newImages[index]] = [newImages[index], newImages[index + 1]];
+  
+    // Actualizar tanto el estado de las imágenes como el objeto property
+    setPresentImages(newImages);
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      presentImages: newImages, // Actualiza el array de imágenes en property
+    }));
+  };
+
+  // const handleDeleteImage = (index) => {
+  //   setPresentImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  // };
 
   const handleCloseUpload = () => {
     setUploadImg(false);
@@ -299,38 +337,65 @@ const PropertyDetail = () => {
 
               <div className="sm:col-span-3">
                 <p>Imagenes</p>
-                <div className="flex">
-                  {presentImages !== "" ?
-                    presentImages?.map((img, index) => (
-                      <div key={index} className="w-24 relative">
-                        <img className="" src={img} />
-                        <div
-                          onClick={() => handleDeleteImage(index, 1)}
-                          className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
-                        >
-                          X
-                        </div>
+                <div className="flex flex-wrap">
+                  {presentImages.map((img, index) => (
+                    <div key={index} className="w-24 relative mx-2">
+                      <img
+                        className="w-full"
+                        src={img}
+                        alt={`Imagen ${index + 1}`}
+                      />
+                      <div
+                        onClick={() => handleDeleteImage(index, 1)}
+                        className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
+                      >
+                        X
                       </div>
-                    ))
-                    : ""}
+                      <div className="flex justify-center mt-1 space-x-2">
+                        {/* Flecha hacia arriba */}
+                        <button
+                          onClick={() => handleMoveImageUp(index)}
+                          disabled={index === 0}
+                          className={`p-1 border rounded ${
+                            index === 0 ? "opacity-50" : "hover:bg-gray-200"
+                          }`}
+                        >
+                          <FaArrowUp />
+                        </button>
+                        {/* Flecha hacia abajo */}
+                        <button
+                          onClick={() => handleMoveImageDown(index)}
+                          disabled={index === presentImages.length - 1}
+                          className={`p-1 border rounded ${
+                            index === presentImages.length - 1
+                              ? "opacity-50"
+                              : "hover:bg-gray-200"
+                          }`}
+                        >
+                          <FaArrowDown />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
                 <div
                   onClick={() => setUploadImg(!uploadImg)}
-                  className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700"
+                  className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700 mt-4"
                 >
                   <p className="text-left">Cargar imagen</p>
                   <IoIosArrowDown
                     className={`${uploadImg ? "rotate-180" : ""} duration-300`}
                   />
                 </div>
-                {uploadImg ? (
+                {uploadImg && (
                   <UploadImage
-                    handleUploadImage={handleChangeVariantImg}
+                    handleUploadImage={(image) =>
+                      setPresentImages([...presentImages, image])
+                    }
                     id={1}
                     handleCloseUpload={handleCloseUpload}
+                    handleDeleteImage={handleDeleteImage}
                   />
-                ) : (
-                  ""
                 )}
               </div>
 
@@ -393,7 +458,9 @@ const PropertyDetail = () => {
                         name="rooms"
                         value={ambient.id}
                         onChange={handleCheckboxChange}
-                        checked={property?.rooms?.some((a) => a.id === ambient.id)}
+                        checked={property?.rooms?.some(
+                          (a) => a.id === ambient.id
+                        )}
                         className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                       />
                       <label
@@ -410,7 +477,9 @@ const PropertyDetail = () => {
                             ? "disponible"
                             : "agotado"
                         }
-                        onChange={(e) => handleAvailabilityChange(e, ambient.id)}
+                        onChange={(e) =>
+                          handleAvailabilityChange(e, ambient.id)
+                        }
                         className="ml-4 border border-gray-300 rounded-md px-2 py-1"
                       >
                         <option value="disponible">Disponible</option>
@@ -436,9 +505,9 @@ const PropertyDetail = () => {
                         name="amenities"
                         value={amenity.id}
                         onChange={handleCheckboxChange}
-                        checked={
-                          property?.amenities?.some(a => a.id === amenity.id)}
-                        
+                        checked={property?.amenities?.some(
+                          (a) => a.id === amenity.id
+                        )}
                         className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                       />
                       <label
@@ -459,15 +528,15 @@ const PropertyDetail = () => {
                 {property.sections.map((section, index) => (
                   <Section
                     key={index}
-                    index={index}  
+                    index={index}
                     section={section}
                     handleSectionChange={handleSectionChange}
                     handleSectionCheckboxChange={handleSectionCheckboxChange}
                     handleDeleteSectionImage={handleDeleteSectionImage}
                     handleSectionImageChange={handleSectionImageChange}
-                    setCurrentSectionIndex={() => {}} 
-                    currentSectionIndex={null} 
-                    handleCloseUpload={() => {}} 
+                    setCurrentSectionIndex={() => {}}
+                    currentSectionIndex={null}
+                    handleCloseUpload={() => {}}
                     removeSection={removeSection}
                   />
                 ))}
