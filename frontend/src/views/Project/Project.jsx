@@ -108,7 +108,7 @@ const Project = ({ match }) => {
       {detail ? (
         <div className="mt-[80px] lg:mt-0">
           {detail.presentImages && detail.presentImages.length > 0 && (
-            <Banner banners={detail.presentImages} name={detail.name}/>
+            <Banner banners={detail.presentImages} name={detail.name} />
           )}
           <Header />
           <div className="block lg:hidden bg-[#a58700] py-4 border-b-[1px] border-b-[#ffc702]">
@@ -146,8 +146,10 @@ const Project = ({ match }) => {
               </div>
               <div>
                 <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-normal space-x-4 items-center">
-                  <div className="flex flex-col items-center justify-center ">
-                    <p className="text-xl poppins-light text-center">{detail.initDate}</p>
+                  {/* <div className="flex flex-col items-center justify-center ">
+                    <p className="text-xl poppins-light text-center">
+                      {detail.initDate}
+                    </p>
                     <p className="text-sm text-[#fbcc00] poppins-semibold">
                       Inicio
                     </p>
@@ -159,13 +161,29 @@ const Project = ({ match }) => {
                     <p className="text-sm text-[#fbcc00] poppins-semibold">
                       Posesión
                     </p>
-                  </div>
-                  <div className="w-full flex justify-center gap-x-14 lg:gap-x-2">
+                  </div> */}
+                  {/* <div className="w-full flex justify-center gap-x-14 lg:gap-x-2">
                     <CircularProgress percentage={100} label="Obra" />
                     <CircularProgress
                       percentage={unitsSoldPercentage}
                       label="Venta"
                     />
+                  </div> */}
+                  <div className="flex flex-wrap">
+                    <h1 className="poppins-regular text-3xl text-gray-100 text-center lg:text-left">
+                      Ultimas{" "}
+                      <span className="poppins-bold text-[#ffc702]">
+                        unidades
+                      </span>{" "}
+                      de:
+                    </h1>
+                    {detail.rooms?.map((room) => (
+                      <div className="text-white w-full flex flex-wrap justify-center items-center">
+                        <p className={`w-full h-full text-2xl poppins-regular ${!room.available ? 'line-through' : ''}`}>
+                         - {room.label}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

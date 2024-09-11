@@ -3,7 +3,7 @@ import axios from "axios";
 import UploadImage from "../../../components/UploadImage/UploadImage";
 import { IoIosArrowDown } from "react-icons/io";
 import Section from "../../../components/BDD/Section/Section";
-import { amenities } from "../../../utils";
+import { amenities, ambients } from "../../../utils";
 import ImgInput from "../../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../../components/BDD/BlueprintsInput/BlueprintsInput";
 
@@ -54,8 +54,18 @@ const ProductForm = () => {
         : prevForm[name].filter((item) => item !== value),
     }));
   };
+
+  const handleCheckboxAmbientsChange = (e, value) => {
+    const { name, checked } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: checked
+        ? [...prevForm[name], value]
+        : prevForm[name].filter((item) => item !== value),
+    }));
+  };
   const handleCheckboxChange = (e) => {
-    const { name,value, checked } = e.target;
+    const { name, value, checked } = e.target;
     setForm((prevForm) => ({
       ...prevForm,
       [name]: checked
@@ -268,6 +278,7 @@ const ProductForm = () => {
                     <option value="Yerba Buena">Yerba Buena</option>
                     <option value="Barrio Sur">Barrio Sur</option>
                     <option value="Barrio Norte">Barrio Norte</option>
+                    <option value="Mate de Luna">Mate de Luna</option>
                   </select>
                 </div>
               </div>
@@ -393,7 +404,7 @@ const ProductForm = () => {
               )}
             </div>
 
-            <div className="sm:col-span-4">
+            {/* <div className="sm:col-span-4">
               <label
                 htmlFor="surface"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -413,9 +424,9 @@ const ProductForm = () => {
                   <span className="text-gray-500 ml-2">m²</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="sm:col-span-4">
+            {/* <div className="sm:col-span-4">
               <label
                 htmlFor="init_date"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -497,9 +508,9 @@ const ProductForm = () => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="sm:col-span-4">
+            {/* <div className="sm:col-span-4">
               <label
                 htmlFor="work_percentage"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -519,7 +530,7 @@ const ProductForm = () => {
                   <span className="text-gray-700 ml-2">%</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="sm:col-span-4">
               <label
@@ -601,7 +612,7 @@ const ProductForm = () => {
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
                   >
                     <option value="">Seleccione un estado</option>
-                    <option value="En Pozo">En Pozo</option>
+                    <option value="En Obra">En Obra</option>
                     <option value="Terminado">Terminado</option>
                   </select>
                 </div>
@@ -619,10 +630,11 @@ const ProductForm = () => {
               <div className="mt-2 grid grid-cols-2 gap-4">
                 {[
                   "Monoambiente",
-                  "2 ambientes",
-                  "3 ambientes",
-                  "4 ambientes",
-                  "5 ambientes",
+                  "1 Dormitorio",
+                  "2 Dormitorios",
+                  "3 Dormitorios",
+                  "4 Dormitorios",
+                  "5 Dormitorios",
                   "Casa",
                 ].map((room, index) => (
                   <div key={index} className="flex items-center">
@@ -653,7 +665,7 @@ const ProductForm = () => {
                 Categorías
               </label>
               <div className="mt-2 grid grid-cols-2 gap-4">
-                {["Departamento", "Locales", "Casa", "Cocheras"].map(
+                {["Departamento", "Locales Comerciales", "Casa", "Cocheras"].map(
                   (category, index) => (
                     <div key={index} className="flex items-center">
                       <input
@@ -678,6 +690,36 @@ const ProductForm = () => {
 
             <div className="sm:col-span-4">
               <label
+                htmlFor="rooms"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Ambientes
+              </label>
+              <div className="mt-2 grid grid-cols-2 gap-4">
+                {ambients.map((ambient) => (
+                  <div key={ambient.id} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="rooms"
+                      value={ambient}
+                      onChange={(e) =>
+                        handleCheckboxAmbientsChange(e, ambient)
+                      }
+                      className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                    />
+                    <label
+                      htmlFor="rooms"
+                      className="ml-2 block text-sm text-gray-900"
+                    >
+                      {ambient.label}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="sm:col-span-4">
+              <label
                 htmlFor="amenities"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
@@ -690,7 +732,9 @@ const ProductForm = () => {
                       type="checkbox"
                       name="amenities"
                       value={amenity}
-                      onChange={(e) => handleCheckboxAmenitiesChange(e, amenity)}
+                      onChange={(e) =>
+                        handleCheckboxAmenitiesChange(e, amenity)
+                      }
                       className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                     />
                     <label
@@ -710,7 +754,7 @@ const ProductForm = () => {
               </h3>
               {form.sections.map((section, index) => (
                 <Section
-                  key={index} 
+                  key={index}
                   index={index}
                   section={section}
                   handleSectionChange={handleSectionChange}

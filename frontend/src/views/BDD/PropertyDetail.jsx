@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { emptyDetail, getProjects } from "../../redux/actions";
 import axios from "axios";
-import { amenities } from "../../utils";
+import { amenities, ambients } from "../../utils";
 import Section from "../../components/BDD/Section/Section";
 import ImgInput from "../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../components/BDD/BlueprintsInput/BlueprintsInput";
@@ -79,6 +79,18 @@ const PropertyDetail = () => {
           ? [...prevProperty[name], selectedAmenity]
           : prevProperty[name].filter((item) => item.id !== selectedAmenity.id),
       }));
+    } else if (name === "rooms") {
+      const selectedAmbient = ambients.find(
+        (ambient) => ambient.id.toString() === value
+      );
+      selectedAmbient.available = true; // por defecto disponible
+
+      setProperty((prevProperty) => ({
+        ...prevProperty,
+        [name]: checked
+          ? [...prevProperty[name], selectedAmbient]
+          : prevProperty[name].filter((item) => item.id !== selectedAmbient.id),
+      }));
     } else {
       setProperty((prevProperty) => ({
         ...prevProperty,
@@ -87,6 +99,17 @@ const PropertyDetail = () => {
           : prevProperty[name].filter((item) => item !== value),
       }));
     }
+  };
+
+  const handleAvailabilityChange = (e, ambientId) => {
+    const { value } = e.target;
+
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      rooms: prevProperty.rooms.map((ambient) =>
+        ambient.id === ambientId ? { ...ambient, available: value === "disponible" } : ambient
+      ),
+    }));
   };
 
   const handleReturn = () => {
@@ -112,7 +135,6 @@ const PropertyDetail = () => {
       const sections = [...prevProperty.sections];
       const section = sections[index];
   
-      // Si está checkeado, lo agregamos, si no, lo eliminamos basándonos en el amenity.id
       section.amenities = checked
         ? [...new Set([...section.amenities, value])]
         : section.amenities.filter((amenity) => amenity.id !== value.id);
@@ -203,7 +225,6 @@ const PropertyDetail = () => {
     return <div>Cargando...</div>;
   }
 
-
   return (
     <>
       <div className="px-32 py-10">
@@ -259,7 +280,7 @@ const PropertyDetail = () => {
                     value={property.status}
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
                   >
-                    <option value="En Pozo">En Pozo</option>
+                    <option value="En Obra">En Obra</option>
                     <option value="Terminado">Terminado</option>
                   </select>
                 ) : (
@@ -267,43 +288,7 @@ const PropertyDetail = () => {
                 )}
               </div>
 
-                {/* Campo de Ambientes */}
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="rooms"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Ambientes
-              </label>
-              <div className="mt-2 grid grid-cols-2 gap-4">
-                {[
-                  "Monoambiente",
-                  "2 ambientes",
-                  "3 ambientes",
-                  "4 ambientes",
-                  "5 ambientes",
-                  "Casa",
-                ].map((room, index) => (
-                  <div key={index} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="rooms"
-                      value={room}
-                      onChange={handleCheckboxChange}
-                      checked={property.rooms.includes(room)}
-                      className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                    />
-                    <label
-                      htmlFor="rooms"
-                      className="ml-2 block text-sm text-gray-900"
-                    >
-                      {room}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+              {/* Imagen de presentación */}
               <ImgInput
                 img={property.img}
                 handleDeleteImage={handleDeleteImage}
@@ -312,21 +297,21 @@ const PropertyDetail = () => {
                 id={2}
               />
 
-              <div class="sm:col-span-3">
+              <div className="sm:col-span-3">
                 <p>Imagenes</p>
                 <div className="flex">
                   {presentImages !== "" ?
-                     presentImages?.map((img, index) => (
-                        <div key={index} className="w-24 relative">
-                          <img className="" src={img} />
-                          <div
-                            onClick={() => handleDeleteImage(index, 1)}
-                            className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
-                          >
-                            X
-                          </div>
+                    presentImages?.map((img, index) => (
+                      <div key={index} className="w-24 relative">
+                        <img className="" src={img} />
+                        <div
+                          onClick={() => handleDeleteImage(index, 1)}
+                          className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
+                        >
+                          X
                         </div>
-                      ))
+                      </div>
+                    ))
                     : ""}
                 </div>
                 <div
@@ -358,38 +343,6 @@ const PropertyDetail = () => {
               />
 
               <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Superficie: </h1>
-                {isChanging ? (
-                  <input
-                    type="number"
-                    name="surface"
-                    id="surface"
-                    value={property.surface}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.surface} m²</p>
-                )}
-              </div>
-              {/* work_percentage */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Progreso de Obra: </h1>
-                {isChanging ? (
-                  <input
-                    type="text"
-                    name="workPercentage"
-                    id="workPercentage"
-                    value={property.workPercentage}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.workPercentage} %</p>
-                )}
-              </div>
-
-              <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">Descripción: </h1>
                 {isChanging ? (
                   <textarea
@@ -404,6 +357,7 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.description}</p>
                 )}
               </div>
+
               {/* Intro Description */}
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-semibold">
@@ -422,158 +376,48 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.introDescription}</p>
                 )}
               </div>
-              {/* Video ID */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">
-                  ID del Video de YouTube:{" "}
-                </h1>
-                {isChanging ? (
-                  <input
-                    type="text"
-                    name="video"
-                    id="video"
-                    onChange={handleChange}
-                    value={property.video}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.video}</p>
-                )}
-              </div>
-              {/* Zone */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Zona: </h1>
-                {isChanging ? (
-                  <select
-                    name="zone"
-                    id="zone"
-                    onChange={handleChange}
-                    value={property.zone}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  >
-                    <option value="Yerba Buena">Yerba Buena</option>
-                    <option value="Barrio Sur">Barrio Sur</option>
-                    <option value="Barrio Norte">Barrio Norte</option>
-                  </select>
-                ) : (
-                  <p className="text-sm">{property.zone}</p>
-                )}
-              </div>
-              {/* Units Available */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Unidades disponibles: </h1>
-                {isChanging ? (
-                  <input
-                    type="number"
-                    name="unitsVailable"
-                    id="unitsVailable"
-                    value={property.unitsVailable}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.unitsVailable}</p>
-                )}
-              </div>
-              {/* Total Units */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Total de unidades: </h1>
-                {isChanging ? (
-                  <input
-                    type="number"
-                    name="totalUnits"
-                    id="totalUnits"
-                    value={property.totalUnits}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.totalUnits}</p>
-                )}
-              </div>
 
-
-              {/* Latitude */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Latitud: </h1>
-                {isChanging ? (
-                  <input
-                    type="text"
-                    name="latitude"
-                    id="latitude"
-                    value={property.latitude}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.latitude}</p>
-                )}
-              </div>
-              {/* Longitude */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Longitud: </h1>
-                {isChanging ? (
-                  <input
-                    type="text"
-                    name="longitude"
-                    id="longitude"
-                    value={property.longitude}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.longitude}</p>
-                )}
-              </div>
-              {/* Address */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Dirección: </h1>
-                {isChanging ? (
-                  <input
-                    type="text"
-                    name="address"
-                    id="address"
-                    value={property.address}
-                    onChange={handleChange}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.address}</p>
-                )}
-              </div>
-              {/* Categories */}
+              {/* Campo de Ambientes */}
               <div className="sm:col-span-4">
                 <label
-                  htmlFor="categories"
+                  htmlFor="rooms"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Categorías
+                  Ambientes
                 </label>
                 <div className="mt-2 grid grid-cols-2 gap-4">
-                  {["Departamento", "Locales", "Casa", "Cocheras"].map(
-                    (category, index) => (
-                      <div key={index} className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="categories"
-                          value={category}
-                          onChange={handleCheckboxChange}
-                          checked={
-                            property.categories
-                              ? property.categories.includes(category)
-                              : false
-                          }
-                          className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                        />
-                        <label
-                          htmlFor="categories"
-                          className="ml-2 block text-sm text-gray-900"
-                        >
-                          {category}
-                        </label>
-                      </div>
-                    )
-                  )}
+                  {ambients.map((ambient) => (
+                    <div key={ambient.id} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        name="rooms"
+                        value={ambient.id}
+                        onChange={handleCheckboxChange}
+                        checked={property?.rooms?.some((a) => a.id === ambient.id)}
+                        className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                      />
+                      <label
+                        htmlFor="rooms"
+                        className="ml-2 block text-sm text-gray-900"
+                      >
+                        {ambient.label}
+                      </label>
+                      {/* Agregar el select para cambiar disponibilidad */}
+                      <select
+                        value={
+                          property.rooms.find((room) => room.id === ambient.id)
+                            ?.available
+                            ? "disponible"
+                            : "agotado"
+                        }
+                        onChange={(e) => handleAvailabilityChange(e, ambient.id)}
+                        className="ml-4 border border-gray-300 rounded-md px-2 py-1"
+                      >
+                        <option value="disponible">Disponible</option>
+                        <option value="agotado">Agotado</option>
+                      </select>
+                    </div>
+                  ))}
                 </div>
               </div>
               {/* Amenities */}

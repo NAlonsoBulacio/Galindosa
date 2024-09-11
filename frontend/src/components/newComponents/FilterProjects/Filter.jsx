@@ -36,7 +36,7 @@ const FilterProjects = () => {
           >
             <option value="">Seleccione Estado</option>
             <option value="Terminado">Terminado</option>
-            <option value="En Pozo">En Pozo</option>
+            <option value="En Obra">En Obra</option>
           </select>
         </div>
         <div className="col-span-1">
@@ -50,6 +50,7 @@ const FilterProjects = () => {
             <option value="Barrio Norte">Barrio Norte</option>
             <option value="Barrio Sur">Barrio Sur</option>
             <option value="Yerba Buena">Yerba Buena</option>
+            <option value="Mate de Luna">Mate de Luna</option>
           </select>
         </div>
         <div className="col-span-1">
@@ -60,9 +61,13 @@ const FilterProjects = () => {
             className="select-custom w-full text-xl border-b-2 border-gray-300 focus:outline-none focus:border-yellow-600"
           >
             <option value="">Seleccione Zona</option>
-            <option value="1 Ambiente">1 Ambiente</option>
-            <option value="2 Ambiente">2 Ambientes</option>
-            <option value="3 Ambiente">3 Ambientes</option>
+            <option value="Monoambiente">Monoambiente</option>
+            <option value="1 Dormitorio">1 Dormitorio</option>
+            <option value="2 Dormitorios">2 Dormitorios</option>
+            <option value="3 Dormitorios">3 Dormitorios</option>
+            <option value="4 Dormitorios">4 Dormitorios</option>
+            <option value="5 Dormitorios">5 Dormitorios</option>
+            <option value="Casa">Casa</option>
           </select>
         </div>
         <div className="col-span-3 w-full flex justify-end">

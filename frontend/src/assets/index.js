@@ -28,6 +28,12 @@ import telescopio from "./amenidades/telescopio.png";
 import terraza from "./amenidades/terraza.png";
 import yoga from "./amenidades/yoga.png";
 import planta_baja from "./amenidades/planta-baja.svg"
+import cowork from "./amenidades/working.svg";
+import solarium from "./amenidades/solarium.svg";
+import rooftop from "./amenidades/rooftop.svg";
+import fitness from "./amenidades/fitness.svg";
+import playground from "./amenidades/playground.svg";
+
 
 import banner from "./banners/banner.webp";
 import banner2 from "./banners/banner2.webp";
@@ -67,5 +73,10 @@ export {
   telescopio,
   terraza,
   yoga,
-  planta_baja
+  planta_baja,
+  cowork,
+  solarium,
+  fitness,
+  rooftop,
+  playground
 };
