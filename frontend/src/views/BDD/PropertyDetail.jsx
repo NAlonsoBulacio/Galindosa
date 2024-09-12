@@ -311,6 +311,57 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.name}</p>
                 )}
               </div>
+              <div className="flex justify-start items-center gap-2">
+                <h1 className="w-auto font-bold">
+                 Dirección:{" "}
+                </h1>
+                {isChanging ? (
+                  <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    onChange={handleChange}
+                    value={property.address}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
+                  />
+                ) : (
+                  <p className="text-sm">{property.address}</p>
+                )}
+              </div>
+              <div className="flex justify-start items-center gap-2">
+                <h1 className="w-auto font-bold">
+                  Latitud:{" "}
+                </h1>
+                {isChanging ? (
+                  <input
+                    type="text"
+                    name="latitude"
+                    id="latitude"
+                    onChange={handleChange}
+                    value={property.latitude}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
+                  />
+                ) : (
+                  <p className="text-sm">{property.latitude}</p>
+                )}
+              </div>
+              <div className="flex justify-start items-center gap-2">
+                <h1 className="w-auto font-bold">
+                  Longitud:{" "}
+                </h1>
+                {isChanging ? (
+                  <input
+                    type="text"
+                    name="longitude"
+                    id="longitude"
+                    onChange={handleChange}
+                    value={property.longitude}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
+                  />
+                ) : (
+                  <p className="text-sm">{property.longitude}</p>
+                )}
+              </div>
 
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-bold">Estado: </h1>
