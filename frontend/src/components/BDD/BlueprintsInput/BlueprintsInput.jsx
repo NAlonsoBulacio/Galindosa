@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import UploadImage from "../../UploadImage/UploadImage";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const BlueprintsInput = ({
   img,
@@ -41,7 +41,7 @@ console.log(img);
 
   return (
     <div className="sm:col-span-3">
-      <p>{title}</p>
+      <p className="font-bold">{title}</p>
       <div className="flex flex-wrap">
         {images?.map((img, index) => (
           <div key={index} className="w-24 relative mx-2">
@@ -59,7 +59,7 @@ console.log(img);
                 disabled={index === 0}
                 className={`p-1 border rounded ${index === 0 ? "opacity-50" : "hover:bg-gray-200"}`}
               >
-                <FaArrowUp />
+                <FaArrowLeft />
               </button>
               {/* Flecha hacia abajo */}
               <button
@@ -67,7 +67,7 @@ console.log(img);
                 disabled={index === images.length - 1}
                 className={`p-1 border rounded ${index === images.length - 1 ? "opacity-50" : "hover:bg-gray-200"}`}
               >
-                <FaArrowDown />
+                <FaArrowRight />
               </button>
             </div>
           </div>

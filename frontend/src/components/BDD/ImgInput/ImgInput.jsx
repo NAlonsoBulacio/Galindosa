@@ -17,7 +17,7 @@ const ImgInput = ({
 
   return (
     <div class="sm:col-span-3">
-      <p>{title}</p>
+      <p className="font-bold">{title}</p>
       <div className="flex">
         {images ? (
           <div className="w-24 relative">

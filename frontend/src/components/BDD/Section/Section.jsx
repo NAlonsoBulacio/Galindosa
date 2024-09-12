@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa"; // Importa los íconos de flechas
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Importa los íconos de flechas
 import UploadImage from "../../UploadImage/UploadImage";
 import { amenities } from "../../../utils";
 
@@ -125,7 +125,7 @@ const Section = ({
                       disabled={imgIndex === 0}
                       className={`p-1 border rounded ${imgIndex === 0 ? "opacity-50" : "hover:bg-gray-200"}`}
                     >
-                      <FaArrowUp />
+                      <FaArrowLeft />
                     </button>
                     {/* Flecha hacia abajo */}
                     <button
@@ -133,7 +133,7 @@ const Section = ({
                       disabled={imgIndex === images.length - 1}
                       className={`p-1 border rounded ${imgIndex === images.length - 1 ? "opacity-50" : "hover:bg-gray-200"}`}
                     >
-                      <FaArrowDown />
+                      <FaArrowRight />
                     </button>
                   </div>
                 </div>

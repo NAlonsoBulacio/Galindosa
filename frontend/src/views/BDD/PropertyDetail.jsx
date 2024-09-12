@@ -9,7 +9,7 @@ import ImgInput from "../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../components/BDD/BlueprintsInput/BlueprintsInput";
 import UploadImage from "../../components/UploadImage/UploadImage";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const PropertyDetail = () => {
   const dispatch = useDispatch();
@@ -293,9 +293,9 @@ const PropertyDetail = () => {
         </div>
         {property ? (
           <div className="flex justify-center items-start gap-32 mx-20">
-            <div className="flex flex-col gap-2 justify-center">
+            <div className="flex flex-col gap-10 justify-center">
               <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">
+                <h1 className="w-auto font-bold">
                   Nombre de la Propiedad:{" "}
                 </h1>
                 {isChanging ? (
@@ -340,7 +340,7 @@ const PropertyDetail = () => {
               />
 
               <div className="sm:col-span-3">
-                <p>Imagenes</p>
+                <p className="font-bold">Imagenes</p>
                 <div className="flex flex-wrap">
                   {presentImages.map((img, index) => (
                     <div key={index} className="w-24 relative mx-2">
@@ -364,7 +364,7 @@ const PropertyDetail = () => {
                             index === 0 ? "opacity-50" : "hover:bg-gray-200"
                           }`}
                         >
-                          <FaArrowUp />
+                          <FaArrowLeft />
                         </button>
                         {/* Flecha hacia abajo */}
                         <button
@@ -376,7 +376,7 @@ const PropertyDetail = () => {
                               : "hover:bg-gray-200"
                           }`}
                         >
-                          <FaArrowDown />
+                          <FaArrowRight />
                         </button>
                       </div>
                     </div>
@@ -411,8 +411,8 @@ const PropertyDetail = () => {
                 id={3}
               />
 
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">Descripción: </h1>
+              <div className="flex justify-start items-start gap-2">
+                <h1 className="w-auto font-bold">Descripción: </h1>
                 {isChanging ? (
                   <textarea
                     name="description"
@@ -428,8 +428,8 @@ const PropertyDetail = () => {
               </div>
 
               {/* Intro Description */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-semibold">
+              <div className="flex justify-start items-start gap-2">
+                <h1 className="w-auto font-bold">
                   Descripción Introductoria:{" "}
                 </h1>
                 {isChanging ? (
@@ -450,7 +450,7 @@ const PropertyDetail = () => {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="rooms"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-bold leading-6 text-gray-900"
                 >
                   Ambientes
                 </label>
@@ -497,7 +497,7 @@ const PropertyDetail = () => {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="amenities"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-bold leading-6 text-gray-900"
                 >
                   Amenidades
                 </label>
@@ -526,7 +526,7 @@ const PropertyDetail = () => {
               </div>
               {/* Sections */}
               <div className="col-span-full">
-                <h3 className="text-lg font-medium leading-6 text-gray-900">
+                <h3 className="text-lg font-bold leading-6 text-gray-900">
                   Secciones
                 </h3>
                 {property.sections.map((section, index) => (
