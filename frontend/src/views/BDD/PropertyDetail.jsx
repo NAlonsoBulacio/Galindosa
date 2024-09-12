@@ -171,7 +171,9 @@ const PropertyDetail = () => {
       const sections = [...prevProperty.sections];
       sections[index] = {
         ...sections[index],
-        images: [...(sections[index].images || []), img],
+        images: Array.isArray(img) 
+          ? img 
+          : [...(sections[index].images || []), img], 
       };
       return { ...prevProperty, sections };
     });
@@ -214,7 +216,9 @@ const PropertyDetail = () => {
     } else if (id === 3) {
       setProperty((prevForm) => ({
         ...prevForm,
-        blueprints: [...prevForm.blueprints, image],
+        blueprints: Array.isArray(image) 
+          ? image // Si 'image' es un array, lo reemplaza directamente
+          : [...prevForm.blueprints, image], // Si no es un array, lo agrega al array existente
       }));
     } else if (id === 2) {
       setProperty((prevForm) => ({

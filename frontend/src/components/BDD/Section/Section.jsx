@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa"; // Importa los íconos de flechas
 import UploadImage from "../../UploadImage/UploadImage";
 import { amenities } from "../../../utils";
 
@@ -17,12 +18,28 @@ const Section = ({
   detail
 }) => {
 
- const [images, setImages] = useState([]);
- const [uploadImg, setUploadImg] = useState(false);
- useEffect(() => {
-  section && section.images && setImages(section.images)
+  const [images, setImages] = useState([]);
+  const [uploadImg, setUploadImg] = useState(false);
+
+  useEffect(() => {
+    section && section.images && setImages(section.images);
   }, [section.images]);
 
+  const handleMoveImageUp = (imgIndex) => {
+    if (imgIndex === 0) return; // No puede mover la primera imagen hacia arriba
+    const newImages = [...images];
+    [newImages[imgIndex - 1], newImages[imgIndex]] = [newImages[imgIndex], newImages[imgIndex - 1]];
+    setImages(newImages);
+    handleSectionImageChange(newImages, index); // Actualiza las imágenes en el estado de la sección
+  };
+
+  const handleMoveImageDown = (imgIndex) => {
+    if (imgIndex === images.length - 1) return; // No puede mover la última imagen hacia abajo
+    const newImages = [...images];
+    [newImages[imgIndex + 1], newImages[imgIndex]] = [newImages[imgIndex], newImages[imgIndex + 1]];
+    setImages(newImages);
+    handleSectionImageChange(newImages, index); // Actualiza las imágenes en el estado de la sección
+  };
 
   return (
     <div className="border rounded-lg p-4 mb-4">
@@ -90,27 +107,45 @@ const Section = ({
         <p className="block text-sm font-medium leading-6 text-gray-900">
           Imágenes de la Sección
         </p>
-        <div className="flex">
+        <div className="flex flex-wrap">
           {images
             ? images.map((img, imgIndex) => (
-                <div key={imgIndex} className="w-24 relative">
-                  <img className="" src={img} />
+                <div key={imgIndex} className="w-24 relative mx-2">
+                  <img className="w-full" src={img} alt={`Sección imagen ${imgIndex}`} />
                   <div
                     onClick={() => handleDeleteSectionImage(index, imgIndex)}
                     className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
                   >
                     X
                   </div>
+                  <div className="flex justify-center mt-1 space-x-2">
+                    {/* Flecha hacia arriba */}
+                    <button
+                      onClick={() => handleMoveImageUp(imgIndex)}
+                      disabled={imgIndex === 0}
+                      className={`p-1 border rounded ${imgIndex === 0 ? "opacity-50" : "hover:bg-gray-200"}`}
+                    >
+                      <FaArrowUp />
+                    </button>
+                    {/* Flecha hacia abajo */}
+                    <button
+                      onClick={() => handleMoveImageDown(imgIndex)}
+                      disabled={imgIndex === images.length - 1}
+                      className={`p-1 border rounded ${imgIndex === images.length - 1 ? "opacity-50" : "hover:bg-gray-200"}`}
+                    >
+                      <FaArrowDown />
+                    </button>
+                  </div>
                 </div>
               ))
-            : ""}
+            : "No hay imágenes."}
         </div>
         <div
           onClick={() => {
             setCurrentSectionIndex(index);
             setUploadImg(!uploadImg);
           }}
-          className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700"
+          className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700 mt-4"
         >
           <p className="text-left">Cargar imagen</p>
           <IoIosArrowDown
@@ -119,11 +154,10 @@ const Section = ({
         </div>
         {uploadImg && (
           <UploadImage 
-            handleUploadImageVariant={handleSectionImageChange}
-            sectionIndex={index}
+            handleUploadImage={(img) => handleSectionImageChange(Array.isArray(img) ? img : [...images, img], index)} // Modificación para manejar el array correctamente
             handleCloseUpload={handleCloseUpload}
           />
-        ) }
+        )}
       </div>
       <div className="mt-4 flex justify-end">
         <button
