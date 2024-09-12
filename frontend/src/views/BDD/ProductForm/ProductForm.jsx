@@ -620,43 +620,7 @@ const ProductForm = () => {
               </div>
             </div>
 
-            {/* Campo de Ambientes */}
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="rooms"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Ambientes
-              </label>
-              <div className="mt-2 grid grid-cols-2 gap-4">
-                {[
-                  "Monoambiente",
-                  "1 Dormitorio",
-                  "2 Dormitorios",
-                  "3 Dormitorios",
-                  "4 Dormitorios",
-                  "5 Dormitorios",
-                  "Casa",
-                ].map((room, index) => (
-                  <div key={index} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="rooms"
-                      value={room}
-                      onChange={handleCheckboxChange}
-                      checked={form.rooms.includes(room)}
-                      className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                    />
-                    <label
-                      htmlFor="rooms"
-                      className="ml-2 block text-sm text-gray-900"
-                    >
-                      {room}
-                    </label>
-                  </div>
-                ))}
-              </div>
-            </div>
+
 
             <div className="sm:col-span-4">
               <label
