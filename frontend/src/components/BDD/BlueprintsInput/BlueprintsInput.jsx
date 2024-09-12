@@ -11,8 +11,8 @@ const BlueprintsInput = ({
   title,
   id,
 }) => {
-  const [images, setImages] = useState([]);  // Corregimos inicialización de imágenes
-  const [uploadImg, setUploadImg] = useState(false);  // Declaramos uploadImg y setUploadImg
+  const [images, setImages] = useState([]); // Corregimos inicialización de imágenes
+  const [uploadImg, setUploadImg] = useState(false); // Declaramos uploadImg y setUploadImg
 
   useEffect(() => {
     if (img) {
@@ -23,25 +23,37 @@ const BlueprintsInput = ({
   const handleMoveImageUp = (index) => {
     if (index === 0) return; // No mover si ya es la primera
     const newImages = [...images];
-    [newImages[index - 1], newImages[index]] = [newImages[index], newImages[index - 1]];
-    
-   // Actualiza el estado local
+    [newImages[index - 1], newImages[index]] = [
+      newImages[index],
+      newImages[index - 1],
+    ];
+
+    // Actualiza el estado local
     handleChangeVariantImg(newImages, id); // Propaga los cambios hacia arriba
   };
-  
+
   const handleMoveImageDown = (index) => {
     if (index === images.length - 1) return; // No mover si ya es la última
     const newImages = [...images];
-    [newImages[index + 1], newImages[index]] = [newImages[index], newImages[index + 1]];
-    
-     // Actualiza el estado local
+    [newImages[index + 1], newImages[index]] = [
+      newImages[index],
+      newImages[index + 1],
+    ];
+
+    // Actualiza el estado local
     handleChangeVariantImg(newImages, id); // Propaga los cambios hacia arriba
   };
-console.log(img);
+  console.log(img);
 
   return (
-    <div className="sm:col-span-3">
-      <p className="font-bold">{title}</p>
+    <div className="sm:col-span-4">
+      <p>
+        <span className="font-bold">Imagenes de Planos</span> - Dimensiones (15
+        : 10) 0 (16 : 9)
+      </p>
+      <p className="italic text-sm">
+        Procurar que el tamaño de todas sea el mismo
+      </p>
       <div className="flex flex-wrap">
         {images?.map((img, index) => (
           <div key={index} className="w-24 relative mx-2">
@@ -57,7 +69,9 @@ console.log(img);
               <button
                 onClick={() => handleMoveImageUp(index)}
                 disabled={index === 0}
-                className={`p-1 border rounded ${index === 0 ? "opacity-50" : "hover:bg-gray-200"}`}
+                className={`p-1 border rounded ${
+                  index === 0 ? "opacity-50" : "hover:bg-gray-200"
+                }`}
               >
                 <FaArrowLeft />
               </button>
@@ -65,7 +79,11 @@ console.log(img);
               <button
                 onClick={() => handleMoveImageDown(index)}
                 disabled={index === images.length - 1}
-                className={`p-1 border rounded ${index === images.length - 1 ? "opacity-50" : "hover:bg-gray-200"}`}
+                className={`p-1 border rounded ${
+                  index === images.length - 1
+                    ? "opacity-50"
+                    : "hover:bg-gray-200"
+                }`}
               >
                 <FaArrowRight />
               </button>
@@ -74,7 +92,7 @@ console.log(img);
         ))}
       </div>
       <div
-        onClick={() => setUploadImg(!uploadImg)}  // Toggle para mostrar/ocultar la carga de imagen
+        onClick={() => setUploadImg(!uploadImg)} // Toggle para mostrar/ocultar la carga de imagen
         className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700 mt-4"
       >
         <p className="text-left">Cargar imagen</p>

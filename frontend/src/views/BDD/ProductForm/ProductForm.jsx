@@ -235,7 +235,7 @@ const ProductForm = () => {
             Esta información va a ser publica, porfavor revisar bien las
             casillas antes de publicar.
           </p>
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-6">
             <div className="sm:col-span-4">
               <label
                 htmlFor="name"
@@ -367,8 +367,9 @@ const ProductForm = () => {
               id={3}
             />
 
-            <div class="sm:col-span-3">
-              <p>Imagenes del Carrusel - Dimensiones 16 : 9</p>
+            <div class="sm:col-span-4">
+              <p><span className="font-bold">Imagenes del Carrusel</span> - Dimensiones (15 : 10) 0 (16 : 9)</p>
+              <p className="italic text-sm">No mas de 3, estas imagenes van en el carrusel de la propiedad</p>
               <div className="flex">
                 {images
                   ? images?.map((img, index) => (

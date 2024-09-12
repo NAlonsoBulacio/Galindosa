@@ -104,8 +104,8 @@ const Section = ({
         </div>
       </div>
       <div className="mb-4">
-        <p className="block text-sm font-medium leading-6 text-gray-900">
-          Imágenes de la Sección
+        <p className="block text-sm  leading-6 text-gray-900">
+          <span className="font-medium">Imágenes de la Sección</span> - Dimensiones (15 : 10) 0 (16 : 9)
         </p>
         <div className="flex flex-wrap">
           {images
