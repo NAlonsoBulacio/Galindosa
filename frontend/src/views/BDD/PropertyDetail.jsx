@@ -270,14 +270,12 @@ const PropertyDetail = () => {
     }));
   };
 
-  // const handleDeleteImage = (index) => {
-  //   setPresentImages((prevImages) => prevImages.filter((_, i) => i !== index));
-  // };
-
   const handleCloseUpload = () => {
     setUploadImg(false);
     setCurrentSectionIndex(null);
   };
+
+
 
   if (!property) {
     return <div>Cargando...</div>;
@@ -601,16 +599,16 @@ const PropertyDetail = () => {
                     key={index}
                     index={index}
                     section={section}
-                    handleSectionChange={() => {}}
-                    handleSectionCheckboxChange={() => {}}
-                    handleDeleteSectionImage={() => {}}
+                    handleSectionChange={handleSectionChange}
+                    handleSectionCheckboxChange={handleSectionCheckboxChange}
+                    handleDeleteSectionImage={handleDeleteSectionImage}
                     handleSectionImageChange={handleSectionImageChange}
                     isUploadOpen={activeUploadComponent === `section-${index}`}
                     onToggleUpload={() =>
                       handleUploadToggle(`section-${index}`)
-                    } // Controla cuál sección tiene activo el upload
+                    } 
                     handleCloseUpload={() => setActiveUploadComponent(null)}
-                    removeSection={() => {}}
+                    removeSection={removeSection}
                   />
                 ))}
                 <div className="mt-4">
