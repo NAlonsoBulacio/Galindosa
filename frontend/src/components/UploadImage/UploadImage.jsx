@@ -47,7 +47,7 @@ const UploadImage = ({ handleUploadImage, id, sectionIndex, handleUploadImageVar
       const base64 = await convertBase64(files[0]);
       uploadSingleImage(base64);
     }
-  };
+  }; 
 
   return (
     <div className="col-span-full">

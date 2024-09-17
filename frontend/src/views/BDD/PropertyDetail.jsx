@@ -17,6 +17,9 @@ const PropertyDetail = () => {
   const [property, setProperty] = useState(null);
   const [isChanging, setIsChanging] = useState(false);
   const projectsR = useSelector((state) => state.projects);
+
+  const [activeUploadComponent, setActiveUploadComponent] = useState(null);
+
   const [uploadImg, setUploadImg] = useState(false);
   const [presentImages, setPresentImages] = useState([]);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(null);
@@ -37,6 +40,13 @@ const PropertyDetail = () => {
       setPresentImages([]);
     }
   }, [property]);
+
+  const handleUploadToggle = (componentId) => {
+    // Si el mismo componente vuelve a hacer toggle, se cierra. Si es otro, se abre.
+    setActiveUploadComponent((prevComponentId) =>
+      prevComponentId === componentId ? null : componentId
+    );
+  };
 
   const handleSaveChanges = () => {
     if (!property) return;
@@ -171,9 +181,9 @@ const PropertyDetail = () => {
       const sections = [...prevProperty.sections];
       sections[index] = {
         ...sections[index],
-        images: Array.isArray(img) 
-          ? img 
-          : [...(sections[index].images || []), img], 
+        images: Array.isArray(img)
+          ? img
+          : [...(sections[index].images || []), img],
       };
       return { ...prevProperty, sections };
     });
@@ -216,7 +226,7 @@ const PropertyDetail = () => {
     } else if (id === 3) {
       setProperty((prevForm) => ({
         ...prevForm,
-        blueprints: Array.isArray(image) 
+        blueprints: Array.isArray(image)
           ? image // Si 'image' es un array, lo reemplaza directamente
           : [...prevForm.blueprints, image], // Si no es un array, lo agrega al array existente
       }));
@@ -231,8 +241,11 @@ const PropertyDetail = () => {
   const handleMoveImageUp = (index) => {
     if (index === 0) return; // No puede mover la primera imagen hacia arriba
     const newImages = [...presentImages];
-    [newImages[index - 1], newImages[index]] = [newImages[index], newImages[index - 1]];
-    
+    [newImages[index - 1], newImages[index]] = [
+      newImages[index],
+      newImages[index - 1],
+    ];
+
     // Actualizar tanto el estado de las imágenes como el objeto property
     setPresentImages(newImages);
     setProperty((prevProperty) => ({
@@ -240,12 +253,15 @@ const PropertyDetail = () => {
       presentImages: newImages, // Actualiza el array de imágenes en property
     }));
   };
-  
+
   const handleMoveImageDown = (index) => {
     if (index === presentImages.length - 1) return; // No puede mover la última imagen hacia abajo
     const newImages = [...presentImages];
-    [newImages[index + 1], newImages[index]] = [newImages[index], newImages[index + 1]];
-  
+    [newImages[index + 1], newImages[index]] = [
+      newImages[index],
+      newImages[index + 1],
+    ];
+
     // Actualizar tanto el estado de las imágenes como el objeto property
     setPresentImages(newImages);
     setProperty((prevProperty) => ({
@@ -295,9 +311,7 @@ const PropertyDetail = () => {
           <div className="flex justify-center items-start gap-32 mx-20">
             <div className="flex flex-col gap-10 justify-center">
               <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-bold">
-                  Nombre de la Propiedad:{" "}
-                </h1>
+                <h1 className="w-auto font-bold">Nombre de la Propiedad: </h1>
                 {isChanging ? (
                   <input
                     type="text"
@@ -312,9 +326,7 @@ const PropertyDetail = () => {
                 )}
               </div>
               <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-bold">
-                 Dirección:{" "}
-                </h1>
+                <h1 className="w-auto font-bold">Dirección: </h1>
                 {isChanging ? (
                   <input
                     type="text"
@@ -329,9 +341,7 @@ const PropertyDetail = () => {
                 )}
               </div>
               <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-bold">
-                  Latitud:{" "}
-                </h1>
+                <h1 className="w-auto font-bold">Latitud: </h1>
                 {isChanging ? (
                   <input
                     type="text"
@@ -346,9 +356,7 @@ const PropertyDetail = () => {
                 )}
               </div>
               <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-bold">
-                  Longitud:{" "}
-                </h1>
+                <h1 className="w-auto font-bold">Longitud: </h1>
                 {isChanging ? (
                   <input
                     type="text"
@@ -388,6 +396,8 @@ const PropertyDetail = () => {
                 handleChangeVariantImg={handleChangeVariantImg}
                 title={"Imagen de Presentación"}
                 id={2}
+                isUploadOpen={activeUploadComponent === "imgInput"}
+                onToggleUpload={() => handleUploadToggle("imgInput")}
               />
 
               <div className="sm:col-span-3">
@@ -434,15 +444,19 @@ const PropertyDetail = () => {
                   ))}
                 </div>
                 <div
-                  onClick={() => setUploadImg(!uploadImg)}
+                  onClick={() => handleUploadToggle("presentImages")} // Aquí activamos el estado de carga específico
                   className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700 mt-4"
                 >
                   <p className="text-left">Cargar imagen</p>
                   <IoIosArrowDown
-                    className={`${uploadImg ? "rotate-180" : ""} duration-300`}
+                    className={`${
+                      activeUploadComponent === "presentImages"
+                        ? "rotate-180"
+                        : ""
+                    } duration-300`}
                   />
                 </div>
-                {uploadImg && (
+                {activeUploadComponent === "presentImages" && (
                   <UploadImage
                     handleUploadImage={(image) =>
                       setPresentImages([...presentImages, image])
@@ -460,6 +474,8 @@ const PropertyDetail = () => {
                 handleChangeVariantImg={handleChangeVariantImg}
                 title={"Planos"}
                 id={3}
+                isUploadOpen={activeUploadComponent === "blueprints"} // Pasa si está abierto o no
+                onToggleUpload={() => handleUploadToggle("blueprints")}
               />
 
               <div className="flex justify-start items-start gap-2">
@@ -585,14 +601,16 @@ const PropertyDetail = () => {
                     key={index}
                     index={index}
                     section={section}
-                    handleSectionChange={handleSectionChange}
-                    handleSectionCheckboxChange={handleSectionCheckboxChange}
-                    handleDeleteSectionImage={handleDeleteSectionImage}
+                    handleSectionChange={() => {}}
+                    handleSectionCheckboxChange={() => {}}
+                    handleDeleteSectionImage={() => {}}
                     handleSectionImageChange={handleSectionImageChange}
-                    setCurrentSectionIndex={() => {}}
-                    currentSectionIndex={null}
-                    handleCloseUpload={() => {}}
-                    removeSection={removeSection}
+                    isUploadOpen={activeUploadComponent === `section-${index}`}
+                    onToggleUpload={() =>
+                      handleUploadToggle(`section-${index}`)
+                    } // Controla cuál sección tiene activo el upload
+                    handleCloseUpload={() => setActiveUploadComponent(null)}
+                    removeSection={() => {}}
                   />
                 ))}
                 <div className="mt-4">

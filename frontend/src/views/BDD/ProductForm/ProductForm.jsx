@@ -12,6 +12,9 @@ const ProductForm = () => {
   const [images, setImages] = useState([]);
   const [blueprintsImages, setBlueprintsImages] = useState([]);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(null);
+
+  const [activeUploadComponent, setActiveUploadComponent] = useState(null);
+
   const [form, setForm] = useState({
     name: "",
     present_images: [],
@@ -43,6 +46,12 @@ const ProductForm = () => {
       ...prevForm,
       [name]: value,
     }));
+  };
+
+  const handleUploadToggle = (componentId) => {
+    setActiveUploadComponent((prevComponent) =>
+      prevComponent === componentId ? null : componentId
+    );
   };
 
   const handleCheckboxAmenitiesChange = (e, value) => {
@@ -215,11 +224,14 @@ const ProductForm = () => {
     }
   };
 
+  // const handleCloseUpload = () => {
+  //   setUploadImg(false);
+  //   setCurrentSectionIndex(null);
+  // };
+
   const handleCloseUpload = () => {
-    setUploadImg(false);
-    setCurrentSectionIndex(null);
+    setActiveUploadComponent(null); // Cierra el componente activo
   };
-  console.log(form);
 
   return (
     <form
@@ -357,6 +369,8 @@ const ProductForm = () => {
               handleChangeVariantImg={handleChangeVariantImg}
               title={"Imagen de Presentación"}
               id={2}
+              isUploadOpen={activeUploadComponent === "imgInput"}
+              onToggleUpload={() => handleUploadToggle("imgInput")}
             />
             {/* Blueprints Input */}
             <BlueprintsInput
@@ -365,173 +379,46 @@ const ProductForm = () => {
               handleChangeVariantImg={handleChangeVariantImg}
               title={"Planos"}
               id={3}
+              isUploadOpen={activeUploadComponent === "blueprints"}
+              onToggleUpload={() => handleUploadToggle("blueprints")}
             />
 
-            <div class="sm:col-span-4">
-              <p><span className="font-bold">Imagenes del Carrusel</span> - Dimensiones (15 : 10) 0 (16 : 9)</p>
-              <p className="italic text-sm">No mas de 3, estas imagenes van en el carrusel de la propiedad</p>
-              <div className="flex">
-                {images
-                  ? images?.map((img, index) => (
-                      <div key={index} className="w-24 relative">
-                        <img className="" src={img} />
-                        <div
-                          onClick={() => handleDeleteImage(index, 1)}
-                          className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
-                        >
-                          X
-                        </div>
-                      </div>
-                    ))
-                  : ""}
-              </div>
+            {/* Carrusel de Imágenes */}
+      <div className="sm:col-span-4">
+        <p><span className="font-bold">Imágenes del Carrusel</span> - Dimensiones (15 : 10) o (16 : 9)</p>
+        <p className="italic text-sm">No más de 3 imágenes</p>
+        <div className="flex">
+          {images.map((img, index) => (
+            <div key={index} className="w-24 relative">
+              <img className="" src={img} alt={`imagen-${index}`} />
               <div
-                onClick={() => setUploadImg(!uploadImg)}
-                className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700"
+                onClick={() => {}}
+                className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
               >
-                <p className="text-left">Cargar imagen</p>
-                <IoIosArrowDown
-                  className={`${uploadImg ? "rotate-180" : ""} duration-300`}
-                />
-              </div>
-              {uploadImg ? (
-                <UploadImage
-                  handleUploadImage={handleChangeVariantImg}
-                  id={1}
-                  handleCloseUpload={handleCloseUpload}
-                />
-              ) : (
-                ""
-              )}
-            </div>
-
-            {/* <div className="sm:col-span-4">
-              <label
-                htmlFor="surface"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Superficie
-              </label>
-              <div className="mt-2">
-                <div className="flex items-center rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <input
-                    type="number"
-                    name="surface"
-                    id="surface"
-                    onChange={handleChange}
-                    value={form.surface}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                  <span className="text-gray-500 ml-2">m²</span>
-                </div>
-              </div>
-            </div> */}
-
-            {/* <div className="sm:col-span-4">
-              <label
-                htmlFor="init_date"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Fecha de inicio
-              </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <input
-                    type="text"
-                    name="init_date"
-                    id="init_date"
-                    onChange={handleChange}
-                    value={form.init_date}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                </div>
+                X
               </div>
             </div>
-
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="finished_date"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Fecha de término
-              </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <input
-                    type="text"
-                    name="finished_date"
-                    id="finished_date"
-                    onChange={handleChange}
-                    value={form.finished_date}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="units_available"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Unidades disponibles
-              </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <input
-                    type="number"
-                    name="units_available"
-                    id="units_available"
-                    onChange={handleChange}
-                    value={form.units_available}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="total_units"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Total de unidades
-              </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <input
-                    type="number"
-                    name="total_units"
-                    id="total_units"
-                    onChange={handleChange}
-                    value={form.total_units}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div> */}
-
-            {/* <div className="sm:col-span-4">
-              <label
-                htmlFor="work_percentage"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Progreso de Obra (porcentaje)
-              </label>
-              <div className="mt-2">
-                <div className="flex items-center rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <input
-                    type="number"
-                    name="work_percentage"
-                    id="work_percentage"
-                    onChange={handleChange}
-                    value={form.work_percentage}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                  <span className="text-gray-700 ml-2">%</span>
-                </div>
-              </div>
-            </div> */}
+          ))}
+        </div>
+        <div
+          onClick={() => handleUploadToggle("carouselImages")}
+          className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700"
+        >
+          <p className="text-left">Cargar imagen</p>
+          <IoIosArrowDown
+            className={`${
+              activeUploadComponent === "carouselImages" ? "rotate-180" : ""
+            } duration-300`}
+          />
+        </div>
+        {activeUploadComponent === "carouselImages" && (
+          <UploadImage
+            handleUploadImage={(image) => setImages([...images, image])}
+            id={1}
+            handleCloseUpload={handleCloseUpload}
+          />
+        )}
+      </div>
 
             <div className="sm:col-span-4">
               <label
@@ -728,8 +615,10 @@ const ProductForm = () => {
                   handleSectionImageChange={handleSectionImageChange}
                   setCurrentSectionIndex={setCurrentSectionIndex}
                   currentSectionIndex={currentSectionIndex}
-                  handleCloseUpload={handleCloseUpload}
                   removeSection={removeSection}
+                  isUploadOpen={activeUploadComponent === `section-${index}`}
+                  onToggleUpload={() => handleUploadToggle(`section-${index}`)}
+                  handleCloseUpload={handleCloseUpload}
                 />
               ))}
               <div className="mt-4">
