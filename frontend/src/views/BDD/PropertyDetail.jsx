@@ -280,6 +280,8 @@ const PropertyDetail = () => {
   if (!property) {
     return <div>Cargando...</div>;
   }
+console.log(property);
+console.log(presentImages);
 
   return (
     <>
@@ -456,9 +458,17 @@ const PropertyDetail = () => {
                 </div>
                 {activeUploadComponent === "presentImages" && (
                   <UploadImage
-                    handleUploadImage={(image) =>
-                      setPresentImages([...presentImages, image])
-                    }
+                  handleUploadImage={(image) => {
+                    // Actualiza el estado local `presentImages`
+                    const updatedImages = [...presentImages, image];
+                    setPresentImages(updatedImages);
+            
+                    // Actualiza también el estado de `property`
+                    setProperty((prevProperty) => ({
+                      ...prevProperty,
+                      presentImages: updatedImages, // Refleja el cambio en `property`
+                    }));
+                  }}
                     id={1}
                     handleCloseUpload={handleCloseUpload}
                     handleDeleteImage={handleDeleteImage}
