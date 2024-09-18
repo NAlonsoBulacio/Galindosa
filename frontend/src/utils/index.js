@@ -72,4 +72,6 @@ export const ambients = [
   { id: 504, label: "4 Dormitorios", available: true },
   { id: 505, label: "5 Dormitorios", available: true },
   { id: 506, label: "Casa", available: true },
+  { id: 507, label: "Locales Comerciales", available: true },
+  { id: 508, label: "Cochera", available: true },
 ];
