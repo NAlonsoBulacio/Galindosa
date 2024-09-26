@@ -98,7 +98,7 @@ const SectionCard = ({ section, index }) => {
             <p className="text-sm lg:text-md poppins-light">
               {sectionProps.text}
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-6 mt-4">
+            <div className="flex flex-wrap justify-start gap-6 mt-4">
               {sectionProps.amenities?.map((amenity, index) => (
                 <div key={index} className="flex flex-col items-center w-[15%]">
                   <img src={amenity.icon} alt={amenity.label} className=""/>
