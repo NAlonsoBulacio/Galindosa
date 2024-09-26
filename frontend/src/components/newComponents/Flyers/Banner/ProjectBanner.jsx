@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import CustomSlide from "./CustomSlide";
 import ContactForm from "../../ContactForm/ContactForm";
-const Banner = ({banners, name}) => {
-
+const Banner = ({ banners, name }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -15,51 +14,36 @@ const Banner = ({banners, name}) => {
     arrows: false,
   };
 
-  const slides = [
-    {
-      imgSrc:
-      banners[0],
-      text: name,
-      Subtext:
-        "Discover our wide range of printers and consumables designed for professional printing needs.",
-      buttonLink: "/catalogo",
-      buttonText: "Comprar Ahora",
-    },
-    {
-      imgSrc: banners[1],
-      text: name,
-      Subtext:
-        "Explore our premium printers and consumables for exceptional results",
-      buttonLink: "/catalogo",
-      buttonText: "Comprar Ahora",
-    },
-    {
-      imgSrc: banners[0],
-      text: name,
-      Subtext:
-        "Maximize productivity with our advanced printers and high-quality consumables. ",
-      buttonLink: "/shop",
-      buttonText: "Comprar Ahora",
-    },
-  ];
+  // const slides = [
+  //   {
+  //     imgSrc: banners[0],
+  //     text: name,
+  //   },
+  //   {
+  //     imgSrc: banners[1],
+  //     text: name,
+  //   },
+  //   {
+  //     imgSrc: banners[0],
+  //     text: name,
+  //   },
+  // ];
 
-  // Filtrar slides según el tamaño de la pantalla
-  const filteredSlides =
-    window.innerWidth >= 1024
-      ? slides.slice(0, 2) // Pantallas grandes: primeros 2 slides
-      : [slides[0], slides[2]]; // Pantallas pequeñas: primer y tercer slide
 
   return (
     <div className="w-full  bg-white overflow-hidden relative">
-       <div className="absolute top-16 right-4 z-30 mx-8 hidden lg:flex justify-center items-center">
+      <div className="absolute top-16 right-4 z-30 mx-8 hidden lg:flex justify-center items-center">
         <ContactForm />
       </div>
-      <Slider {...settings}>
-        {filteredSlides.map((slide, index) => (
-          <CustomSlide key={index} {...slide} /> 
-        ))}
-      </Slider>
-
+      {banners ? (
+        <Slider {...settings}>
+          {banners.map((slide, index) => (
+            <CustomSlide key={index} slide={slide} text={name} />
+          ))}
+        </Slider>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
