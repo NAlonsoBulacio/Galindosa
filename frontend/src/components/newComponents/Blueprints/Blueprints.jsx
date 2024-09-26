@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import SampleNextArrow from "../../../utils/SampleNextArrow";
 import SamplePrevArrow from "../../../utils/SamplePrevArrow";
+// import SampleNextArrow from "../../Arrows/SampleNextArrow";
+// import SamplePrevArrow from "../../Arrows/SamplePrevArrow";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

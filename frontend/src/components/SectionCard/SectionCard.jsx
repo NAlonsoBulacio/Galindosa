@@ -14,7 +14,7 @@ const SectionCard = ({ section, index }) => {
   const sliderRef = useRef(null);
 
   useEffect(() => {
-    setSectionProps(section); 
+    setSectionProps(section);
   }, [section]);
 
   const toggleFullScreen = () => {
@@ -72,7 +72,6 @@ const SectionCard = ({ section, index }) => {
   }, []);
   const images = section ? section.images : "";
 
-
   const settings = {
     infinite: true,
     speed: 500,
@@ -82,6 +81,9 @@ const SectionCard = ({ section, index }) => {
     nextArrow: isFullscreen ? <SampleNextArrow /> : null,
     prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
   };
+
+  const imagesLength = images?.length;
+  console.log(imagesLength);
 
   return (
     <>
@@ -101,8 +103,10 @@ const SectionCard = ({ section, index }) => {
             <div className="flex flex-wrap justify-start gap-6 mt-4">
               {sectionProps.amenities?.map((amenity, index) => (
                 <div key={index} className="flex flex-col items-center w-[15%]">
-                  <img src={amenity.icon} alt={amenity.label} className=""/>
-                  <p className="text-lg text-black text-center">{amenity.label}</p>
+                  <img src={amenity.icon} alt={amenity.label} className="" />
+                  <p className="text-lg text-black text-center">
+                    {amenity.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -119,7 +123,30 @@ const SectionCard = ({ section, index }) => {
               isFullscreen ? "w-screen" : "w-full lg:w-2/4"
             } project-slider z-20 flex flex-wrap lg:flex-nowrap justify-between items-start gap-3`}
           >
-            {images ? (
+            {images.length === 1 ? (
+              <div
+                ref={sliderRef}
+                className={`w-full lg:w-[80%] h-auto flex justify-center items-center px-2 ${
+                  isFullscreen
+                    ? "fixed lg:w-full inset-0 z-50 bg-gray-900 bg-opacity-75"
+                    : ""
+                }`}
+              >
+                <div
+                  className={`w-full h-[320px] rounded-xl overflow-hidden  ${
+                    isFullscreen ? "w-[80%] h-full" : ""
+                  }`}
+                >
+                  <img
+                    src={images[0]}
+                    alt={`Slide 1`}
+                    className={`w-full ${
+                      isFullscreen ? "max-h-full" : "object-cover h-[320px]"
+                    }`}
+                  />
+                </div>
+              </div>
+            ) : images.length !== 1 ? (
               <div
                 ref={sliderRef}
                 className={`w-full lg:w-[80%] h-auto flex justify-center items-center px-2 ${
