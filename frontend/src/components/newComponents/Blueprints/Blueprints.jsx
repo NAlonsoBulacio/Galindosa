@@ -68,11 +68,7 @@ const BlueprintsCarousel = ({ blueprints }) => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: isFullscreen
-      ? 1
-      : blueprints.length <= 3
-      ? blueprints.length
-      : 4,
+    slidesToShow: isFullscreen ? 1 : blueprints.length <= 3 ? 3 : 4,
     slidesToScroll: 1,
     dots: !isFullscreen,
     nextArrow: isFullscreen ? <SampleNextArrow /> : null,
@@ -116,25 +112,43 @@ const BlueprintsCarousel = ({ blueprints }) => {
         }`}
       >
         <div className="relative">
-          <Slider {...settings}>
-            {blueprints.map((print, index) => (
-              <div
-                key={index}
-                className="px-2"
-                onClick={!isFullscreen && toggleFullScreen}
-              >
-                <img
-                  src={print}
-                  alt={`Blueprint ${index}`}
-                  className={`${
-                    isFullscreen
-                      ? "h-screen w-full object-contain"
-                      : "hover:shadow-xl duration-300 cursor-pointer"
-                  }`}
-                />
-              </div>
-            ))}
-          </Slider>
+          {blueprints.length === 1 ? (
+            <div
+             
+              className="px-2 "
+              onClick={!isFullscreen && toggleFullScreen}
+            >
+              <img
+                src={blueprints[0]}
+                alt="blueprint"
+                className={` w-full lg:w-1/3 ${
+                  isFullscreen
+                    ? "h-screen w-full object-contain"
+                    : "hover:shadow-xl duration-300 cursor-pointer"
+                }`}
+              />{" "}
+            </div>
+          ) : (
+            <Slider {...settings}>
+              {blueprints.map((print, index) => (
+                <div
+                  key={index}
+                  className="px-2"
+                  onClick={!isFullscreen && toggleFullScreen}
+                >
+                  <img
+                    src={print}
+                    alt={`Blueprint ${index}`}
+                    className={`${
+                      isFullscreen
+                        ? "h-screen w-full object-contain"
+                        : "hover:shadow-xl duration-300 cursor-pointer"
+                    }`}
+                  />
+                </div>
+              ))}
+            </Slider>
+          )}
           <div className="absolute top-8 right-8 z-50">
             <button
               onClick={toggleFullScreen}

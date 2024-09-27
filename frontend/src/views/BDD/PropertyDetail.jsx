@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { emptyDetail, getProjects } from "../../redux/actions";
+import { getProjects } from "../../redux/actions";
 import axios from "axios";
 import { amenities, ambients } from "../../utils";
 import Section from "../../components/BDD/Section/Section";
@@ -9,7 +9,7 @@ import ImgInput from "../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../components/BDD/BlueprintsInput/BlueprintsInput";
 import UploadImage from "../../components/UploadImage/UploadImage";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaArrowUp, FaArrowDown  } from "react-icons/fa";
 
 const PropertyDetail = () => {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const PropertyDetail = () => {
 
   const [uploadImg, setUploadImg] = useState(false);
   const [presentImages, setPresentImages] = useState([]);
+  const [localSections, setLocalSections] = useState([]);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(null);
 
   useEffect(() => {
@@ -38,6 +39,11 @@ const PropertyDetail = () => {
       setPresentImages(property.presentImages);
     } else {
       setPresentImages([]);
+    }
+    if (property && Array.isArray(property.sections)) {
+      setLocalSections(property.sections);
+    } else {
+      setLocalSections([]);
     }
   }, [property]);
 
@@ -269,19 +275,48 @@ const PropertyDetail = () => {
       presentImages: newImages, // Actualiza el array de imágenes en property
     }));
   };
+  const handleMoveSectionUp = (index) => {
+    if (index === 0) return; // No puede mover la primera section hacia arriba
+    const newSections = [...localSections];
+    [newSections[index - 1], newSections[index]] = [
+      newSections[index],
+      newSections[index - 1],
+    ];
+
+    // Actualizar tanto el estado de las sections como el objeto property
+    setLocalSections(newSections);
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      sections: newSections, // Actualiza el array de sections en property
+    }));
+  };
+
+  const handleMoveSectionDown = (index) => {
+    if (index === localSections.length - 1) return; // No puede mover la última section hacia abajo
+    const newSections = [...localSections];
+    [newSections[index + 1], newSections[index]] = [
+      newSections[index],
+      newSections[index + 1],
+    ];
+
+    // Actualizar tanto el estado de las sections como el objeto property
+    setLocalSections(newSections);
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      sections: newSections, // Actualiza el array de sections en property
+    }));
+  };
 
   const handleCloseUpload = () => {
     setUploadImg(false);
     setCurrentSectionIndex(null);
   };
 
-
-
   if (!property) {
     return <div>Cargando...</div>;
   }
-console.log(property);
-console.log(presentImages);
+  console.log(property);
+  console.log(presentImages);
 
   return (
     <>
@@ -458,17 +493,17 @@ console.log(presentImages);
                 </div>
                 {activeUploadComponent === "presentImages" && (
                   <UploadImage
-                  handleUploadImage={(image) => {
-                    // Actualiza el estado local `presentImages`
-                    const updatedImages = [...presentImages, image];
-                    setPresentImages(updatedImages);
-            
-                    // Actualiza también el estado de `property`
-                    setProperty((prevProperty) => ({
-                      ...prevProperty,
-                      presentImages: updatedImages, // Refleja el cambio en `property`
-                    }));
-                  }}
+                    handleUploadImage={(image) => {
+                      // Actualiza el estado local `presentImages`
+                      const updatedImages = [...presentImages, image];
+                      setPresentImages(updatedImages);
+
+                      // Actualiza también el estado de `property`
+                      setProperty((prevProperty) => ({
+                        ...prevProperty,
+                        presentImages: updatedImages, // Refleja el cambio en `property`
+                      }));
+                    }}
                     id={1}
                     handleCloseUpload={handleCloseUpload}
                     handleDeleteImage={handleDeleteImage}
@@ -605,21 +640,49 @@ console.log(presentImages);
                   Secciones
                 </h3>
                 {property.sections.map((section, index) => (
-                  <Section
-                    key={index}
-                    index={index}
-                    section={section}
-                    handleSectionChange={handleSectionChange}
-                    handleSectionCheckboxChange={handleSectionCheckboxChange}
-                    handleDeleteSectionImage={handleDeleteSectionImage}
-                    handleSectionImageChange={handleSectionImageChange}
-                    isUploadOpen={activeUploadComponent === `section-${index}`}
-                    onToggleUpload={() =>
-                      handleUploadToggle(`section-${index}`)
-                    } 
-                    handleCloseUpload={() => setActiveUploadComponent(null)}
-                    removeSection={removeSection}
-                  />
+                  <div>
+                    <div className="flex justify-center mt-1 space-x-2">
+                      {/* Flecha hacia arriba */}
+                      <button
+                        onClick={() => handleMoveSectionUp(index)}
+                        disabled={index === 0}
+                        className={`p-1 border rounded ${
+                          index === 0 ? "opacity-50" : "hover:bg-gray-200"
+                        }`}
+                      >
+                        <FaArrowUp className="" />
+                      </button>
+                      {/* Flecha hacia abajo */}
+                      <button
+                        onClick={() => handleMoveSectionDown(index)}
+                        disabled={index === localSections.length - 1}
+                        className={`p-1 border rounded ${
+                          index === localSections.length - 1
+                            ? "opacity-50"
+                            : "hover:bg-gray-200"
+                        }`}
+                      >
+                        <FaArrowDown />
+                      </button>
+                    </div>
+                    <Section
+                      key={index}
+                      index={index}
+                      section={section}
+                      handleSectionChange={handleSectionChange}
+                      handleSectionCheckboxChange={handleSectionCheckboxChange}
+                      handleDeleteSectionImage={handleDeleteSectionImage}
+                      handleSectionImageChange={handleSectionImageChange}
+                      isUploadOpen={
+                        activeUploadComponent === `section-${index}`
+                      }
+                      onToggleUpload={() =>
+                        handleUploadToggle(`section-${index}`)
+                      }
+                      handleCloseUpload={() => setActiveUploadComponent(null)}
+                      removeSection={removeSection}
+                    />
+                  </div>
                 ))}
                 <div className="mt-4">
                   <button
