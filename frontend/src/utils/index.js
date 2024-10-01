@@ -62,6 +62,7 @@ export const amenities = [
   { id: 427, icon: cowork, label: "Coworking" },
   { id: 428, icon: playground, label: "Outdoor Play" },
   { id: 429, icon: fitness, label: "Fitness Park" },
+  { id: 430, icon: spa, label: "Espacio de Relajacion" },
 ];
 
 export const ambients = [

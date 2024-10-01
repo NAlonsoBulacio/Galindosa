@@ -21,6 +21,7 @@ const BlueprintsInput = ({
     }
   }, [img]);
 
+
   const handleMoveImageUp = (index) => {
     if (index === 0) return;
     const newImages = [...images];
