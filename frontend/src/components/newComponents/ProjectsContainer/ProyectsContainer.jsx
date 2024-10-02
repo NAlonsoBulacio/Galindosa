@@ -3,7 +3,7 @@ import "./ProjectsContainer.css";
 import loading from "../../../assets/ripples.svg";
 
 const ProjectsContainer = ({ projects }) => {
-  const [visibleProjects, setVisibleProjects] = useState(10);
+  const [visibleProjects, setVisibleProjects] = useState(20);
 
   const handleMouseEnter = (e) => {
     e.currentTarget.querySelector("div").classList.add("opacity-100");
