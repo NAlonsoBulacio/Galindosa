@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProjects } from "../../redux/actions";
+import thumbnailConvert from "../../utils/convertThumbnail";
 const PropertiesBdd = () => {
   const dispatch = useDispatch();
 
@@ -10,7 +11,6 @@ const PropertiesBdd = () => {
 
 
   const projects = useSelector((state) => state.projects);
-console.log(projects);
   const count = projects?.length;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -164,7 +164,7 @@ console.log(projects);
                         </div>
                       </div>
                       <div className="w-20 ml-3">
-                        <img src={product.img} alt="propiedad" />
+                        <img src={thumbnailConvert(product.img)} alt="propiedad" />
                       </div>
                     </div>
                   </td>

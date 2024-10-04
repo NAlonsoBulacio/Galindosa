@@ -7,7 +7,6 @@ import FlyerProjects from "../../components/newComponents/Flyers/FlyerProjects";
 import { IoIosSearch } from "react-icons/io";
 import { getProjects } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import projects from "../../utils/projects";
 import loadingImg from "../../assets/ripples.svg"; 
 import { MdCleaningServices } from "react-icons/md";
 

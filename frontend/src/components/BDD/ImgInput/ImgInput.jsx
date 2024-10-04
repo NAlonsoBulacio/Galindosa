@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import UploadImage from "../../UploadImage/UploadImage";
-
+import thumbnailConvert from "../../../utils/convertThumbnail";
 const ImgInput = ({
   img,
   handleDeleteImage,
@@ -24,7 +24,7 @@ const ImgInput = ({
       <div className="flex">
         {images ? (
           <div className="w-24 relative">
-            <img className="" src={images} alt="Presentación" />
+            <img className="" src={thumbnailConvert(images)} alt="Presentación" />
             <div
               onClick={() => handleDeleteImage(1, id)}
               className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"

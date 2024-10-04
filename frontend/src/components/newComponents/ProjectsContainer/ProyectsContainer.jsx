@@ -30,7 +30,7 @@ const ProjectsContainer = ({ projects }) => {
               <div key={project.id}>
                 <a href={`/proyecto/${project.slug}`}>
                   <div
-                    className="w-auto h-auto border-[1px] border-yellow-100 rounded-xl relative overflow-hidden cursor-pointer transition-opacity duration-500 opacity-100"
+                    className="w-auto h-auto border-[1px] rounded-xl relative overflow-hidden cursor-pointer transition-opacity duration-500 opacity-100"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >

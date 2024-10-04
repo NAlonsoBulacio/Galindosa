@@ -10,6 +10,7 @@ import BlueprintsInput from "../../components/BDD/BlueprintsInput/BlueprintsInpu
 import UploadImage from "../../components/UploadImage/UploadImage";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaArrowLeft, FaArrowRight, FaArrowUp, FaArrowDown  } from "react-icons/fa";
+import thumbnailConvert from "../../utils/convertThumbnail";
 
 const PropertyDetail = () => {
   const dispatch = useDispatch();
@@ -442,7 +443,7 @@ const PropertyDetail = () => {
                     <div key={index} className="w-24 relative mx-2">
                       <img
                         className="w-full"
-                        src={img}
+                        src={thumbnailConvert(img)}
                         alt={`Imagen ${index + 1}`}
                       />
                       <div

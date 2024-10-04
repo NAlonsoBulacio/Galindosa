@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import UploadImage from "../../UploadImage/UploadImage";
+import thumbnailConvert from "../../../utils/convertThumbnail";
 
 const BlueprintsInput = ({
   img,
@@ -52,7 +53,7 @@ const BlueprintsInput = ({
       <div className="flex flex-wrap">
         {images?.map((img, index) => (
           <div key={index} className="w-24 relative mx-2">
-            <img className="w-full" src={img} alt={`Imagen ${index + 1}`} />
+            <img className="w-full" src={thumbnailConvert(img)} alt={`Imagen ${index + 1}`} />
             <div
               onClick={() => handleDeleteImage(index, id)}
               className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"

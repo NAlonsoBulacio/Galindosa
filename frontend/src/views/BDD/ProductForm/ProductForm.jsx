@@ -6,7 +6,7 @@ import Section from "../../../components/BDD/Section/Section";
 import { amenities, ambients } from "../../../utils";
 import ImgInput from "../../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../../components/BDD/BlueprintsInput/BlueprintsInput";
-
+import thumbnailConvert from "../../../utils/convertThumbnail";
 const ProductForm = () => {
   const [uploadImg, setUploadImg] = useState(false);
   const [images, setImages] = useState([]);
@@ -390,7 +390,7 @@ const ProductForm = () => {
         <div className="flex">
           {images.map((img, index) => (
             <div key={index} className="w-24 relative">
-              <img className="" src={img} alt={`imagen-${index}`} />
+              <img className="" src={thumbnailConvert(img)} alt={`imagen-${index}`} />
               <div
                 onClick={() => {}}
                 className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"

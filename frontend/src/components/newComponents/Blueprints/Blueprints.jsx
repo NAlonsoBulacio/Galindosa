@@ -71,8 +71,8 @@ const BlueprintsCarousel = ({ blueprints }) => {
     slidesToShow: isFullscreen ? 1 : blueprints.length <= 3 ? 3 : 4,
     slidesToScroll: 1,
     dots: !isFullscreen,
-    nextArrow: isFullscreen ? <SampleNextArrow /> : null,
-    prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
+    nextArrow:  <SampleNextArrow /> ,
+    prevArrow:  <SamplePrevArrow /> ,
     responsive: [
       {
         breakpoint: 1025,
