@@ -1,9 +1,17 @@
 import React from 'react';
 import './FeaturedCard.css'; 
-
+import { useHistory } from "react-router-dom";
 const FeaturedCard = ({ image, title, description }) => {
+  const history = useHistory();
+  const handleSearch = (zona) => {
+    history.push("/proyectos", { zona });
+    
+  };
+
   return (
-    <div className="card-container">
+    <div className="card-container"
+    onClick={() => handleSearch(title)}
+    >
       <div className="card">
         <div className="card-front">
           <img src={image} alt={title} className="card-image" />

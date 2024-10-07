@@ -42,13 +42,13 @@ const Counter = () => {
   return (
     <div className="w-full flex justify-center items-center py-12"
     >
-      <div className="flex flex-wrap justify-center items-center px-4 lg:px-10 notranslate">
+      <div className="flex flex-wrap justify-between items-center px-4 lg:px-10 notranslate">
         <div className="w-1/3 flex flex-wrap justify-start items-center">
           <div
             ref={ref1}
             className="w-full flex justify-center md:justify-center items-center"
           >
-            <p className="text-gray-600 poppins-bold text-center w-32 md:w-40 text-4xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
+            <p className="text-gray-600 poppins-bold text-center text-3xl md:text-5xl ">
               +{count1}
             </p>
           </div>
@@ -63,32 +63,13 @@ const Counter = () => {
             </h1>
           </div>
         </div>
-        <div className="w-1/3 flex flex-wrap justify-center items-center">
-          <div
-            ref={ref2}
-            className="w-full flex justify-center md:justify-center items-center"
-          >
-            <p className="text-gray-600 poppins-bold text-center w-32 md:w-40 text-4xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
-              +{count2}
-            </p>
-          </div>
-          <div className="w-full flex justify-center md:justify-center px-6">
-            <h1
-              ref={ref3}
-              className={`${
-                inView3 ? "animatable-type" : "initial-type"
-              } text-center poppins-regular text-gray-900 text-xs lg:text-xl`}
-            >
-              Años De Trayectoria
-            </h1>
-          </div>
-        </div>
+        
         <div className="h-full w-1/3 flex flex-wrap justify-center items-center text-center">
           <div
             ref={ref1}
             className="w-full h-2/3 flex justify-center md:justify-center items-center"
           >
-            <p className="text-gray-600 poppins-bold text-center  w-32 md:w-40 text-4xl md:text-5xl lg:text-5xl ">
+            <p className="text-gray-600 poppins-bold text-center   text-3xl md:text-5xl  ">
             +{count3.toLocaleString()}
             </p>
           </div>
@@ -100,6 +81,26 @@ const Counter = () => {
               } text-center poppins-regular text-gray-900 text-xs lg:text-xl justify-center`}
             >
               M² Construidos 
+            </h1>
+          </div>
+        </div>
+        <div className="w-1/3 flex flex-wrap justify-center items-center">
+          <div
+            ref={ref2}
+            className="w-full flex justify-center md:justify-center items-center"
+          >
+            <p className="text-gray-600 poppins-bold text-center w-32 md:w-40 text-3xl md:text-5xl  ">
+              {count2}
+            </p>
+          </div>
+          <div className="w-full flex justify-center md:justify-center px-6">
+            <h1
+              ref={ref3}
+              className={`${
+                inView3 ? "animatable-type" : "initial-type"
+              } text-center poppins-regular text-gray-900 text-xs lg:text-xl`}
+            >
+              Años De Trayectoria
             </h1>
           </div>
         </div>

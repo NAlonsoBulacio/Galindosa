@@ -2,13 +2,9 @@ import React from "react";
 import FeaturedCard from "../FeaturedCard/FeaturedCard";
 
 const FeaturedProperties = () => {
+
   const properties = [
-    {
-      image:
-        "https://grupoproaco.com/img/7026c98b-933e-4d98-a3da-98de033aee1b/minuatura-web-proaco-park.jpg?q=80&fit=max&crop=1093%2C1060%2C0%2C0",
-      title: "Barrio Norte ",
-      description: "Descripción breve de Barrio Norte",
-    },
+   
     {
       image:
         "https://grupoproaco.com/img/f2fee7c1-ae65-4991-bb10-950b74d43cd5/Miniatura-Pocito.jpg?q=80&fit=max&crop=600%2C400%2C0%2C0",
@@ -21,10 +17,16 @@ const FeaturedProperties = () => {
       title: "Mate de Luna",
       description: "Descripción breve de Mate de Luna",
     },
+    {
+      image:
+        "https://grupoproaco.com/img/7026c98b-933e-4d98-a3da-98de033aee1b/minuatura-web-proaco-park.jpg?q=80&fit=max&crop=1093%2C1060%2C0%2C0",
+      title: "Barrio Norte ",
+      description: "Descripción breve de Barrio Norte",
+    },
   ];
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <div className="w-full flex flex-col items-center">
         <h1 className="poppins-regular text-4xl text-gray-700 text-center lg:text-left">
           Proyectos{" "}
@@ -32,7 +34,7 @@ const FeaturedProperties = () => {
         </h1>
         <hr className="w-32 border-t-[3px] border-[#ffc702] mt-2" />
       </div>
-      <div className="flex flex-wrap lg:flex-nowrap justify-center mt-8">
+      <div className="flex flex-wrap lg:flex-nowrap justify-center mt-8 overflow-hidden">
         {properties.map((property, index) => (
           <FeaturedCard
             key={index}

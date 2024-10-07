@@ -38,7 +38,7 @@ const Amenities = ({ amenities }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -67,7 +67,7 @@ const Amenities = ({ amenities }) => {
                     alt={category.label}
                     className="mx-auto mb-4 w-16 h-16"
                   />
-                  <div className="text-xl poppins-regular text-gray-900">
+                  <div className="text-md lg:text-xl poppins-regular text-gray-900">
                     {category.label}
                   </div>
                 </div>

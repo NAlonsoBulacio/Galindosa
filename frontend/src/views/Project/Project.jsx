@@ -32,13 +32,11 @@ const Project = ({ match }) => {
     };
   }, [dispatch]);
 
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(true);
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
-
-  console.log(detail);
 
   return (
     <>
@@ -48,7 +46,7 @@ const Project = ({ match }) => {
             <Banner banners={detail.presentImages} name={detail.name} />
           )}
           <Header />
-          <div className="block lg:hidden bg-[#a58700] py-4 border-b-[1px] border-b-[#ffc702]">
+          <div className="block lg:hidden bg-gray-900 py-4 border-b-[1px] border-b-[#ffc702]">
             <p
               onClick={toggleForm}
               className="text-gray-100 text-center text-lg poppins-regular cursor-pointer"

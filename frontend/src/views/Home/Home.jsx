@@ -11,9 +11,9 @@ import NewsCards from "../../components/newComponents/NewsCards/NewsCards";
 import Footer from "../../components/newComponents/Footer/Footer";
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Header />
-      <div className="relative w-screen h-screen">
+      <div className="relative w-screen h-screen  ">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src={video}
@@ -22,7 +22,7 @@ const Home = () => {
           muted
         />
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-20">
+        <div className="absolute inset-0 flex flex-col items-center justify-center pt-20  ">
           <h1 className="text-white text-4xl md:text-6xl poppins-semibold text-center">
             La constructora N°1 de Tucumán
           </h1>
@@ -34,13 +34,13 @@ const Home = () => {
               SOLICITAR ASESOR <IoIosContacts className="text-3xl" />
             </a>
           </div>
-          <div className="mt-8 w-full flex justify-center">
+          <div className="mt-8 w-full flex justify-center  ">
             <Filter />
           </div>
         </div>
       </div>
-      <div className="px-2">
-        <Counter />
+      <div className="px-2  ">
+          <Counter />
         <FeaturedProperties />
       </div>
       {/* <CategoryCarousel /> */}

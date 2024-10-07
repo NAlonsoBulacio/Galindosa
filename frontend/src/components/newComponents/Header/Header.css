@@ -18,11 +18,13 @@
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
   .header {
-    background-color: #a58700; /* Fondo amarillo */
+      --tw-bg-opacity: 1;
+      background-color: rgb(17 24 39 / var(--tw-bg-opacity)) /* #111827 */;
     height: 80px;
   }
   .header-bg {
-    background-color: #a58700;
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity)) /* #111827 */;
 
   }
 }

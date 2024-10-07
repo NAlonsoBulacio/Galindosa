@@ -89,22 +89,22 @@ const SectionCard = ({ section, index }) => {
     <>
       {sectionProps ? (
         <div
-          className={`flex flex-wrap justify-between items-start py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0 ${
+          className={`flex flex-wrap justify-between items-start py-6 lg:py-20 px-0 lg:px-10 xl:px-32 space-y-8 lg:space-y-0 ${
             index % 2 === 0 ? "bg-white" : "bg-gray-100"
           } ${index % 2 !== 0 ? "flex-row-reverse" : ""}`}
         >
           <div className="w-full lg:w-[43%] flex flex-col justify-between items-start px-2 gap-y-4">
-            <h1 className="text-left text-3xl lg:text-4xl l poppins-regular text-gray-800 font-bold">
+            <h1 className="text-left text-3xl lg:text-4xl l poppins-semibold text-gray-800 font-bold">
               {sectionProps.title}
             </h1>
             <p className="text-sm lg:text-md poppins-light">
               {sectionProps.text}
             </p>
-            <div className="flex flex-wrap justify-start gap-6 mt-4">
+            <div className="flex flex-wrap justify-start gap-8 mt-4">
               {sectionProps.amenities?.map((amenity, index) => (
-                <div key={index} className="flex flex-col items-center w-[15%]">
+                <div key={index} className="flex flex-col items-center w-[18%] px-2">
                   <img src={amenity.icon} alt={amenity.label} className="" />
-                  <p className="text-lg text-black text-center">
+                  <p className="text-xs text-black text-center">
                     {amenity.label}
                   </p>
                 </div>
