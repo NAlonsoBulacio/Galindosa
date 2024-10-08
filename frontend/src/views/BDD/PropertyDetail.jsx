@@ -579,40 +579,7 @@ const PropertyDetail = () => {
                 onToggleUpload={() => handleUploadToggle("blueprints")}
               />
 
-              <div className="flex justify-start items-start gap-2">
-                <h1 className="w-auto font-bold">Descripción: </h1>
-                {isChanging ? (
-                  <textarea
-                    name="description"
-                    id="description"
-                    onChange={handleChange}
-                    value={property.description}
-                    rows="3"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.description}</p>
-                )}
-              </div>
-
-              {/* Intro Description */}
-              <div className="flex justify-start items-start gap-2">
-                <h1 className="w-auto font-bold">
-                  Descripción Introductoria:{" "}
-                </h1>
-                {isChanging ? (
-                  <textarea
-                    name="introDescription"
-                    id="introDescription"
-                    onChange={handleChange}
-                    value={property.introDescription}
-                    rows="3"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.introDescription}</p>
-                )}
-              </div>
+              
 
               {/* Campo de Ambientes */}
               <div className="sm:col-span-4">
