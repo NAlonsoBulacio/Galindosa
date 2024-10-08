@@ -83,7 +83,6 @@ const SectionCard = ({ section, index }) => {
   };
 
   const imagesLength = images?.length;
-  console.log(imagesLength);
 
   return (
     <>
@@ -104,7 +103,7 @@ const SectionCard = ({ section, index }) => {
               {sectionProps.amenities?.map((amenity, index) => (
                 <div key={index} className="flex flex-col items-center w-[18%] px-2">
                   <img src={amenity.icon} alt={amenity.label} className="" />
-                  <p className="text-xs text-black text-center">
+                  <p className="text-xs lg:text-md text-black text-center">
                     {amenity.label}
                   </p>
                 </div>

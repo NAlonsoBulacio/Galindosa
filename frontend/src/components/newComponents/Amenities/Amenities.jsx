@@ -52,7 +52,7 @@ const Amenities = ({ amenities }) => {
           className="relative bg-cover bg-center text-white py-10 lg:px-32 "
           // style={{ backgroundImage: `url(${bg_yellow})` }}
         >
-          <h1 className="text-center poppins-regular text-4xl text-gray-700">
+          <h1 className="text-center poppins-semibold text-4xl text-gray-700">
             Amenidades
           </h1>
           <div className="w-full flex justify-center">

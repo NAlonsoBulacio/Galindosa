@@ -9,7 +9,12 @@ import ImgInput from "../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../components/BDD/BlueprintsInput/BlueprintsInput";
 import UploadImage from "../../components/UploadImage/UploadImage";
 import { IoIosArrowDown } from "react-icons/io";
-import { FaArrowLeft, FaArrowRight, FaArrowUp, FaArrowDown  } from "react-icons/fa";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaArrowUp,
+  FaArrowDown,
+} from "react-icons/fa";
 import thumbnailConvert from "../../utils/convertThumbnail";
 
 const PropertyDetail = () => {
@@ -376,6 +381,58 @@ const PropertyDetail = () => {
                   <p className="text-sm">{property.address}</p>
                 )}
               </div>
+
+              {/* intro description */}
+              <div className="flex justify-start items-center gap-2">
+                <h1 className="w-auto font-bold">Titulo Introductorio: </h1>
+                {isChanging ? (
+                  <input
+                    type="text"
+                    name="introDescription"
+                    id="introDescription"
+                    onChange={handleChange}
+                    value={property.introDescription}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
+                  />
+                ) : (
+                  <p className="text-sm">{property.introDescription}</p>
+                )}
+              </div>
+
+              {/* description */}
+              <div className="flex justify-start items-center gap-2">
+                <h1 className="w-auto font-bold">Descripcion: </h1>
+                {isChanging ? (
+                  <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    onChange={handleChange}
+                    value={property.description}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
+                  />
+                ) : (
+                  <p className="text-sm">{property.description}</p>
+                )}
+              </div>
+
+              {/* video de youtube */}
+              <div className="flex justify-start items-center gap-2">
+                <h1 className="w-auto font-bold">ID del Video de YouTube: </h1>
+                {isChanging ? (
+                  <input
+                    type="text"
+                    name="video"
+                    id="video"
+                    onChange={handleChange}
+                    value={property.video}
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
+                  />
+                ) : (
+                  <p className="text-sm">{property.video}</p>
+                )}
+              </div>
+
               <div className="flex justify-start items-center gap-2">
                 <h1 className="w-auto font-bold">Latitud: </h1>
                 {isChanging ? (
