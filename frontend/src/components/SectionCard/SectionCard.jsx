@@ -148,7 +148,7 @@ const SectionCard = ({ section, index }) => {
             ) : images.length !== 1 ? (
               <div
                 ref={sliderRef}
-                className={`w-full lg:w-[80%] h-auto flex justify-center items-center px-2 ${
+                className={`w-full lg:w-[80%] h-[300px] flex justify-center items-center px-2 ${
                   isFullscreen
                     ? "fixed lg:w-full inset-0 z-50 bg-gray-900 bg-opacity-75"
                     : ""
@@ -161,7 +161,7 @@ const SectionCard = ({ section, index }) => {
                 >
                   <Slider
                     {...settings}
-                    className={`${isFullscreen ? "h-full" : ""}`}
+                    className={`${isFullscreen ? "h-[300px]" : "h-full"}`}
                   >
                     {images?.map((image, index) => (
                       <div
@@ -176,7 +176,7 @@ const SectionCard = ({ section, index }) => {
                           className={`w-full ${
                             isFullscreen
                               ? "max-h-full"
-                              : "object-cover h-[320px]"
+                              : "object-cover h-full"
                           }`}
                         />
                         {isFullscreen && (

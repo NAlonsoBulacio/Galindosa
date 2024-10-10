@@ -7,13 +7,13 @@ const ProjectsContainer = ({ projects }) => {
 
   const handleMouseEnter = (e) => {
     e.currentTarget.querySelector("div").classList.add("opacity-100");
-    e.currentTarget.querySelector("img").classList.add("brightness-50");
+    e.currentTarget.querySelector("img").classList.add("brightness-75");
     e.currentTarget.querySelector("img").classList.add("scale-110");
   };
 
   const handleMouseLeave = (e) => {
     e.currentTarget.querySelector("div").classList.remove("opacity-100");
-    e.currentTarget.querySelector("img").classList.remove("brightness-50");
+    e.currentTarget.querySelector("img").classList.remove("brightness-75");
     e.currentTarget.querySelector("img").classList.remove("scale-110");
   };
 
@@ -37,15 +37,14 @@ const ProjectsContainer = ({ projects }) => {
                     <img
                       src={project.img}
                       alt={`Project ${index}`}
-                      className="w-full h-auto hover:scale-110 transition duration-700 shadow-2xl hover:brightness-50"
+                      className="w-full h-auto hover:scale-110 transition duration-700 shadow-2xl brightness-50 hover:brightness-50"
                     />
-                    <div className="absolute flex flex-col inset-0 opacity-0 transition duration-700 text-white  justify-center items-center poppins-semibold text-2xl">
+                    <div className="absolute px-4 flex flex-col inset-0 opacity-100 transition duration-700 text-white  justify-center items-center poppins-semibold text-2xl">
                       <h1>{project.name}</h1>
                       <p className="w-full text-sm  poppins-light text-center text-balance text-gray-100">
-                      {project.introDescription}
-                    </p>
+                        {project.introDescription}
+                      </p>
                     </div>
-                    
                   </div>
                 </a>
               </div>
