@@ -43,7 +43,7 @@ const Header = () => {
           navbar
             ? "header-bg lg:shadow-2xl h-[80px] lg:h-[80px]"
             : "header h-[80px] lg:h-[95px]"
-        } text-gray-300 p-4 z-[100] font-lato-300 fixed w-full top-0 transition-all duration-500  ${
+        } text-gray-300 p-4 z-[50] font-lato-300 fixed w-full top-0 transition-all duration-500  ${
           menuOpen ? "" : "border-b-[1px] border-gray-900"
         }`}
       >

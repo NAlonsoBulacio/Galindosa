@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ProjectsContainer.css";
 import loading from "../../../assets/ripples.svg";
-
+import compressImage from "../../../utils/compressImage"
 const ProjectsContainer = ({ projects }) => {
   const [visibleProjects, setVisibleProjects] = useState(20);
 
@@ -35,7 +35,7 @@ const ProjectsContainer = ({ projects }) => {
                     onMouseLeave={handleMouseLeave}
                   >
                     <img
-                      src={project.img}
+                      src={compressImage(project.img)}
                       alt={`Project ${index}`}
                       className="w-full h-auto hover:scale-110 transition duration-700 shadow-2xl brightness-50 hover:brightness-50"
                     />

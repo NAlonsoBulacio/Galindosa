@@ -14,21 +14,6 @@ const Banner = ({ banners, name }) => {
     arrows: false,
   };
 
-  // const slides = [
-  //   {
-  //     imgSrc: banners[0],
-  //     text: name,
-  //   },
-  //   {
-  //     imgSrc: banners[1],
-  //     text: name,
-  //   },
-  //   {
-  //     imgSrc: banners[0],
-  //     text: name,
-  //   },
-  // ];
-
 
   return (
     <div className="w-full  bg-white overflow-hidden relative">

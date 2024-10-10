@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
-import { amenities } from "../../utils"; // Asegúrate de importar las amenidades correctamente
+import compressImage from "../../utils/compressImage";
 
 const SectionCard = ({ section, index }) => {
   const [sectionProps, setSectionProps] = useState("");
@@ -137,7 +137,7 @@ const SectionCard = ({ section, index }) => {
                   }`}
                 >
                   <img
-                    src={images[0]}
+                    src={compressImage(images[0])}
                     alt={`Slide 1`}
                     className={`w-full ${
                       isFullscreen ? "max-h-full" : "object-cover h-[320px]"
@@ -171,7 +171,7 @@ const SectionCard = ({ section, index }) => {
                         } group`}
                       >
                         <img
-                          src={image}
+                          src={compressImage(image)}
                           alt={`Slide ${index}`}
                           className={`w-full ${
                             isFullscreen
@@ -183,7 +183,7 @@ const SectionCard = ({ section, index }) => {
                           <div className="absolute top-8 right-8 hidden lg:block group-hover:block">
                             <button
                               onClick={toggleFullScreen}
-                              className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 opacity-0 group-hover:opacity-100 duration-150 rounded-lg"
+                              className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150 rounded-lg"
                             >
                               <MdFullscreenExit className="text-white w-full text-[60px]" />
                             </button>
@@ -193,7 +193,7 @@ const SectionCard = ({ section, index }) => {
                           <div className="absolute top-8 right-8 hidden lg:block group-hover:block">
                             <button
                               onClick={toggleFullScreen}
-                              className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-0 group-hover:opacity-100 duration-150"
+                              className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150"
                             >
                               <MdFullscreen className="text-white w-full text-4xl" />
                             </button>
