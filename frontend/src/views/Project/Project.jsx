@@ -79,9 +79,13 @@ const Project = ({ match }) => {
                 </h1>
               </div>
               <div className="w-full">
-                <p className="text-sm lg:text-md poppins-light">
-                  {detail.description}
-                </p>
+                <div 
+                className="text-sm lg:text-md poppins-light"
+                style={{ listStyleType: 'disc', paddingLeft: '20px' }}
+                dangerouslySetInnerHTML={{ __html: detail.description }}
+                >
+
+                </div>
               </div>
             </div>
             {detail.video ? (
@@ -109,9 +113,7 @@ const Project = ({ match }) => {
                     Sobre{" "}
                     <span className="poppins-semibold">{detail.name}</span>
                   </h2>
-                  {/* <p className="block lg:hidden text-lg poppins-light w-full lg:w-auto text-center text-balance">
-                    Edificio de Departamentos
-                  </p> */}
+                 
                 </div>
                 <div className="w-full flex justify-center">
                   <hr className="border-[#fbcc00] border-[1px] my-2 lg:my-6 w-1/2 lg:w-1/4" />

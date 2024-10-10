@@ -8,6 +8,15 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+ul {
+  list-style-type: disc; /* Asegura que se muestre el punto de la lista */
+  padding-left: 20px;    /* Aumenta el margen para que los puntos no se peguen al borde */
+}
+
+li {
+  margin-bottom: 4px;    /* Espaciado opcional entre los elementos de la lista */
+}
+
 /* Definir las clases de Tailwind para cada variante de la fuente */
 .poppins-thin {
     font-family: "Poppins", sans-serif;

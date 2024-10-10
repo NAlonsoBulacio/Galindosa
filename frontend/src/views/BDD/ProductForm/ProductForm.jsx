@@ -7,6 +7,8 @@ import { amenities, ambients } from "../../../utils";
 import ImgInput from "../../../components/BDD/ImgInput/ImgInput";
 import BlueprintsInput from "../../../components/BDD/BlueprintsInput/BlueprintsInput";
 import thumbnailConvert from "../../../utils/convertThumbnail";
+import ReactQuill from "react-quill";  // Importa react-quill
+import "react-quill/dist/quill.snow.css";  
 const ProductForm = () => {
   const [uploadImg, setUploadImg] = useState(false);
   const [images, setImages] = useState([]);
@@ -232,7 +234,12 @@ const ProductForm = () => {
   const handleCloseUpload = () => {
     setActiveUploadComponent(null); // Cierra el componente activo
   };
-
+  const handleDescriptionChange = (value) => {
+    setForm((prevForm) => ({
+      ...prevForm,
+      description: value,  // Actualiza el campo de descripción con HTML
+    }));
+  };
   return (
     <form
       className="px-4 md:px-8 max-w-3xl mx-auto py-12"
@@ -318,7 +325,8 @@ const ProductForm = () => {
               </div>
             </div>
 
-            {/* Campo de descripción */}
+           
+            {/* Campo de descripción utilizando ReactQuill */}
             <div className="sm:col-span-4">
               <label
                 htmlFor="description"
@@ -327,16 +335,12 @@ const ProductForm = () => {
                 Descripción
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <textarea
-                    name="description"
-                    id="description"
-                    onChange={handleChange}
-                    value={form.description}
-                    rows="3"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                  />
-                </div>
+                <ReactQuill
+                  theme="snow"
+                  value={form.description}
+                  onChange={handleDescriptionChange}
+                  className="bg-white" // Clase para estilos
+                />
               </div>
             </div>
 
@@ -384,41 +388,50 @@ const ProductForm = () => {
             />
 
             {/* Carrusel de Imágenes */}
-      <div className="sm:col-span-4">
-        <p><span className="font-bold">Imágenes del Carrusel</span> - Dimensiones (15 : 10) o (16 : 9)</p>
-        <p className="italic text-sm">No más de 3 imágenes</p>
-        <div className="flex">
-          {images.map((img, index) => (
-            <div key={index} className="w-24 relative">
-              <img className="" src={thumbnailConvert(img)} alt={`imagen-${index}`} />
-              <div
-                onClick={() => {}}
-                className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
-              >
-                X
+            <div className="sm:col-span-4">
+              <p>
+                <span className="font-bold">Imágenes del Carrusel</span> -
+                Dimensiones (15 : 10) o (16 : 9)
+              </p>
+              <p className="italic text-sm">No más de 3 imágenes</p>
+              <div className="flex">
+                {images.map((img, index) => (
+                  <div key={index} className="w-24 relative">
+                    <img
+                      className=""
+                      src={thumbnailConvert(img)}
+                      alt={`imagen-${index}`}
+                    />
+                    <div
+                      onClick={() => {}}
+                      className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
+                    >
+                      X
+                    </div>
+                  </div>
+                ))}
               </div>
+              <div
+                onClick={() => handleUploadToggle("carouselImages")}
+                className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700"
+              >
+                <p className="text-left">Cargar imagen</p>
+                <IoIosArrowDown
+                  className={`${
+                    activeUploadComponent === "carouselImages"
+                      ? "rotate-180"
+                      : ""
+                  } duration-300`}
+                />
+              </div>
+              {activeUploadComponent === "carouselImages" && (
+                <UploadImage
+                  handleUploadImage={(image) => setImages([...images, image])}
+                  id={1}
+                  handleCloseUpload={handleCloseUpload}
+                />
+              )}
             </div>
-          ))}
-        </div>
-        <div
-          onClick={() => handleUploadToggle("carouselImages")}
-          className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700"
-        >
-          <p className="text-left">Cargar imagen</p>
-          <IoIosArrowDown
-            className={`${
-              activeUploadComponent === "carouselImages" ? "rotate-180" : ""
-            } duration-300`}
-          />
-        </div>
-        {activeUploadComponent === "carouselImages" && (
-          <UploadImage
-            handleUploadImage={(image) => setImages([...images, image])}
-            id={1}
-            handleCloseUpload={handleCloseUpload}
-          />
-        )}
-      </div>
 
             <div className="sm:col-span-4">
               <label
@@ -507,8 +520,6 @@ const ProductForm = () => {
               </div>
             </div>
 
-
-
             <div className="sm:col-span-4">
               <label
                 htmlFor="categories"
@@ -517,26 +528,29 @@ const ProductForm = () => {
                 Categorías
               </label>
               <div className="mt-2 grid grid-cols-2 gap-4">
-                {["Departamento", "Locales Comerciales", "Casa", "Cocheras"].map(
-                  (category, index) => (
-                    <div key={index} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        name="categories"
-                        value={category}
-                        onChange={handleCheckboxChange}
-                        checked={form.categories.includes(category)}
-                        className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                      />
-                      <label
-                        htmlFor="categories"
-                        className="ml-2 block text-sm text-gray-900"
-                      >
-                        {category}
-                      </label>
-                    </div>
-                  )
-                )}
+                {[
+                  "Departamento",
+                  "Locales Comerciales",
+                  "Casa",
+                  "Cocheras",
+                ].map((category, index) => (
+                  <div key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="categories"
+                      value={category}
+                      onChange={handleCheckboxChange}
+                      checked={form.categories.includes(category)}
+                      className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                    />
+                    <label
+                      htmlFor="categories"
+                      className="ml-2 block text-sm text-gray-900"
+                    >
+                      {category}
+                    </label>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -554,9 +568,7 @@ const ProductForm = () => {
                       type="checkbox"
                       name="rooms"
                       value={ambient}
-                      onChange={(e) =>
-                        handleCheckboxAmbientsChange(e, ambient)
-                      }
+                      onChange={(e) => handleCheckboxAmbientsChange(e, ambient)}
                       className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                     />
                     <label

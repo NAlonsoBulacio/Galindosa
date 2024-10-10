@@ -16,6 +16,8 @@ import {
   FaArrowDown,
 } from "react-icons/fa";
 import thumbnailConvert from "../../utils/convertThumbnail";
+import ReactQuill from "react-quill";  // Importa react-quill
+import "react-quill/dist/quill.snow.css";  
 
 const PropertyDetail = () => {
   const dispatch = useDispatch();
@@ -317,12 +319,16 @@ const PropertyDetail = () => {
     setUploadImg(false);
     setCurrentSectionIndex(null);
   };
-
+  const handleDescriptionChange = (value) => {
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      description: value,  
+    }));
+  };
   if (!property) {
     return <div>Cargando...</div>;
   }
-  console.log(property);
-  console.log(presentImages);
+
 
   return (
     <>
@@ -399,22 +405,24 @@ const PropertyDetail = () => {
                 )}
               </div>
 
-              {/* description */}
-              <div className="flex justify-start items-center gap-2">
-                <h1 className="w-auto font-bold">Descripcion: </h1>
-                {isChanging ? (
-                  <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    onChange={handleChange}
-                    value={property.description}
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-lg sm:leading-6"
-                  />
-                ) : (
-                  <p className="text-sm">{property.description}</p>
-                )}
+             
+               {/* Campo de descripción utilizando ReactQuill */}
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Descripción
+              </label>
+              <div className="mt-2">
+                <ReactQuill
+                  theme="snow"
+                  value={property.description}
+                  onChange={handleDescriptionChange}
+                  className="bg-white" // Clase para estilos
+                />
               </div>
+            </div>
 
               {/* video de youtube */}
               <div className="flex justify-start items-center gap-2">
