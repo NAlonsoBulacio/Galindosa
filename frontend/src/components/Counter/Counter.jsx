@@ -42,7 +42,7 @@ const Counter = () => {
   return (
     <div className="w-full flex justify-center items-center py-12"
     >
-      <div className="flex flex-wrap justify-between items-center px-4 lg:px-10 notranslate">
+      <div className="flex flex-wrap justify-between items-center px-0 lg:px-10 notranslate">
         <div className="w-1/3 flex flex-wrap justify-start items-center">
           <div
             ref={ref1}
@@ -59,7 +59,7 @@ const Counter = () => {
                 inView3 ? "animatable-type" : "initial-type"
               } text-center poppins-regular text-gray-900 text-xs lg:text-xl`}
             >
-              Edificios Construidos
+              Edificios
             </h1>
           </div>
         </div>
@@ -89,8 +89,8 @@ const Counter = () => {
             ref={ref2}
             className="w-full flex justify-center md:justify-center items-center"
           >
-            <p className="text-gray-600 poppins-bold text-center w-32 md:w-40 text-3xl md:text-5xl  ">
-              {count2}
+            <p className="text-gray-600 poppins-bold text-center w-32 md:w-40 text-3xl md:text-5xl flex justify-center items-center gap-x-1">
+              {count2} <span className=" text-center poppins-bold text-gray-600 text-xs lg:text-xl">Años</span>
             </p>
           </div>
           <div className="w-full flex justify-center md:justify-center px-6">
@@ -100,7 +100,7 @@ const Counter = () => {
                 inView3 ? "animatable-type" : "initial-type"
               } text-center poppins-regular text-gray-900 text-xs lg:text-xl`}
             >
-              Años De Trayectoria
+        De Trayectoria
             </h1>
           </div>
         </div>
