@@ -16,8 +16,8 @@ import {
   FaArrowDown,
 } from "react-icons/fa";
 import thumbnailConvert from "../../utils/convertThumbnail";
-import ReactQuill from "react-quill";  // Importa react-quill
-import "react-quill/dist/quill.snow.css";  
+import ReactQuill from "react-quill"; // Importa react-quill
+import "react-quill/dist/quill.snow.css";
 
 const PropertyDetail = () => {
   const dispatch = useDispatch();
@@ -322,13 +322,40 @@ const PropertyDetail = () => {
   const handleDescriptionChange = (value) => {
     setProperty((prevProperty) => ({
       ...prevProperty,
-      description: value,  
+      description: value,
     }));
+  };
+  console.log(property.id);
+
+  const handleDeleteProperty = () => {
+    // Mostrar un cuadro de confirmación
+    const confirmDelete = window.confirm(
+      "¿Seguro quieres eliminar este proyecto? No podras volver a tener estos datos."
+    );
+
+    if (confirmDelete) {
+      // Realizar la solicitud DELETE con Axios
+      axios
+        .delete(
+          `http://galindobackend-production.up.railway.app/properties/${property.id}`
+        )
+        .then((response) => {
+          // Manejar la respuesta en caso de éxito
+          console.log("Propiedad eliminada:", response.data);
+          // Aquí puedes agregar lógica para actualizar la UI, por ejemplo, redirigir o eliminar la propiedad de la lista
+        })
+        .catch((error) => {
+          // Manejar errores
+          console.error("Error al eliminar la propiedad:", error);
+          alert(
+            "Hubo un error al intentar eliminar la propiedad. Inténtalo de nuevo."
+          );
+        });
+    }
   };
   if (!property) {
     return <div>Cargando...</div>;
   }
-
 
   return (
     <>
@@ -346,12 +373,20 @@ const PropertyDetail = () => {
             ) : (
               ""
             )}
-            <button
-              onClick={!isChanging ? handleChanging : handleSaveChanges}
-              className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none"
-            >
-              {!isChanging ? "Realizar Cambios" : "Guardar"}
-            </button>
+            <div className="flex flex-wrap gap-x-4">
+              <button
+                onClick={!isChanging ? handleChanging : handleSaveChanges}
+                className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none"
+              >
+                {!isChanging ? "Realizar Cambios" : "Guardar"}
+              </button>
+              <button
+                onClick={handleDeleteProperty}
+                className="px-5 py-2 border-red-600 border text-red-500 rounded transition duration-300 hover:bg-red-700 hover:text-white focus:outline-none"
+              >
+                Borrar Propiedad
+              </button>
+            </div>
           </div>
         </div>
         {property ? (
@@ -405,24 +440,23 @@ const PropertyDetail = () => {
                 )}
               </div>
 
-             
-               {/* Campo de descripción utilizando ReactQuill */}
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="description"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Descripción
-              </label>
-              <div className="mt-2">
-                <ReactQuill
-                  theme="snow"
-                  value={property.description}
-                  onChange={handleDescriptionChange}
-                  className="bg-white" // Clase para estilos
-                />
+              {/* Campo de descripción utilizando ReactQuill */}
+              <div className="sm:col-span-4">
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Descripción
+                </label>
+                <div className="mt-2">
+                  <ReactQuill
+                    theme="snow"
+                    value={property.description}
+                    onChange={handleDescriptionChange}
+                    className="bg-white" // Clase para estilos
+                  />
+                </div>
               </div>
-            </div>
 
               {/* video de youtube */}
               <div className="flex justify-start items-center gap-2">
@@ -586,8 +620,6 @@ const PropertyDetail = () => {
                 isUploadOpen={activeUploadComponent === "blueprints"} // Pasa si está abierto o no
                 onToggleUpload={() => handleUploadToggle("blueprints")}
               />
-
-              
 
               {/* Campo de Ambientes */}
               <div className="sm:col-span-4">
