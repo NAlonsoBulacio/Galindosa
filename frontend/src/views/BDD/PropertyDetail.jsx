@@ -325,7 +325,6 @@ const PropertyDetail = () => {
       description: value,
     }));
   };
-  console.log(property.id);
 
   const handleDeleteProperty = () => {
     // Mostrar un cuadro de confirmación

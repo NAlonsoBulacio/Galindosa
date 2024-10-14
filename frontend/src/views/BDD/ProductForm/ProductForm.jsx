@@ -217,7 +217,7 @@ const ProductForm = () => {
           zone: "",
           video: "",
         });
-        window.location.href = "https://galindosa.vercel.app/";
+        window.location.href = "https://galindosa.vercel.app/proyectos-bdd";
       } else {
         console.error("Error al agregar el producto.");
       }
