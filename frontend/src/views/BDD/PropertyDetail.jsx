@@ -336,12 +336,12 @@ const PropertyDetail = () => {
       // Realizar la solicitud DELETE con Axios
       axios
         .delete(
-          `http://galindobackend-production.up.railway.app/properties/${property.id}`
+          `https://galindobackend-production.up.railway.app/properties/${property.id}`
         )
         .then((response) => {
           // Manejar la respuesta en caso de éxito
           console.log("Propiedad eliminada:", response.data);
-          // Aquí puedes agregar lógica para actualizar la UI, por ejemplo, redirigir o eliminar la propiedad de la lista
+          window.location.href = "https://galindosa.vercel.app/proyectos-bdd";
         })
         .catch((error) => {
           // Manejar errores
