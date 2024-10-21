@@ -150,7 +150,7 @@ const Header = () => {
             animate={{ y: 0 }}
             exit={{ y: -340 }}
             transition={{ duration: 0.7 }}
-            className="fixed top-0 left-0 text-left w-full h-96 px-4 mt-10 bg-gray-900 text-white poppins-semibold z-50 flex flex-col items-start justify-center space-y-4"
+            className="fixed top-0 left-0 text-left w-full h-96 px-4 mt-10 bg-gray-900 text-white poppins-semibold z-40 flex flex-col items-start justify-center space-y-4"
           >
             <a href="/" onClick={() => handleNavClick("/")} className="text-lg">
               Inicio

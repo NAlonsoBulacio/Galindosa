@@ -95,7 +95,7 @@ const Counter = () => {
               </span>
             </p>
           </div>
-          <div className="w-full flex justify-center md:justify-center px-6">
+          <div className="w-full flex justify-center md:justify-center px-0 lg:px-6">
             <h1
               ref={ref3}
               className={`${

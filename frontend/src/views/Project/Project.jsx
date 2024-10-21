@@ -107,11 +107,11 @@ const Project = ({ match }) => {
 
           <div className="w-full flex  justify-center items-start bg-black text-white py-12 px-2 lg:px-0">
             <div className="container flex flex-wrap lg:flex-nowrap justify-center items-start gap-x-8 lg:gap-8">
-              <div className="flex justify-center lg:justify-center flex-wrap lg:flex w-1/3">
+              <div className="flex justify-center lg:justify-center flex-wrap w-full lg:flex w-1/3">
                 <div className="w-full flex flex-wrap lg:flex-nowrap justify-center">
                   <h2 className="text-xl lg:text-4xl poppins-light w-full lg:w-auto text-center text-balance">
                     Sobre{" "}
-                    <span className="poppins-semibold">{detail.name}</span>
+                    <span className="poppins-bold">{detail.name}</span>
                   </h2>
                  
                 </div>
@@ -119,14 +119,14 @@ const Project = ({ match }) => {
                   <hr className="border-[#fbcc00] border-[1px] my-2 lg:my-6 w-1/2 lg:w-1/4" />
                 </div>
 
-                <p className="text-lg poppins-light w-full lg:w-auto text-center lg:text-left text-balance">
+                <p className="hidden lg:block text-lg poppins-light w-full lg:w-auto text-center lg:text-left text-balance">
                   Edificio de Departamentos
                 </p>
               </div>
-              <div className="w-1/2">
+              <div className="w-full lg:w-1/2 flex justify-center">
                 <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-normal space-x-4 items-center">
                   <div className="flex flex-wrap">
-                    <h1 className="poppins-regular text-xl lg:text-3xl text-gray-100 text-left">
+                    <h1 className="poppins-regular text-xl lg:text-3xl text-gray-100 text-center lg:text-left w-full">
                       Ultimas{" "}
                       <span className="poppins-bold text-[#ffc702]">
                         unidades
@@ -134,9 +134,9 @@ const Project = ({ match }) => {
                       de:
                     </h1>
                     {detail.rooms?.map((room) => (
-                      <div className="text-white w-full flex flex-wrap justify-center items-center">
+                      <div className="text-white w-full flex flex-wrap justify-center items-center text-center lg:text-left">
                         <p
-                          className={`w-full h-full text-lg lg:text-2xl poppins-regular ${
+                          className={`w-full h-full text-md lg:text-2xl poppins-regular ${
                             !room.available ? "line-through" : ""
                           }`}
                         >

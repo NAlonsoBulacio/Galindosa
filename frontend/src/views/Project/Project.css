@@ -14,10 +14,10 @@
 
 .project-slider .slick-dots li button:before {
   font-size: 12px;
-  color: #fff; 
+  /* color: #fff;  */
 }
-
+/* 
 .project-slider .slick-dots li.slick-active button:before {
   color: #fbcc00; 
-}
+} */
  
