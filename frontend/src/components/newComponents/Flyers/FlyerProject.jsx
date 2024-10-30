@@ -28,6 +28,8 @@ const banners = [
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundAttachment: "fixed",
+                filter: "brightness(0.3)",
+                
               }}
             ></div>
           </div>

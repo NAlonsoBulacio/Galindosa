@@ -10,8 +10,8 @@ const GoogleMapEmbed = ({ longitude, latitude, address }) => {
   return (
     <div className="w-full flex flex-wrap justify-center items-center py-10 pt-16 gap-y-6">
       <div className="w-full flex flex-wrap justify-center items-center ">
-        <h1 className="text-4xl text-center poppins-regular text-gray-700">
-          Ubicación del Proyecto
+        <h1 className="text-2xl lg:text-4xl text-center poppins-regular text-gray-700">
+          Ubicación de la Oficina
         </h1>
         <p className="w-full text-center">{address}</p>
       </div>

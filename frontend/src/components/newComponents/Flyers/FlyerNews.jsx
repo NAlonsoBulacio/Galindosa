@@ -9,12 +9,12 @@ const FlyerNews = () => {
         <h1 className="poppins-bold text-white text-2xl lg:text-5xl text-center w-full">
           Nuestra empresa
         </h1>
-        <p className="poppins-regular text-gray-50 text-lg lg:text-xl text-center px-2 lg:px-40 text-balance">
+        <p className="poppins-regular leading-6 text-gray-50 text-lg lg:text-xl text-center px-2 lg:px-40 text-balance">
           Somos visionarios y disfrutamos marcando nuevos horizontes, porque
           sabemos que el futuro se construye en el presente.
         </p>
         <a
-          href="/"
+           href="https://wa.me/+5493812071244" target="_blank" rel="noreferrer"
           className="bg-[#ffc702] hover:bg-[#a18c2d] duration-300 text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-sm lg:text-lg gap-x-2"
         >
           Consultá con un asesor <IoIosContacts className="text-2xl" />
@@ -26,6 +26,7 @@ const FlyerNews = () => {
           backgroundImage: `url(${banner3})`,
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
+          filter: "brightness(0.5)",
         }}
       ></div>
       <div
@@ -34,6 +35,7 @@ const FlyerNews = () => {
           backgroundImage: `url(${banner3})`,
           backgroundSize: "100% 100%",
           backgroundSize: "cover",
+          filter: "brightness(0.5)",
         }}
       ></div>
     </div>

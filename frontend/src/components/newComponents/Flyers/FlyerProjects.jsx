@@ -10,7 +10,7 @@ const FlyerProjects = ({ banner }) => {
           Nuestros Emprendimientos
         </h1>
         <a
-          href="/"
+          href="https://wa.me/+5493812071244" target="_blank" rel="noreferrer"
           className="bg-[#ffc702] hover:bg-[#a18c2d] duration-300 text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-sm lg:text-lg gap-x-2 "
         >
           Consultá con un asesor <IoIosContacts className="text-2xl" />
@@ -22,6 +22,7 @@ const FlyerProjects = ({ banner }) => {
           backgroundImage: `url(${banner3})`,
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
+          filter: "brightness(0.5)",
         }}
       ></div>
       <div
@@ -30,6 +31,7 @@ const FlyerProjects = ({ banner }) => {
           backgroundImage: `url(${banner3})`,
           backgroundSize: "100% 100%",
           backgroundSize: "cover",
+          filter: "brightness(0.5)",
         }}
       ></div>
     </div>
