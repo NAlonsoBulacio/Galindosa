@@ -125,6 +125,7 @@ const Projects = () => {
                 <option value="Barrio Sur">Barrio Sur</option>
                 <option value="Barrio Norte">Barrio Norte</option>
                 <option value="Yerba Buena">Yerba Buena</option>
+                <option value="Mate de Luna">Mate de Luna</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg

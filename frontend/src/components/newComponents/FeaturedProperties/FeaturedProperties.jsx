@@ -7,21 +7,21 @@ const FeaturedProperties = () => {
    
     {
       image:
-        "https://grupoproaco.com/img/f2fee7c1-ae65-4991-bb10-950b74d43cd5/Miniatura-Pocito.jpg?q=80&fit=max&crop=600%2C400%2C0%2C0",
+        "https://res.cloudinary.com/dqriuc2m1/image/upload/f_auto,q_auto:low//v1727354941/heooklysinjdhb0dzsuq.webp",
       title: "Barrio Sur",
-      description: "Descripción breve de Barrio Sur",
+      description: "Edificios ubicados en Barrio Sur",
     },
     {
       image:
-        "https://grupoproaco.com/img/a3975f2b-bbe4-4264-9a81-c5cacb19227b/5421_Foto-principal-emprendimiento.jpg?q=80&fit=max&crop=455%2C410%2C0%2C0",
+        "https://res.cloudinary.com/dqriuc2m1/image/upload/f_auto,q_auto:low//v1728999501/gm2d2nhbpxjiorzcnehi.webp",
       title: "Mate de Luna",
-      description: "Descripción breve de Mate de Luna",
+      description: "Edificios ubicados en Mate de Luna",
     },
     {
       image:
-        "https://grupoproaco.com/img/7026c98b-933e-4d98-a3da-98de033aee1b/minuatura-web-proaco-park.jpg?q=80&fit=max&crop=1093%2C1060%2C0%2C0",
+        "https://res.cloudinary.com/dqriuc2m1/image/upload/f_auto,q_auto:low//v1727304767/xyj2rnoeybg5qawamtk9.webp",
       title: "Barrio Norte ",
-      description: "Descripción breve de Barrio Norte",
+      description: "Edificios ubicados en Barrio Norte",
     },
   ];
 
