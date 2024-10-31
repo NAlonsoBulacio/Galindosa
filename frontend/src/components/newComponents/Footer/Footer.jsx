@@ -23,7 +23,7 @@ const Footer = () => {
     >
       <div className="container mx-auto px-4 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 py-10">
         <div>
-          <img src={logo_b} alt="" className="w-2/3" />
+          <img src={logo_b} alt="Galindo SA" className="w-2/3" />
           <p className="text-sm mb-4 poppins-light">
             40 años de trayectoria definen nuestra identidad.
           </p>
