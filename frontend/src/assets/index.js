@@ -40,6 +40,8 @@ import banner2 from "./banners/banner2.webp";
 import banner3 from "./banners/V4.jpg";
 import banner4 from "./banners/V6.jpg";
 
+import creditos from "./news/creditos.webp";
+import blanqueo from "./news/blanqueo.webp";
 export {
   logo,
   logo_g,
@@ -78,5 +80,7 @@ export {
   solarium,
   fitness,
   rooftop,
-  playground
+  playground,
+  creditos,
+  blanqueo
 };
