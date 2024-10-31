@@ -5,7 +5,7 @@ import { newsData } from "../../utils/newsData";
 import Header from "../../components/newComponents/Header/Header";
 import Footer from "../../components/newComponents/Footer/Footer";
 import FlyerAboutUs from "../../components/newComponents/Flyers/FlyerAboutUs";
-const NewsDetail = ({}) => {
+const NewsDetail = () => {
   const { slug } = useParams();
   const [news, setNews] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ const NewsDetail = ({}) => {
     const foundNews = newsData.find((item) => item.slug === slug);
     setNews(foundNews);
     setLoading(false);
-  }, [slug, newsData]);
+  }, [slug]);
 
   if (loading) {
     return <p>Cargando...</p>;
