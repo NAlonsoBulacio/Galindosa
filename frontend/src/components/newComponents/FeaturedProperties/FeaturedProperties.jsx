@@ -1,6 +1,6 @@
 import React from "react";
 import FeaturedCard from "../FeaturedCard/FeaturedCard";
-
+import { barrio_norte } from "../../../assets";
 const FeaturedProperties = () => {
 
   const properties = [
@@ -19,7 +19,7 @@ const FeaturedProperties = () => {
     },
     {
       image:
-        "https://res.cloudinary.com/dqriuc2m1/image/upload/f_auto,q_auto:low//v1727304767/xyj2rnoeybg5qawamtk9.webp",
+        barrio_norte,
       title: "Barrio Norte ",
       description: "Edificios ubicados en Barrio Norte",
     },

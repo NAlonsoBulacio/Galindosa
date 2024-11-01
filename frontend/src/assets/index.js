@@ -42,6 +42,7 @@ import banner4 from "./banners/V6.jpg";
 
 import creditos from "./news/creditos.webp";
 import blanqueo from "./news/blanqueo.webp";
+import barrio_norte from "./barrio-norte.webp";
 export {
   logo,
   logo_g,
@@ -82,5 +83,6 @@ export {
   rooftop,
   playground,
   creditos,
-  blanqueo
+  blanqueo,
+  barrio_norte
 };
