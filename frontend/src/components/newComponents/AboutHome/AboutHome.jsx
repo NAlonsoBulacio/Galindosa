@@ -2,7 +2,7 @@ import React from "react";
 import videoSource from "../../../assets/video.mp4";
 const AboutHome = () => {
   return (
-    <div className="relative flex flex-col md:flex-row items-start justify-center bg-white py-10 md:p-16 lg:px-32">
+    <div className="relative flex flex-col md:flex-row  lg:items-start justify-center bg-white py-10 md:p-16 lg:px-32">
       <div className="md:w-1/2 pr-0 md:pr-8">
         <h3 className="text-[#ffc702] poppins-semibold text-xl mb-4 tracking-widest">
           SOBRE NOSOTROS
