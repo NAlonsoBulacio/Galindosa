@@ -5,7 +5,7 @@ import { banner3 } from "../../../assets"; // Asegúrate de que la importación 
 const FlyerNews = () => {
   return (
     <div className="w-full flex flex-wrap justify-start items-center relative h-[45vh] lg:h-[68vh]">
-      <div className="z-10 absolute top-[55%] bottom-[50%] w-full flex flex-col justify-center items-center gap-y-4">
+      <div className="z-10 absolute top-[60%] lg:top-[55%] bottom-[50%] w-full flex flex-col justify-center items-center gap-y-4">
         <h1 className="poppins-bold text-white text-2xl lg:text-5xl text-center w-full">
           Nuestra empresa
         </h1>
