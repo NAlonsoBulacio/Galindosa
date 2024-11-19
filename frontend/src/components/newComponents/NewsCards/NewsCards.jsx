@@ -38,7 +38,7 @@ const NewsCards = () => {
     <div className="container mx-auto py-10 lg:px-32">
       <div className="w-full flex flex-col items-center mb-10">
         <h1 className="poppins-regular text-4xl text-gray-700 text-center lg:text-left">
-          Nuestras{" "}
+         
           <span className="poppins-bold text-[#ffc702]">Novedades</span>
         </h1>
         <hr className="w-32 border-t-[3px] border-[#ffc702] mt-2" />
