@@ -156,6 +156,7 @@ const Project = ({ match }) => {
 
           <div>
             <GoogleMapEmbed
+            project={true}
               address={detail.address}
               latitude={detail.latitude ? detail.latitude : ""}
               longitude={detail.longitude ? detail.longitude : ""}
