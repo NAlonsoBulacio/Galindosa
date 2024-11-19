@@ -22,7 +22,7 @@ const Contact = () => {
             "url": "https://www.galindosa.com/contacto",
             "mainEntity": {
               "@type": "Organization",
-              "name": "Galindo SA",
+              "name": "Contacto | Galindo SA",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+54 9 381 555 5555",
@@ -40,7 +40,7 @@ const Contact = () => {
       <div className="px-2 lg:px-10 xl:px-20">
         <DescriptionContact />
       </div>
-      <GoogleMapEmbed latitude="-26822955439238996" longitude="-6519955168797573" />
+      <GoogleMapEmbed />
       <Footer />
     </div>
   );
