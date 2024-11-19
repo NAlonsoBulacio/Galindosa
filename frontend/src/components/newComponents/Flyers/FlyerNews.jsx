@@ -7,9 +7,9 @@ const FlyerNews = () => {
     <div className="w-full flex flex-wrap justify-start items-center relative h-[45vh] lg:h-[68vh]">
       <div className="z-10 absolute top-[60%] lg:top-[55%] bottom-[50%] w-full flex flex-col justify-center items-center gap-y-4">
         <h1 className="poppins-bold text-white text-2xl lg:text-5xl text-center w-full">
-          Nuestra empresa
+          Novedades
         </h1>
-        <p className="poppins-regular leading-6 text-gray-50 text-lg lg:text-xl text-center px-2 lg:px-40 text-balance">
+        <p className="poppins-regular leading-4 text-gray-50 text-xs lg:text-xl text-center px-2 lg:px-40 text-balance">
           Somos visionarios y disfrutamos marcando nuevos horizontes, porque
           sabemos que el futuro se construye en el presente.
         </p>
