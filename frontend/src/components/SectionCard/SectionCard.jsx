@@ -78,8 +78,31 @@ const SectionCard = ({ section, index }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: !isFullscreen ? true : false,
-    nextArrow: isFullscreen ? <SampleNextArrow /> : null,
-    prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
+    nextArrow: isFullscreen ? <SampleNextArrow /> : <SampleNextArrow />,
+    prevArrow: isFullscreen ? <SamplePrevArrow /> : <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          nextArrow: isFullscreen ? <SampleNextArrow /> : <SampleNextArrow />,
+        prevArrow: isFullscreen ? <SamplePrevArrow /> : <SamplePrevArrow />,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          nextArrow: isFullscreen ? <SampleNextArrow /> : null,
+          prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          nextArrow: isFullscreen ? <SampleNextArrow /> : null,
+          prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
+        },
+      },
+    ],
   };
 
   const imagesLength = images?.length;
