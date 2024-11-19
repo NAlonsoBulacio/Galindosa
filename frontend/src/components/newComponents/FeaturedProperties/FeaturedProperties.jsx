@@ -20,7 +20,7 @@ const FeaturedProperties = () => {
     {
       image:
         barrio_norte,
-      title: "Barrio Norte ",
+      title: "Barrio Norte",
       description: "Edificios ubicados en Barrio Norte",
     },
   ];
