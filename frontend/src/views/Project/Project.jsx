@@ -32,12 +32,11 @@ const Project = ({ match }) => {
     };
   }, [dispatch]);
 
-  const [isFormOpen, setIsFormOpen] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
-  console.log(detail);
 
   return (
     <>
