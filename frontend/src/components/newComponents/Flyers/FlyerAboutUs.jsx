@@ -9,7 +9,7 @@ const FlyerAboutUs = () => {
         <h1 className="poppins-bold text-white text-2xl lg:text-5xl text-center w-full">
           Nuestra empresa
         </h1>
-        <p className="poppins-regular leading-6 text-gray-50 text-lg lg:text-xl text-center px-2 lg:px-40 text-balance">
+        <p className="poppins-regular leading-4 text-gray-50 text-xs lg:text-xl text-center px-2 lg:px-40 text-balance">
           Somos visionarios y disfrutamos marcando nuevos horizontes, porque
           sabemos que el futuro se construye en el presente.
         </p>
