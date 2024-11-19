@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from "react";
 import WhatsAppButton from "./components/Whatsapp/WhatsappButton";
 
 const Home = lazy(() => import("./views/Home/Home"));
@@ -16,7 +16,8 @@ const NewsDetail = lazy(() => import("./views/NewsDetail/NewsDetail"));
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div className="w-screen h-screen flex justify-center items-center"><img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e47lcco3qyluewhqihzbh71yi0c43vqdf9xjjtub5vy&ep=v1_gifs_related&rid=giphy.gif&ct=g" />
+      </div>}>
         <Route exact path="/" component={Home} />
         <Route exact path="/contacto" component={Contact} />
         <Route exact path="/sobre-nosotros" component={AboutUs} />
@@ -24,7 +25,11 @@ function App() {
         <Route exact path="/proyecto/:slug" component={Project} />
         <Route exact path="/proyectos-bdd" component={PropertiesBdd} />
         <Route exact path="/cargar-proyecto" component={ProductForm} />
-        <Route exact path="/proyecto-detalle/:slug" component={PropertyDetail} />
+        <Route
+          exact
+          path="/proyecto-detalle/:slug"
+          component={PropertyDetail}
+        />
         <Route exact path="/novedades" component={News} />
         <Route exact path="/novedades/:slug" component={NewsDetail} />
       </Suspense>
