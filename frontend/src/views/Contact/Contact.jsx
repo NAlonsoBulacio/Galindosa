@@ -40,7 +40,7 @@ const Contact = () => {
       <div className="px-2 lg:px-10 xl:px-20">
         <DescriptionContact />
       </div>
-      <GoogleMapEmbed />
+      <GoogleMapEmbed latitude={"-26.822955439238996"} longitude={"-65.19955168797573"} />
       <Footer />
     </div>
   );
