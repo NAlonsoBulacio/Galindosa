@@ -18,28 +18,32 @@ const SectionCard = ({ section, index }) => {
   }, [section]);
 
   const toggleFullScreen = () => {
-    if (!isFullscreen) {
-      if (sliderRef.current.requestFullscreen) {
-        sliderRef.current.requestFullscreen();
-      } else if (sliderRef.current.mozRequestFullScreen) {
-        sliderRef.current.mozRequestFullScreen();
-      } else if (sliderRef.current.webkitRequestFullscreen) {
-        sliderRef.current.webkitRequestFullscreen();
-      } else if (sliderRef.current.msRequestFullscreen) {
-        sliderRef.current.msRequestFullscreen();
+    if (sliderRef.current) {
+      if (!isFullscreen) {
+        if (sliderRef.current.requestFullscreen) {
+          sliderRef.current.requestFullscreen();
+        } else if (sliderRef.current.mozRequestFullScreen) {
+          sliderRef.current.mozRequestFullScreen();
+        } else if (sliderRef.current.webkitRequestFullscreen) {
+          sliderRef.current.webkitRequestFullscreen();
+        } else if (sliderRef.current.msRequestFullscreen) {
+          sliderRef.current.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
       }
+      setIsFullscreen(!isFullscreen);
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
+      console.error("sliderRef.current is null");
     }
-    setIsFullscreen(!isFullscreen);
   };
 
   useEffect(() => {
@@ -56,20 +60,12 @@ const SectionCard = ({ section, index }) => {
 
     return () => {
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener(
-        "mozfullscreenchange",
-        handleFullscreenChange
-      );
-      document.removeEventListener(
-        "webkitfullscreenchange",
-        handleFullscreenChange
-      );
-      document.removeEventListener(
-        "msfullscreenchange",
-        handleFullscreenChange
-      );
+      document.removeEventListener("mozfullscreenchange", handleFullscreenChange);
+      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
+      document.removeEventListener("msfullscreenchange", handleFullscreenChange);
     };
   }, []);
+
   const images = section ? section.images : "";
 
   const settings = {
@@ -77,15 +73,15 @@ const SectionCard = ({ section, index }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    dots: !isFullscreen ? true : false,
-    nextArrow: isFullscreen ? <SampleNextArrow /> : <SampleNextArrow />,
-    prevArrow: isFullscreen ? <SamplePrevArrow /> : <SamplePrevArrow />,
+    dots: !isFullscreen,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          nextArrow: isFullscreen ? <SampleNextArrow /> : <SampleNextArrow />,
-        prevArrow: isFullscreen ? <SamplePrevArrow /> : <SamplePrevArrow />,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
         },
       },
       {
@@ -105,8 +101,6 @@ const SectionCard = ({ section, index }) => {
     ],
   };
 
-  const imagesLength = images?.length;
-
   return (
     <>
       {sectionProps ? (
@@ -124,7 +118,10 @@ const SectionCard = ({ section, index }) => {
             </p>
             <div className="flex flex-wrap justify-start gap-8 mt-4">
               {sectionProps.amenities?.map((amenity, index) => (
-                <div key={index} className="flex flex-col items-center w-[18%] px-2">
+                <div
+                  key={index}
+                  className="flex flex-col items-center w-[18%] px-2"
+                >
                   <img src={amenity.icon} alt={amenity.label} className="" />
                   <p className="text-xs lg:text-md text-black text-center">
                     {amenity.label}
@@ -134,7 +131,7 @@ const SectionCard = ({ section, index }) => {
             </div>
             <a
               href="/"
-              className="bg-[#ccad24] hover:bg-[#a18c2d] text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-lg gap-x-2 "
+              className="bg-[#ccad24] hover:bg-[#a18c2d] text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-lg gap-x-2"
             >
               Consultá <IoIosContacts className="text-2xl" />
             </a>
@@ -143,98 +140,51 @@ const SectionCard = ({ section, index }) => {
           <div
             className={`${
               isFullscreen ? "w-screen" : "w-full lg:w-2/4"
-            } project-slider z-20 flex flex-wrap lg:flex-nowrap justify-between items-start gap-3`}
+            }`}
           >
-            {images.length === 1 ? (
-              <div
-                ref={sliderRef}
-                className={`w-full lg:w-[80%] h-auto flex justify-center items-center px-2 ${
-                  isFullscreen
-                    ? "fixed lg:w-full inset-0 z-50 bg-gray-900 bg-opacity-75"
-                    : ""
-                }`}
-              >
-                <div
-                  className={`w-full h-[320px] rounded-xl overflow-hidden  ${
-                    isFullscreen ? "w-[80%] h-full" : ""
-                  }`}
-                >
-                  <img
-                    src={compressImage(images[0])}
-                    alt={`Slide 1`}
-                    className={`w-full ${
-                      isFullscreen ? "max-h-full" : "object-cover h-[320px]"
-                    }`}
-                  />
-                </div>
-              </div>
-            ) : images.length !== 1 ? (
-              <div
-                ref={sliderRef}
-                className={`w-full lg:w-[80%] h-[300px] flex justify-center items-center px-2 ${
-                  isFullscreen
-                    ? "fixed lg:w-full inset-0 z-50 bg-gray-900 bg-opacity-75"
-                    : ""
-                }`}
-              >
-                <div
-                  className={`w-full h-[320px] rounded-xl overflow-hidden  ${
-                    isFullscreen ? "w-[80%] h-full" : ""
-                  }`}
-                >
-                  <Slider
-                    {...settings}
-                    className={`${isFullscreen ? "h-screen flex justify-center items-center" : "h-full"}`}
+            <div
+              ref={sliderRef}
+              className={`${
+                isFullscreen
+                  ? "fixed inset-0 z-50 bg-gray-900 bg-opacity-75"
+                  : "relative"
+              }`}
+            >
+              <Slider {...settings}>
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className="px-2 relative"
+                    onClick={!isFullscreen ? toggleFullScreen : null}
                   >
-                    {images?.map((image, index) => (
-                      <div
-                        key={index}
-                        className={`h-full relative ${
-                          isFullscreen ? "h-screen flex justify-center items-center" : ""
-                        } group`}
+                    <img
+                      src={compressImage(image)}
+                      alt={`Slide ${index}`}
+                      className={`${
+                        isFullscreen
+                          ? "h-screen w-full object-contain"
+                          : "hover:shadow-xl duration-300 cursor-pointer"
+                      }`}
+                    />
+                    <div className="absolute top-8 right-8 group-hover:block">
+                      <button
+                        onClick={toggleFullScreen}
+                        className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150"
                       >
-                        <img
-                          src={compressImage(image)}
-                          alt={`Slide ${index}`}
-                          className={`w-full ${
-                            isFullscreen
-                        ? "h-screen w-full object-contain"
-                        : "hover:shadow-xl duration-300 cursor-pointer"
-                          }`}
-                        />
-                        {isFullscreen && (
-                          <div className="absolute top-8 right-8 hidden lg:block group-hover:block">
-                            <button
-                              onClick={toggleFullScreen}
-                              className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150 rounded-lg"
-                            >
-                              <MdFullscreenExit className="text-white w-full text-[60px]" />
-                            </button>
-                          </div>
+                        {isFullscreen ? (
+                          <MdFullscreenExit className="text-white w-full text-4xl" />
+                        ) : (
+                          <MdFullscreen className="text-white w-full text-4xl" />
                         )}
-                        {!isFullscreen && (
-                          <div className="absolute top-8 right-8 hidden lg:block group-hover:block">
-                            <button
-                              onClick={toggleFullScreen}
-                              className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150"
-                            >
-                              <MdFullscreen className="text-white w-full text-4xl" />
-                            </button>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </Slider>
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
-      ) : (
-        ""
-      )}
+      ) : null}
     </>
   );
 };
