@@ -18,7 +18,7 @@ const SectionCard = ({ section, index }) => {
   }, [section]);
 
   const toggleFullScreen = () => {
-    if (sliderRef.current) {
+    try {
       if (!isFullscreen) {
         if (sliderRef.current.requestFullscreen) {
           sliderRef.current.requestFullscreen();
@@ -41,8 +41,8 @@ const SectionCard = ({ section, index }) => {
         }
       }
       setIsFullscreen(!isFullscreen);
-    } else {
-      console.error("sliderRef.current is null");
+    } catch (error) {
+      console.error("Error al cambiar a pantalla completa:", error);
     }
   };
 
@@ -169,10 +169,10 @@ const SectionCard = ({ section, index }) => {
                     <div className="absolute top-8 right-8 group-hover:block">
                       <button
                         onClick={toggleFullScreen}
-                        className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150"
+                        className="px-3 w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150"
                       >
                         {isFullscreen ? (
-                          <MdFullscreenExit className="text-white w-full text-4xl" />
+                          <MdFullscreenExit width={45} className="text-white w-[30px] text-4xl" />
                         ) : (
                           <MdFullscreen className="text-white w-full text-4xl" />
                         )}
