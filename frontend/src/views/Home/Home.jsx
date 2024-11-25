@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
 import Header from "../../components/newComponents/Header/Header";
 import video from "../../assets/video.mp4";
@@ -6,35 +6,41 @@ import Counter from "../../components/Counter/Counter";
 import Filter from "../../components/newComponents/Filter/Filter";
 import { IoIosContacts } from "react-icons/io";
 import FeaturedProperties from "../../components/newComponents/FeaturedProperties/FeaturedProperties";
-import AboutHome from "../../components/newComponents/AboutHome/AboutHome";
+// import AboutHome from "../../components/newComponents/AboutHome/AboutHome";
 import NewsCards from "../../components/newComponents/NewsCards/NewsCards";
 import Footer from "../../components/newComponents/Footer/Footer";
-
+const AboutHome = React.lazy(() => import("../../components/newComponents/AboutHome/AboutHome"));
 const Home = () => {
   return (
     <div className="overflow-hidden">
       {/* Meta tags and structured data for SEO */}
       <Helmet>
         <title>La Constructora N°1 de Tucumán - Galindo SA</title>
-        <meta name="description" content="Galindo SA es la constructora líder en Tucumán, ofreciendo propiedades destacadas y servicios de alta calidad." />
-        <meta name="keywords" content="constructora, Tucumán, propiedades, Galindo SA" />
+        <meta
+          name="description"
+          content="Galindo SA es la constructora líder en Tucumán, ofreciendo propiedades destacadas y servicios de alta calidad."
+        />
+        <meta
+          name="keywords"
+          content="constructora, Tucumán, propiedades, Galindo SA"
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Galindo SA",
-            "url": "https://www.galindosa.com",
-            "logo": "https://www.galindosa.com/logo.png",
-            "contactPoint": {
+            name: "Galindo SA",
+            url: "https://www.galindosa.com",
+            logo: "https://www.galindosa.com/logo.png",
+            contactPoint: {
               "@type": "ContactPoint",
-              "contactType": "Customer Service",
-              "areaServed": "AR",
-              "availableLanguage": "Spanish"
+              contactType: "Customer Service",
+              areaServed: "AR",
+              availableLanguage: "Spanish",
             },
-            "sameAs": [
+            sameAs: [
               "https://www.facebook.com/GalindoSA",
-              "https://www.instagram.com/GalindoSA"
-            ]
+              "https://www.instagram.com/GalindoSA",
+            ],
           })}
         </script>
       </Helmet>
@@ -79,7 +85,9 @@ const Home = () => {
       </div>
 
       <div className="px-2">
-        <AboutHome />
+        <Suspense fallback={<div>Loading...</div>}>
+          <AboutHome />
+        </Suspense>
         <NewsCards />
       </div>
 

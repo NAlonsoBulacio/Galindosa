@@ -184,13 +184,13 @@ const SectionCard = ({ section, index }) => {
                 >
                   <Slider
                     {...settings}
-                    className={`${isFullscreen ? "h-[300px]" : "h-full"}`}
+                    className={`${isFullscreen ? "h-screen flex justify-center items-center" : "h-full"}`}
                   >
                     {images?.map((image, index) => (
                       <div
                         key={index}
                         className={`h-full relative ${
-                          isFullscreen ? "flex justify-center items-center" : ""
+                          isFullscreen ? "h-screen flex justify-center items-center" : ""
                         } group`}
                       >
                         <img
@@ -198,8 +198,8 @@ const SectionCard = ({ section, index }) => {
                           alt={`Slide ${index}`}
                           className={`w-full ${
                             isFullscreen
-                              ? "max-h-full"
-                              : "object-cover h-full"
+                        ? "h-screen w-full object-contain"
+                        : "hover:shadow-xl duration-300 cursor-pointer"
                           }`}
                         />
                         {isFullscreen && (
