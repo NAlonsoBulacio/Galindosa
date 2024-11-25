@@ -25,7 +25,7 @@ const AboutHome = () => {
       <div className="md:w-1/2 mt-8 md:mt-0 relative z-10">
         <iframe
           className="w-full h-auto aspect-video"
-          src="https://www.youtube.com/embed/MJW_Q_YdKqk?autoplay=1&mute=1&modestbranding=1"
+          src="https://www.youtube.com/embed/Az10OT0sduc?autoplay=1&mute=1&modestbranding=1"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
