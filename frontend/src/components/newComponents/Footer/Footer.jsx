@@ -65,52 +65,30 @@ const Footer = () => {
           <ul className="text-sm space-y-2">
             <li className="flex items-center">
               <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
+              <a href="/sobre-nosotros" className="hover:text-gray-400">
                 Empresa
               </a>
             </li>
             <li className="flex items-center">
               <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
-                Emprendimientos
+              <a href="/proyectos" className="hover:text-gray-400">
+                Edificios
               </a>
             </li>
             <li className="flex items-center">
               <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
+              <a href="/novedades" className="hover:text-gray-400">
                 News
               </a>
             </li>
+           
             <li className="flex items-center">
               <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
-                Posventa
-              </a>
-            </li>
-            <li className="flex items-center">
-              <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
+              <a href="/contacto" className="hover:text-gray-400">
                 Contacto
               </a>
             </li>
-            <li className="flex items-center">
-              <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
-                Trabajá con nosotros
-              </a>
-            </li>
-            <li className="flex items-center">
-              <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
-                Brokers
-              </a>
-            </li>
-            <li className="flex items-center">
-              <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="#" className="hover:text-gray-400">
-                Store Online
-              </a>
-            </li>
+
           </ul>
         </div>
         <div>
