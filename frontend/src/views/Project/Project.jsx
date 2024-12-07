@@ -37,6 +37,7 @@ const Project = ({ match }) => {
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
+  console.log(detail);
 
   return (
     <>
@@ -78,13 +79,11 @@ const Project = ({ match }) => {
                 </h1>
               </div>
               <div className="w-full">
-                <div 
-                className="text-sm lg:text-md poppins-light"
-                style={{ listStyleType: 'disc', paddingLeft: '20px' }}
-                dangerouslySetInnerHTML={{ __html: detail.description }}
-                >
-
-                </div>
+                <div
+                  className="text-sm lg:text-md poppins-light"
+                  style={{ listStyleType: "disc", paddingLeft: "20px" }}
+                  dangerouslySetInnerHTML={{ __html: detail.description }}
+                ></div>
               </div>
             </div>
             {detail.video ? (
@@ -109,10 +108,8 @@ const Project = ({ match }) => {
               <div className="flex justify-center lg:justify-center flex-wrap w-full lg:flex w-1/3">
                 <div className="w-full flex flex-wrap lg:flex-nowrap justify-center">
                   <h2 className="text-xl lg:text-4xl poppins-light w-full lg:w-auto text-center text-balance">
-                    Sobre{" "}
-                    <span className="poppins-bold">{detail.name}</span>
+                    Sobre <span className="poppins-bold">{detail.name}</span>
                   </h2>
-                 
                 </div>
                 <div className="w-full flex justify-center">
                   <hr className="border-[#fbcc00] border-[1px] my-2 lg:my-6 w-1/2 lg:w-1/4" />
@@ -132,31 +129,37 @@ const Project = ({ match }) => {
                       </span>{" "}
                       de:
                     </h1>
-                    {detail.rooms?.map((room) => (
-                      <div className="text-white w-full flex flex-wrap justify-center items-center text-center lg:text-left">
-                        <p
-                          className={`w-full h-full text-md lg:text-2xl poppins-regular ${
-                            !room.available ? "line-through" : ""
-                          }`}
+                    {detail.rooms
+                      ?.slice() // Crea una copia para no mutar el array original
+                      .sort((a, b) => a.id - b.id) // Ordena por id de menor a mayor
+                      .map((room) => (
+                        <div
+                          className="text-white w-full flex flex-wrap justify-center items-center text-center lg:text-left"
+                          key={room.id} // Agrega una key única
                         >
-                          - {room.label}
-                        </p>
-                      </div>
-                    ))}
+                          <p
+                            className={`w-full h-full text-md lg:text-2xl poppins-regular ${
+                              !room.available ? "line-through" : ""
+                            }`}
+                          >
+                            - {room.label}
+                          </p>
+                        </div>
+                      ))}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {detail.sections &&
-            detail.sections.map((section, index) => (
-              <SectionCard key={index} section={section} index={index} />
-            ))}
-
+          <div className="overflow-hidden">
+            {detail.sections &&
+              detail.sections.map((section, index) => (
+                <SectionCard key={index} section={section} index={index} />
+              ))}
+          </div>
           <div>
             <GoogleMapEmbed
-            project={true}
+              project={true}
               address={detail.address}
               latitude={detail.latitude ? detail.latitude : ""}
               longitude={detail.longitude ? detail.longitude : ""}

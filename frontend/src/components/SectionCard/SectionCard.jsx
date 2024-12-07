@@ -76,29 +76,6 @@ const SectionCard = ({ section, index }) => {
     dots: !isFullscreen,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          nextArrow: <SampleNextArrow />,
-          prevArrow: <SamplePrevArrow />,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          nextArrow: isFullscreen ? <SampleNextArrow /> : null,
-          prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          nextArrow: isFullscreen ? <SampleNextArrow /> : null,
-          prevArrow: isFullscreen ? <SamplePrevArrow /> : null,
-        },
-      },
-    ],
   };
 
   return (
@@ -137,11 +114,7 @@ const SectionCard = ({ section, index }) => {
             </a>
           </div>
 
-          <div
-            className={`${
-              isFullscreen ? "w-screen" : "w-full lg:w-2/4"
-            }`}
-          >
+          <div className={`${isFullscreen ? "w-screen" : "w-full lg:w-2/4"}`}>
             <div
               ref={sliderRef}
               className={`${
@@ -150,37 +123,51 @@ const SectionCard = ({ section, index }) => {
                   : "relative"
               }`}
             >
-              <Slider {...settings}>
-                {images.map((image, index) => (
-                  <div
-                    key={index}
-                    className="px-2 relative"
-                    onClick={!isFullscreen ? toggleFullScreen : null}
-                  >
-                    <img
-                      src={compressImage(image)}
-                      alt={`Slide ${index}`}
-                      className={`${
-                        isFullscreen
-                          ? "h-screen w-full object-contain"
-                          : "hover:shadow-xl duration-300 cursor-pointer"
-                      }`}
-                    />
-                    <div className="absolute top-8 right-8 group-hover:block">
-                      <button
-                        onClick={toggleFullScreen}
-                        className="px-3 w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150"
-                      >
-                        {isFullscreen ? (
-                          <MdFullscreenExit width={45} className="text-white w-[30px] text-4xl" />
-                        ) : (
-                          <MdFullscreen className="text-white w-full text-4xl" />
-                        )}
-                      </button>
+              {images.length > 1 ? (
+                <Slider {...settings}>
+                  {images.map((image, index) => (
+                    <div
+                      key={index}
+                      className="px-2 relative"
+                      onClick={!isFullscreen ? toggleFullScreen : null}
+                    >
+                      <img
+                        src={compressImage(image)}
+                        alt={`Slide ${index}`}
+                        className={`${
+                          isFullscreen
+                            ? "h-screen w-full object-contain"
+                            : "hover:shadow-xl duration-300 cursor-pointer"
+                        }`}
+                      />
+                      <div className="absolute top-8 right-8 group-hover:block">
+                        <button
+                          onClick={toggleFullScreen}
+                          className="px-3 w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150"
+                        >
+                          {isFullscreen ? (
+                            <MdFullscreenExit
+                              width={45}
+                              className="text-white w-[30px] text-4xl"
+                            />
+                          ) : (
+                            <MdFullscreen className="text-white w-full text-4xl" />
+                          )}
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </Slider>
+                  ))}
+                </Slider>
+              ) : (
+                images.length === 1 && (
+                  <img
+                    src={compressImage(images[0])}
+                    alt="Imagen única"
+                    className="w-full h-auto object-contain cursor-pointer hover:shadow-xl"
+                    onClick={toggleFullScreen}
+                  />
+                )
+              )}
             </div>
           </div>
         </div>
