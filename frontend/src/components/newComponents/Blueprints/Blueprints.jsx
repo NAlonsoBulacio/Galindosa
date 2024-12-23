@@ -100,7 +100,7 @@ const BlueprintsCarousel = ({ blueprints }) => {
   };
 
   return (
-    <div className="w-full pb-6 lg:pb-4 mb-8 space-y-10 py-8 px-2 lg:px-32">
+    <div className="w-full pb-6 lg:pb-4 mb-8 space-y-10 py-8 px-2 lg:px-32 overflow-hidden">
       <h1 className="text-left text-2xl lg:text-3xl poppins-regular text-gray-700">
         Planos 
       </h1>
@@ -108,7 +108,7 @@ const BlueprintsCarousel = ({ blueprints }) => {
         ref={sliderRef}
         className={`${
           isFullscreen
-            ? "w-screen h-[100vh]  fixed inset-0 z-50 bg-black bg-opacity-75"
+            ? "w-screen h-[130vh]  fixed inset-0 z-50 bg-black bg-opacity-75"
             : "w-full"
         }`}
       >
