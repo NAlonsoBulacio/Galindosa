@@ -108,7 +108,7 @@ const BlueprintsCarousel = ({ blueprints }) => {
         ref={sliderRef}
         className={`${
           isFullscreen
-            ? "w-screen h-screen  fixed inset-0 z-50 bg-black bg-opacity-75"
+            ? "w-screen h-[100vh]  fixed inset-0 z-50 bg-black bg-opacity-75"
             : "w-full"
         }`}
       >
