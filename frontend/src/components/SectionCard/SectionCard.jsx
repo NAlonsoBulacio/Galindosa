@@ -151,7 +151,8 @@ const SectionCard = ({ section, index }) => {
                               className="text-white w-[30px] text-4xl"
                             />
                           ) : (
-                            <MdFullscreen className="text-white w-full text-4xl" />
+                            <MdFullscreen   width={45}
+                            className="text-white w-[30px] text-4xl" />
                           )}
                         </button>
                       </div>
