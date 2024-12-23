@@ -8,9 +8,9 @@ import FlyerProjects from "../../components/newComponents/Flyers/FlyerProjects";
 import { IoIosSearch } from "react-icons/io";
 import { getProjects } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import loadingImg from "../../assets/ripples.svg"; 
+import loadingImg from "../../assets/ripples.svg";
 import { MdCleaningServices } from "react-icons/md";
-
+import { ambients } from "../../utils";
 const Projects = () => {
   const projects = useSelector((state) => state.projects);
   const dispatch = useDispatch();
@@ -46,26 +46,35 @@ const Projects = () => {
     ambientes = roomsFilter
   ) => {
     const filteredProjects = projects.filter((project) => {
-      return (
-        (zona === "" || project.zone === zona) &&
-        (ambientes === "" || project.rooms.includes(ambientes)) &&
-        (estado === "" || project.status === estado)
-      );
+      const matchesZone = zona === "" || project.zone === zona;
+      const matchesStatus = estado === "" || project.status === estado;
+      const matchesRooms =
+        ambientes === "" ||
+        project.rooms.some((room) => room.id === parseInt(ambientes));
+  
+      return matchesZone && matchesStatus && matchesRooms;
     });
   
-    setProjectsInView(filteredProjects);
+    const shuffledProjects = filteredProjects.sort(() => Math.random() - 0.5);
+  
+    setProjectsInView(shuffledProjects);
   };
-
+  
   const handleFilterChange = () => {
     const filteredProjects = projects.filter((project) => {
-      return (
-        (zoneFilter === "" || project.zone === zoneFilter) &&
-        (roomsFilter === "" || project.rooms.includes(roomsFilter)) &&
-        (statusFilter === "" || project.status === statusFilter)
-      );
+      const matchesZone = zoneFilter === "" || project.zone === zoneFilter;
+      const matchesStatus =
+        statusFilter === "" || project.status === statusFilter;
+      const matchesRooms =
+        roomsFilter === "" ||
+        project.rooms.some((room) => room.id === parseInt(roomsFilter));
+  
+      return matchesZone && matchesStatus && matchesRooms;
     });
   
-    setProjectsInView(filteredProjects);
+    const shuffledProjects = filteredProjects.sort(() => Math.random() - 0.5);
+  
+    setProjectsInView(shuffledProjects);
   };
 
   const handleCleanFilters = () => {
@@ -74,13 +83,20 @@ const Projects = () => {
     setZoneFilter("");
     setProjectsInView(projects);
   };
+console.log(zoneFilter);
+console.log(roomsFilter);
+
+
 
   return (
     <div className="overflow-hidden">
       {/* Meta tags y estructura para SEO */}
       <Helmet>
         <title>Proyectos - Constructora N°1 de Tucumán</title>
-        <meta name="description" content="Descubre nuestros proyectos destacados en Tucumán." />
+        <meta
+          name="description"
+          content="Descubre nuestros proyectos destacados en Tucumán."
+        />
         <meta name="keywords" content="proyectos, Tucumán, constructora" />
       </Helmet>
 
@@ -105,7 +121,7 @@ const Projects = () => {
               >
                 <option value="">Todos los Estados</option>
                 <option value="Terminado">Terminado</option>
-                <option value="En Pozo">En Pozo</option>
+                <option value="En Obra">En Obra</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg
@@ -154,13 +170,13 @@ const Projects = () => {
                 className="border-b border-gray-400 text-xl focus:border-[#ffc702] focus:outline-none appearance-none w-full pb-2"
               >
                 <option value="">Todos los Ambientes</option>
-                <option value="1 ambiente">1 ambiente</option>
-                <option value="2 ambientes">2 ambientes</option>
-                <option value="3 ambientes">3 ambientes</option>
-                <option value="4 ambientes">4 ambientes</option>
-                <option value="5 ambientes">5 ambientes</option>
-                <option value="Casa">Casa</option>
+                {ambients.map((ambient) => (
+                  <option key={ambient.id} value={ambient.id}>
+                    {ambient.label}
+                  </option>
+                ))}
               </select>
+
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <svg
                   className="fill-current h-8 w-8 text-[#ffc702]"
@@ -190,7 +206,7 @@ const Projects = () => {
             </button>
           </div>
         </div>
-        </div>
+      </div>
       <div className="flex flex-wrap justify-center items-center px-4 lg:px-10 xl:px-20 py-2 lg:py-8 space-y-4">
         <div className="w-full flex flex-wrap justify-center items-baseline lg:space-x-4  space-y-4 lg:space-y-0">
           {/* Filtros de búsqueda */}
@@ -207,13 +223,14 @@ const Projects = () => {
           ) : (
             <div className="flex items-center justify-center text-center text-xl text-gray-700 h-64">
               <p>
-                No se encontraron proyectos. Por favor, prueba con otros parámetros de búsqueda.
+                No se encontraron proyectos. Por favor, prueba con otros
+                parámetros de búsqueda.
               </p>
             </div>
           )}
         </div>
       </div>
-      
+
       {/* Footer */}
       <Footer />
     </div>
