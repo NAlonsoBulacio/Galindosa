@@ -8,7 +8,7 @@
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.ReactModal__Content {
+/* .ReactModal__Content {
   position: absolute;
   top: 40px;
   left: 40px;
@@ -20,4 +20,4 @@
   border-radius: 4px;
   outline: none;
   padding: 20px;
-}
+} */
