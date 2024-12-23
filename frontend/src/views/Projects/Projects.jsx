@@ -83,8 +83,7 @@ const Projects = () => {
     setZoneFilter("");
     setProjectsInView(projects);
   };
-console.log(zoneFilter);
-console.log(roomsFilter);
+
 
 
 
@@ -104,11 +103,7 @@ console.log(roomsFilter);
       <Header />
       <FlyerProjects />
       <div className="flex flex-wrap justify-center items-center px-4 lg:px-10 xl:px-20 py-2 lg:py-8 space-y-4">
-        {/* <div className="w-full flex flex-wrap justify-center items-center space-y-2 lg:space-y-4 py-6">
-          <h1 className="w-full text-center poppins-regular text-xl lg:text-4xl text-[#ffc702] tracking-[0.2rem]">
-            Tu nuevo hogar te está esperando, buscalo acá...
-          </h1>
-        </div> */}
+      
 
         <div className="w-full flex flex-wrap justify-center items-baseline lg:space-x-4 my-4 mb-8 space-y-4 lg:space-y-0">
           <div className="flex flex-col items-start w-full lg:w-auto">
@@ -231,7 +226,6 @@ console.log(roomsFilter);
         </div>
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

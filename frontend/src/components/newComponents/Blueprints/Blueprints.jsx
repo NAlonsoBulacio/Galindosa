@@ -149,7 +149,8 @@ const BlueprintsCarousel = ({ blueprints }) => {
                         onClick={toggleFullScreen}
                         className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150 rounded-lg"
                       >
-                        <MdFullscreenExit className="text-white w-full text-[60px]" />
+                        <MdFullscreenExit  width={45}
+                              className="text-white w-[30px] text-4xl" />
                       </button>
                     </div>
                   )}
@@ -159,7 +160,8 @@ const BlueprintsCarousel = ({ blueprints }) => {
                         onClick={toggleFullScreen}
                         className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150"
                       >
-                        <MdFullscreen className="text-white w-full text-4xl" />
+                        <MdFullscreen   width={45}
+                              className="text-white w-[30px] text-4xl" />
                       </button>
                     </div>
                   )}
