@@ -18,9 +18,32 @@ const SectionCard = ({ section, index }) => {
     setSectionProps(section);
   }, [section]);
 
+  const isIosSafari = /iP(ad|hone|od).+Version\/\d{2}.*Safari/i.test(
+    navigator.userAgent
+  );
+
   const toggleFullScreen = () => {
     try {
-      if (screenfull.isEnabled) {
+      if (isIosSafari) {
+        if (!isFullscreen) {
+          sliderRef.current.style.position = "fixed";
+          sliderRef.current.style.top = "0";
+          sliderRef.current.style.left = "0";
+          sliderRef.current.style.width = "100vw";
+          sliderRef.current.style.height = "100vh";
+          sliderRef.current.style.zIndex = "9999";
+          sliderRef.current.style.backgroundColor = "black";
+        } else {
+          sliderRef.current.style.position = "";
+          sliderRef.current.style.top = "";
+          sliderRef.current.style.left = "";
+          sliderRef.current.style.width = "";
+          sliderRef.current.style.height = "";
+          sliderRef.current.style.zIndex = "";
+          sliderRef.current.style.backgroundColor = "";
+        }
+        setIsFullscreen(!isFullscreen);
+      } else if (screenfull.isEnabled) {
         screenfull.toggle(sliderRef.current);
         setIsFullscreen(!isFullscreen);
       } else {
@@ -145,28 +168,16 @@ const SectionCard = ({ section, index }) => {
               ) : (
                 images.length === 1 && (
                   <>
-                    <div
-                      className={`${
-                        isFullscreen
-                          ? "fixed inset-0 z-50 bg-gray-900 bg-opacity-75 flex items-center justify-center"
-                          : "relative"
-                      }`}
-                    >
-                      <img
-                        src={compressImage(images[0])}
-                        alt="Imagen única"
-                        className={`${
-                          isFullscreen
-                            ? "h-auto max-h-[90%] max-w-[90%] object-contain"
-                            : "w-full h-auto object-contain cursor-pointer hover:shadow-xl"
-                        }`}
-                        onClick={toggleFullScreen}
-                      />
+                    <img
+                      src={compressImage(images[0])}
+                      alt="Imagen única"
+                      className="w-full h-auto object-contain cursor-pointer hover:shadow-xl"
+                      onClick={toggleFullScreen}
+                    />
+                    <div className="absolute top-8 right-8 group-hover:block">
                       <button
                         onClick={toggleFullScreen}
-                        className={`absolute top-4 right-4 px-3 w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150 ${
-                          isFullscreen ? "z-50" : ""
-                        }`}
+                        className="px-3 w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150"
                       >
                         {isFullscreen ? (
                           <MdFullscreenExit
@@ -174,13 +185,15 @@ const SectionCard = ({ section, index }) => {
                             className="text-white w-[30px] text-4xl"
                           />
                         ) : (
-                          <MdFullscreen width={45} className="text-white w-[30px] text-4xl" />
+                          <MdFullscreen
+                            width={45}
+                            className="text-white w-[30px] text-4xl"
+                          />
                         )}
                       </button>
                     </div>
                   </>
                 )
-                
               )}
             </div>
           </div>
