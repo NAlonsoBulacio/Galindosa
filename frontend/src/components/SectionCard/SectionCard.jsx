@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import compressImage from "../../utils/compressImage";
+import screenfull from "screenfull";
 
 const SectionCard = ({ section, index }) => {
   const [sectionProps, setSectionProps] = useState("");
@@ -19,50 +20,30 @@ const SectionCard = ({ section, index }) => {
 
   const toggleFullScreen = () => {
     try {
-      if (!isFullscreen) {
-        if (sliderRef.current.requestFullscreen) {
-          sliderRef.current.requestFullscreen();
-        } else if (sliderRef.current.mozRequestFullScreen) {
-          sliderRef.current.mozRequestFullScreen();
-        } else if (sliderRef.current.webkitRequestFullscreen) {
-          sliderRef.current.webkitRequestFullscreen();
-        } else if (sliderRef.current.msRequestFullscreen) {
-          sliderRef.current.msRequestFullscreen();
-        }
+      if (screenfull.isEnabled) {
+        screenfull.toggle(sliderRef.current);
+        setIsFullscreen(!isFullscreen);
       } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
+        console.warn("Fullscreen mode is not supported on this browser.");
       }
-      setIsFullscreen(!isFullscreen);
     } catch (error) {
-      console.error("Error al cambiar a pantalla completa:", error);
+      console.error("Error toggling fullscreen mode:", error);
     }
   };
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        setIsFullscreen(false);
-      }
+      setIsFullscreen(screenfull.isFullscreen);
     };
 
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-    document.addEventListener("mozfullscreenchange", handleFullscreenChange);
-    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
-    document.addEventListener("msfullscreenchange", handleFullscreenChange);
+    if (screenfull.isEnabled) {
+      screenfull.on("change", handleFullscreenChange);
+    }
 
     return () => {
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener("mozfullscreenchange", handleFullscreenChange);
-      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
-      document.removeEventListener("msfullscreenchange", handleFullscreenChange);
+      if (screenfull.isEnabled) {
+        screenfull.off("change", handleFullscreenChange);
+      }
     };
   }, []);
 
@@ -87,7 +68,7 @@ const SectionCard = ({ section, index }) => {
           } ${index % 2 !== 0 ? "flex-row-reverse" : ""}`}
         >
           <div className="w-full lg:w-[43%] flex flex-col justify-between items-start px-2 gap-y-4">
-            <h1 className="text-left text-3xl lg:text-4xl l poppins-semibold text-gray-800 font-bold">
+            <h1 className="text-left text-3xl lg:text-4xl poppins-semibold text-gray-800 font-bold">
               {sectionProps.title}
             </h1>
             <p className="text-sm lg:text-md poppins-light">
@@ -151,8 +132,10 @@ const SectionCard = ({ section, index }) => {
                               className="text-white w-[30px] text-4xl"
                             />
                           ) : (
-                            <MdFullscreen   width={45}
-                            className="text-white w-[30px] text-4xl" />
+                            <MdFullscreen
+                              width={45}
+                              className="text-white w-[30px] text-4xl"
+                            />
                           )}
                         </button>
                       </div>
@@ -161,13 +144,43 @@ const SectionCard = ({ section, index }) => {
                 </Slider>
               ) : (
                 images.length === 1 && (
-                  <img
-                    src={compressImage(images[0])}
-                    alt="Imagen única"
-                    className="w-full h-auto object-contain cursor-pointer hover:shadow-xl"
-                    onClick={toggleFullScreen}
-                  />
+                  <>
+                    <div
+                      className={`${
+                        isFullscreen
+                          ? "fixed inset-0 z-50 bg-gray-900 bg-opacity-75 flex items-center justify-center"
+                          : "relative"
+                      }`}
+                    >
+                      <img
+                        src={compressImage(images[0])}
+                        alt="Imagen única"
+                        className={`${
+                          isFullscreen
+                            ? "h-auto max-h-[90%] max-w-[90%] object-contain"
+                            : "w-full h-auto object-contain cursor-pointer hover:shadow-xl"
+                        }`}
+                        onClick={toggleFullScreen}
+                      />
+                      <button
+                        onClick={toggleFullScreen}
+                        className={`absolute top-4 right-4 px-3 w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150 ${
+                          isFullscreen ? "z-50" : ""
+                        }`}
+                      >
+                        {isFullscreen ? (
+                          <MdFullscreenExit
+                            width={45}
+                            className="text-white w-[30px] text-4xl"
+                          />
+                        ) : (
+                          <MdFullscreen width={45} className="text-white w-[30px] text-4xl" />
+                        )}
+                      </button>
+                    </div>
+                  </>
                 )
+                
               )}
             </div>
           </div>
