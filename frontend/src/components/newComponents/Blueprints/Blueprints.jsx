@@ -1,71 +1,71 @@
 import React, { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
+import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 import SampleNextArrow from "../../../utils/SampleNextArrow";
 import SamplePrevArrow from "../../../utils/SamplePrevArrow";
-// import SampleNextArrow from "../../Arrows/SampleNextArrow";
-// import SamplePrevArrow from "../../Arrows/SamplePrevArrow";
-import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
+import compressImage from "../../../utils/compressImage";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import compressImage from "../../../utils/compressImage";
+import screenfull from "screenfull";
 
 const BlueprintsCarousel = ({ blueprints }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const sliderRef = useRef(null);
 
+  const isIosSafari = /iP(ad|hone|od).+Version\/\d{2}.*Safari/i.test(
+    navigator.userAgent
+  );
+
   const toggleFullScreen = () => {
-    if (!isFullscreen) {
-      if (sliderRef.current.requestFullscreen) {
-        sliderRef.current.requestFullscreen();
-      } else if (sliderRef.current.mozRequestFullScreen) {
-        sliderRef.current.mozRequestFullScreen();
-      } else if (sliderRef.current.webkitRequestFullscreen) {
-        sliderRef.current.webkitRequestFullscreen();
-      } else if (sliderRef.current.msRequestFullscreen) {
-        sliderRef.current.msRequestFullscreen();
+    try {
+      if (isIosSafari) {
+        // Custom fullscreen for iOS Safari
+        if (!isFullscreen) {
+          sliderRef.current.style.position = "fixed";
+          sliderRef.current.style.top = "0";
+          sliderRef.current.style.left = "0";
+          sliderRef.current.style.width = "100vw";
+          sliderRef.current.style.height = "100vh";
+          sliderRef.current.style.zIndex = "9999";
+          sliderRef.current.style.backgroundColor = "black";
+        } else {
+          sliderRef.current.style.position = "";
+          sliderRef.current.style.top = "";
+          sliderRef.current.style.left = "";
+          sliderRef.current.style.width = "";
+          sliderRef.current.style.height = "";
+          sliderRef.current.style.zIndex = "";
+          sliderRef.current.style.backgroundColor = "";
+        }
+        setIsFullscreen(!isFullscreen);
+      } else if (screenfull.isEnabled) {
+        // Toggle fullscreen using screenfull
+        screenfull.toggle(sliderRef.current);
+        setIsFullscreen(!isFullscreen);
+      } else {
+        console.warn("Fullscreen mode is not supported on this browser.");
       }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
+    } catch (error) {
+      console.error("Error toggling fullscreen mode:", error);
     }
-    setIsFullscreen(!isFullscreen);
   };
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        setIsFullscreen(false);
-      }
+      setIsFullscreen(screenfull.isFullscreen);
     };
 
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-    document.addEventListener("mozfullscreenchange", handleFullscreenChange);
-    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
-    document.addEventListener("msfullscreenchange", handleFullscreenChange);
+    if (screenfull.isEnabled) {
+      screenfull.on("change", handleFullscreenChange);
+    }
 
     return () => {
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
-      document.removeEventListener(
-        "mozfullscreenchange",
-        handleFullscreenChange
-      );
-      document.removeEventListener(
-        "webkitfullscreenchange",
-        handleFullscreenChange
-      );
-      document.removeEventListener(
-        "msfullscreenchange",
-        handleFullscreenChange
-      );
+      if (screenfull.isEnabled) {
+        screenfull.off("change", handleFullscreenChange);
+      }
     };
   }, []);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -100,30 +100,31 @@ const BlueprintsCarousel = ({ blueprints }) => {
   };
 
   return (
-    <div className={` w-full pb-6 lg:pb-4 mb-8 space-y-10 py-8 px-2 lg:px-32 overflow-hidden`}>
+    <div className="w-full pb-6 lg:pb-4 mb-8 space-y-10 py-8 px-2 lg:px-32 overflow-hidden">
       <h1 className="text-left text-2xl lg:text-3xl poppins-regular text-gray-700">
-        Planos 
+        Planos
       </h1>
       <div
         ref={sliderRef}
         className={`${
-        isFullscreen
-                  ? "fixed inset-0 z-50 bg-gray-900 bg-opacity-75 sombreado"
+          isFullscreen
+            ? "fixed inset-0 z-50 bg-gray-900 bg-opacity-75 sombreado"
             : "w-full"
         }`}
       >
         <div className="relative">
           {blueprints.length === 1 ? (
-            <div className="px-2 " onClick={!isFullscreen && toggleFullScreen}>
+            <div className="px-2">
               <img
                 src={compressImage(blueprints[0])}
                 alt="blueprint"
-                className={` w-full lg:w-1/3 ${
+                className={`w-full lg:w-1/3 ${
                   isFullscreen
                     ? "h-screen w-full object-contain"
                     : "hover:shadow-xl duration-300 cursor-pointer"
                 }`}
-              />{" "}
+                onClick={toggleFullScreen}
+              />
             </div>
           ) : (
             <Slider {...settings}>
@@ -131,7 +132,7 @@ const BlueprintsCarousel = ({ blueprints }) => {
                 <div
                   key={index}
                   className="px-2 relative"
-                  onClick={!isFullscreen && toggleFullScreen}
+                  onClick={!isFullscreen ? toggleFullScreen : null}
                 >
                   <img
                     src={compressImage(print)}
@@ -142,45 +143,22 @@ const BlueprintsCarousel = ({ blueprints }) => {
                         : "hover:shadow-xl duration-300 cursor-pointer"
                     }`}
                   />
-
-                  {isFullscreen && (
-                    <div className="absolute top-8 right-8 group-hover:block">
-                      <button
-                        onClick={toggleFullScreen}
-                        className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150 rounded-lg"
-                      >
-                        <MdFullscreenExit  width={45}
-                              className="text-white w-[30px] text-4xl" />
-                      </button>
-                    </div>
-                  )}
-                  {!isFullscreen && (
-                    <div className="z-40 absolute top-8 right-8  group-hover:block">
-                      <button
-                        onClick={toggleFullScreen}
-                        className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 lg:opacity-0 group-hover:opacity-100 duration-150"
-                      >
-                        <MdFullscreen   width={45}
-                              className="text-white w-[30px] text-4xl" />
-                      </button>
-                    </div>
-                  )}
+                  <div className="absolute top-8 right-8">
+                    <button
+                      onClick={toggleFullScreen}
+                      className="px-3 w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-100 duration-150"
+                    >
+                      {isFullscreen ? (
+                        <MdFullscreenExit className="text-white w-[30px] text-4xl" />
+                      ) : (
+                        <MdFullscreen className="text-white w-[30px] text-4xl" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               ))}
             </Slider>
           )}
-          {/* <div className="absolute top-8 right-8 z-50">
-            <button
-              onClick={toggleFullScreen}
-              className="w-auto h-auto bg-gray-500 bg-opacity-30 hover:bg-opacity-75 rounded-lg opacity-0 group-hover:opacity-100 duration-150"
-            >
-              {isFullscreen ? (
-                <MdFullscreenExit className="text-white text-4xl" />
-              ) : (
-                <MdFullscreen className="text-white text-4xl" />
-              )}
-            </button>
-          </div> */}
         </div>
       </div>
     </div>
