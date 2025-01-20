@@ -103,6 +103,17 @@ export const newsData = [
     fullText:
       "Son créditos destinados a la compra o refacción de una vivienda a través de una unidad de medida establecida cuyo valor se actualiza según la inflación. Pueden destinarse a adquisición, refacción, mejoras o ampliación de viviendas, y está destinado a monotributistas, independientes y empleados en relación de dependencia que cumplan con determinados requisitos.",
     additionalContent: `
+      <div class="relative w-full max-w-[560px] mx-auto overflow-hidden pb-[56.25%]">
+  <iframe
+    class="absolute top-0 left-0 w-full h-full"
+    src="https://www.youtube.com/embed/Az10OT0sduc?si=Gjnz2w716MnXzWVl"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+
       <p class="text-lg text-gray-700 mb-3">La semana pasada, decidí recorrer <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a>, un edificio ubicado sobre la emblemática avenida Mate de Luna, en San Miguel de Tucumán. Había escuchado mucho sobre sus amenities y su diseño de alta gama, así que tenía curiosidad por verlo en persona. Lo que descubrí superó todas mis expectativas.</p>
   
       <img src=${gPark2} alt="Entrada del edificio G Park" />
@@ -125,9 +136,7 @@ export const newsData = [
   
       <p class="text-lg text-gray-700 mb-3">Si estás buscando invertir o mejorar tu calidad de vida, te diría que no pierdas la oportunidad de conocer este lugar. Galindo S.A., con sus 50 años de trayectoria, realmente se lució con este proyecto. <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a> no es solo un edificio, es la mejor opción en Mate de Luna.</p>
   
-      <div class="video-container mt-6">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Az10OT0sduc?si=Gjnz2w716MnXzWVl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
+  
     `,
     slug: "mejor-proyecto-mate-luna",
     link: "/novedades/mejor-proyecto-mate-luna",
