@@ -1,17 +1,25 @@
-import { creditos, blanqueo } from "../assets";
+import {
+  creditos,
+  blanqueo,
+  gPark1,
+  gPark2,
+  gPark3,
+  gPark4,
+  gPark5,
+} from "../assets";
 
 export const newsData = [
-    {
-      image: blanqueo,
-      category: "DESARROLLISMO",
-      date: "12 julio, 2024",
-      title:
-        "¿Qué es el blanqueo para la construcción en Argentina y cómo funciona?",
-      fullText:
-        "El blanqueo para la construcción en Argentina es un mecanismo fiscal establecido a través de la Ley de Incentivo a la Construcción Federal Argentina y Acceso a la Vivienda, con el objetivo de reactivar el sector inmobiliario y fomentar la inversión en proyectos de obra privada. Aprobada en el Congreso a principios de 2021 y publicada oficialmente, esta normativa permite a personas físicas y jurídicas declarar capitales no registrados, ya sea en pesos, dólares u otras divisas, y destinarlos exclusivamente a la compra de inmuebles en construcción.",
-      slug: "apertura-reservas-bancos-2025",
-      link: "/novedades/apertura-reservas-bancos-2025",
-      additionalContent: `
+  {
+    image: blanqueo,
+    category: "DESARROLLISMO",
+    date: "12 julio, 2024",
+    title:
+      "¿Qué es el blanqueo para la construcción en Argentina y cómo funciona?",
+    fullText:
+      "El blanqueo para la construcción en Argentina es un mecanismo fiscal establecido a través de la Ley de Incentivo a la Construcción Federal Argentina y Acceso a la Vivienda, con el objetivo de reactivar el sector inmobiliario y fomentar la inversión en proyectos de obra privada. Aprobada en el Congreso a principios de 2021 y publicada oficialmente, esta normativa permite a personas físicas y jurídicas declarar capitales no registrados, ya sea en pesos, dólares u otras divisas, y destinarlos exclusivamente a la compra de inmuebles en construcción.",
+    slug: "apertura-reservas-bancos-2025",
+    link: "/novedades/apertura-reservas-bancos-2025",
+    additionalContent: `
       <h2 class="text-2xl font-bold mt-6 mb-4">¿Cómo funciona el blanqueo para la construcción?</h2>
 <p>Este proceso de blanqueo permite que el dinero no declarado sea "sincerado" y usado para adquirir departamentos o unidades en proyectos inmobiliarios que se encuentren con menos del 50% de avance de obra. Aquí te explicamos los pasos clave del proceso:</p>
 <ul class="list-disc pl-5 mb-4">
@@ -59,17 +67,18 @@ export const newsData = [
 <p>Comprar un departamento en Argentina requiere de una revisión exhaustiva no solo del precio, sino también del estado legal y físico del inmueble. Asegúrate de estar bien informado y contar con el asesoramiento de profesionales para evitar sorpresas desagradables después de la compra.</p>
 
     `,
-    },
-    {
-      image: creditos,
-      category: "CREDITOS",
-      date: "Junio 2024",
-      title: "Créditos hipotecarios UVA 2024: qué son y cómo acceder a estos préstamos",
-      fullText:
-        "Son créditos destinados a la compra o refacción de una vivienda a través de una unidad de medida establecida cuyo valor se actualiza según la inflación. Pueden destinarse a adquisición, refacción, mejoras o ampliación de viviendas, y está destinado a monotributistas, independientes y empleados en relación de dependencia que cumplan con determinados requisitos.",
-      slug: "casa-foa-pocito-exito",
-      link: "/novedades/casa-foa-pocito-exito",
-      additionalContent: `
+  },
+  {
+    image: creditos,
+    category: "CREDITOS",
+    date: "Junio 2024",
+    title:
+      "Créditos hipotecarios UVA 2024: qué son y cómo acceder a estos préstamos",
+    fullText:
+      "Son créditos destinados a la compra o refacción de una vivienda a través de una unidad de medida establecida cuyo valor se actualiza según la inflación. Pueden destinarse a adquisición, refacción, mejoras o ampliación de viviendas, y está destinado a monotributistas, independientes y empleados en relación de dependencia que cumplan con determinados requisitos.",
+    slug: "casa-foa-pocito-exito",
+    link: "/novedades/casa-foa-pocito-exito",
+    additionalContent: `
       <h2 class="text-2xl font-bold mt-6 mb-4">¿En qué consisten los créditos hipotecarios UVA 2024?</h2>
       <p>Los créditos hipotecarios UVA, llamados así por las siglas “Unidad de Valor Adquisitivo”, son créditos para vivienda que utilizan una unidad de medida establecida por el Banco Central de la República Argentina (BCRA), cuyo valor se actualiza según la inflación, a través del Coeficiente de Estabilización de Referencia (CER), basado en el Índice de Precios al Consumidor del INDEC.</p>
   
@@ -84,8 +93,43 @@ export const newsData = [
   
       <h2 class="text-2xl font-bold mt-6 mb-4">Conclusión</h2>
       <p>Los créditos hipotecarios UVA representan una opción para acceder a una vivienda propia, aunque es importante considerar las condiciones de inflación y tasas para una mejor planificación financiera.</p>
-    `
-    },
-   
-  ];
+    `,
+  },
+  {
+    image: gPark1,
+    category: "MATE LUNA",
+    date: "Enero 2025",
+    title: "Conocí el mejor proyecto de Mate Luna",
+    fullText:
+      "Son créditos destinados a la compra o refacción de una vivienda a través de una unidad de medida establecida cuyo valor se actualiza según la inflación. Pueden destinarse a adquisición, refacción, mejoras o ampliación de viviendas, y está destinado a monotributistas, independientes y empleados en relación de dependencia que cumplan con determinados requisitos.",
+    additionalContent: `
+      <p class="text-lg text-gray-700 mb-3">La semana pasada, decidí recorrer <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a>, un edificio ubicado sobre la emblemática avenida Mate de Luna, en San Miguel de Tucumán. Había escuchado mucho sobre sus amenities y su diseño de alta gama, así que tenía curiosidad por verlo en persona. Lo que descubrí superó todas mis expectativas.</p>
   
+      <img src=${gPark2} alt="Entrada del edificio G Park" />
+  
+      <p class="text-lg text-gray-700 mb-3">Desde el momento en que llegás, el proyecto está diseñado para tener una entrada que te da una sensación de lujo y modernidad. La planta baja es un espacio diseñado con un nivel de detalle impresionante: amplias áreas recreativas, un patio al aire libre que invita a relajarte, y un gimnasio perfectamente integrado en este entorno. Nunca pensé que un edificio podría ofrecer tanto desde el momento en que cruzás la puerta.</p>
+  
+      <img src=${gPark3} alt="Terraza del edificio con pileta y solarium" />
+  
+      <p class="text-lg text-gray-700 mb-3">Subí a conocer las terrazas y ahí entendí por qué este edificio es único. No solo tiene una pileta espectacular con un solarium que parece sacado de un resort, sino también dos salones de usos múltiples que podés usar para todo: desde reuniones hasta festejos. Ah, y si te gusta el asado, estás de suerte: hay dos parrillas perfectas para disfrutar con amigos o familia, con vistas increíbles de la ciudad.</p>
+  
+      <img src=${gPark4} alt="Espacio de coworking en G Park" />
+  
+      <p class="text-lg text-gray-700 mb-3">Otra cosa que me sorprendió fue el espacio de coworking. No sé ustedes, pero para mí, trabajar desde casa muchas veces se vuelve monótono. Tener un lugar cómodo, tranquilo y bien diseñado dentro de tu propio edificio es un lujo que marca la diferencia.</p>
+  
+      <img src=${gPark5} alt="Departamentos en G Park con diseño moderno" />
+  
+      <p class="text-lg text-gray-700 mb-3">Los departamentos, por su parte, están pensados para aprovechar al máximo la luz natural y el espacio. Hay opciones de uno o dos dormitorios y monoambientes, con terminaciones impecables. Y como broche de oro, el edificio cuenta con cocheras subterráneas, algo que siempre suma puntos en una ciudad como Tucumán.</p>
+  
+      <p class="text-lg text-gray-700 mb-3">Pero lo que realmente me conquistó fue cómo combina accesibilidad y tranquilidad. Su ubicación estratégica conecta Yerba Buena con San Miguel, lo que significa que tenés todo a mano, pero sin el caos del centro. Después de mi visita, entendí por qué <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a> no es solo un edificio más, es una experiencia de vida.</p>
+  
+      <p class="text-lg text-gray-700 mb-3">Si estás buscando invertir o mejorar tu calidad de vida, te diría que no pierdas la oportunidad de conocer este lugar. Galindo S.A., con sus 50 años de trayectoria, realmente se lució con este proyecto. <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a> no es solo un edificio, es la mejor opción en Mate de Luna.</p>
+  
+      <div class="video-container mt-6">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Az10OT0sduc?si=Gjnz2w716MnXzWVl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    `,
+    slug: "mejor-proyecto-mate-luna",
+    link: "/novedades/mejor-proyecto-mate-luna",
+  },
+];

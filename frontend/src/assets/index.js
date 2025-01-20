@@ -43,6 +43,12 @@ import banner4 from "./banners/V6.jpg";
 import creditos from "./news/creditos.webp";
 import blanqueo from "./news/blanqueo.webp";
 import barrio_norte from "./barrio-norte.webp";
+
+import gPark1 from "./news/g-park/image1.webp";
+import gPark2 from "./news/g-park/image2.webp";
+import gPark3 from "./news/g-park/image3.webp";
+import gPark4 from "./news/g-park/image4.webp";
+import gPark5 from "./news/g-park/image5.webp";
 export {
   logo,
   logo_g,
@@ -84,5 +90,10 @@ export {
   playground,
   creditos,
   blanqueo,
-  barrio_norte
+  barrio_norte,
+  gPark1,
+  gPark2,
+  gPark3,
+  gPark4,
+  gPark5
 };
