@@ -96,7 +96,7 @@ export const newsData = [
     `,
   },
   {
-    image: gPark1,
+    image: gPark4,
     category: "MATE LUNA",
     date: "Enero 2025",
     title: "Conocí el mejor proyecto de Mate Luna",
@@ -124,7 +124,7 @@ export const newsData = [
   
       <p class="text-lg text-gray-700 mb-3">Subí a conocer las terrazas y ahí entendí por qué este edificio es único. No solo tiene una pileta espectacular con un solarium que parece sacado de un resort, sino también dos salones de usos múltiples que podés usar para todo: desde reuniones hasta festejos. Ah, y si te gusta el asado, estás de suerte: hay dos parrillas perfectas para disfrutar con amigos o familia, con vistas increíbles de la ciudad.</p>
   
-      <img src=${gPark4} alt="Espacio de coworking en G Park" />
+      <img src=${gPark1} alt="Espacio de coworking en G Park" />
   
       <p class="text-lg text-gray-700 mb-3">Otra cosa que me sorprendió fue el espacio de coworking. No sé ustedes, pero para mí, trabajar desde casa muchas veces se vuelve monótono. Tener un lugar cómodo, tranquilo y bien diseñado dentro de tu propio edificio es un lujo que marca la diferencia.</p>
   
