@@ -10,6 +10,52 @@ import {
 
 export const newsData = [
   {
+    image: gPark4,
+    category: "MATE LUNA",
+    date: "Enero 2025",
+    title: "Conocí el mejor proyecto de Mate Luna",
+    fullText:
+      `La semana pasada, decidí recorrer G Park, un edificio ubicado sobre la emblemática avenida Mate de Luna, en San Miguel de Tucumán. Había escuchado mucho sobre sus amenities y su diseño de alta gama, así que tenía curiosidad por verlo en persona. Lo que descubrí superó todas mis expectativas.`,
+    additionalContent: `
+      <div class="relative w-full max-w-[560px] mx-auto overflow-hidden pb-[56.25%]">
+  <iframe
+    class="absolute top-0 left-0 w-full h-full"
+    src="https://www.youtube.com/embed/Az10OT0sduc?si=Gjnz2w716MnXzWVl"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+  </iframe>
+</div>
+
+      <p class="text-lg text-gray-700 mb-3"></p>
+  
+      <img src=${gPark2} alt="Entrada del edificio G Park" />
+  
+      <p class="text-lg text-gray-700 mb-3">Desde el momento en que llegás, el proyecto está diseñado para tener una entrada que te da una sensación de lujo y modernidad. La planta baja es un espacio diseñado con un nivel de detalle impresionante: amplias áreas recreativas, un patio al aire libre que invita a relajarte, y un gimnasio perfectamente integrado en este entorno. Nunca pensé que un edificio podría ofrecer tanto desde el momento en que cruzás la puerta.</p>
+  
+      <img src=${gPark3} alt="Terraza del edificio con pileta y solarium" />
+  
+      <p class="text-lg text-gray-700 mb-3">Subí a conocer las terrazas y ahí entendí por qué este edificio es único. No solo tiene una pileta espectacular con un solarium que parece sacado de un resort, sino también dos salones de usos múltiples que podés usar para todo: desde reuniones hasta festejos. Ah, y si te gusta el asado, estás de suerte: hay dos parrillas perfectas para disfrutar con amigos o familia, con vistas increíbles de la ciudad.</p>
+  
+      <img src=${gPark1} alt="Espacio de coworking en G Park" />
+  
+      <p class="text-lg text-gray-700 mb-3">Otra cosa que me sorprendió fue el espacio de coworking. No sé ustedes, pero para mí, trabajar desde casa muchas veces se vuelve monótono. Tener un lugar cómodo, tranquilo y bien diseñado dentro de tu propio edificio es un lujo que marca la diferencia.</p>
+  
+      <img src=${gPark5} alt="Departamentos en G Park con diseño moderno" />
+  
+      <p class="text-lg text-gray-700 mb-3">Los departamentos, por su parte, están pensados para aprovechar al máximo la luz natural y el espacio. Hay opciones de uno o dos dormitorios y monoambientes, con terminaciones impecables. Y como broche de oro, el edificio cuenta con cocheras subterráneas, algo que siempre suma puntos en una ciudad como Tucumán.</p>
+  
+      <p class="text-lg text-gray-700 mb-3">Pero lo que realmente me conquistó fue cómo combina accesibilidad y tranquilidad. Su ubicación estratégica conecta Yerba Buena con San Miguel, lo que significa que tenés todo a mano, pero sin el caos del centro. Después de mi visita, entendí por qué <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a> no es solo un edificio más, es una experiencia de vida.</p>
+  
+      <p class="text-lg text-gray-700 mb-3">Si estás buscando invertir o mejorar tu calidad de vida, te diría que no pierdas la oportunidad de conocer este lugar. Galindo S.A., con sus 50 años de trayectoria, realmente se lució con este proyecto. <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a> no es solo un edificio, es la mejor opción en Mate de Luna.</p>
+  
+  
+    `,
+    slug: "mejor-proyecto-mate-luna",
+    link: "/novedades/mejor-proyecto-mate-luna",
+  },
+  {
     image: blanqueo,
     category: "DESARROLLISMO",
     date: "12 julio, 2024",
@@ -95,50 +141,5 @@ export const newsData = [
       <p>Los créditos hipotecarios UVA representan una opción para acceder a una vivienda propia, aunque es importante considerar las condiciones de inflación y tasas para una mejor planificación financiera.</p>
     `,
   },
-  {
-    image: gPark4,
-    category: "MATE LUNA",
-    date: "Enero 2025",
-    title: "Conocí el mejor proyecto de Mate Luna",
-    fullText:
-      "Son créditos destinados a la compra o refacción de una vivienda a través de una unidad de medida establecida cuyo valor se actualiza según la inflación. Pueden destinarse a adquisición, refacción, mejoras o ampliación de viviendas, y está destinado a monotributistas, independientes y empleados en relación de dependencia que cumplan con determinados requisitos.",
-    additionalContent: `
-      <div class="relative w-full max-w-[560px] mx-auto overflow-hidden pb-[56.25%]">
-  <iframe
-    class="absolute top-0 left-0 w-full h-full"
-    src="https://www.youtube.com/embed/Az10OT0sduc?si=Gjnz2w716MnXzWVl"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</div>
-
-      <p class="text-lg text-gray-700 mb-3">La semana pasada, decidí recorrer <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a>, un edificio ubicado sobre la emblemática avenida Mate de Luna, en San Miguel de Tucumán. Había escuchado mucho sobre sus amenities y su diseño de alta gama, así que tenía curiosidad por verlo en persona. Lo que descubrí superó todas mis expectativas.</p>
   
-      <img src=${gPark2} alt="Entrada del edificio G Park" />
-  
-      <p class="text-lg text-gray-700 mb-3">Desde el momento en que llegás, el proyecto está diseñado para tener una entrada que te da una sensación de lujo y modernidad. La planta baja es un espacio diseñado con un nivel de detalle impresionante: amplias áreas recreativas, un patio al aire libre que invita a relajarte, y un gimnasio perfectamente integrado en este entorno. Nunca pensé que un edificio podría ofrecer tanto desde el momento en que cruzás la puerta.</p>
-  
-      <img src=${gPark3} alt="Terraza del edificio con pileta y solarium" />
-  
-      <p class="text-lg text-gray-700 mb-3">Subí a conocer las terrazas y ahí entendí por qué este edificio es único. No solo tiene una pileta espectacular con un solarium que parece sacado de un resort, sino también dos salones de usos múltiples que podés usar para todo: desde reuniones hasta festejos. Ah, y si te gusta el asado, estás de suerte: hay dos parrillas perfectas para disfrutar con amigos o familia, con vistas increíbles de la ciudad.</p>
-  
-      <img src=${gPark1} alt="Espacio de coworking en G Park" />
-  
-      <p class="text-lg text-gray-700 mb-3">Otra cosa que me sorprendió fue el espacio de coworking. No sé ustedes, pero para mí, trabajar desde casa muchas veces se vuelve monótono. Tener un lugar cómodo, tranquilo y bien diseñado dentro de tu propio edificio es un lujo que marca la diferencia.</p>
-  
-      <img src=${gPark5} alt="Departamentos en G Park con diseño moderno" />
-  
-      <p class="text-lg text-gray-700 mb-3">Los departamentos, por su parte, están pensados para aprovechar al máximo la luz natural y el espacio. Hay opciones de uno o dos dormitorios y monoambientes, con terminaciones impecables. Y como broche de oro, el edificio cuenta con cocheras subterráneas, algo que siempre suma puntos en una ciudad como Tucumán.</p>
-  
-      <p class="text-lg text-gray-700 mb-3">Pero lo que realmente me conquistó fue cómo combina accesibilidad y tranquilidad. Su ubicación estratégica conecta Yerba Buena con San Miguel, lo que significa que tenés todo a mano, pero sin el caos del centro. Después de mi visita, entendí por qué <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a> no es solo un edificio más, es una experiencia de vida.</p>
-  
-      <p class="text-lg text-gray-700 mb-3">Si estás buscando invertir o mejorar tu calidad de vida, te diría que no pierdas la oportunidad de conocer este lugar. Galindo S.A., con sus 50 años de trayectoria, realmente se lució con este proyecto. <a href="/proyecto/g-park" class="text-blue-500 underline">G Park</a> no es solo un edificio, es la mejor opción en Mate de Luna.</p>
-  
-  
-    `,
-    slug: "mejor-proyecto-mate-luna",
-    link: "/novedades/mejor-proyecto-mate-luna",
-  },
 ];

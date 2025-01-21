@@ -25,7 +25,7 @@ const Footer = () => {
         <div>
           <img src={logo_b} alt="Galindo SA" className="w-2/3" />
           <p className="text-sm mb-4 poppins-light">
-            40 años de trayectoria definen nuestra identidad.
+            50 años de trayectoria definen nuestra identidad.
           </p>
           <div className="w-full flex justify-start items-center space-x-4">
             <a
