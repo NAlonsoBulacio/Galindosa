@@ -33,7 +33,7 @@ const Counter = () => {
   }
 
   if (inView2) {
-    incrementCount(count2, setCount2, 49, 1);
+    incrementCount(count2, setCount2, 50, 1);
   }
   if (inView3) {
     incrementCount(count3, setCount3, 300000, 10000);
