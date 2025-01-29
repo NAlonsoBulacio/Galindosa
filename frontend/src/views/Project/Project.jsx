@@ -65,43 +65,7 @@ const Project = ({ match }) => {
           <div className="">
             <Amenities amenities={detail.amenities} />
           </div>
-          <div className="flex flex-wrap py-4 lg:py-10 px-2 lg:px-32 ">
-            <div
-              className={` ${
-                detail.video
-                  ? "lg:w-1/2 lg:px-8"
-                  : "lg:w-full lg:px-32 lg:py-10"
-              } w-full  flex flex-col  mb-2 px-0 `}
-            >
-              <div className="w-full mb-2">
-                <h1 className="text-left text-3xl lg:text-4xl l poppins-semibold text-gray-800 font-bold">
-                  {detail.introDescription}
-                </h1>
-              </div>
-              <div className="w-full">
-                <div
-                  className="text-sm lg:text-md poppins-light"
-                  style={{ listStyleType: "disc", paddingLeft: "20px" }}
-                  dangerouslySetInnerHTML={{ __html: detail.description }}
-                ></div>
-              </div>
-            </div>
-            {detail.video ? (
-              <div className="w-full lg:w-1/2 relative h-[230px] lg:h-[355px]">
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${detail.video}?si=NIaYAchzrJUl9LMn`}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
+
 
           <div className="w-full flex  justify-center items-start bg-black text-white py-12 px-2 lg:px-0">
             <div className="container flex flex-wrap lg:flex-nowrap justify-center items-start gap-x-8 lg:gap-8">
@@ -156,6 +120,44 @@ const Project = ({ match }) => {
               detail.sections.map((section, index) => (
                 <SectionCard key={index} section={section} index={index} />
               ))}
+          </div>
+
+          <div className="flex flex-wrap py-4 lg:py-10 px-2 lg:px-32 ">
+            <div
+              className={` ${
+                detail.video
+                  ? "lg:w-1/2 lg:px-8"
+                  : "lg:w-full lg:px-32 lg:py-10"
+              } w-full  flex flex-col  mb-2 px-0 `}
+            >
+              <div className="w-full mb-2">
+                <h1 className="text-left text-3xl lg:text-4xl l poppins-semibold text-gray-800 font-bold">
+                  {detail.introDescription}
+                </h1>
+              </div>
+              <div className="w-full">
+                <div
+                  className="text-sm lg:text-md poppins-light"
+                  style={{ listStyleType: "disc", paddingLeft: "20px" }}
+                  dangerouslySetInnerHTML={{ __html: detail.description }}
+                ></div>
+              </div>
+            </div>
+            {detail.video ? (
+              <div className="w-full lg:w-1/2 relative h-[230px] lg:h-[355px]">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${detail.video}?si=NIaYAchzrJUl9LMn`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <div>
             <GoogleMapEmbed
