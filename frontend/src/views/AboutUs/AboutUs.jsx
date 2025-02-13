@@ -41,7 +41,7 @@ const AboutUs = () => {
       <AboutHome />
       </div>
 
-      <CEOMessage />
+      {/* <CEOMessage /> */}
       <div className="px-2 bg-gray-100">
       <AboutUsCounter />
       </div>
