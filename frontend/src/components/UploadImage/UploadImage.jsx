@@ -1,65 +1,63 @@
-import React, { useState } from "react";
-import axios from "axios";
+"use client"
+
+import { useState } from "react"
+import axios from "axios"
 
 const UploadImage = ({ handleUploadImage, id, sectionIndex, handleUploadImageVariant, handleCloseUpload }) => {
-  const [loading, setLoading] = useState(false);
-  const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [url, setUrl] = useState("")
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
 
       fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
+        resolve(fileReader.result)
+      }
 
       fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
+        reject(error)
+      }
+    })
+  }
 
   const uploadSingleImage = (base64) => {
-    setLoading(true);
+    setLoading(true)
     axios
       .post("https://galindobackend-production.up.railway.app/uploadImage", { image: base64 })
       .then((res) => {
-        setUrl(res.data);
+        setUrl(res.data)
         if (sectionIndex !== undefined) {
-          handleUploadImageVariant(res.data, sectionIndex);
+          handleUploadImageVariant(res.data, sectionIndex)
         } else {
-          handleUploadImage(res.data, id);
+          handleUploadImage(res.data, id)
         }
-        alert("Imagen Cargada Exitosamente");
-        handleCloseUpload();
+        alert("Imagen Cargada Exitosamente")
+        handleCloseUpload()
       })
       .then(() => setLoading(false))
-      .catch(console.log);
-  };
+      .catch(console.log)
+  }
 
   const uploadImage = async (event) => {
-    event.stopPropagation();
-    event.preventDefault();
+    event.stopPropagation()
+    event.preventDefault()
 
-    const files = event.target.files;
+    const files = event.target.files
     if (files.length === 1) {
-      const base64 = await convertBase64(files[0]);
-      uploadSingleImage(base64);
+      const base64 = await convertBase64(files[0])
+      uploadSingleImage(base64)
     }
-  }; 
+  }
 
   return (
     <div className="col-span-full">
-     
       {loading ? (
         "loading"
       ) : (
         <div>
-          <label
-            htmlFor="cover-photo"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
+          <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
             Cover photo
           </label>
           <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
@@ -82,25 +80,18 @@ const UploadImage = ({ handleUploadImage, id, sectionIndex, handleUploadImageVar
                   className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                 >
                   <span>Carga un archivo</span>
-                  <input
-                    id="file-upload"
-                    name="file-upload"
-                    onChange={uploadImage}
-                    type="file"
-                    className="sr-only"
-                  />
+                  <input id="file-upload" name="file-upload" onChange={uploadImage} type="file" className="sr-only" />
                 </label>
                 <p className="pl-1">a arrastra y suelta</p>
               </div>
-              <p className="text-xs leading-5 text-gray-600">
-                PNG, JPG, GIF up to 10MB
-              </p>
+              <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
             </div>
           </div>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default UploadImage;
+export default UploadImage
+

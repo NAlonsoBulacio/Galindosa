@@ -1,21 +1,17 @@
-import React from "react";
-import ContactForm from "../ContactForm/ContactForm";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import ContactForm from "../ContactForm/ContactForm"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
-const FlyerProject = ({  }) => {
+const FlyerProject = ({}) => {
   const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
-  };
-const banners = [
-  "https://grupoproaco.com/images/headers/company.jpg",
-
-]
+  }
+  const banners = ["https://grupoproaco.com/images/headers/company.jpg"]
   return (
     <div className="w-full flex flex-wrap justify-end items-center relative h-[40vh] lg:h-[100vh]">
       <Slider className="w-full h-full" {...settings}>
@@ -29,7 +25,6 @@ const banners = [
                 backgroundPosition: "center",
                 backgroundAttachment: "fixed",
                 filter: "brightness(0.3)",
-                
               }}
             ></div>
           </div>
@@ -39,7 +34,8 @@ const banners = [
         <ContactForm />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FlyerProject;
+export default FlyerProject
+

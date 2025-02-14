@@ -18,14 +18,13 @@
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
   .header {
-      --tw-bg-opacity: 1;
-      background-color: rgb(17 24 39 / var(--tw-bg-opacity)) /* #111827 */;
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity)) /* #111827 */;
     height: 80px;
   }
   .header-bg {
     --tw-bg-opacity: 1;
     background-color: rgb(17 24 39 / var(--tw-bg-opacity)) /* #111827 */;
-
   }
 }
 
@@ -36,8 +35,6 @@
 .header-visible {
   transform: translateY(0);
 }
-
-
 
 .logo {
   transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
@@ -96,3 +93,4 @@
   height: 100vh;
   gap: 20px;
 }
+

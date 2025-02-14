@@ -1,15 +1,14 @@
-import React from "react";
-import "./FeaturedCard.css";
-import { useHistory } from "react-router-dom";
+import "./FeaturedCard.css"
+import { useHistory } from "react-router-dom"
 const FeaturedCard = ({ image, title, description }) => {
-  const history = useHistory();
+  const history = useHistory()
   const handleSearch = (zona) => {
     if (title === "Mate de Luna") {
-      history.push("/proyecto/g-park");
+      history.push("/proyecto/g-park")
     } else {
-      history.push("/proyectos", { zona });
+      history.push("/proyectos", { zona })
     }
-  };
+  }
 
   return (
     <div className="card-container cursor-pointer" onClick={() => handleSearch(title)}>
@@ -29,7 +28,8 @@ const FeaturedCard = ({ image, title, description }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FeaturedCard;
+export default FeaturedCard
+

@@ -1,29 +1,72 @@
 <!DOCTYPE html>
-<html lang="es"> <!-- Cambié "en" a "es" para el contenido en español -->
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Galindo S.A - Constructora líder en Tucumán, especializada en proyectos de construcción de alta calidad." />
+    <meta name="theme-color" content="#ffc702" />
+    <meta name="description" content="Galindo S.A - Constructora líder en Tucumán desde 1975. Especializada en proyectos inmobiliarios de alta calidad, departamentos, casas y locales comerciales." />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    
-    <!-- Manifest file for progressive web app -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
+    <title>Galindo S.A - Constructora Líder en Tucumán | Proyectos Inmobiliarios</title>
+    
     <!-- Additional Meta Tags for SEO -->
-    <meta name="keywords" content="Galindo S.A, constructora, Tucumán, construcción, servicios de construcción" />
+    <meta name="keywords" content="Galindo S.A, constructora, Tucumán, proyectos inmobiliarios, departamentos, casas, locales comerciales, inversión" />
     <meta name="author" content="Galindo S.A" />
-    <meta property="og:title" content="Galindo S.A" />
-    <meta property="og:description" content="Constructora líder en Tucumán, especializada en proyectos de construcción de alta calidad." />
-    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" /> <!-- Asegúrate de tener una imagen adecuada en tu carpeta public -->
-    <meta property="og:url" content="https://www.galindosa.com" /> <!-- Cambia a la URL de tu sitio -->
-
-    <title>Galindo S.A</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.galindosa.com/" />
+    <meta property="og:title" content="Galindo S.A - Constructora Líder en Tucumán | Proyectos Inmobiliarios" />
+    <meta property="og:description" content="Descubre los mejores proyectos inmobiliarios en Tucumán con Galindo S.A. Calidad y confianza desde 1975." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.galindosa.com/" />
+    <meta property="twitter:title" content="Galindo S.A - Constructora Líder en Tucumán | Proyectos Inmobiliarios" />
+    <meta property="twitter:description" content="Descubre los mejores proyectos inmobiliarios en Tucumán con Galindo S.A. Calidad y confianza desde 1975." />
+    <meta property="twitter:image" content="%PUBLIC_URL%/twitter-image.jpg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.galindosa.com/" />
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="%PUBLIC_URL%/fonts/your-main-font.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Galindo S.A",
+        "url": "https://www.galindosa.com",
+        "logo": "https://www.galindosa.com/logo.png",
+        "description": "Constructora líder en Tucumán, especializada en proyectos inmobiliarios de alta calidad desde 1975.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Virgen de la Merced 639",
+          "addressLocality": "San Miguel de Tucumán",
+          "addressRegion": "Tucumán",
+          "postalCode": "4000",
+          "addressCountry": "AR"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+54-381-207-1244",
+          "contactType": "customer service"
+        },
+        "sameAs": [
+          "https://www.facebook.com/galindosatucuman",
+          "https://www.instagram.com/galindosa_tuc"
+        ]
+      }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Necesitas habilitar JavaScript para ejecutar esta aplicación.</noscript>
     <div id="root"></div>
   </body>
 </html>
+

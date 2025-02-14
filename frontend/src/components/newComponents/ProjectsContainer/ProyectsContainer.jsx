@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from "react";
-import "./ProjectsContainer.css";
-import loading from "../../../assets/ripples.svg";
+"use client"
+
+import { useState } from "react"
+import "./ProjectsContainer.css"
+import loading from "../../../assets/ripples.svg"
 import compressImage from "../../../utils/compressImage"
 const ProjectsContainer = ({ projects }) => {
-  const [visibleProjects, setVisibleProjects] = useState(20);
+  const [visibleProjects, setVisibleProjects] = useState(20)
 
   const handleMouseEnter = (e) => {
-    e.currentTarget.querySelector("div").classList.add("opacity-100");
-    e.currentTarget.querySelector("img").classList.add("brightness-75");
-    e.currentTarget.querySelector("img").classList.add("scale-110");
-  };
+    e.currentTarget.querySelector("div").classList.add("opacity-100")
+    e.currentTarget.querySelector("img").classList.add("brightness-75")
+    e.currentTarget.querySelector("img").classList.add("scale-110")
+  }
 
   const handleMouseLeave = (e) => {
-    e.currentTarget.querySelector("div").classList.remove("opacity-100");
-    e.currentTarget.querySelector("img").classList.remove("brightness-75");
-    e.currentTarget.querySelector("img").classList.remove("scale-110");
-  };
+    e.currentTarget.querySelector("div").classList.remove("opacity-100")
+    e.currentTarget.querySelector("img").classList.remove("brightness-75")
+    e.currentTarget.querySelector("img").classList.remove("scale-110")
+  }
 
   const handleShowMore = () => {
-    setVisibleProjects((prevVisibleProjects) => prevVisibleProjects + 10);
-  };
+    setVisibleProjects((prevVisibleProjects) => prevVisibleProjects + 10)
+  }
 
   return (
     <div className="w-full flex flex-wrap justify-center items-center space-y-10 mb-6 lg:mb-20">
@@ -51,10 +53,7 @@ const ProjectsContainer = ({ projects }) => {
             ))}
           </div>
           {visibleProjects < projects.length && (
-            <button
-              onClick={handleShowMore}
-              className="mt-10  text-white px-4 py-2 rounded"
-            >
+            <button onClick={handleShowMore} className="mt-10  text-white px-4 py-2 rounded">
               Mostrar más
             </button>
           )}
@@ -65,7 +64,8 @@ const ProjectsContainer = ({ projects }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProjectsContainer;
+export default ProjectsContainer
+

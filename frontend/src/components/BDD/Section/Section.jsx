@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import UploadImage from "../../UploadImage/UploadImage";
-import { amenities } from "../../../utils";
+import { useState, useEffect } from "react"
+import { IoIosArrowDown } from "react-icons/io"
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
+import UploadImage from "../../UploadImage/UploadImage"
+import { amenities } from "../../../utils"
 
 const Section = ({
   index,
@@ -14,45 +14,36 @@ const Section = ({
   isUploadOpen, // Nuevo prop para saber si la carga de imagen está activa
   onToggleUpload, // Nuevo prop para alternar el estado de carga
   handleCloseUpload,
-  removeSection
+  removeSection,
 }) => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([])
 
   useEffect(() => {
     if (section && section.images) {
-      setImages(section.images);
+      setImages(section.images)
     }
-  }, [section.images]);
+  }, [section.images])
 
   const handleMoveImageUp = (imgIndex) => {
-    if (imgIndex === 0) return; // No puede mover la primera imagen hacia arriba
-    const newImages = [...images];
-    [newImages[imgIndex - 1], newImages[imgIndex]] = [
-      newImages[imgIndex],
-      newImages[imgIndex - 1],
-    ];
-    setImages(newImages);
-    handleSectionImageChange(newImages, index); // Actualiza las imágenes en el estado de la sección
-  };
+    if (imgIndex === 0) return // No puede mover la primera imagen hacia arriba
+    const newImages = [...images]
+    ;[newImages[imgIndex - 1], newImages[imgIndex]] = [newImages[imgIndex], newImages[imgIndex - 1]]
+    setImages(newImages)
+    handleSectionImageChange(newImages, index) // Actualiza las imágenes en el estado de la sección
+  }
 
   const handleMoveImageDown = (imgIndex) => {
-    if (imgIndex === images.length - 1) return; // No puede mover la última imagen hacia abajo
-    const newImages = [...images];
-    [newImages[imgIndex + 1], newImages[imgIndex]] = [
-      newImages[imgIndex],
-      newImages[imgIndex + 1],
-    ];
-    setImages(newImages);
-    handleSectionImageChange(newImages, index); // Actualiza las imágenes en el estado de la sección
-  };
+    if (imgIndex === images.length - 1) return // No puede mover la última imagen hacia abajo
+    const newImages = [...images]
+    ;[newImages[imgIndex + 1], newImages[imgIndex]] = [newImages[imgIndex], newImages[imgIndex + 1]]
+    setImages(newImages)
+    handleSectionImageChange(newImages, index) // Actualiza las imágenes en el estado de la sección
+  }
 
   return (
     <div className="border rounded-lg p-4 mb-4">
       <div className="mb-4">
-        <label
-          htmlFor={`sectionTitle-${index}`}
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label htmlFor={`sectionTitle-${index}`} className="block text-sm font-medium leading-6 text-gray-900">
           Título de la Sección
         </label>
         <input
@@ -65,10 +56,7 @@ const Section = ({
         />
       </div>
       <div className="mb-4">
-        <label
-          htmlFor={`sectionText-${index}`}
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label htmlFor={`sectionText-${index}`} className="block text-sm font-medium leading-6 text-gray-900">
           Texto de la Sección
         </label>
         <textarea
@@ -81,10 +69,7 @@ const Section = ({
         />
       </div>
       <div className="mb-4">
-        <label
-          htmlFor={`sectionAmenities-${index}`}
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
+        <label htmlFor={`sectionAmenities-${index}`} className="block text-sm font-medium leading-6 text-gray-900">
           Amenidades de la Sección
         </label>
         <div className="mt-2 grid grid-cols-2 gap-4">
@@ -98,10 +83,7 @@ const Section = ({
                 onChange={(e) => handleSectionCheckboxChange(index, e, amenity)}
                 className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
               />
-              <label
-                htmlFor={`sectionAmenities-${index}`}
-                className="ml-2 block text-sm text-gray-900"
-              >
+              <label htmlFor={`sectionAmenities-${index}`} className="ml-2 block text-sm text-gray-900">
                 {amenity.label}
               </label>
             </div>
@@ -165,7 +147,8 @@ const Section = ({
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Section;
+export default Section
+

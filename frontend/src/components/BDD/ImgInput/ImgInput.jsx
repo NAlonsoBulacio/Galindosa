@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import UploadImage from "../../UploadImage/UploadImage";
-import thumbnailConvert from "../../../utils/convertThumbnail";
+"use client"
+
+import { useState, useEffect } from "react"
+import { IoIosArrowDown } from "react-icons/io"
+import UploadImage from "../../UploadImage/UploadImage"
+import thumbnailConvert from "../../../utils/convertThumbnail"
 const ImgInput = ({
   img,
   handleDeleteImage,
@@ -9,14 +11,14 @@ const ImgInput = ({
   handleCloseUpload,
   title,
   id,
-  isUploadOpen,  // Prop para controlar si el componente de carga está abierto
-  onToggleUpload // Función para alternar el estado de apertura del upload
+  isUploadOpen, // Prop para controlar si el componente de carga está abierto
+  onToggleUpload, // Función para alternar el estado de apertura del upload
 }) => {
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState("")
 
   useEffect(() => {
-    img && setImages(img);
-  }, [img]);
+    img && setImages(img)
+  }, [img])
 
   return (
     <div className="sm:col-span-3">
@@ -41,19 +43,14 @@ const ImgInput = ({
         className="w-2/5 flex items-center justify-center underline cursor-pointer text-blue-700"
       >
         <p className="text-left">Cargar imagen</p>
-        <IoIosArrowDown
-          className={`${isUploadOpen ? "rotate-180" : ""} duration-300`}
-        />
+        <IoIosArrowDown className={`${isUploadOpen ? "rotate-180" : ""} duration-300`} />
       </div>
       {isUploadOpen && (
-        <UploadImage
-          handleUploadImage={handleChangeVariantImg}
-          id={id}
-          handleCloseUpload={handleCloseUpload}
-        />
+        <UploadImage handleUploadImage={handleChangeVariantImg} id={id} handleCloseUpload={handleCloseUpload} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ImgInput;
+export default ImgInput
+

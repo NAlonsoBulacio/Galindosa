@@ -1,5 +1,4 @@
-import React from "react";
-import { newsData } from "../../../utils/newsData";
+import { newsData } from "../../../utils/newsData"
 // const newsData = [
 //   {
 //     image:
@@ -38,34 +37,21 @@ const NewsCards = () => {
     <div className="container mx-auto py-10 lg:px-32">
       <div className="w-full flex flex-col items-center mb-10">
         <h1 className="poppins-regular text-4xl text-gray-700 text-center lg:text-left">
-         
           <span className="poppins-bold text-[#ffc702]">Novedades</span>
         </h1>
         <hr className="w-32 border-t-[3px] border-[#ffc702] mt-2" />
       </div>
-      <div className={`grid grid-cols-1 md:grid-cols-2 ${newsData.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"} gap-8`}>
+      <div
+        className={`grid grid-cols-1 md:grid-cols-2 ${newsData.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"} gap-8`}
+      >
         {newsData.map((news, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
-          >
-            <img
-              src={news.image}
-              alt={news.title}
-              className="w-full h-48 object-cover"
-            />
+          <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src={news.image} alt={news.title} className="w-full h-48 object-cover" />
             <div className="p-6">
-              <span className="text-xs text-gray-500 uppercase">
-                {news.category}
-              </span>
-              <h2 className="mt-2 text-2xl font-bold text-gray-800">
-                {news.title}
-              </h2>
+              <span className="text-xs text-gray-500 uppercase">{news.category}</span>
+              <h2 className="mt-2 text-2xl font-bold text-gray-800">{news.title}</h2>
               <p className="mt-2 text-gray-600">{news.fullText}</p>
-              <a
-                href={news.link}
-                className="mt-4 inline-block text-blue-500 hover:text-blue-600"
-              >
+              <a href={news.link} className="mt-4 inline-block text-blue-500 hover:text-blue-600">
                 Leer más &rarr;
               </a>
             </div>
@@ -73,7 +59,8 @@ const NewsCards = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default NewsCards;
+export default NewsCards
+

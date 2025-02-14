@@ -1,24 +1,26 @@
-import React, { useState } from "react";
-import { TbHomeSearch } from "react-icons/tb";
+"use client"
+
+import { useState } from "react"
+import { TbHomeSearch } from "react-icons/tb"
 const FilterProjects = () => {
-  const [estado, setEstado] = useState("");
-  const [zona, setZona] = useState("");
-  const [ambientes, setAmbientes] = useState("");
+  const [estado, setEstado] = useState("")
+  const [zona, setZona] = useState("")
+  const [ambientes, setAmbientes] = useState("")
 
   const handleEstadoChange = (e) => {
-    setEstado(e.target.value);
-  };
+    setEstado(e.target.value)
+  }
 
   const handleZonaChange = (e) => {
-    setZona(e.target.value);
-  };
+    setZona(e.target.value)
+  }
   const handleAmbientesChange = (e) => {
-    setAmbientes(e.target.value);
-  };
+    setAmbientes(e.target.value)
+  }
 
   const handleSearch = () => {
-    console.log("Filtrar por:", { estado, zona, ambientes });
-  };
+    console.log("Filtrar por:", { estado, zona, ambientes })
+  }
 
   return (
     <div className="filter-container p-6 rounded-3xl mx-auto mt-8 max-w-4xl relative">
@@ -80,7 +82,8 @@ const FilterProjects = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FilterProjects;
+export default FilterProjects
+

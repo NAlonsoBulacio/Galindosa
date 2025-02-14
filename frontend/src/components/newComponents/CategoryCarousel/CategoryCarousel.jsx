@@ -1,20 +1,18 @@
-import React from 'react';
-import Slider from 'react-slick';
-import { bg_yellow } from '../../../assets';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import SampleNextArrow from "../../Arrows/SampleNextArrow";
-import SamplePrevArrow from "../../Arrows/SamplePrevArrow";
+import Slider from "react-slick"
+import { bg_yellow } from "../../../assets"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import SampleNextArrow from "../../Arrows/SampleNextArrow"
+import SamplePrevArrow from "../../Arrows/SamplePrevArrow"
 
 const categories = [
-  { icon: 'https://grupoproaco.com/images/icons/locales.png', label: 'Cocheras' },
-  { icon: 'https://grupoproaco.com/images/icons/lotes.png', label: 'Parking' },
-  { icon: 'https://grupoproaco.com/images/icons/parking.png', label: 'Departamentos' },
-  { icon: 'https://grupoproaco.com/images/icons/lotes.png', label: 'Parking' },
-  { icon: 'https://grupoproaco.com/images/icons/parking.png', label: 'Departamentos' },
-  { icon: 'https://grupoproaco.com/images/icons/oficinas.png', label: 'Lotes' }
-];
-
+  { icon: "https://grupoproaco.com/images/icons/locales.png", label: "Cocheras" },
+  { icon: "https://grupoproaco.com/images/icons/lotes.png", label: "Parking" },
+  { icon: "https://grupoproaco.com/images/icons/parking.png", label: "Departamentos" },
+  { icon: "https://grupoproaco.com/images/icons/lotes.png", label: "Parking" },
+  { icon: "https://grupoproaco.com/images/icons/parking.png", label: "Departamentos" },
+  { icon: "https://grupoproaco.com/images/icons/oficinas.png", label: "Lotes" },
+]
 
 const CategoryCarousel = () => {
   const settings = {
@@ -31,27 +29,30 @@ const CategoryCarousel = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-        }
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-        }
-      }
-    ]
-  };
+        },
+      },
+    ],
+  }
 
   return (
-    <div className="relative bg-cover bg-center text-white py-8 lg:py-10 lg:px-32" style={{ backgroundImage: `url(${bg_yellow})` }}>
+    <div
+      className="relative bg-cover bg-center text-white py-8 lg:py-10 lg:px-32"
+      style={{ backgroundImage: `url(${bg_yellow})` }}
+    >
       <h2 className="text-3xl lg:text-4xl font-semibold text-center mb-8 text-balance">
         Explore propiedades <span className="font-bold">por categoría</span>
       </h2>
@@ -66,7 +67,8 @@ const CategoryCarousel = () => {
         ))}
       </Slider>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryCarousel;
+export default CategoryCarousel
+

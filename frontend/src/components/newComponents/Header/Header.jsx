@@ -1,48 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { logo, logo_b } from "../../../assets";
-import { HiMenuAlt2 } from "react-icons/hi";
-import { useLocation } from "react-router-dom";
-import { FaRegBuilding } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
-import { IoIosContacts } from "react-icons/io";
-import "./Header.css";
+import { useState, useEffect } from "react"
+import { logo, logo_b } from "../../../assets"
+import { HiMenuAlt2 } from "react-icons/hi"
+import { useLocation } from "react-router-dom"
+import { FaRegBuilding } from "react-icons/fa"
+import { motion, AnimatePresence } from "framer-motion"
+import { IoIosContacts } from "react-icons/io"
+import "./Header.css"
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [navbar, setNavbar] = useState(false);
-  const location = useLocation();
-  const currentPath = location.pathname;
-  const [currentPage, setCurrentPage] = useState(currentPath);
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [navbar, setNavbar] = useState(false)
+  const location = useLocation()
+  const currentPath = location.pathname
+  const [currentPage, setCurrentPage] = useState(currentPath)
 
   const handleNavClick = (page) => {
-    setCurrentPage(page);
-    setMenuOpen(false); // Close menu on nav click
-  };
+    setCurrentPage(page)
+    setMenuOpen(false) // Close menu on nav click
+  }
 
   const handleScroll = () => {
-    const scrollY = window.scrollY;
-    setNavbar(scrollY >= 80);
-  };
+    const scrollY = window.scrollY
+    setNavbar(scrollY >= 80)
+  }
 
   useEffect(() => {
-    setCurrentPage(currentPath);
-    window.addEventListener("scroll", handleScroll);
+    setCurrentPage(currentPath)
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [currentPath]);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [currentPath])
 
   const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);
-  };
+    setMenuOpen(!menuOpen)
+  }
 
   return (
     <div>
       <header
         className={`${
-          navbar
-            ? "header-bg lg:shadow-2xl h-[80px] lg:h-[80px]"
-            : "header h-[80px] lg:h-[95px]"
+          navbar ? "header-bg lg:shadow-2xl h-[80px] lg:h-[80px]" : "header h-[80px] lg:h-[95px]"
         } text-gray-300 p-4 z-[50] font-lato-300 fixed w-full top-0 transition-all duration-500  ${
           menuOpen ? "" : "border-b-[1px] border-gray-900"
         }`}
@@ -50,11 +48,7 @@ const Header = () => {
         <div className="mx-auto flex items-center justify-between lg:hidden z-30 ">
           <div className="logo flex items-center space-x-4">
             <a href="/">
-              <img
-                src={navbar ? logo_b : logo_b}
-                alt="Logo"
-                style={{ width: "136px" }}
-              />
+              <img src={navbar ? logo_b : logo_b} alt="Logo" style={{ width: "136px" }} />
             </a>
           </div>
           <HiMenuAlt2
@@ -84,36 +78,28 @@ const Header = () => {
               <a
                 href="/"
                 onClick={() => handleNavClick("/")}
-                className={`${currentPage === "/" ? "active" : "a-h"} ${
-                  navbar ? "text-gray-700" : ""
-                }`}
+                className={`${currentPage === "/" ? "active" : "a-h"} ${navbar ? "text-gray-700" : ""}`}
               >
                 Inicio
               </a>
               <a
                 href="/proyectos"
                 onClick={() => handleNavClick("/proyectos")}
-                className={`${
-                  currentPage === "/proyectos" ? "active" : "a-h"
-                } ${navbar ? "text-gray-700" : ""}`}
+                className={`${currentPage === "/proyectos" ? "active" : "a-h"} ${navbar ? "text-gray-700" : ""}`}
               >
                 Edificios
               </a>
               <a
                 href="/sobre-nosotros"
                 onClick={() => handleNavClick("/sobre-nosotros")}
-                className={`${
-                  currentPage === "/sobre-nosotros" ? "active" : "a-h"
-                } ${navbar ? "text-gray-700" : ""}`}
+                className={`${currentPage === "/sobre-nosotros" ? "active" : "a-h"} ${navbar ? "text-gray-700" : ""}`}
               >
                 Nuestra Empresa
               </a>
               <a
                 href="/contacto"
                 onClick={() => handleNavClick("/contacto")}
-                className={`${currentPage === "/contacto" ? "active" : "a-h"} ${
-                  navbar ? "text-gray-700" : ""
-                }`}
+                className={`${currentPage === "/contacto" ? "active" : "a-h"} ${navbar ? "text-gray-700" : ""}`}
               >
                 Contacto
               </a>
@@ -121,9 +107,7 @@ const Header = () => {
               <a
                 href="/novedades"
                 onClick={() => handleNavClick("/novedades")}
-                className={`${
-                  currentPage === "/novedades" ? "active" : "a-h"
-                } ${navbar ? "text-gray-700" : ""}`}
+                className={`${currentPage === "/novedades" ? "active" : "a-h"} ${navbar ? "text-gray-700" : ""}`}
               >
                 News
               </a>
@@ -134,10 +118,7 @@ const Header = () => {
               navbar ? "text-gray-700 border-gray-700" : ""
             } flex items-center border-[1px] hover:border-[#ffc702] hover:text-[#ffc702] duration-300 px-3 py-1 rounded-full`}
           >
-            <a
-              href="/propiedades"
-              className=" flex items-center gap-x-2 poppins-regular"
-            >
+            <a href="/propiedades" className=" flex items-center gap-x-2 poppins-regular">
               Ver todas las propiedades <FaRegBuilding />
             </a>
           </div>
@@ -155,33 +136,17 @@ const Header = () => {
             <a href="/" onClick={() => handleNavClick("/")} className="text-lg">
               Inicio
             </a>
-            <a
-              href="/proyectos"
-              onClick={() => handleNavClick("/proyectos")}
-              className="text-lg"
-            >
+            <a href="/proyectos" onClick={() => handleNavClick("/proyectos")} className="text-lg">
               Edificios
             </a>
-            <a
-              href="/sobre-nosotros"
-              onClick={() => handleNavClick("/sobre-nosotros")}
-              className="text-lg"
-            >
+            <a href="/sobre-nosotros" onClick={() => handleNavClick("/sobre-nosotros")} className="text-lg">
               Nuestra Empresa
             </a>
-            <a
-              href="/contacto"
-              onClick={() => handleNavClick("/contacto")}
-              className="text-lg"
-            >
+            <a href="/contacto" onClick={() => handleNavClick("/contacto")} className="text-lg">
               Contacto
             </a>
-           
-            <a
-              href="/novedades"
-              onClick={() => handleNavClick("/novedades")}
-              className="text-lg"
-            >
+
+            <a href="/novedades" onClick={() => handleNavClick("/novedades")} className="text-lg">
               News
             </a>
             <div>
@@ -196,7 +161,8 @@ const Header = () => {
         )}
       </AnimatePresence>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
+

@@ -1,7 +1,6 @@
-import React from "react";
-import Slider from "react-slick";
-import CustomSlide from "./CustomSlide";
-import ContactForm from "../../ContactForm/ContactForm";
+import Slider from "react-slick"
+import CustomSlide from "./CustomSlide"
+import ContactForm from "../../ContactForm/ContactForm"
 const Banner = ({ banners, name }) => {
   const settings = {
     dots: true,
@@ -12,8 +11,7 @@ const Banner = ({ banners, name }) => {
     slidesToScroll: 1,
     adaptiveHeight: true,
     arrows: false,
-  };
-
+  }
 
   return (
     <div className="w-full  bg-white overflow-hidden relative">
@@ -30,7 +28,8 @@ const Banner = ({ banners, name }) => {
         ""
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Banner;
+export default Banner
+

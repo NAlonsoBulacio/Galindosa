@@ -1,60 +1,57 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getProjects } from "../../redux/actions";
-import thumbnailConvert from "../../utils/convertThumbnail";
+"use client"
+
+import { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { getProjects } from "../../redux/actions"
+import thumbnailConvert from "../../utils/convertThumbnail"
 const PropertiesBdd = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProjects());
-  }, [dispatch]);
+    dispatch(getProjects())
+  }, [dispatch])
 
+  const projects = useSelector((state) => state.projects)
+  const count = projects?.length
 
-  const projects = useSelector((state) => state.projects);
-  const count = projects?.length;
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [changes, setChanges] = useState({});
-  const [isChanging, setIsChanging] = useState(false);
-  const [filter, setFilter] = useState({});
-  const [search, setSearch] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
-  const [order, setOrder] = useState("asc");
+  const [currentPage, setCurrentPage] = useState(1)
+  const [changes, setChanges] = useState({})
+  const [isChanging, setIsChanging] = useState(false)
+  const [filter, setFilter] = useState({})
+  const [search, setSearch] = useState("")
+  const [isSearching, setIsSearching] = useState(false)
+  const [order, setOrder] = useState("asc")
 
   const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
-
-  const usersPerPage = 10;
-  const totalPages = Math.ceil(count / usersPerPage);
-  const pageButtons = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageButtons.push(i);
+    setCurrentPage(newPage)
   }
-  const lastPage = pageButtons.length - 1;
+
+  const usersPerPage = 10
+  const totalPages = Math.ceil(count / usersPerPage)
+  const pageButtons = []
+  for (let i = 1; i <= totalPages; i++) {
+    pageButtons.push(i)
+  }
+  const lastPage = pageButtons.length - 1
   // Calcula el rango de páginas que deseas mostrar alrededor de la página actual.
-  const range = 2; // Por ejemplo, mostrará 2 páginas antes y 2 después de la página actual.
+  const range = 2 // Por ejemplo, mostrará 2 páginas antes y 2 después de la página actual.
 
   // Calcula el rango de páginas para mostrar.
-  const startPage = Math.max(currentPage - range, 1); // Evita números negativos.
-  const endPage = Math.min(currentPage + range, totalPages); // Evita exceder el número total de páginas.
+  const startPage = Math.max(currentPage - range, 1) // Evita números negativos.
+  const endPage = Math.min(currentPage + range, totalPages) // Evita exceder el número total de páginas.
 
   // Crea un arreglo de números de página dentro del rango calculado.
-  const pageRange = [];
+  const pageRange = []
   for (let i = startPage; i <= endPage; i++) {
-    pageRange.push(i);
+    pageRange.push(i)
   }
-
-
 
   return (
     <div className="overflow-x-auto ">
       <div className="my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
         <div className="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-6 mt-4 overflow-hidden bg-white shadow-lg px-12">
           <div className="flex justify-start space-x-6 items-center pb-4">
-            <h1 className="text-3xl font-bold text-gray-700">
-              Propiedades Galindo SA
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-700">Propiedades Galindo SA</h1>
           </div>
           <div className="flex justify-between">
             <div className="inline-flex border rounded w-7/12 px-2 lg:px-6 bg-transparent">
@@ -113,7 +110,7 @@ const PropertiesBdd = () => {
                   href="/cargar-proyecto"
                   className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none"
                 >
-                Nuevo Producto
+                  Nuevo Producto
                 </a>
               </div>
             </div>
@@ -135,7 +132,7 @@ const PropertiesBdd = () => {
                   Superficie
                 </th>
                 <th className="px-1 py-3 border-b-2 border-gray-300 text-sm leading-4 text-blue-500 tracking-wider">
-                Dirección
+                  Dirección
                 </th>
                 <th className="px-1 py-3 border-b-2 border-gray-300 text-sm leading-4 text-blue-500 tracking-wider">
                   Estado
@@ -145,7 +142,6 @@ const PropertiesBdd = () => {
                 </th> */}
                 <th className="px-1 py-3 border-b-2 border-gray-300 text-sm leading-4 text-blue-500 tracking-wider relative">
                   Fecha de Creación
-                  
                 </th>
                 <th className="px-1 py-3 border-b-2 border-gray-300"></th>
               </tr>
@@ -157,9 +153,7 @@ const PropertiesBdd = () => {
                     <div className="flex items-center">
                       <div>
                         <div className="text-sm leading-5 text-gray-800">
-                          {currentPage === 1
-                            ? index + 1
-                            : (currentPage - 1) * 10 + index + 1}
+                          {currentPage === 1 ? index + 1 : (currentPage - 1) * 10 + index + 1}
                         </div>
                       </div>
                       <div className="w-20 ml-3">
@@ -168,9 +162,7 @@ const PropertiesBdd = () => {
                     </div>
                   </td>
                   <td className="px-1 py-4 whitespace-no-wrap border-b border-gray-500">
-                    <div className="text-center text-sm leading-5 text-blue-900">
-                      {product.name}
-                    </div>
+                    <div className="text-center text-sm leading-5 text-blue-900">{product.name}</div>
                   </td>
                   <td className="text-center px-1 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
                     {product.zone}
@@ -196,7 +188,7 @@ const PropertiesBdd = () => {
                       <span className="relative text-xs">{product.status}</span>
                     </span>
                   </td>
-                
+
                   {/* <td className="text-center px-1 py-4 whitespace-no-wrap border-b border-gray-500 text-blue-900 text-sm leading-5">
                     {product.createdAt.slice(0, 10)}
                   </td> */}
@@ -216,15 +208,8 @@ const PropertiesBdd = () => {
           <div className="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
             <div>
               <p className="text-sm leading-5 text-blue-700">
-                <span className="font-medium">
-                  {" "}
-                  {currentPage === 1 ? 1 : 10 * (currentPage - 1) + 1}{" "}
-                </span>
-                a
-                <span className="font-medium">
-                  {" "}
-                  {currentPage === 1 ? 10 : 10 * currentPage}{" "}
-                </span>
+                <span className="font-medium"> {currentPage === 1 ? 1 : 10 * (currentPage - 1) + 1} </span>a
+                <span className="font-medium"> {currentPage === 1 ? 10 : 10 * currentPage} </span>
                 de
                 <span className="font-medium"> {count} </span>
                 resultados
@@ -239,11 +224,7 @@ const PropertiesBdd = () => {
                     aria-label="Previous"
                     onClick={() => handlePageChange(currentPage - 1)}
                   >
-                    <svg
-                      className="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
+                    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path
                         fillRule="evenodd"
                         d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
@@ -258,9 +239,7 @@ const PropertiesBdd = () => {
                   <button
                     key={pag}
                     className={`-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 ${
-                      pag === currentPage
-                        ? "bg-blue-600 text-white"
-                        : "bg-white text-blue-600"
+                      pag === currentPage ? "bg-blue-600 text-white" : "bg-white text-blue-600"
                     } text-sm leading-5 font-medium text-blue-600 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-tertiary active:text-gray-700 transition ease-in-out duration-150 hover:bg-tertiary`}
                     onClick={() => handlePageChange(pag)}
                   >
@@ -273,11 +252,7 @@ const PropertiesBdd = () => {
                     aria-label="Next"
                     onClick={() => handlePageChange(currentPage + 1)}
                   >
-                    <svg
-                      className="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
+                    <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path
                         fillRule="evenodd"
                         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -294,7 +269,8 @@ const PropertiesBdd = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PropertiesBdd;
+export default PropertiesBdd
+

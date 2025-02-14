@@ -1,15 +1,8 @@
-import React from "react";
-import { logo_b } from "../../../assets";
-import {
-  AiTwotonePhone,
-  AiOutlineInstagram,
-  AiOutlineRight,
-} from "react-icons/ai";
-import { BiLogoLinkedin, BiLogoFacebook } from "react-icons/bi";
-import { BsPinMapFill } from "react-icons/bs";
-import { FaWhatsapp } from "react-icons/fa";
-import { IoMailOutline } from "react-icons/io5";
-import SvgFooterbg from "../../../assets/bg/SvgFooterbg";
+import { logo_b } from "../../../assets"
+import { AiTwotonePhone, AiOutlineInstagram, AiOutlineRight } from "react-icons/ai"
+import { BiLogoFacebook } from "react-icons/bi"
+import { BsPinMapFill } from "react-icons/bs"
+import { IoMailOutline } from "react-icons/io5"
 const Footer = () => {
   return (
     <footer
@@ -24,9 +17,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 py-10">
         <div>
           <img src={logo_b} alt="Galindo SA" className="w-2/3" />
-          <p className="text-sm mb-4 poppins-light">
-            50 años de trayectoria definen nuestra identidad.
-          </p>
+          <p className="text-sm mb-4 poppins-light">50 años de trayectoria definen nuestra identidad.</p>
           <div className="w-full flex justify-start items-center space-x-4">
             <a
               href="https://www.facebook.com/galindosatucuman?mibextid=opq0tG"
@@ -81,14 +72,13 @@ const Footer = () => {
                 News
               </a>
             </li>
-           
+
             <li className="flex items-center">
               <AiOutlineRight className="text-[#ffc702] mr-2" />
               <a href="/contacto" className="hover:text-gray-400">
                 Contacto
               </a>
             </li>
-
           </ul>
         </div>
         <div>
@@ -107,9 +97,7 @@ const Footer = () => {
       </div>
       <div className="bg-[#051a30] py-4 mt-8">
         <div className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-400">
-            © 2024 Galindo S.A. Todos los derechos reservados
-          </p>
+          <p className="text-sm text-gray-400">© 2024 Galindo S.A. Todos los derechos reservados</p>
           <div className="flex space-x-4 text-gray-400">
             <a href="#" className="hover:text-white">
               Terminos y condiciones
@@ -121,7 +109,8 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
+

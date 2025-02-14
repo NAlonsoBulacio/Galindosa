@@ -275,3 +275,16 @@ li {
     font-weight: 700;
     font-style: normal;
   }
+
+
+
+  .slider-container {
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.slider-item {
+  min-width: 100vw;
+}

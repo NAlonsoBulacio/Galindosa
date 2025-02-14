@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import SampleNextArrow from "../../Arrows/SampleNextArrow";
-import SamplePrevArrow from "../../Arrows/SamplePrevArrow";
+"use client"
+
+import { useState, useEffect } from "react"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+import SampleNextArrow from "../../Arrows/SampleNextArrow"
+import SamplePrevArrow from "../../Arrows/SamplePrevArrow"
 
 const Amenities = ({ amenities }) => {
-  const [categories, setCategories] = useState("");
+  const [categories, setCategories] = useState("")
 
-  useEffect(() => { 
-    setCategories(amenities);
-  }, [amenities]);
+  useEffect(() => {
+    setCategories(amenities)
+  }, [amenities])
 
   const settings = {
     dots: true,
@@ -43,7 +45,7 @@ const Amenities = ({ amenities }) => {
         },
       },
     ],
-  };
+  }
 
   return (
     <>
@@ -52,9 +54,7 @@ const Amenities = ({ amenities }) => {
           className="relative bg-cover bg-center text-white py-10 lg:px-32 "
           // style={{ backgroundImage: `url(${bg_yellow})` }}
         >
-          <h1 className="text-center poppins-semibold text-4xl text-gray-700">
-            Amenidades
-          </h1>
+          <h1 className="text-center poppins-semibold text-4xl text-gray-700">Amenidades</h1>
           <div className="w-full flex justify-center">
             <hr className="w-32 border-t-[3px] border-[#ffc702] mt-2" />
           </div>
@@ -62,14 +62,8 @@ const Amenities = ({ amenities }) => {
             {categories?.map((category, index) => (
               <div key={index} className="p-4 ">
                 <div className=" p-6 rounded-lg shadow-lg text-center">
-                  <img
-                    src={category.icon}
-                    alt={category.label}
-                    className="mx-auto mb-4 w-16 h-16"
-                  />
-                  <div className="text-md lg:text-xl poppins-regular text-gray-900">
-                    {category.label}
-                  </div>
+                  <img src={category.icon} alt={category.label} className="mx-auto mb-4 w-16 h-16" />
+                  <div className="text-md lg:text-xl poppins-regular text-gray-900">{category.label}</div>
                 </div>
               </div>
             ))}
@@ -79,7 +73,8 @@ const Amenities = ({ amenities }) => {
         ""
       )}
     </>
-  );
-};
+  )
+}
 
-export default Amenities;
+export default Amenities
+

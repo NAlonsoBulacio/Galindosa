@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import UploadImage from "../../UploadImage/UploadImage";
-import thumbnailConvert from "../../../utils/convertThumbnail";
+"use client"
+
+import { useState, useEffect } from "react"
+import { IoIosArrowDown } from "react-icons/io"
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
+import UploadImage from "../../UploadImage/UploadImage"
+import thumbnailConvert from "../../../utils/convertThumbnail"
 
 const BlueprintsInput = ({
   img,
@@ -14,36 +16,29 @@ const BlueprintsInput = ({
   isUploadOpen, // Nuevo prop para saber si el componente está abierto
   onToggleUpload, // Nuevo prop para alternar el estado de subir imagen
 }) => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([])
 
   useEffect(() => {
     if (img) {
-      setImages(img);
+      setImages(img)
     }
-  }, [img]);
-
+  }, [img])
 
   const handleMoveImageUp = (index) => {
-    if (index === 0) return;
-    const newImages = [...images];
-    [newImages[index - 1], newImages[index]] = [
-      newImages[index],
-      newImages[index - 1],
-    ];
+    if (index === 0) return
+    const newImages = [...images]
+    ;[newImages[index - 1], newImages[index]] = [newImages[index], newImages[index - 1]]
 
-    handleChangeVariantImg(newImages, id);
-  };
+    handleChangeVariantImg(newImages, id)
+  }
 
   const handleMoveImageDown = (index) => {
-    if (index === images.length - 1) return;
-    const newImages = [...images];
-    [newImages[index + 1], newImages[index]] = [
-      newImages[index],
-      newImages[index + 1],
-    ];
+    if (index === images.length - 1) return
+    const newImages = [...images]
+    ;[newImages[index + 1], newImages[index]] = [newImages[index], newImages[index + 1]]
 
-    handleChangeVariantImg(newImages, id);
-  };
+    handleChangeVariantImg(newImages, id)
+  }
 
   return (
     <div className="sm:col-span-4">
@@ -71,9 +66,7 @@ const BlueprintsInput = ({
               <button
                 onClick={() => handleMoveImageDown(index)}
                 disabled={index === images.length - 1}
-                className={`p-1 border rounded ${
-                  index === images.length - 1 ? "opacity-50" : "hover:bg-gray-200"
-                }`}
+                className={`p-1 border rounded ${index === images.length - 1 ? "opacity-50" : "hover:bg-gray-200"}`}
               >
                 <FaArrowRight />
               </button>
@@ -91,16 +84,17 @@ const BlueprintsInput = ({
       {isUploadOpen && (
         <UploadImage
           handleUploadImage={(image) => {
-            const updatedImages = [...images, image];
-            setImages(updatedImages);
-            handleChangeVariantImg(updatedImages, id);
+            const updatedImages = [...images, image]
+            setImages(updatedImages)
+            handleChangeVariantImg(updatedImages, id)
           }}
           id={id}
           handleCloseUpload={handleCloseUpload}
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default BlueprintsInput;
+export default BlueprintsInput
+

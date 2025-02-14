@@ -1,18 +1,20 @@
-import React, {  useEffect } from "react";
-import "./MenuPhone.css";
-import { AiOutlineClose } from "react-icons/ai";
-import logo from "../../assets/logo-g.png";
-import { motion, useAnimation } from "framer-motion";
+"use client"
+
+import { useEffect } from "react"
+import "./MenuPhone.css"
+import { AiOutlineClose } from "react-icons/ai"
+import logo from "../../assets/logo-g.png"
+import { motion, useAnimation } from "framer-motion"
 const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
-  const controls = useAnimation();
+  const controls = useAnimation()
 
   useEffect(() => {
     if (menuOpen) {
-      controls.start("onscreen");
+      controls.start("onscreen")
     } else {
-      controls.start("offscreen");
+      controls.start("offscreen")
     }
-  }, [menuOpen, controls]);
+  }, [menuOpen, controls])
 
   const cardVariants = {
     offscreen: {
@@ -35,12 +37,12 @@ const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
         duration: 0.5,
       },
     },
-  };
+  }
 
   const handleClick = () => {
-    window.fbq("trackCustom", "ScheduleMeeting");
-  };
-  
+    window.fbq("trackCustom", "ScheduleMeeting")
+  }
+
   return (
     <motion.div
       className="lg:hidden menu-phone fixed top-0 right-0 w-full flex justify-start pt-8 items-start font-poppins-400 bg-gray-200"
@@ -60,18 +62,22 @@ const MenuPhone = ({ menuOpen, handleMenuToggle }) => {
         <a className="w-full" href="#about" onClick={handleMenuToggle}>
           Sobre Nosotros
         </a>
-        <a className="w-full" href="https://wa.me/+5493812071244" target="_blank" rel="noreferrer" onClick={handleMenuToggle}>
-        Contactar Asesor
+        <a
+          className="w-full"
+          href="https://wa.me/+5493812071244"
+          target="_blank"
+          rel="noreferrer"
+          onClick={handleMenuToggle}
+        >
+          Contactar Asesor
         </a>
         <button className="w-full pt-2" onClick={handleMenuToggle}>
-          <AiOutlineClose
-            className=""
-            style={{ height: "36px", width: "36px" }}
-          />
+          <AiOutlineClose className="" style={{ height: "36px", width: "36px" }} />
         </button>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default MenuPhone;
+export default MenuPhone
+

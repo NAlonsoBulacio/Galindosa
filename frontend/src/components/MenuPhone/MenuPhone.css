@@ -1,27 +1,28 @@
 .menu-phone {
-    transition: height 0.3s;
-    height: 42vh;
-    z-index: 3;
-  }
+  transition: height 0.3s;
+  height: 42vh;
+  z-index: 3;
+}
 
-  .menu-container{
-    z-index: 3;
-  }
-  
-  .menu-phone a {
-    text-align: left;
-    font-size: 1.4rem;  
-  }
-  .menu-phone a:hover {
-    color: #672398 ;
-  }
-  
-  .menu-phone button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-  .menu-phone button:hover {
-    color: #672398 ;
-  }
+.menu-container {
+  z-index: 3;
+}
+
+.menu-phone a {
+  text-align: left;
+  font-size: 1.4rem;
+}
+.menu-phone a:hover {
+  color: #672398;
+}
+
+.menu-phone button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+.menu-phone button:hover {
+  color: #672398;
+}
+

@@ -1,0 +1,139 @@
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .swipe {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slidesContainer {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slidesTrack {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+  
+  .slide {
+    flex: 0 0 calc(100% / 3);
+    padding: 0 10px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .image {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  .fullscreen .slide {
+    flex: 0 0 100%;
+  }
+  
+  .fullscreen .image {
+    height: 90vh;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+  }
+  
+  .arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .arrow:not(:disabled):hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .left {
+    left: 20px;
+  }
+  
+  .right {
+    right: 20px;
+  }
+  
+  .indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+  }
+  
+  .indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .indicator.active {
+    background: white;
+  }
+  
+  .fullscreenButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 3;
+  }
+  
+  @media (max-width: 768px) {
+    .slide {
+      flex: 0 0 100%;
+    }
+  
+    .image {
+      height: 300px;
+    }
+  }
+  
+  

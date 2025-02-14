@@ -1,21 +1,23 @@
-import React, { useState } from "react";
-import axios from "axios";
-import UploadImage from "../../../components/UploadImage/UploadImage";
-import { IoIosArrowDown } from "react-icons/io";
-import Section from "../../../components/BDD/Section/Section";
-import { amenities, ambients } from "../../../utils";
-import ImgInput from "../../../components/BDD/ImgInput/ImgInput";
-import BlueprintsInput from "../../../components/BDD/BlueprintsInput/BlueprintsInput";
-import thumbnailConvert from "../../../utils/convertThumbnail";
-import ReactQuill from "react-quill";  // Importa react-quill
-import "react-quill/dist/quill.snow.css";  
-const ProductForm = () => {
-  const [uploadImg, setUploadImg] = useState(false);
-  const [images, setImages] = useState([]);
-  const [blueprintsImages, setBlueprintsImages] = useState([]);
-  const [currentSectionIndex, setCurrentSectionIndex] = useState(null);
+"use client"
 
-  const [activeUploadComponent, setActiveUploadComponent] = useState(null);
+import { useState } from "react"
+import axios from "axios"
+import UploadImage from "../../../components/UploadImage/UploadImage"
+import { IoIosArrowDown } from "react-icons/io"
+import Section from "../../../components/BDD/Section/Section"
+import { amenities, ambients } from "../../../utils"
+import ImgInput from "../../../components/BDD/ImgInput/ImgInput"
+import BlueprintsInput from "../../../components/BDD/BlueprintsInput/BlueprintsInput"
+import thumbnailConvert from "../../../utils/convertThumbnail"
+import ReactQuill from "react-quill" // Importa react-quill
+import "react-quill/dist/quill.snow.css"
+const ProductForm = () => {
+  const [uploadImg, setUploadImg] = useState(false)
+  const [images, setImages] = useState([])
+  const [blueprintsImages, setBlueprintsImages] = useState([])
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(null)
+
+  const [activeUploadComponent, setActiveUploadComponent] = useState(null)
 
   const [form, setForm] = useState({
     name: "",
@@ -40,163 +42,145 @@ const ProductForm = () => {
     zone: "",
     video: "",
     work_percentage: "",
-  });
+  })
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setForm((prevForm) => ({
       ...prevForm,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleUploadToggle = (componentId) => {
-    setActiveUploadComponent((prevComponent) =>
-      prevComponent === componentId ? null : componentId
-    );
-  };
+    setActiveUploadComponent((prevComponent) => (prevComponent === componentId ? null : componentId))
+  }
 
   const handleCheckboxAmenitiesChange = (e, value) => {
-    const { name, checked } = e.target;
+    const { name, checked } = e.target
     setForm((prevForm) => ({
       ...prevForm,
-      [name]: checked
-        ? [...prevForm[name], value]
-        : prevForm[name].filter((item) => item !== value),
-    }));
-  };
+      [name]: checked ? [...prevForm[name], value] : prevForm[name].filter((item) => item !== value),
+    }))
+  }
 
   const handleCheckboxAmbientsChange = (e, value) => {
-    const { name, checked } = e.target;
+    const { name, checked } = e.target
     setForm((prevForm) => ({
       ...prevForm,
-      [name]: checked
-        ? [...prevForm[name], value]
-        : prevForm[name].filter((item) => item !== value),
-    }));
-  };
+      [name]: checked ? [...prevForm[name], value] : prevForm[name].filter((item) => item !== value),
+    }))
+  }
   const handleCheckboxChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value, checked } = e.target
     setForm((prevForm) => ({
       ...prevForm,
-      [name]: checked
-        ? [...prevForm[name], value]
-        : prevForm[name].filter((item) => item !== value),
-    }));
-  };
+      [name]: checked ? [...prevForm[name], value] : prevForm[name].filter((item) => item !== value),
+    }))
+  }
 
   const handleSectionCheckboxChange = (index, e, value) => {
-    const { checked } = e.target;
+    const { checked } = e.target
     setForm((prevForm) => {
-      const sections = [...prevForm.sections];
-      const section = sections[index];
+      const sections = [...prevForm.sections]
+      const section = sections[index]
       section.amenities = checked
         ? [...new Set([...section.amenities, value])]
-        : section.amenities.filter((amenity) => amenity.id !== value.id);
-      return { ...prevForm, sections };
-    });
-  };
+        : section.amenities.filter((amenity) => amenity.id !== value.id)
+      return { ...prevForm, sections }
+    })
+  }
 
   const handleChangeVariantImg = (image, id) => {
     if (id === 1) {
       setForm((prevForm) => ({
         ...prevForm,
         present_images: [...prevForm.present_images, image],
-      }));
-      setImages((prevImages) => [...prevImages, image]);
+      }))
+      setImages((prevImages) => [...prevImages, image])
     } else if (id === 3) {
       setForm((prevForm) => ({
         ...prevForm,
         blueprints: [...prevForm.blueprints, image],
-      }));
-      setBlueprintsImages((prevImages) => [...prevImages, image]);
+      }))
+      setBlueprintsImages((prevImages) => [...prevImages, image])
     } else if (id === 2) {
-      console.log(image);
+      console.log(image)
       setForm((prevForm) => ({
         ...prevForm,
         img: image,
-      }));
+      }))
     }
-  };
+  }
 
   const handleDeleteImage = (index, id) => {
     if (id === 1) {
       setForm((prevForm) => ({
         ...prevForm,
         present_images: prevForm.present_images.filter((_, i) => i !== index),
-      }));
-      setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+      }))
+      setImages((prevImages) => prevImages.filter((_, i) => i !== index))
     } else if (id === 3) {
       setForm((prevForm) => ({
         ...prevForm,
         blueprints: prevForm.blueprints.filter((_, i) => i !== index),
-      }));
-      setBlueprintsImages((prevImages) =>
-        prevImages.filter((_, i) => i !== index)
-      );
+      }))
+      setBlueprintsImages((prevImages) => prevImages.filter((_, i) => i !== index))
     }
-  };
+  }
 
   const handleSectionChange = (index, e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setForm((prevForm) => {
-      const sections = [...prevForm.sections];
+      const sections = [...prevForm.sections]
       sections[index] = {
         ...sections[index],
         [name]: value,
-      };
-      return { ...prevForm, sections };
-    });
-  };
+      }
+      return { ...prevForm, sections }
+    })
+  }
 
   const handleSectionImageChange = (img, index) => {
     setForm((prevForm) => {
-      const sections = [...prevForm.sections];
+      const sections = [...prevForm.sections]
       sections[index] = {
         ...sections[index],
         images: [...(sections[index].images || []), img],
-      };
-      return { ...prevForm, sections };
-    });
-  };
+      }
+      return { ...prevForm, sections }
+    })
+  }
 
   const handleDeleteSectionImage = (sectionIndex, imgIndex) => {
     setForm((prevForm) => {
-      const sections = [...prevForm.sections];
-      sections[sectionIndex].images = sections[sectionIndex].images.filter(
-        (_, i) => i !== imgIndex
-      );
-      return { ...prevForm, sections };
-    });
-  };
+      const sections = [...prevForm.sections]
+      sections[sectionIndex].images = sections[sectionIndex].images.filter((_, i) => i !== imgIndex)
+      return { ...prevForm, sections }
+    })
+  }
 
   const addSection = () => {
     setForm((prevForm) => ({
       ...prevForm,
-      sections: [
-        ...prevForm.sections,
-        { title: "", text: "", images: [], amenities: [] },
-      ],
-    }));
-  };
+      sections: [...prevForm.sections, { title: "", text: "", images: [], amenities: [] }],
+    }))
+  }
 
   const removeSection = (index) => {
     setForm((prevForm) => ({
       ...prevForm,
       sections: prevForm.sections.filter((_, i) => i !== index),
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await axios.post(
-        "https://galindobackend-production.up.railway.app/properties",
-        [form]
-      );
+      const response = await axios.post("https://galindobackend-production.up.railway.app/properties", [form])
 
       if (response.status === 200 || response.status === 201) {
-        alert("Producto Agregado Exitosamente");
+        alert("Producto Agregado Exitosamente")
         setForm({
           name: "",
           present_images: [],
@@ -216,15 +200,15 @@ const ProductForm = () => {
           sections: [],
           zone: "",
           video: "",
-        });
-        window.location.href = "https://galindosa.vercel.app/proyectos-bdd";
+        })
+        window.location.href = "https://galindosa.vercel.app/proyectos-bdd"
       } else {
-        console.error("Error al agregar el producto.");
+        console.error("Error al agregar el producto.")
       }
     } catch (error) {
-      console.error("Error al realizar la solicitud:", error);
+      console.error("Error al realizar la solicitud:", error)
     }
-  };
+  }
 
   // const handleCloseUpload = () => {
   //   setUploadImg(false);
@@ -232,34 +216,25 @@ const ProductForm = () => {
   // };
 
   const handleCloseUpload = () => {
-    setActiveUploadComponent(null); // Cierra el componente activo
-  };
+    setActiveUploadComponent(null) // Cierra el componente activo
+  }
   const handleDescriptionChange = (value) => {
     setForm((prevForm) => ({
       ...prevForm,
-      description: value,  // Actualiza el campo de descripción con HTML
-    }));
-  };
+      description: value, // Actualiza el campo de descripción con HTML
+    }))
+  }
   return (
-    <form
-      className="px-4 md:px-8 max-w-3xl mx-auto py-12"
-      onSubmit={handleSubmit}
-    >
+    <form className="px-4 md:px-8 max-w-3xl mx-auto py-12" onSubmit={handleSubmit}>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">
-            Nueva Propiedad
-          </h2>
+          <h2 className="text-base font-semibold leading-7 text-gray-900">Nueva Propiedad</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
-            Esta información va a ser publica, porfavor revisar bien las
-            casillas antes de publicar.
+            Esta información va a ser publica, porfavor revisar bien las casillas antes de publicar.
           </p>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-6">
             <div className="sm:col-span-4">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                 Nombre de la Propiedad
               </label>
               <div className="mt-2">
@@ -278,10 +253,7 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="zone"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="zone" className="block text-sm font-medium leading-6 text-gray-900">
                 Zona
               </label>
               <div className="mt-2">
@@ -305,10 +277,7 @@ const ProductForm = () => {
 
             {/* Campo de descripción introductoria */}
             <div className="sm:col-span-4">
-              <label
-                htmlFor="intro_description"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="intro_description" className="block text-sm font-medium leading-6 text-gray-900">
                 Titulo Introductorio
               </label>
               <div className="mt-2">
@@ -325,13 +294,9 @@ const ProductForm = () => {
               </div>
             </div>
 
-           
             {/* Campo de descripción utilizando ReactQuill */}
             <div className="sm:col-span-4">
-              <label
-                htmlFor="description"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
                 Descripción
               </label>
               <div className="mt-2">
@@ -346,10 +311,7 @@ const ProductForm = () => {
 
             {/* Campo de video */}
             <div className="sm:col-span-4">
-              <label
-                htmlFor="video"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="video" className="block text-sm font-medium leading-6 text-gray-900">
                 ID del Video de YouTube
               </label>
               <div className="mt-2">
@@ -390,18 +352,13 @@ const ProductForm = () => {
             {/* Carrusel de Imágenes */}
             <div className="sm:col-span-4">
               <p>
-                <span className="font-bold">Imágenes del Carrusel</span> -
-                Dimensiones (15 : 10) o (16 : 9)
+                <span className="font-bold">Imágenes del Carrusel</span> - Dimensiones (15 : 10) o (16 : 9)
               </p>
               <p className="italic text-sm">No más de 3 imágenes</p>
               <div className="flex">
                 {images.map((img, index) => (
                   <div key={index} className="w-24 relative">
-                    <img
-                      className=""
-                      src={thumbnailConvert(img)}
-                      alt={`imagen-${index}`}
-                    />
+                    <img className="" src={thumbnailConvert(img)} alt={`imagen-${index}`} />
                     <div
                       onClick={() => {}}
                       className="absolute top-0 right-0 cursor-pointer opacity-70 hover:opacity-100"
@@ -417,11 +374,7 @@ const ProductForm = () => {
               >
                 <p className="text-left">Cargar imagen</p>
                 <IoIosArrowDown
-                  className={`${
-                    activeUploadComponent === "carouselImages"
-                      ? "rotate-180"
-                      : ""
-                  } duration-300`}
+                  className={`${activeUploadComponent === "carouselImages" ? "rotate-180" : ""} duration-300`}
                 />
               </div>
               {activeUploadComponent === "carouselImages" && (
@@ -434,10 +387,7 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="latitude"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="latitude" className="block text-sm font-medium leading-6 text-gray-900">
                 Latitud
               </label>
               <div className="mt-2">
@@ -455,10 +405,7 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="longitude"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="longitude" className="block text-sm font-medium leading-6 text-gray-900">
                 Longitud
               </label>
               <div className="mt-2">
@@ -476,10 +423,7 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="address"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="address" className="block text-sm font-medium leading-6 text-gray-900">
                 Dirección
               </label>
               <div className="mt-2">
@@ -497,10 +441,7 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="status"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="status" className="block text-sm font-medium leading-6 text-gray-900">
                 Estado
               </label>
               <div className="mt-2">
@@ -521,19 +462,11 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="categories"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="categories" className="block text-sm font-medium leading-6 text-gray-900">
                 Categorías
               </label>
               <div className="mt-2 grid grid-cols-2 gap-4">
-                {[
-                  "Departamento",
-                  "Locales Comerciales",
-                  "Casa",
-                  "Cocheras",
-                ].map((category, index) => (
+                {["Departamento", "Locales Comerciales", "Casa", "Cocheras"].map((category, index) => (
                   <div key={index} className="flex items-center">
                     <input
                       type="checkbox"
@@ -543,10 +476,7 @@ const ProductForm = () => {
                       checked={form.categories.includes(category)}
                       className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                     />
-                    <label
-                      htmlFor="categories"
-                      className="ml-2 block text-sm text-gray-900"
-                    >
+                    <label htmlFor="categories" className="ml-2 block text-sm text-gray-900">
                       {category}
                     </label>
                   </div>
@@ -555,10 +485,7 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="rooms"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="rooms" className="block text-sm font-medium leading-6 text-gray-900">
                 Ambientes
               </label>
               <div className="mt-2 grid grid-cols-2 gap-4">
@@ -571,10 +498,7 @@ const ProductForm = () => {
                       onChange={(e) => handleCheckboxAmbientsChange(e, ambient)}
                       className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                     />
-                    <label
-                      htmlFor="rooms"
-                      className="ml-2 block text-sm text-gray-900"
-                    >
+                    <label htmlFor="rooms" className="ml-2 block text-sm text-gray-900">
                       {ambient.label}
                     </label>
                   </div>
@@ -583,10 +507,7 @@ const ProductForm = () => {
             </div>
 
             <div className="sm:col-span-4">
-              <label
-                htmlFor="amenities"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+              <label htmlFor="amenities" className="block text-sm font-medium leading-6 text-gray-900">
                 Amenidades
               </label>
               <div className="mt-2 grid grid-cols-2 gap-4">
@@ -596,15 +517,10 @@ const ProductForm = () => {
                       type="checkbox"
                       name="amenities"
                       value={amenity}
-                      onChange={(e) =>
-                        handleCheckboxAmenitiesChange(e, amenity)
-                      }
+                      onChange={(e) => handleCheckboxAmenitiesChange(e, amenity)}
                       className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
                     />
-                    <label
-                      htmlFor="amenities"
-                      className="ml-2 block text-sm text-gray-900"
-                    >
+                    <label htmlFor="amenities" className="ml-2 block text-sm text-gray-900">
                       {amenity.label}
                     </label>
                   </div>
@@ -613,9 +529,7 @@ const ProductForm = () => {
             </div>
 
             <div className="col-span-full">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
-                Secciones
-              </h3>
+              <h3 className="text-lg font-medium leading-6 text-gray-900">Secciones</h3>
               {form.sections.map((section, index) => (
                 <Section
                   key={index}
@@ -634,11 +548,7 @@ const ProductForm = () => {
                 />
               ))}
               <div className="mt-4">
-                <button
-                  type="button"
-                  onClick={addSection}
-                  className="bg-blue-600 text-white px-3 py-2 rounded-md"
-                >
+                <button type="button" onClick={addSection} className="bg-blue-600 text-white px-3 py-2 rounded-md">
                   Añadir Sección
                 </button>
               </div>
@@ -648,11 +558,7 @@ const ProductForm = () => {
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <a
-          href="/producttable"
-          type="button"
-          className="text-sm font-semibold leading-6 text-gray-900"
-        >
+        <a href="/producttable" type="button" className="text-sm font-semibold leading-6 text-gray-900">
           Cancelar
         </a>
         <button
@@ -663,7 +569,8 @@ const ProductForm = () => {
         </button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default ProductForm;
+export default ProductForm
+

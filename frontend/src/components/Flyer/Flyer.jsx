@@ -1,37 +1,42 @@
-import React, { useRef, useEffect } from "react";
-import logoG from "../../assets/logo-g.png";
-import "./Flyer.css";
+"use client"
+
+import { useRef, useEffect } from "react"
+import logoG from "../../assets/logo-g.png"
+import "./Flyer.css"
 const Flyer = () => {
-  const flyerRef = useRef(null);
+  const flyerRef = useRef(null)
 
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.5 // Porcentaje de intersección que activará el evento (en este caso, 50%)
-    };
+      rootMargin: "0px",
+      threshold: 0.5, // Porcentaje de intersección que activará el evento (en este caso, 50%)
+    }
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          window.fbq("trackCustom", "70%UserView");
-          observer.unobserve(entry.target);
+          window.fbq("trackCustom", "70%UserView")
+          observer.unobserve(entry.target)
         }
-      });
-    }, options);
+      })
+    }, options)
 
     if (flyerRef.current) {
-      observer.observe(flyerRef.current);
+      observer.observe(flyerRef.current)
     }
 
     return () => {
       if (flyerRef.current) {
-        observer.unobserve(flyerRef.current);
+        observer.unobserve(flyerRef.current)
       }
-    };
-  }, []);
+    }
+  }, [])
   return (
-    <div ref={flyerRef} className="w-full md:px-0 py-10 md:py-20 lg:py-20 xl:py-32 flex flex-wrap justify-center items-center space-x-4 px-4 bg-gray-200">
+    <div
+      ref={flyerRef}
+      className="w-full md:px-0 py-10 md:py-20 lg:py-20 xl:py-32 flex flex-wrap justify-center items-center space-x-4 px-4 bg-gray-200"
+    >
       <div className="w-1/4 md:w-1/4 flex justify-center items-center">
         <div className="w-[80px] h-[80px] lg:w-[125px] lg:h-[125px] flex justify-center items-center rounded-full bg-transparent pr-2">
           <img className="w-[55px] lg:w-[200px]" src={logoG} alt="logo" />
@@ -46,7 +51,8 @@ const Flyer = () => {
         </h1>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Flyer;
+export default Flyer
+

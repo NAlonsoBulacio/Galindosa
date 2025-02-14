@@ -1,30 +1,32 @@
-import React, { useState } from "react";
-import { TbHomeSearch } from "react-icons/tb";
-import { useHistory } from "react-router-dom";
-import { ambients } from "../../../utils";
+"use client"
+
+import { useState } from "react"
+import { TbHomeSearch } from "react-icons/tb"
+import { useHistory } from "react-router-dom"
+import { ambients } from "../../../utils"
 // import "./Filter.css";
 
 const Filter = () => {
-  const history = useHistory();
-  const [estado, setEstado] = useState("");
-  const [zona, setZona] = useState("");
-  const [ambientes, setAmbientes] = useState("");
+  const history = useHistory()
+  const [estado, setEstado] = useState("")
+  const [zona, setZona] = useState("")
+  const [ambientes, setAmbientes] = useState("")
 
   const handleEstadoChange = (e) => {
-    setEstado(e.target.value);
-  };
+    setEstado(e.target.value)
+  }
 
   const handleZonaChange = (e) => {
-    setZona(e.target.value);
-  };
+    setZona(e.target.value)
+  }
 
   const handleAmbientesChange = (e) => {
-    setAmbientes(e.target.value);
-  };
+    setAmbientes(e.target.value)
+  }
 
   const handleSearch = () => {
-    history.push("/proyectos", { estado, zona, ambientes });
-  };
+    history.push("/proyectos", { estado, zona, ambientes })
+  }
 
   return (
     <div className="filter-container p-6 rounded-3xl mx-auto mt-8 max-w-4xl relative">
@@ -84,7 +86,8 @@ const Filter = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filter;
+export default Filter
+
