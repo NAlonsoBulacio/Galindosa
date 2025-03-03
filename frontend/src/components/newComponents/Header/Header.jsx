@@ -83,9 +83,9 @@ const Header = () => {
                 Inicio
               </a>
               <a
-                href="/proyectos"
-                onClick={() => handleNavClick("/proyectos")}
-                className={`${currentPage === "/proyectos" ? "active" : "a-h"} ${navbar ? "text-gray-700" : ""}`}
+                href="/edificios"
+                onClick={() => handleNavClick("/edificios")}
+                className={`${currentPage === "/edificios" ? "active" : "a-h"} ${navbar ? "text-gray-700" : ""}`}
               >
                 Edificios
               </a>
@@ -136,7 +136,7 @@ const Header = () => {
             <a href="/" onClick={() => handleNavClick("/")} className="text-lg">
               Inicio
             </a>
-            <a href="/proyectos" onClick={() => handleNavClick("/proyectos")} className="text-lg">
+            <a href="/edificios" onClick={() => handleNavClick("/edificios")} className="text-lg">
               Edificios
             </a>
             <a href="/sobre-nosotros" onClick={() => handleNavClick("/sobre-nosotros")} className="text-lg">

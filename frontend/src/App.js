@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/contacto" component={Contact} />
         <Route exact path="/sobre-nosotros" component={AboutUs} />
-        <Route exact path="/proyectos" component={Projects} />
+        <Route exact path="/edificios" component={Projects} />
         <Route exact path="/proyecto/:slug" component={Project} />
         <Route exact path="/proyectos-bdd" component={PropertiesBdd} />
         <Route exact path="/cargar-proyecto" component={ProductForm} />

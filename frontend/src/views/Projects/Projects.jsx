@@ -90,13 +90,13 @@ const Projects = () => {
           name="keywords"
           content="proyectos inmobiliarios, Tucumán, Galindo SA, departamentos, casas, locales comerciales, inversión inmobiliaria"
         />
-        <link rel="canonical" href="https://www.galindosa.com/proyectos" />
+        <link rel="canonical" href="https://www.galindosa.com/edificios" />
         <meta property="og:title" content="Proyectos Inmobiliarios en Tucumán | Galindo SA" />
         <meta
           property="og:description"
           content="Descubre nuestros proyectos inmobiliarios en Tucumán. Propiedades de alta calidad en las mejores ubicaciones."
         />
-        <meta property="og:url" content="https://www.galindosa.com/proyectos" />
+        <meta property="og:url" content="https://www.galindosa.com/edificios" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -105,7 +105,7 @@ const Projects = () => {
             name: "Proyectos Inmobiliarios en Tucumán",
             description:
               "Explora nuestros proyectos inmobiliarios en Tucumán. Departamentos, casas y locales comerciales en las mejores zonas.",
-            url: "https://www.galindosa.com/proyectos",
+            url: "https://www.galindosa.com/edificios",
             publisher: {
               "@type": "Organization",
               name: "Galindo SA",
@@ -204,6 +204,7 @@ const Projects = () => {
 
             <div className="flex flex-col justify-end w-full lg:w-auto gap-y-2">
               <button
+               type="button"
                 onClick={handleFilterChange}
                 className="bg-[#ffc702] hover:bg-[#9d882a] duration-300 text-white px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
               >
@@ -211,6 +212,7 @@ const Projects = () => {
                 BUSCAR AHORA
               </button>
               <button
+               type="button"
                 onClick={handleCleanFilters}
                 className="bg-[#fbf9f2] hover:bg-[#ffc702] duration-300 text-gray-700 hover:text-white border-[1px] border-[#ffc702] px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
               >

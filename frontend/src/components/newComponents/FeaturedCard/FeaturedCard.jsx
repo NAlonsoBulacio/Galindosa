@@ -6,7 +6,7 @@ const FeaturedCard = ({ image, title, description }) => {
     if (title === "Mate de Luna") {
       history.push("/proyecto/g-park")
     } else {
-      history.push("/proyectos", { zona })
+      history.push("/edificios", { zona })
     }
   }
 

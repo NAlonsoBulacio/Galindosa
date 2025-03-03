@@ -25,7 +25,7 @@ const Filter = () => {
   }
 
   const handleSearch = () => {
-    history.push("/proyectos", { estado, zona, ambientes })
+    history.push("/edificios", { estado, zona, ambientes })
   }
 
   return (

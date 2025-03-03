@@ -62,7 +62,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center">
               <AiOutlineRight className="text-[#ffc702] mr-2" />
-              <a href="/proyectos" className="hover:text-gray-400">
+              <a href="/edificios" className="hover:text-gray-400">
                 Edificios
               </a>
             </li>
