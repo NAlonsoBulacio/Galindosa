@@ -14,7 +14,7 @@ const FlyerContact = () => {
           href="https://wa.me/+5493812071244"
           target="_blank"
           rel="noreferrer"
-          className="bg-[#ffc702] hover:bg-[#a18c2d] duration-300 text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-sm lg:text-lg gap-x-2"
+          className="wp-btn bg-[#ffc702] hover:bg-[#a18c2d] duration-300 text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-sm lg:text-lg gap-x-2"
         >
           Consultá con un asesor <IoIosContacts className="text-2xl" />
         </a>

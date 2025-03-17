@@ -104,8 +104,8 @@ const SectionCard = ({ section, index }) => {
               ))}
             </div>
             <a
-              href="/"
-              className="bg-[#ccad24] hover:bg-[#a18c2d] text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-lg gap-x-2"
+               href="https://wa.me/+5493812071244" target="_blank" rel="noreferrer"
+              className="wp-btn bg-[#ccad24] hover:bg-[#a18c2d] text-gray-50 flex justify-center items-center px-4 py-2 rounded-full text-lg gap-x-2"
             >
               Consultá <IoIosContacts className="text-2xl" />
             </a>

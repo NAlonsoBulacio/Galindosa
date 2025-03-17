@@ -51,10 +51,10 @@ const Amenities = ({ amenities }) => {
     <>
       {categories ? (
         <div
-          className="relative bg-cover bg-center text-white py-10 lg:px-32 "
+          className="relative bg-cover bg-center text-white py-6 lg:py-10 lg:px-32 "
           // style={{ backgroundImage: `url(${bg_yellow})` }}
         >
-          <h1 className="text-center poppins-semibold text-4xl text-gray-700">Amenidades</h1>
+          <h1 className="text-center poppins-semibold text-2xl lg:text-4xl text-gray-700">Amenidades</h1>
           <div className="w-full flex justify-center">
             <hr className="w-32 border-t-[3px] border-[#ffc702] mt-2" />
           </div>
