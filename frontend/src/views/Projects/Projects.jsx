@@ -1,82 +1,95 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useLocation } from "react-router-dom"
-import { Helmet } from "react-helmet"
-import Header from "../../components/newComponents/Header/Header"
-import Footer from "../../components/newComponents/Footer/Footer"
-import ProjectsContainer from "../../components/newComponents/ProjectsContainer/ProyectsContainer"
-import FlyerProjects from "../../components/newComponents/Flyers/FlyerProjects"
-import { IoIosSearch } from "react-icons/io"
-import { getProjects } from "../../redux/actions"
-import { useDispatch, useSelector } from "react-redux"
-import loadingImg from "../../assets/ripples.svg"
-import { MdCleaningServices } from "react-icons/md"
-import { ambients } from "../../utils"
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import Header from "../../components/newComponents/Header/Header";
+import Footer from "../../components/newComponents/Footer/Footer";
+import ProjectsContainer from "../../components/newComponents/ProjectsContainer/ProyectsContainer";
+import FlyerProjects from "../../components/newComponents/Flyers/FlyerProjects";
+import { IoIosSearch } from "react-icons/io";
+import { getProjects } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import loadingImg from "../../assets/ripples.svg";
+import { MdCleaningServices } from "react-icons/md";
+import { ambients } from "../../utils";
 
 const Projects = () => {
-  const projects = useSelector((state) => state.projects)
-  const dispatch = useDispatch()
-  const location = useLocation()
-  const [zoneFilter, setZoneFilter] = useState("")
-  const [roomsFilter, setRoomsFilter] = useState("")
-  const [statusFilter, setStatusFilter] = useState("")
-  const [projectsInView, setProjectsInView] = useState([])
-  const [loading, setLoading] = useState(true)
+  const projects = useSelector((state) => state.projects);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const [zoneFilter, setZoneFilter] = useState("");
+  const [roomsFilter, setRoomsFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [projectsInView, setProjectsInView] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true)
-    dispatch(getProjects()).finally(() => setLoading(false))
-  }, [dispatch])
+    setLoading(true);
+    dispatch(getProjects()).finally(() => setLoading(false));
+  }, [dispatch]);
 
   useEffect(() => {
-    const { estado, zona, ambientes } = location.state || {}
+    const { estado, zona, ambientes } = location.state || {};
 
-    if (estado !== undefined) setStatusFilter(estado)
-    if (zona !== undefined) setZoneFilter(zona)
-    if (ambientes !== undefined) setRoomsFilter(ambientes)
+    if (estado !== undefined) setStatusFilter(estado);
+    if (zona !== undefined) setZoneFilter(zona);
+    if (ambientes !== undefined) setRoomsFilter(ambientes);
 
     if (estado || zona || ambientes) {
-      handleFilterChangeFromHome(estado, zona, ambientes)
+      handleFilterChangeFromHome(estado, zona, ambientes);
     } else {
-      setProjectsInView(projects)
+      setProjectsInView(projects);
     }
-  }, [location.state, projects])
+  }, [location.state, projects]);
 
-  const handleFilterChangeFromHome = (estado = statusFilter, zona = zoneFilter, ambientes = roomsFilter) => {
+  const handleFilterChangeFromHome = (
+    estado = statusFilter,
+    zona = zoneFilter,
+    ambientes = roomsFilter
+  ) => {
     const filteredProjects = projects.filter((project) => {
-      const matchesZone = zona === "" || project.zone === zona
-      const matchesStatus = estado === "" || project.status === estado
-      const matchesRooms = ambientes === "" || project.rooms.some((room) => room.id === Number.parseInt(ambientes))
+      const matchesZone = zona === "" || project.zone === zona;
+      const matchesStatus = estado === "" || project.status === estado;
+      const matchesRooms =
+        ambientes === "" ||
+        project.rooms.some(
+          (room) =>
+            room.id === Number.parseInt(roomsFilter) && room.available === true
+        );
 
-      return matchesZone && matchesStatus && matchesRooms
-    })
+      return matchesZone && matchesStatus && matchesRooms;
+    });
 
-    const shuffledProjects = filteredProjects.sort(() => Math.random() - 0.5)
+    const shuffledProjects = filteredProjects.sort(() => Math.random() - 0.5);
 
-    setProjectsInView(shuffledProjects)
-  }
+    setProjectsInView(shuffledProjects);
+  };
 
   const handleFilterChange = () => {
     const filteredProjects = projects.filter((project) => {
-      const matchesZone = zoneFilter === "" || project.zone === zoneFilter
-      const matchesStatus = statusFilter === "" || project.status === statusFilter
-      const matchesRooms = roomsFilter === "" || project.rooms.some((room) => room.id === Number.parseInt(roomsFilter))
+      const matchesZone = zoneFilter === "" || project.zone === zoneFilter;
+      const matchesStatus =
+        statusFilter === "" || project.status === statusFilter;
+      const matchesRooms =
+        roomsFilter === "" ||
+        project.rooms.some((room) => room.id === Number.parseInt(roomsFilter));
 
-      return matchesZone && matchesStatus && matchesRooms
-    })
+      return matchesZone && matchesStatus && matchesRooms;
+    });
 
-    const shuffledProjects = filteredProjects.sort(() => Math.random() - 0.5)
+    const shuffledProjects = filteredProjects.sort(() => Math.random() - 0.5);
 
-    setProjectsInView(shuffledProjects)
-  }
+    setProjectsInView(shuffledProjects);
+  };
 
   const handleCleanFilters = () => {
-    setRoomsFilter("")
-    setStatusFilter("")
-    setZoneFilter("")
-    setProjectsInView(projects)
-  }
+    setRoomsFilter("");
+    setStatusFilter("");
+    setZoneFilter("");
+    setProjectsInView(projects);
+  };
+  console.log(projectsInView);
 
   return (
     <div className="overflow-hidden">
@@ -91,7 +104,10 @@ const Projects = () => {
           content="proyectos inmobiliarios, Tucumán, Galindo SA, departamentos, casas, locales comerciales, inversión inmobiliaria"
         />
         <link rel="canonical" href="https://www.galindosa.com/edificios" />
-        <meta property="og:title" content="Proyectos Inmobiliarios en Tucumán | Galindo SA" />
+        <meta
+          property="og:title"
+          content="Proyectos Inmobiliarios en Tucumán | Galindo SA"
+        />
         <meta
           property="og:description"
           content="Descubre nuestros proyectos inmobiliarios en Tucumán. Propiedades de alta calidad en las mejores ubicaciones."
@@ -175,7 +191,9 @@ const Projects = () => {
             </fieldset>
 
             <fieldset className="flex flex-col items-start w-full lg:w-auto">
-              <legend className="text-gray-700 font-bold mb-1">Ambientes</legend>
+              <legend className="text-gray-700 font-bold mb-1">
+                Ambientes
+              </legend>
               <div className="relative w-full lg:w-56">
                 <select
                   value={roomsFilter}
@@ -204,7 +222,7 @@ const Projects = () => {
 
             <div className="flex flex-col justify-end w-full lg:w-auto gap-y-2">
               <button
-               type="button"
+                type="button"
                 onClick={handleFilterChange}
                 className="bg-[#ffc702] hover:bg-[#9d882a] duration-300 text-white px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
               >
@@ -212,7 +230,7 @@ const Projects = () => {
                 BUSCAR AHORA
               </button>
               <button
-               type="button"
+                type="button"
                 onClick={handleCleanFilters}
                 className="bg-[#fbf9f2] hover:bg-[#ffc702] duration-300 text-gray-700 hover:text-white border-[1px] border-[#ffc702] px-6 py-2 rounded-lg flex items-center gap-2 w-full lg:w-auto"
               >
@@ -227,13 +245,18 @@ const Projects = () => {
           <div className="w-full">
             {loading ? (
               <div className="flex items-center justify-center h-64">
-                <img src={loadingImg || "/placeholder.svg"} alt="Cargando..." className="w-16 h-16" />
+                <img
+                  src={loadingImg || "/placeholder.svg"}
+                  alt="Cargando..."
+                  className="w-16 h-16"
+                />
               </div>
             ) : projectsInView.length > 0 ? (
               <ProjectsContainer projects={projectsInView} />
             ) : (
               <p className="flex items-center justify-center text-center text-xl text-gray-700 h-64">
-                No se encontraron proyectos. Por favor, prueba con otros parámetros de búsqueda.
+                No se encontraron proyectos. Por favor, prueba con otros
+                parámetros de búsqueda.
               </p>
             )}
           </div>
@@ -242,8 +265,7 @@ const Projects = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Projects
-
+export default Projects;
