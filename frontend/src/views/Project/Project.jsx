@@ -122,7 +122,7 @@ const Project = ({ match }) => {
           <div className="block lg:hidden bg-gray-900 py-4 border-b-[1px] border-b-[#ffc702]">
             <p
               onClick={toggleForm}
-              className="text-gray-100 text-center text-lg poppins-regular cursor-pointer"
+              className="text-gray-100 text-center text-sm lg:text-lg poppins-regular cursor-pointer"
             >
               Solicitar Info
             </p>
@@ -155,7 +155,7 @@ const Project = ({ match }) => {
               ""
             )}
             {/* Banner */}
-            <div className="w-full flex flex-col  justify-start items-center bg-black text-white py-12 px-2 lg:px-0">
+            <div className="w-full flex flex-col  justify-start items-center bg-black text-white py-2 lg:py-12 px-2 lg:px-0">
               <div className="container flex-col  justify-start items-center">
                 <div className="flex justify-center lg:justify-center flex-wrap w-full lg:flex w-1/3">
                   <div className="w-full flex flex-wrap lg:flex-nowrap justify-center">
