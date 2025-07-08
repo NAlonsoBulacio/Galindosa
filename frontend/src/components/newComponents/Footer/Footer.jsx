@@ -27,7 +27,7 @@ const Footer = () => {
               <BiLogoFacebook className="text-[#ffc702] text-4xl lg:text-2xl" />
             </a>
             <a
-              href="https://www.instagram.com/galindosa_tuc?igsh=OXVrODZsbzMwemJz"
+              href="https://www.instagram.com/galindosa_arg?igsh=OXVrODZsbzMwemJz"
               target="_blank"
               rel="noopener noreferrer"
             >
