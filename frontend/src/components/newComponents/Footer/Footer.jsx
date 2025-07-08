@@ -37,19 +37,19 @@ const Footer = () => {
         </div>
         <div>
           <h3 className="text-lg poppins-regular mb-4">Contacto</h3>
-          <p className="text-sm mb-2 flex items-start justify-start gap-x-2">
+          <a href="https://maps.app.goo.gl/6R66iTnSUaVc779v5" target="_blank" className="hover:underline text-sm mb-2 flex items-start justify-start gap-x-2">
             <BsPinMapFill className="text-xl" /> Virgen de la Merced 639
             <br />
             San Miguel de Tucumán,
             <br />
             Tucumán, Argentina
-          </p>
-          <p className="text-sm mb-2 flex items-start justify-start gap-x-2">
+          </a>
+          <a href="mailto:info@galindosa.com.ar" target="_blank" className="hover:underline text-sm mb-2 flex items-start justify-start gap-x-2">
             <IoMailOutline className="text-xl" /> Info@galindosa.com.ar
-          </p>
-          <p className="text-sm mb-2 flex items-start justify-start gap-x-2">
+          </a>
+          <a href="https://wa.me/5493812071244" target="_blank"  className="hover:underline text-sm mb-2 flex items-start justify-start gap-x-2">
             <AiTwotonePhone className="text-xl" /> +54 9 3812 07-1244
-          </p>
+          </a>
         </div>
         <div>
           <h3 className="text-lg poppins-regular mb-4">Links</h3>
