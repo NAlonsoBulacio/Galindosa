@@ -32,7 +32,9 @@ const Amenities = ({ amenities }) => {
       },
       {
         breakpoint: 600,
+        
         settings: {
+           dots: false,
           slidesToShow: 2,
           slidesToScroll: 1,
         },
@@ -40,6 +42,7 @@ const Amenities = ({ amenities }) => {
       {
         breakpoint: 480,
         settings: {
+             dots: false,
           slidesToShow: 2,
           slidesToScroll: 1,
         },
@@ -51,7 +54,7 @@ const Amenities = ({ amenities }) => {
     <>
       {categories ? (
         <div
-          className="relative bg-cover bg-center text-white py-6 lg:py-10 lg:px-32 "
+          className="relative bg-cover bg-center text-white py-3 lg:py-10 lg:px-32 "
           // style={{ backgroundImage: `url(${bg_yellow})` }}
         >
           <h1 className="text-center poppins-semibold text-lg lg:text-4xl text-gray-700">Amenidades</h1>

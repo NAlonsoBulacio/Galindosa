@@ -113,13 +113,13 @@ const Project = ({ match }) => {
           })}
         </script>
       </Helmet>
-      <div className="mt-[80px] lg:mt-0">
+      <div className="mt-[70px] lg:mt-0">
         {detail.presentImages && detail.presentImages.length > 0 && (
           <Banner banners={detail.presentImages} name={detail.name} />
         )}
         <Header />
         <main>
-          <div className="block lg:hidden bg-gray-900 py-4 border-b-[1px] border-b-[#ffc702]">
+          <div className="block lg:hidden bg-gray-900 py-2 lg:py-4 border-b-[1px] border-b-[#ffc702]">
             <p
               onClick={toggleForm}
               className="text-gray-100 text-center text-sm lg:text-lg poppins-regular cursor-pointer"
@@ -137,7 +137,7 @@ const Project = ({ match }) => {
           <section className="">
             <Amenities amenities={detail.amenities} />
           </section>
-          <section className="w-full flex flex-col justify-start items-center bg-black text-white py-12 px-2 lg:px-0">
+          <section className="w-full flex flex-col justify-start items-center bg-black text-white py-2 lg:py-12 px-2 lg:px-0">
             {/* Video */}
             {detail.video ? (
               <div className="w-full lg:w-1/2 relative h-[230px] lg:h-[355px]">

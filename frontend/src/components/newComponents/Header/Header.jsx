@@ -40,7 +40,7 @@ const Header = () => {
     <div>
       <header
         className={`${
-          navbar ? "header-bg lg:shadow-2xl h-[80px] lg:h-[80px]" : "header h-[80px] lg:h-[95px]"
+          navbar ? "header-bg lg:shadow-2xl h-[70px] lg:h-[80px]" : "header h-[70px] lg:h-[95px]"
         } text-gray-300 p-4 z-[50] font-lato-300 fixed w-full top-0 transition-all duration-500  ${
           menuOpen ? "" : "border-b-[1px] border-gray-900"
         }`}
@@ -48,7 +48,7 @@ const Header = () => {
         <div className="mx-auto flex items-center justify-between lg:hidden z-30 ">
           <div className="logo flex items-center space-x-4">
             <a href="/">
-              <img src={navbar ? logo_b : logo_b} alt="Logo" style={{ width: "136px" }} />
+              <img src={navbar ? logo_b : logo_b} alt="Logo" style={{ width: "96px" }} />
             </a>
           </div>
           <HiMenuAlt2
